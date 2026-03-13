@@ -1,32 +1,39 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
-interface Ripple { id: number; x: number; y: number }
-interface Trail { id: number; x: number; y: number; opacity: number }
+const ARROW = "M 2 2 L 2 18 L 6 14 L 10 22 L 12.5 21 L 8.5 13 L 14 13 Z";
+
+interface TrailDot { id: number; x: number; y: number; opacity: number }
 
 export default function CustomCursor() {
   const [isTouch, setIsTouch] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isHover, setIsHover] = useState(false);
-  const [ripples, setRipples] = useState<Ripple[]>([]);
-  const [trail, setTrail] = useState<Trail[]>([]);
-  const trailRef = useRef<Trail[]>([]);
+  const [isButton, setIsButton] = useState(false);
+  const [trail, setTrail] = useState<TrailDot[]>([]);
+
+  const trailRef = useRef<TrailDot[]>([]);
   const trailIdRef = useRef(0);
   const rafRef = useRef<number>(0);
+  const posRef = useRef({ x: -100, y: -100 });
 
   const rawX = useMotionValue(-100);
   const rawY = useMotionValue(-100);
+  const x = useSpring(rawX, { stiffness: 600, damping: 38, mass: 0.3 });
+  const y = useSpring(rawY, { stiffness: 600, damping: 38, mass: 0.3 });
 
-  // Smooth follow with spring
-  const x = useSpring(rawX, { stiffness: 500, damping: 40, mass: 0.4 });
-  const y = useSpring(rawY, { stiffness: 500, damping: 40, mass: 0.4 });
-
-  const addRipple = useCallback((cx: number, cy: number) => {
-    const id = Date.now();
-    setRipples((prev) => [...prev, { id, x: cx, y: cy }]);
-    setTimeout(() => setRipples((prev) => prev.filter((r) => r.id !== id)), 700);
+  const startFade = useCallback(() => {
+    cancelAnimationFrame(rafRef.current);
+    const fade = () => {
+      trailRef.current = trailRef.current
+        .map((d) => ({ ...d, opacity: d.opacity * 0.78 }))
+        .filter((d) => d.opacity > 0.025);
+      setTrail([...trailRef.current]);
+      if (trailRef.current.length > 0) rafRef.current = requestAnimationFrame(fade);
+    };
+    rafRef.current = requestAnimationFrame(fade);
   }, []);
 
   useEffect(() => {
@@ -36,150 +43,119 @@ export default function CustomCursor() {
     const onMove = (e: MouseEvent) => {
       const cx = e.clientX;
       const cy = e.clientY;
-      rawX.set(cx - 12);
-      rawY.set(cy - 12);
+      posRef.current = { x: cx, y: cy };
+      rawX.set(cx);
+      rawY.set(cy);
       if (!isVisible) setIsVisible(true);
 
-      // Add trail dot
       const id = ++trailIdRef.current;
-      const dot: Trail = { id, x: cx, y: cy, opacity: 0.55 };
-      trailRef.current = [dot, ...trailRef.current.slice(0, 10)];
+      trailRef.current = [{ id, x: cx, y: cy, opacity: 0.5 }, ...trailRef.current.slice(0, 7)];
       setTrail([...trailRef.current]);
-
-      // Fade trail
-      cancelAnimationFrame(rafRef.current);
-      const fade = () => {
-        trailRef.current = trailRef.current
-          .map((d) => ({ ...d, opacity: d.opacity * 0.82 }))
-          .filter((d) => d.opacity > 0.02);
-        setTrail([...trailRef.current]);
-        if (trailRef.current.length > 0) rafRef.current = requestAnimationFrame(fade);
-      };
-      rafRef.current = requestAnimationFrame(fade);
+      startFade();
     };
 
-    const onClick = (e: MouseEvent) => addRipple(e.clientX, e.clientY);
     const onLeave = () => setIsVisible(false);
     const onEnter = () => setIsVisible(true);
 
-    const setHover = (val: boolean) => () => setIsHover(val);
+    const onEnterInteractive = () => { setIsHover(true); };
+    const onLeaveInteractive = () => { setIsHover(false); setIsButton(false); };
+    const onEnterButton = () => { setIsHover(true); setIsButton(true); };
 
-    const observer = new MutationObserver(() => {
-      document.querySelectorAll("a, button, [role='button'], [data-cursor='hover']").forEach((el) => {
-        el.addEventListener("mouseenter", setHover(true));
-        el.addEventListener("mouseleave", setHover(false));
+    const bindElements = () => {
+      document.querySelectorAll("a, [role='button']").forEach((el) => {
+        el.addEventListener("mouseenter", onEnterInteractive);
+        el.addEventListener("mouseleave", onLeaveInteractive);
       });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
+      document.querySelectorAll("button").forEach((el) => {
+        el.addEventListener("mouseenter", onEnterButton);
+        el.addEventListener("mouseleave", onLeaveInteractive);
+      });
+    };
 
-    document.querySelectorAll("a, button, [role='button']").forEach((el) => {
-      el.addEventListener("mouseenter", setHover(true));
-      el.addEventListener("mouseleave", setHover(false));
-    });
+    const observer = new MutationObserver(bindElements);
+    observer.observe(document.body, { childList: true, subtree: true });
+    bindElements();
 
     window.addEventListener("mousemove", onMove);
-    window.addEventListener("click", onClick);
     document.addEventListener("mouseleave", onLeave);
     document.addEventListener("mouseenter", onEnter);
 
     return () => {
       window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("click", onClick);
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseenter", onEnter);
       observer.disconnect();
       cancelAnimationFrame(rafRef.current);
     };
-  }, [rawX, rawY, isVisible, addRipple]);
+  }, [rawX, rawY, isVisible, startFade]);
 
   if (isTouch) return null;
 
+  const glowBlur = isHover ? 10 : 5;
+  const glowSpread = isHover ? 3 : 1.5;
+  const tilt = isButton ? -18 : 0;
+
   return (
     <>
-      {/* ── Trail dots ── */}
+      {/* ── Trail arrows ── */}
       {trail.map((dot, i) => {
-        const size = Math.max(3, 10 - i * 0.8);
+        const scale = 1 - i * 0.09;
         return (
           <div
             key={dot.id}
-            className="fixed pointer-events-none z-[9997] rounded-full"
+            className="fixed pointer-events-none z-[9997]"
             style={{
-              left: dot.x - size / 2,
-              top: dot.y - size / 2,
-              width: size,
-              height: size,
-              opacity: dot.opacity * (1 - i * 0.07),
-              background: `radial-gradient(circle, rgba(212,175,55,${0.9 - i * 0.06}) 0%, rgba(255,200,50,0) 100%)`,
-              filter: `blur(${1 + i * 0.3}px)`,
-              transform: "translate3d(0,0,0)",
-            }}
-          />
+              left: dot.x,
+              top: dot.y,
+              opacity: dot.opacity * (1 - i * 0.1),
+              transform: `scale(${scale})`,
+              transformOrigin: "0 0",
+              willChange: "opacity",
+            }}>
+            <svg width="16" height="24" viewBox="0 0 16 26" fill="none"
+              style={{ filter: `drop-shadow(0 0 ${3 - i * 0.3}px rgba(212,175,55,${0.6 - i * 0.06}))` }}>
+              <path d={ARROW} fill="rgba(212,175,55,0.5)" stroke="rgba(212,175,55,0.3)" strokeWidth="0.5" />
+            </svg>
+          </div>
         );
       })}
 
-      {/* ── Ripples on click ── */}
-      <AnimatePresence>
-        {ripples.map((r) => (
-          <motion.div
-            key={r.id}
-            className="fixed pointer-events-none z-[9998] rounded-full border border-gold/60"
-            style={{ left: r.x, top: r.y, marginLeft: -2, marginTop: -2 }}
-            initial={{ width: 4, height: 4, opacity: 0.9, x: 0, y: 0 }}
-            animate={{ width: 80, height: 80, opacity: 0, x: -38, y: -38 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          />
-        ))}
-      </AnimatePresence>
-      <AnimatePresence>
-        {ripples.map((r) => (
-          <motion.div
-            key={`inner-${r.id}`}
-            className="fixed pointer-events-none z-[9998] rounded-full border border-gold/30"
-            style={{ left: r.x, top: r.y, marginLeft: -2, marginTop: -2 }}
-            initial={{ width: 4, height: 4, opacity: 0.6, x: 0, y: 0 }}
-            animate={{ width: 130, height: 130, opacity: 0, x: -63, y: -63 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-          />
-        ))}
-      </AnimatePresence>
-
-      {/* ── Main orb ── */}
+      {/* ── Main cursor arrow ── */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full"
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{ x, y, opacity: isVisible ? 1 : 0 }}
-        animate={{
-          width: isHover ? 40 : 24,
-          height: isHover ? 40 : 24,
-          x: isHover ? undefined : undefined,
-        }}
-        transition={{ type: "spring", stiffness: 400, damping: 28 }}>
+        animate={{ rotate: tilt }}
+        transition={{ type: "spring", stiffness: 300, damping: 22 }}>
 
-        {/* Outer glow ring */}
+        {/* Outer glow halo */}
         <motion.div
-          className="absolute rounded-full"
+          className="absolute rounded-full pointer-events-none"
           animate={isHover
-            ? { scale: [1, 1.5, 1], opacity: [0.4, 0.1, 0.4] }
-            : { scale: [1, 1.25, 1], opacity: [0.2, 0.05, 0.2] }}
-          transition={{ duration: isHover ? 1 : 2, repeat: Infinity, ease: "easeInOut" }}
+            ? { opacity: [0.5, 0.2, 0.5], scale: [1, 1.4, 1] }
+            : { opacity: [0.2, 0.07, 0.2], scale: [1, 1.2, 1] }}
+          transition={{ duration: isHover ? 0.9 : 1.8, repeat: Infinity, ease: "easeInOut" }}
           style={{
-            inset: "-8px",
-            background: "radial-gradient(circle, rgba(212,175,55,0.5) 0%, transparent 70%)",
-            filter: "blur(8px)",
+            width: 36, height: 36,
+            top: -8, left: -8,
+            background: "radial-gradient(circle, rgba(212,175,55,0.6) 0%, transparent 70%)",
+            filter: "blur(10px)",
           }}
         />
 
-        {/* Core orb */}
-        <div
-          className="w-full h-full rounded-full"
+        {/* Arrow SVG */}
+        <svg width="16" height="24" viewBox="0 0 16 26" fill="none"
           style={{
-            background: "radial-gradient(circle at 35% 35%, rgba(255,220,80,1) 0%, rgba(212,175,55,0.9) 50%, rgba(180,140,30,0.7) 100%)",
-            boxShadow: isHover
-              ? "0 0 20px rgba(212,175,55,0.9), 0 0 40px rgba(212,175,55,0.5), 0 0 70px rgba(212,175,55,0.2)"
-              : "0 0 12px rgba(212,175,55,0.7), 0 0 28px rgba(212,175,55,0.35), 0 0 50px rgba(212,175,55,0.12)",
-          }}
-        />
+            filter: `drop-shadow(0 0 ${glowBlur}px rgba(212,175,55,0.95)) drop-shadow(0 0 ${glowSpread}px rgba(255,220,80,1))`,
+            transition: "filter 0.25s ease",
+          }}>
+          <path d={ARROW}
+            fill={isHover ? "#FFD700" : "#D4AF37"}
+            stroke={isHover ? "rgba(255,240,120,0.9)" : "rgba(212,175,55,0.6)"}
+            strokeWidth="0.75"
+            strokeLinejoin="round"
+            style={{ transition: "fill 0.2s ease" }}
+          />
+        </svg>
       </motion.div>
     </>
   );
