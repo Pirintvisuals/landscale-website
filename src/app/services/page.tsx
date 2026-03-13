@@ -262,40 +262,38 @@ export default function ServicesPage() {
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} />
 
         <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
-          <Reveal className="mb-12">
-            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5"><span className="w-8 h-px bg-gold" />Transparent Pricing</span>
-            <h2 className="font-grotesk font-bold text-[clamp(32px,4vw,64px)] text-cream leading-[0.92] tracking-[-0.03em]">
-              Budget <span className="text-gradient-gold">Ranges</span>
-            </h2>
-            <p className="font-inter text-text-muted mt-3 max-w-xl">Every project is different — here are general ranges. You&apos;ll get a custom quote during your free audit.</p>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04] mb-10">
-            {[
-              { label: "Framer Template Customisation", range: "£800 – £1,500" },
-              { label: "Custom Website (Next.js / HTML)", range: "£2,000 – £5,000+" },
-              { label: "AI Chatbot Integration", range: "£500 – £1,200" },
-              { label: "AI Estimator Agent", range: "£800 – £2,000" },
-              { label: "Full Package (Website + AI)", range: "£3,000 – £8,000+" },
-              { label: "SEO & Marketing (monthly)", range: "£400 – £1,200/mo" },
-            ].map((item, i) => (
-              <Reveal key={item.label} delay={i * 0.06}>
-                <motion.div className="bg-[#0A0A0A] p-8 flex items-center justify-between gap-6 group cursor-default relative overflow-hidden"
-                  whileHover={{ backgroundColor: "#111111" }}>
-                  <div className="absolute inset-0 bg-gradient-to-r from-gold/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
-                  <span className="font-inter text-text-muted text-sm group-hover:text-cream transition-colors duration-300 relative z-10">{item.label}</span>
-                  <motion.span className="font-grotesk font-bold text-lg text-gradient-gold flex-shrink-0 relative z-10"
-                    whileHover={{ scale: 1.05 }}>{item.range}</motion.span>
-                </motion.div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.2} className="text-center">
-            <p className="font-inter text-text-muted text-sm mb-6">Not sure what you need? Book a free audit — I&apos;ll tell you exactly what will move the needle.</p>
-            <Link href="/contact" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
-              Get Free Audit →
-            </Link>
+          <Reveal>
+            <div className="relative bg-[#111111] border border-gold/15 rounded-3xl p-12 md:p-16 lg:p-20 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent" />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 40%, rgba(212,175,55,0.07) 0%, transparent 60%)" }} />
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6"><span className="w-8 h-px bg-gold" />Pricing</span>
+                  <h2 className="font-grotesk font-bold text-[clamp(32px,4vw,60px)] text-cream leading-[0.92] tracking-[-0.03em] mb-5">
+                    Every Project<br />Is <span className="text-gradient-gold">Different</span>
+                  </h2>
+                  <p className="font-inter text-text-muted text-base leading-relaxed max-w-md">
+                    There&apos;s no one-size-fits-all price. The scope, complexity, and goals of each project are unique. Want a ballpark number? Just call — I&apos;ll give you an honest answer in 5 minutes.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <a href="tel:+447478075473"
+                    className="group flex items-center gap-5 bg-[#0A0A0A] border border-white/[0.07] hover:border-gold/30 rounded-2xl px-8 py-6 transition-all duration-300 hover:bg-[#111111]">
+                    <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 group-hover:border-gold/40 transition-all duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 5.61 5.61l1.66-1.66a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div>
+                      <div className="font-grotesk font-bold text-lg text-cream group-hover:text-gold transition-colors duration-200">+44 7478 075473</div>
+                      <div className="font-inter text-xs text-text-muted mt-0.5">Call for a ballpark number — no pressure</div>
+                    </div>
+                  </a>
+                  <Link href="/contact"
+                    className="flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
+                    Book Free Audit →
+                  </Link>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>

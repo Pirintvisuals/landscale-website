@@ -220,7 +220,8 @@ export default function ContactPage() {
                 </div>
 
                 {[
-                  { label: "Email", value: "landscale.agency@gmail.com", href: "mailto:landscale.agency@gmail.com", icon: "◎" },
+                  { label: "Phone", value: "+44 7478 075473", href: "tel:+447478075473", icon: "◎" },
+                  { label: "Email", value: "landscale.agency@gmail.com", href: "mailto:landscale.agency@gmail.com", icon: "◆" },
                   { label: "Coverage", value: "UK (primary) & Worldwide", href: null, icon: "▲" },
                   { label: "Response Time", value: "Within 24 hours, usually same day", href: null, icon: "●" },
                 ].map((item, i) => (

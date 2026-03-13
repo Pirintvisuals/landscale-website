@@ -4,46 +4,19 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Home,
-  Briefcase,
-  Info,
-  Mail,
-  ChevronDown,
-  Monitor,
-  TrendingUp,
-  Bot,
-  ArrowRight,
-  X,
-  Menu,
-} from "lucide-react";
+import { ChevronDown, ArrowRight, X, Menu } from "lucide-react";
 
 const services = [
-  {
-    href: "/services/website-design",
-    label: "Website Design",
-    desc: "Conversion-focused luxury sites",
-    Icon: Monitor,
-  },
-  {
-    href: "/services/seo-marketing",
-    label: "SEO & Marketing",
-    desc: "Dominate local Google search",
-    Icon: TrendingUp,
-  },
-  {
-    href: "/services/ai-lead-generation",
-    label: "AI Lead Generation",
-    desc: "24/7 automated lead filtering",
-    Icon: Bot,
-  },
+  { href: "/services/website-design", label: "Website Design", desc: "Conversion-focused luxury sites" },
+  { href: "/services/seo-marketing", label: "SEO & Marketing", desc: "Dominate local Google search" },
+  { href: "/services/ai-lead-generation", label: "AI Lead Generation", desc: "24/7 automated lead filtering" },
 ];
 
 const navLinks = [
-  { href: "/", label: "Home", Icon: Home },
-  { href: "/case-studies", label: "Case Studies", Icon: Briefcase },
-  { href: "/about", label: "About", Icon: Info },
-  { href: "/contact", label: "Contact", Icon: Mail },
+  { href: "/", label: "Home" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
@@ -64,7 +37,6 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -83,8 +55,8 @@ export default function Navigation() {
         transition={{ duration: 0.8, ease: SPRING }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
           scrolled
-            ? "bg-[#111111]/95 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
-            : "bg-[#111111]/80 backdrop-blur-md border-b border-white/[0.04]"
+            ? "bg-[#0D0D0D]/95 backdrop-blur-xl border-b border-white/[0.07] shadow-[0_8px_40px_rgba(0,0,0,0.6)]"
+            : "bg-[#0D0D0D]/75 backdrop-blur-md border-b border-white/[0.04]"
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-[68px] flex items-center justify-between gap-8">
@@ -108,65 +80,60 @@ export default function Navigation() {
 
             {/* Home */}
             <Link href="/"
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-grotesk text-sm font-medium tracking-wide transition-all duration-200 group ${
-                pathname === "/" ? "text-gold bg-gold/8" : "text-cream/70 hover:text-cream hover:bg-white/[0.05]"
+              className={`relative px-4 py-2 font-grotesk text-sm font-medium tracking-wide transition-colors duration-200 group ${
+                pathname === "/" ? "text-gold" : "text-cream/60 hover:text-cream"
               }`}>
-              <Home size={13} className={`flex-shrink-0 ${pathname === "/" ? "text-gold" : "text-cream/40 group-hover:text-cream/70"}`} />
               Home
-              {pathname === "/" && <motion.span layoutId="nav-pill" className="absolute inset-0 rounded-full bg-gold/[0.08]" />}
+              <span className={`absolute bottom-0 left-4 right-4 h-px bg-gold transition-all duration-300 ${pathname === "/" ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
             </Link>
 
             {/* Services dropdown */}
             <div ref={dropdownRef} className="relative">
               <button
-                onClick={() => setServicesOpen(!servicesOpen)}
                 onMouseEnter={() => setServicesOpen(true)}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-grotesk text-sm font-medium tracking-wide transition-all duration-200 group ${
-                  isServicesActive ? "text-gold bg-gold/8" : "text-cream/70 hover:text-cream hover:bg-white/[0.05]"
+                onClick={() => setServicesOpen(!servicesOpen)}
+                className={`relative flex items-center gap-1 px-4 py-2 font-grotesk text-sm font-medium tracking-wide transition-colors duration-200 group ${
+                  isServicesActive ? "text-gold" : "text-cream/60 hover:text-cream"
                 }`}>
-                <Monitor size={13} className={`flex-shrink-0 ${isServicesActive ? "text-gold" : "text-cream/40 group-hover:text-cream/70"}`} />
                 Services
                 <motion.span animate={{ rotate: servicesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                  <ChevronDown size={12} className="text-current opacity-60" />
+                  <ChevronDown size={13} className="opacity-60 mt-px" />
                 </motion.span>
+                <span className={`absolute bottom-0 left-4 right-4 h-px bg-gold transition-all duration-300 ${isServicesActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
               </button>
 
               <AnimatePresence>
                 {servicesOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                    initial={{ opacity: 0, y: 10, scale: 0.96 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 6, scale: 0.97 }}
-                    transition={{ duration: 0.2, ease: SPRING }}
+                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                    transition={{ duration: 0.18, ease: SPRING }}
                     onMouseLeave={() => setServicesOpen(false)}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-[#141414] border border-white/[0.08] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] overflow-hidden">
-                    {/* Top accent */}
-                    <div className="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+                    className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-68 bg-[#141414] border border-white/[0.09] rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.7)] overflow-hidden">
+                    <div className="h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent" />
                     <div className="p-2">
                       {services.map((svc) => (
                         <Link key={svc.href} href={svc.href}
                           onClick={() => setServicesOpen(false)}
-                          className={`flex items-center gap-3 px-3 py-3 rounded-xl group transition-all duration-200 ${
-                            pathname === svc.href ? "bg-gold/10 text-gold" : "hover:bg-white/[0.04] text-cream/80 hover:text-cream"
+                          className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-150 group/item ${
+                            pathname === svc.href
+                              ? "bg-gold/10 text-gold"
+                              : "text-cream/70 hover:bg-white/[0.05] hover:text-cream"
                           }`}>
-                          <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200 ${
-                            pathname === svc.href ? "bg-gold/20 border border-gold/30" : "bg-white/[0.05] border border-white/[0.06] group-hover:bg-gold/10 group-hover:border-gold/20"
-                          }`}>
-                            <svc.Icon size={15} className={pathname === svc.href ? "text-gold" : "text-cream/50 group-hover:text-gold"} />
+                          <div>
+                            <div className="font-grotesk font-semibold text-sm">{svc.label}</div>
+                            <div className="font-inter text-xs text-text-muted mt-0.5">{svc.desc}</div>
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="font-grotesk font-semibold text-sm leading-tight">{svc.label}</div>
-                            <div className="font-inter text-xs text-text-muted mt-0.5 leading-tight">{svc.desc}</div>
-                          </div>
-                          <ArrowRight size={13} className="text-cream/20 group-hover:text-gold/60 flex-shrink-0 transition-colors duration-200 group-hover:translate-x-0.5" />
+                          <ArrowRight size={13} className="flex-shrink-0 opacity-0 group-hover/item:opacity-60 group-hover/item:translate-x-0.5 transition-all duration-150 text-gold" />
                         </Link>
                       ))}
                     </div>
-                    <div className="px-4 py-3 border-t border-white/[0.05]">
+                    <div className="px-4 py-2.5 border-t border-white/[0.05]">
                       <Link href="/services" onClick={() => setServicesOpen(false)}
-                        className="flex items-center justify-between font-grotesk text-xs font-semibold text-gold/60 hover:text-gold transition-colors duration-200">
-                        View all services
-                        <ArrowRight size={12} />
+                        className="flex items-center justify-between font-grotesk text-xs font-semibold text-gold/50 hover:text-gold transition-colors duration-150 group/all">
+                        All services
+                        <ArrowRight size={11} className="group-hover/all:translate-x-0.5 transition-transform duration-150" />
                       </Link>
                     </div>
                   </motion.div>
@@ -177,18 +144,18 @@ export default function Navigation() {
             {/* Case Studies, About, Contact */}
             {navLinks.slice(1).map((link) => (
               <Link key={link.href} href={link.href}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-grotesk text-sm font-medium tracking-wide transition-all duration-200 group ${
-                  pathname === link.href ? "text-gold bg-gold/8" : "text-cream/70 hover:text-cream hover:bg-white/[0.05]"
+                className={`relative px-4 py-2 font-grotesk text-sm font-medium tracking-wide transition-colors duration-200 group ${
+                  pathname === link.href ? "text-gold" : "text-cream/60 hover:text-cream"
                 }`}>
-                <link.Icon size={13} className={`flex-shrink-0 ${pathname === link.href ? "text-gold" : "text-cream/40 group-hover:text-cream/70"}`} />
                 {link.label}
+                <span className={`absolute bottom-0 left-4 right-4 h-px bg-gold transition-all duration-300 ${pathname === link.href ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
               </Link>
             ))}
           </nav>
 
           {/* ── CTA ── */}
           <Link href="/contact"
-            className="hidden md:inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 flex-shrink-0">
+            className="hidden md:inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] hover:-translate-y-0.5 flex-shrink-0">
             Free Audit
             <ArrowRight size={14} />
           </Link>
@@ -212,49 +179,41 @@ export default function Navigation() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -16 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.3, ease: SPRING }}
-            className="fixed inset-0 z-[90] bg-[#0A0A0A]/98 backdrop-blur-xl flex flex-col pt-[68px] overflow-y-auto">
-
-            {/* Background orb */}
-            <div className="absolute top-0 right-0 w-80 h-80 opacity-10 pointer-events-none"
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25, ease: SPRING }}
+            className="fixed inset-0 z-[90] bg-[#080808]/98 backdrop-blur-xl flex flex-col pt-[68px] overflow-y-auto">
+            <div className="absolute top-0 right-0 w-72 h-72 opacity-[0.08] pointer-events-none"
               style={{ background: "radial-gradient(circle, #D4AF37 0%, transparent 70%)" }} />
 
-            <div className="flex-1 flex flex-col px-6 py-8">
+            <div className="flex-1 flex flex-col px-6 py-6">
               {/* Home */}
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05, ease: SPRING }}>
+              <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05, ease: SPRING }}>
                 <Link href="/"
-                  className={`flex items-center gap-4 py-4 border-b border-white/[0.06] group ${pathname === "/" ? "text-gold" : "text-cream/80"}`}>
-                  <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${pathname === "/" ? "bg-gold/15 border-gold/30" : "bg-white/[0.04] border-white/[0.08]"}`}>
-                    <Home size={18} className={pathname === "/" ? "text-gold" : "text-cream/50"} />
-                  </div>
-                  <span className="font-grotesk font-bold text-2xl">{`Home`}</span>
-                  <ArrowRight size={16} className="ml-auto text-cream/20 group-hover:text-gold/60 transition-colors" />
+                  className={`flex items-center justify-between py-5 border-b border-white/[0.05] group ${pathname === "/" ? "text-gold" : "text-cream/80 hover:text-cream"}`}>
+                  <span className="font-grotesk font-bold text-3xl">Home</span>
+                  <ArrowRight size={18} className={`transition-all duration-200 group-hover:translate-x-1 ${pathname === "/" ? "text-gold" : "text-cream/20 group-hover:text-gold/50"}`} />
                 </Link>
               </motion.div>
 
-              {/* Services section */}
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1, ease: SPRING }}>
-                <div className={`flex items-center gap-4 pt-4 pb-2 ${isServicesActive ? "text-gold" : "text-cream/80"}`}>
-                  <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${isServicesActive ? "bg-gold/15 border-gold/30" : "bg-white/[0.04] border-white/[0.08]"}`}>
-                    <Monitor size={18} className={isServicesActive ? "text-gold" : "text-cream/50"} />
-                  </div>
-                  <span className="font-grotesk font-bold text-2xl">Services</span>
+              {/* Services */}
+              <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1, ease: SPRING }}>
+                <div className={`flex items-center justify-between pt-5 pb-3 ${isServicesActive ? "text-gold" : "text-cream/80"}`}>
+                  <span className="font-grotesk font-bold text-3xl">Services</span>
                 </div>
-                <div className="ml-14 space-y-1 mb-2 pb-4 border-b border-white/[0.06]">
+                <div className="space-y-1 pb-4 border-b border-white/[0.05] pl-2">
                   {services.map((svc, i) => (
                     <motion.div key={svc.href} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.14 + i * 0.04, ease: SPRING }}>
                       <Link href={svc.href}
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
-                          pathname === svc.href ? "bg-gold/10 text-gold" : "text-cream/60 hover:text-cream hover:bg-white/[0.04]"
+                        className={`flex items-center justify-between px-3 py-2.5 rounded-xl transition-all duration-200 group/s ${
+                          pathname === svc.href ? "bg-gold/10 text-gold" : "text-cream/50 hover:text-cream hover:bg-white/[0.03]"
                         }`}>
-                        <svc.Icon size={15} className={pathname === svc.href ? "text-gold" : "text-cream/40 group-hover:text-gold/60"} />
                         <div>
-                          <div className="font-grotesk font-semibold text-sm">{svc.label}</div>
+                          <div className="font-grotesk font-semibold text-base">{svc.label}</div>
                           <div className="font-inter text-xs text-text-muted">{svc.desc}</div>
                         </div>
+                        <ArrowRight size={14} className="opacity-0 group-hover/s:opacity-60 group-hover/s:translate-x-0.5 transition-all duration-150 text-gold" />
                       </Link>
                     </motion.div>
                   ))}
@@ -263,26 +222,26 @@ export default function Navigation() {
 
               {/* Other links */}
               {navLinks.slice(1).map((link, i) => (
-                <motion.div key={link.href} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.27 + i * 0.06, ease: SPRING }}>
+                <motion.div key={link.href} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.27 + i * 0.06, ease: SPRING }}>
                   <Link href={link.href}
-                    className={`flex items-center gap-4 py-4 border-b border-white/[0.06] group ${pathname === link.href ? "text-gold" : "text-cream/80"}`}>
-                    <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${pathname === link.href ? "bg-gold/15 border-gold/30" : "bg-white/[0.04] border-white/[0.08]"}`}>
-                      <link.Icon size={18} className={pathname === link.href ? "text-gold" : "text-cream/50"} />
-                    </div>
-                    <span className="font-grotesk font-bold text-2xl">{link.label}</span>
-                    <ArrowRight size={16} className="ml-auto text-cream/20 group-hover:text-gold/60 transition-colors" />
+                    className={`flex items-center justify-between py-5 border-b border-white/[0.05] group ${pathname === link.href ? "text-gold" : "text-cream/80 hover:text-cream"}`}>
+                    <span className="font-grotesk font-bold text-3xl">{link.label}</span>
+                    <ArrowRight size={18} className={`transition-all duration-200 group-hover:translate-x-1 ${pathname === link.href ? "text-gold" : "text-cream/20 group-hover:text-gold/50"}`} />
                   </Link>
                 </motion.div>
               ))}
 
               {/* CTA */}
-              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, ease: SPRING }} className="mt-8">
+              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.48, ease: SPRING }} className="mt-8 space-y-4">
                 <Link href="/contact"
-                  className="flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+                  className="flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300">
                   Book Free Audit
                   <ArrowRight size={16} />
                 </Link>
-                <p className="mt-5 font-inter text-text-muted text-sm text-center">landscale.agency@gmail.com</p>
+                <div className="text-center space-y-1">
+                  <a href="tel:+447478075473" className="block font-grotesk font-semibold text-sm text-gold/70 hover:text-gold transition-colors">+44 7478 075473</a>
+                  <p className="font-inter text-text-muted text-xs">landscale.agency@gmail.com</p>
+                </div>
               </motion.div>
             </div>
           </motion.div>
