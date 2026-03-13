@@ -138,7 +138,7 @@ export default function AboutPage() {
                 WHY I SPECIALISE<br />IN{" "}<span className="text-gradient-gold">LANDSCAPING</span>
               </h2>
               <p className="font-cormorant text-xl text-cream/40 font-light italic leading-relaxed">
-                "I grew up in a family of landscapers. I saw the industry from the inside — and the gap in the market was obvious."
+                &ldquo;I grew up in a family of landscapers. I saw the industry from the inside — and the gap in the market was obvious.&rdquo;
               </p>
             </Reveal>
             <Reveal delay={0.1}>
