@@ -76,15 +76,16 @@ export default function Navigation() {
           </Link>
 
           {/* ── Desktop Nav ── */}
-          <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+          <nav className="hidden md:flex items-center gap-1.5 absolute left-1/2 -translate-x-1/2">
 
             {/* Home */}
             <Link href="/"
-              className={`relative px-4 py-2 font-grotesk text-sm font-medium tracking-wide transition-colors duration-200 group ${
-                pathname === "/" ? "text-gold" : "text-cream/60 hover:text-cream"
+              className={`relative px-4 py-2 rounded-full font-grotesk text-sm font-semibold tracking-wide transition-all duration-200 ${
+                pathname === "/"
+                  ? "bg-gold text-deep-black shadow-[0_0_16px_rgba(212,175,55,0.45)]"
+                  : "text-cream/60 hover:text-cream hover:bg-white/[0.06] border border-transparent hover:border-white/[0.08]"
               }`}>
               Home
-              <span className={`absolute bottom-0 left-4 right-4 h-px bg-gold transition-all duration-300 ${pathname === "/" ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
             </Link>
 
             {/* Services dropdown */}
@@ -92,14 +93,15 @@ export default function Navigation() {
               <button
                 onMouseEnter={() => setServicesOpen(true)}
                 onClick={() => setServicesOpen(!servicesOpen)}
-                className={`relative flex items-center gap-1 px-4 py-2 font-grotesk text-sm font-medium tracking-wide transition-colors duration-200 group ${
-                  isServicesActive ? "text-gold" : "text-cream/60 hover:text-cream"
+                className={`relative flex items-center gap-1 px-4 py-2 rounded-full font-grotesk text-sm font-semibold tracking-wide transition-all duration-200 ${
+                  isServicesActive
+                    ? "bg-gold text-deep-black shadow-[0_0_16px_rgba(212,175,55,0.45)]"
+                    : "text-cream/60 hover:text-cream hover:bg-white/[0.06] border border-transparent hover:border-white/[0.08]"
                 }`}>
                 Services
                 <motion.span animate={{ rotate: servicesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                  <ChevronDown size={13} className="opacity-60 mt-px" />
+                  <ChevronDown size={13} className="opacity-70 mt-px" />
                 </motion.span>
-                <span className={`absolute bottom-0 left-4 right-4 h-px bg-gold transition-all duration-300 ${isServicesActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
               </button>
 
               <AnimatePresence>
@@ -144,11 +146,12 @@ export default function Navigation() {
             {/* Case Studies, About, Contact */}
             {navLinks.slice(1).map((link) => (
               <Link key={link.href} href={link.href}
-                className={`relative px-4 py-2 font-grotesk text-sm font-medium tracking-wide transition-colors duration-200 group ${
-                  pathname === link.href ? "text-gold" : "text-cream/60 hover:text-cream"
+                className={`relative px-4 py-2 rounded-full font-grotesk text-sm font-semibold tracking-wide transition-all duration-200 ${
+                  pathname === link.href
+                    ? "bg-gold text-deep-black shadow-[0_0_16px_rgba(212,175,55,0.45)]"
+                    : "text-cream/60 hover:text-cream hover:bg-white/[0.06] border border-transparent hover:border-white/[0.08]"
                 }`}>
                 {link.label}
-                <span className={`absolute bottom-0 left-4 right-4 h-px bg-gold transition-all duration-300 ${pathname === link.href ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
               </Link>
             ))}
           </nav>

@@ -128,20 +128,19 @@ export default function HomePage() {
 
           <div className="mb-10">
             <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em]">
-              {["STOP CHASING", "DEAD ENDS.", "GET QUALIFIED"].map((line, i) => (
+              {["STOP CHASING", "DEAD LEADS,"].map((line, i) => (
                 <div key={line} className="overflow-hidden">
                   <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2 + i * 0.12, ease: SPRING }}
-                    className={`text-[clamp(52px,9vw,128px)] ${i === 1 ? "text-gradient-gold" : i === 2 ? "text-cream/15" : "text-cream"}`}
-                    style={i === 2 ? { WebkitTextStroke: "1px rgba(245,241,232,0.2)" } : {}}>
+                    className={`text-[clamp(52px,9vw,128px)] ${i === 1 ? "text-gradient-gold" : "text-cream"}`}>
                     {line}
                   </motion.div>
                 </div>
               ))}
               <div className="overflow-hidden">
-                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.56, ease: SPRING }}
-                  className="text-[clamp(52px,9vw,128px)] text-cream/15"
-                  style={{ WebkitTextStroke: "1px rgba(245,241,232,0.2)" }}>
-                  LEADS.
+                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
+                  className="text-[clamp(52px,9vw,128px)] text-cream/20"
+                  style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
+                  LANDSCAPERS.
                 </motion.div>
               </div>
             </h1>
