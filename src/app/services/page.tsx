@@ -4,6 +4,38 @@ import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 
+const SVC_PARTICLES = [
+  { x: 10, y: 20, s: 1.5, d: 22, dl: 0 }, { x: 80, y: 15, s: 2, d: 18, dl: 4 },
+  { x: 55, y: 60, s: 1, d: 26, dl: 8 }, { x: 25, y: 75, s: 2, d: 20, dl: 2 },
+  { x: 70, y: 45, s: 1.5, d: 15, dl: 6 }, { x: 40, y: 30, s: 1, d: 24, dl: 10 },
+  { x: 90, y: 65, s: 2, d: 17, dl: 3 }, { x: 15, y: 55, s: 1.5, d: 28, dl: 7 },
+  { x: 60, y: 85, s: 1, d: 19, dl: 12 }, { x: 35, y: 10, s: 2.5, d: 23, dl: 5 },
+  { x: 78, y: 35, s: 1, d: 21, dl: 9 }, { x: 48, y: 92, s: 1.5, d: 16, dl: 14 },
+];
+
+function ServiceParticles() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {SVC_PARTICLES.map((p, i) => (
+        <motion.div key={i}
+          className="absolute rounded-full bg-gold"
+          style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.s, height: p.s }}
+          animate={{ y: [0, -28, 12, 0], x: [0, 16, -8, 0], opacity: [0.08, 0.4, 0.06, 0.08] }}
+          transition={{ duration: p.d, repeat: Infinity, ease: "easeInOut", delay: p.dl }} />
+      ))}
+      {[
+        { x: 15, y: 35, w: 80, dl: 3 }, { x: 55, y: 60, w: 50, dl: 8 },
+        { x: 30, y: 80, w: 65, dl: 5 }, { x: 70, y: 25, w: 45, dl: 12 },
+      ].map((line, i) => (
+        <motion.div key={`l-${i}`} className="absolute h-px"
+          style={{ left: `${line.x}%`, top: `${line.y}%`, width: line.w, background: "linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent)" }}
+          animate={{ opacity: [0, 0.7, 0], scaleX: [0.2, 1, 0.2] }}
+          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: line.dl, repeatDelay: 6 }} />
+      ))}
+    </div>
+  );
+}
+
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
 function Reveal({ children, delay = 0, className = "", y = 50 }: { children: React.ReactNode; delay?: number; className?: string; y?: number }) {
@@ -76,6 +108,7 @@ export default function ServicesPage() {
           animate={{ x: ["-100%", "200%"] }}
           transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 5 }} />
 
+        <ServiceParticles />
         <div className="absolute bottom-0 left-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.015] select-none pointer-events-none tracking-[-0.05em] translate-y-[20%]">
           SERVICES
         </div>
@@ -295,6 +328,7 @@ export default function ServicesPage() {
 
       {/* ── AI AUTOMATION ── */}
       <section className="py-16 md:py-28 lg:py-36 bg-[#0D0D0D] relative overflow-hidden">
+        <ServiceParticles />
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 900, height: 900, top: "-20%", left: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(110px)" }}
           animate={{ x: [0, 80, -30, 0], y: [0, -60, 80, 0], scale: [1, 1.15, 0.9, 1] }}
@@ -303,6 +337,10 @@ export default function ServicesPage() {
           style={{ width: 600, height: 600, bottom: "0%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(80px)" }}
           animate={{ x: [0, -50, 20, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 8 }} />
+        <motion.div className="absolute rounded-full pointer-events-none"
+          style={{ width: 350, height: 350, top: "45%", left: "45%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)", filter: "blur(60px)" }}
+          animate={{ x: [0, 50, -20, 0], y: [0, -30, 15, 0] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
 
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
 
@@ -323,8 +361,8 @@ export default function ServicesPage() {
               <Reveal key={svc.title} delay={i * 0.08}>
                 <Link href={svc.href} className="block h-full group">
                   <motion.div
-                    className="relative bg-[#111111] border border-white/[0.05] hover:border-gold/25 p-8 rounded-3xl flex flex-col gap-4 h-full overflow-hidden cursor-pointer"
-                    whileHover={{ y: -6, scale: 1.01 }}
+                    className="relative bg-[#111111] border border-white/[0.06] hover:border-gold/50 p-8 rounded-3xl flex flex-col gap-4 h-full overflow-hidden cursor-pointer"
+                    whileHover={{ y: -8, scale: 1.01 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}>
 
                     {/* Hover glow */}
