@@ -466,9 +466,9 @@ export default function HomePage() {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { quote: "I used to dread Monday mornings — now my week starts with a list of pre-qualified leads ready to book.", name: "James T.", company: "GreenEdge Landscapes", stars: 5 },
-              { quote: "We went from 2 enquiries a week online to 12. The phone doesn't stop now.", name: "Sarah M.", company: "Prestige Garden Co.", stars: 5 },
-              { quote: "The new website opened doors we didn't think possible. Worth every penny.", name: "Robert H.", company: "Heritage Grounds", stars: 5 },
+              { quote: "The form has completely transformed how we handle inquiries. It filters out unqualified leads automatically and acts like a 24/7 receptionist — saving us hours every week. We only talk to serious buyers now.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5 },
+              { quote: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.", name: "Basil", company: "Mimosa Gardens", stars: 5 },
+              { quote: "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.", name: "Péter Mantlik", company: "ViszCAD", stars: 5 },
             ].map((t, i) => (
               <Reveal key={t.name} delay={i * 0.12}>
                 <TiltCard className="h-full">
