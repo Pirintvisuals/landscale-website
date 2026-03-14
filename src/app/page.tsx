@@ -259,6 +259,15 @@ export default function HomePage() {
                     </div>
                   </div>
 
+                  {/* Not just a chatbot callout */}
+                  <div className="relative bg-white/[0.025] border border-white/[0.07] rounded-2xl p-5 mb-8 overflow-hidden">
+                    <div className="absolute top-0 left-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-gold/50 to-transparent" />
+                    <p className="font-grotesk font-bold text-xs uppercase tracking-[0.15em] text-gold/60 mb-2 pl-4">Not just a chatbot</p>
+                    <p className="font-inter text-sm text-cream/70 leading-relaxed pl-4">
+                      This isn&apos;t a generic chat widget. It gathers real project details, understands your business rules, and makes decisions. If a lead is too far away, has the wrong budget, or simply isn&apos;t the right fit — the AI tells them <em className="text-cream/90 not-italic font-medium">politely and professionally</em>, and never bothers you with it. You only hear about the ones worth your time.
+                    </p>
+                  </div>
+
                   <Link href="/contact"
                     className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:-translate-y-0.5">
                     See How It Works →
@@ -357,10 +366,19 @@ export default function HomePage() {
                           </div>
                         </motion.div>
 
+                        {/* Declined example */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-white/15 text-center py-1">If not a fit — AI declines for you</div>
+                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.9, duration: 0.4, ease: SPRING }} className="flex justify-start">
+                          <div className="max-w-[88%] bg-white/[0.03] border border-white/[0.07] rounded-2xl rounded-tl-sm px-3.5 py-2.5">
+                            <p className="font-inter text-[11px] text-cream/40 leading-relaxed">Thanks for reaching out! Unfortunately your location falls outside our service area. We&apos;re unable to take this on — but we wish you the best finding a local team. 🙏</p>
+                            <p className="font-inter text-[9px] text-white/20 mt-1.5 italic">No email sent to owner. Your time protected.</p>
+                          </div>
+                        </motion.div>
+
                         {/* Routing tiers */}
                         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1, duration: 0.5 }} className="grid grid-cols-3 gap-1.5 pt-1">
                           {[
-                            { score: "0–40", label: "Unqualified", color: "border-white/[0.08] text-white/20", dot: "bg-white/20" },
+                            { score: "0–40", label: "Declined", color: "border-white/[0.08] text-white/20", dot: "bg-white/20" },
                             { score: "41–80", label: "Qualified", color: "border-gold/20 text-gold/50", dot: "bg-gold/50" },
                             { score: "81–100", label: "VIP ★", color: "border-gold/50 text-gold bg-gold/5", dot: "bg-gold" },
                           ].map((tier) => (
