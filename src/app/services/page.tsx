@@ -4,37 +4,6 @@ import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 
-const SVC_PARTICLES = [
-  { x: 10, y: 20, s: 1.5, d: 22, dl: 0 }, { x: 80, y: 15, s: 2, d: 18, dl: 4 },
-  { x: 55, y: 60, s: 1, d: 26, dl: 8 }, { x: 25, y: 75, s: 2, d: 20, dl: 2 },
-  { x: 70, y: 45, s: 1.5, d: 15, dl: 6 }, { x: 40, y: 30, s: 1, d: 24, dl: 10 },
-  { x: 90, y: 65, s: 2, d: 17, dl: 3 }, { x: 15, y: 55, s: 1.5, d: 28, dl: 7 },
-  { x: 60, y: 85, s: 1, d: 19, dl: 12 }, { x: 35, y: 10, s: 2.5, d: 23, dl: 5 },
-  { x: 78, y: 35, s: 1, d: 21, dl: 9 }, { x: 48, y: 92, s: 1.5, d: 16, dl: 14 },
-];
-
-function ServiceParticles() {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {SVC_PARTICLES.map((p, i) => (
-        <motion.div key={i}
-          className="absolute rounded-full bg-gold"
-          style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.s, height: p.s }}
-          animate={{ y: [0, -28, 12, 0], x: [0, 16, -8, 0], opacity: [0.08, 0.4, 0.06, 0.08] }}
-          transition={{ duration: p.d, repeat: Infinity, ease: "easeInOut", delay: p.dl }} />
-      ))}
-      {[
-        { x: 15, y: 35, w: 80, dl: 3 }, { x: 55, y: 60, w: 50, dl: 8 },
-        { x: 30, y: 80, w: 65, dl: 5 }, { x: 70, y: 25, w: 45, dl: 12 },
-      ].map((line, i) => (
-        <motion.div key={`l-${i}`} className="absolute h-px"
-          style={{ left: `${line.x}%`, top: `${line.y}%`, width: line.w, background: "linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent)" }}
-          animate={{ opacity: [0, 0.7, 0], scaleX: [0.2, 1, 0.2] }}
-          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: line.dl, repeatDelay: 6 }} />
-      ))}
-    </div>
-  );
-}
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -129,28 +98,12 @@ export default function ServicesPage() {
     <>
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative pt-28 md:pt-40 pb-16 md:pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 900, height: 900, top: "-30%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.22) 0%, transparent 60%)", filter: "blur(100px)" }}
-          animate={{ x: [0, -60, 20, 0], y: [0, 50, -40, 0], scale: [1, 1.1, 0.95, 1] }}
-          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 600, height: 600, bottom: "-10%", left: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 60%)", filter: "blur(80px)" }}
-          animate={{ x: [0, 60, -30, 0], y: [0, -40, 50, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 6 }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 400, height: 400, top: "40%", left: "40%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 65%)", filter: "blur(60px)" }}
-          animate={{ x: [0, 80, -50, 0], y: [0, -80, 40, 0] }}
-          transition={{ duration: 17, repeat: Infinity, ease: "easeInOut", delay: 10 }} />
-
-        <motion.div className="absolute inset-0 opacity-[0.018]"
-          style={{ backgroundImage: "linear-gradient(rgba(212,175,55,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,1) 1px, transparent 1px)", backgroundSize: "80px 80px" }}
-          animate={{ backgroundPosition: ["0px 0px", "80px 80px"] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }} />
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(105deg, transparent 40%, rgba(212,175,55,0.025) 50%, transparent 60%)" }}
-          animate={{ x: ["-100%", "200%"] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 5 }} />
-        <ServiceParticles />
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute rounded-full orb-1" style={{ width: 900, height: 900, top: "-30%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.20) 0%, transparent 60%)", filter: "blur(100px)" }} />
+          <div className="absolute rounded-full orb-2" style={{ width: 600, height: 600, bottom: "-10%", left: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(80px)" }} />
+        </div>
+        <div className="absolute inset-0 opacity-[0.020] pointer-events-none"
+          style={{ backgroundImage: "linear-gradient(rgba(212,175,55,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,1) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
 
         <div className="absolute bottom-0 left-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.015] select-none pointer-events-none tracking-[-0.05em] translate-y-[20%]">
           SERVICES
@@ -191,19 +144,10 @@ export default function ServicesPage() {
 
       {/* ── ALL SERVICES — unified cards ── */}
       <section className="bg-[#080808] relative overflow-hidden">
-        <ServiceParticles />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 900, height: 900, top: "10%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(110px)" }}
-          animate={{ y: [0, -80, 40, 0], scale: [1, 1.1, 0.95, 1] }}
-          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 700, height: 700, bottom: "20%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 65%)", filter: "blur(90px)" }}
-          animate={{ x: [0, 60, -20, 0], y: [0, -60, 30, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 7 }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 500, height: 500, top: "55%", left: "45%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%)", filter: "blur(70px)" }}
-          animate={{ x: [0, 50, -25, 0], y: [0, -40, 20, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 12 }} />
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute rounded-full orb-1" style={{ width: 900, height: 900, top: "5%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.11) 0%, transparent 60%)", filter: "blur(110px)" }} />
+          <div className="absolute rounded-full orb-2" style={{ width: 700, height: 700, bottom: "20%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 65%)", filter: "blur(90px)" }} />
+        </div>
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 py-16 md:py-24 space-y-6 relative z-10">
           {services.map((svc, i) => (

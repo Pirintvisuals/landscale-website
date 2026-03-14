@@ -6,47 +6,6 @@ import Link from "next/link";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
-const PARTICLES = [
-  { x: 8, y: 18, s: 2, d: 20, dl: 0 }, { x: 85, y: 12, s: 1.5, d: 16, dl: 3 },
-  { x: 50, y: 55, s: 1, d: 28, dl: 7 }, { x: 22, y: 72, s: 2.5, d: 18, dl: 5 },
-  { x: 75, y: 40, s: 1.5, d: 14, dl: 9 }, { x: 38, y: 28, s: 1, d: 24, dl: 12 },
-  { x: 92, y: 65, s: 2, d: 17, dl: 2 }, { x: 12, y: 50, s: 1, d: 30, dl: 6 },
-  { x: 63, y: 88, s: 1.5, d: 22, dl: 14 }, { x: 30, y: 8, s: 2, d: 19, dl: 4 },
-  { x: 78, y: 33, s: 1, d: 25, dl: 8 }, { x: 47, y: 78, s: 2, d: 15, dl: 11 },
-  { x: 18, y: 35, s: 1, d: 27, dl: 16 }, { x: 67, y: 20, s: 1.5, d: 21, dl: 1 },
-  { x: 55, y: 95, s: 1, d: 23, dl: 13 }, { x: 95, y: 45, s: 2, d: 13, dl: 10 },
-];
-
-function FloatingParticles({ count = 16 }: { count?: number }) {
-  const pts = PARTICLES.slice(0, count);
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {pts.map((p, i) => (
-        <motion.div key={i} className="absolute rounded-full bg-gold"
-          style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.s, height: p.s }}
-          animate={{ y: [0, -30, 12, 0], x: [0, 18, -8, 0], opacity: [0.07, 0.45, 0.06, 0.07] }}
-          transition={{ duration: p.d, repeat: Infinity, ease: "easeInOut", delay: p.dl }} />
-      ))}
-      {/* Sweeping gradient lines */}
-      {[
-        { x: 5, y: 40, w: 120, dl: 4 }, { x: 40, y: 70, w: 80, dl: 9 },
-        { x: 60, y: 20, w: 100, dl: 14 }, { x: 20, y: 85, w: 60, dl: 2 },
-      ].map((line, i) => (
-        <motion.div key={`l-${i}`} className="absolute h-px"
-          style={{ left: `${line.x}%`, top: `${line.y}%`, width: line.w, background: "linear-gradient(to right, transparent, rgba(212,175,55,0.35), transparent)" }}
-          animate={{ opacity: [0, 0.8, 0], scaleX: [0.1, 1, 0.1], x: [0, 40, 0] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: line.dl, repeatDelay: 7 }} />
-      ))}
-      {/* Pulsing rings */}
-      {[{ x: 15, y: 30, dl: 0 }, { x: 80, y: 60, dl: 5 }, { x: 50, y: 80, dl: 10 }].map((r, i) => (
-        <motion.div key={`r-${i}`} className="absolute rounded-full border border-gold/10"
-          style={{ left: `${r.x}%`, top: `${r.y}%`, width: 80, height: 80, transform: "translate(-50%,-50%)" }}
-          animate={{ scale: [0.5, 2.5], opacity: [0.3, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeOut", delay: r.dl, repeatDelay: 4 }} />
-      ))}
-    </div>
-  );
-}
 
 function Reveal({ children, delay = 0, className = "", y = 50 }: { children: React.ReactNode; delay?: number; className?: string; y?: number }) {
   const ref = useRef(null);
@@ -63,11 +22,9 @@ function TiltCard({ children, className = "" }: { children: React.ReactNode; cla
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
   const scale = useMotionValue(1);
-  const glowX = useMotionValue(50);
-  const glowY = useMotionValue(50);
-  const springRotateX = useSpring(rotateX, { stiffness: 200, damping: 20 });
-  const springRotateY = useSpring(rotateY, { stiffness: 200, damping: 20 });
-  const springScale = useSpring(scale, { stiffness: 200, damping: 20 });
+  const springRotateX = useSpring(rotateX, { stiffness: 180, damping: 22 });
+  const springRotateY = useSpring(rotateY, { stiffness: 180, damping: 22 });
+  const springScale = useSpring(scale, { stiffness: 180, damping: 22 });
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
@@ -75,10 +32,8 @@ function TiltCard({ children, className = "" }: { children: React.ReactNode; cla
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
     const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-    rotateX.set(-y * 8); rotateY.set(x * 8); scale.set(1.03);
-    glowX.set(((e.clientX - rect.left) / rect.width) * 100);
-    glowY.set(((e.clientY - rect.top) / rect.height) * 100);
-  }, [rotateX, rotateY, scale, glowX, glowY]);
+    rotateX.set(-y * 6); rotateY.set(x * 6); scale.set(1.02);
+  }, [rotateX, rotateY, scale]);
 
   const handleMouseLeave = useCallback(() => {
     rotateX.set(0); rotateY.set(0); scale.set(1);
@@ -86,7 +41,7 @@ function TiltCard({ children, className = "" }: { children: React.ReactNode; cla
 
   return (
     <motion.div ref={cardRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
-      style={{ rotateX: springRotateX, rotateY: springRotateY, scale: springScale, transformStyle: "preserve-3d", perspective: 1200 }}
+      style={{ rotateX: springRotateX, rotateY: springRotateY, scale: springScale, transformStyle: "preserve-3d", perspective: 1000 }}
       className={className}>
       {children}
     </motion.div>
@@ -110,46 +65,15 @@ function CountUp({ target, suffix = "", duration = 2.5 }: { target: number; suff
   return <span ref={ref}>{val}{suffix}</span>;
 }
 
-function FloatingOrbs() {
+function HeroOrbs() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div className="absolute rounded-full"
-        style={{ width: 950, height: 950, top: "-20%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.34) 0%, transparent 65%)", filter: "blur(80px)" }}
-        animate={{ x: [0, 80, -30, 0], y: [0, -60, 80, 0], scale: [1, 1.15, 0.9, 1] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }} />
-      <motion.div className="absolute rounded-full"
-        style={{ width: 700, height: 700, bottom: "-15%", right: "-10%", background: "radial-gradient(circle, rgba(45,95,63,0.20) 0%, transparent 65%)", filter: "blur(70px)" }}
-        animate={{ x: [0, -70, 40, 0], y: [0, 50, -70, 0], scale: [1, 0.85, 1.15, 1] }}
-        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut", delay: 6 }} />
-      <motion.div className="absolute rounded-full"
-        style={{ width: 550, height: 550, top: "45%", left: "55%", background: "radial-gradient(circle, rgba(212,175,55,0.24) 0%, transparent 65%)", filter: "blur(60px)" }}
-        animate={{ x: [0, 100, -80, 0], y: [0, -100, 60, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 12 }} />
-      <motion.div className="absolute rounded-full"
-        style={{ width: 380, height: 380, top: "20%", right: "20%", background: "radial-gradient(circle, rgba(255,215,100,0.14) 0%, transparent 65%)", filter: "blur(50px)" }}
-        animate={{ x: [0, -60, 30, 0], y: [0, 80, -40, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 3 }} />
-      <motion.div className="absolute rounded-full"
-        style={{ width: 280, height: 280, top: "65%", left: "25%", background: "radial-gradient(circle, rgba(212,175,55,0.20) 0%, transparent 70%)", filter: "blur(40px)" }}
-        animate={{ x: [0, 55, -30, 0], y: [0, -55, 30, 0], scale: [1, 1.2, 0.9, 1] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 8 }} />
-      <motion.div className="absolute rounded-full"
-        style={{ width: 220, height: 220, top: "10%", left: "42%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 70%)", filter: "blur(35px)" }}
-        animate={{ x: [0, -45, 25, 0], y: [0, 65, -35, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 15 }} />
-      <motion.div className="absolute rounded-full"
-        style={{ width: 160, height: 160, bottom: "30%", left: "15%", background: "radial-gradient(circle, rgba(212,175,55,0.22) 0%, transparent 70%)", filter: "blur(30px)" }}
-        animate={{ x: [0, 35, -20, 0], y: [0, -40, 20, 0], scale: [1, 1.3, 0.8, 1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 5 }} />
-      {/* Vertical light beams */}
-      <motion.div className="absolute w-px"
-        style={{ left: "30%", top: 0, height: "100%", background: "linear-gradient(to bottom, transparent 0%, rgba(212,175,55,0.07) 40%, rgba(212,175,55,0.07) 60%, transparent 100%)" }}
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2, repeatDelay: 4 }} />
-      <motion.div className="absolute w-px"
-        style={{ left: "72%", top: 0, height: "100%", background: "linear-gradient(to bottom, transparent 0%, rgba(212,175,55,0.05) 40%, rgba(212,175,55,0.05) 60%, transparent 100%)" }}
-        animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 5, repeatDelay: 6 }} />
+      <div className="absolute rounded-full orb-1"
+        style={{ width: 900, height: 900, top: "-20%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.28) 0%, transparent 65%)", filter: "blur(90px)" }} />
+      <div className="absolute rounded-full orb-2"
+        style={{ width: 650, height: 650, bottom: "-15%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 65%)", filter: "blur(80px)" }} />
+      <div className="absolute rounded-full orb-3"
+        style={{ width: 450, height: 450, top: "40%", left: "52%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 65%)", filter: "blur(60px)" }} />
     </div>
   );
 }
@@ -165,18 +89,10 @@ export default function HomePage() {
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative min-h-screen flex items-end pb-16 md:pb-24 lg:pb-32 overflow-hidden pt-20">
         <div className="absolute inset-0 bg-[#080808]">
-          <FloatingOrbs />
-          <FloatingParticles />
-          {/* Animated grid */}
-          <motion.div className="absolute inset-0 opacity-[0.025]"
-            style={{ backgroundImage: "linear-gradient(rgba(212,175,55,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.8) 1px, transparent 1px)", backgroundSize: "80px 80px" }}
-            animate={{ backgroundPosition: ["0px 0px", "80px 80px"] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
-          {/* Diagonal scan line */}
-          <motion.div className="absolute inset-0 pointer-events-none"
-            style={{ background: "linear-gradient(105deg, transparent 40%, rgba(212,175,55,0.03) 50%, transparent 60%)" }}
-            animate={{ x: ["-100%", "200%"] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 4 }} />
+          <HeroOrbs />
+          {/* Static grid */}
+          <div className="absolute inset-0 opacity-[0.022] pointer-events-none"
+            style={{ backgroundImage: "linear-gradient(rgba(212,175,55,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.8) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
         </div>
 
         {/* Giant watermark */}
@@ -254,24 +170,11 @@ export default function HomePage() {
 
       {/* ── AI ESTIMATOR — FEATURED ── */}
       <section id="ai-estimator" className="py-16 md:py-28 bg-[#080808] relative overflow-hidden">
-        <FloatingParticles count={12} />
         <div className="absolute inset-0 pointer-events-none">
-          <motion.div className="absolute rounded-full"
-            style={{ width: 900, height: 900, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }}
-            animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 500, height: 500, top: "-10%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 65%)", filter: "blur(70px)" }}
-            animate={{ x: [0, -40, 20, 0], y: [0, 50, -30, 0], scale: [1, 1.1, 0.95, 1] }}
-            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 400, height: 400, bottom: "5%", left: "10%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%)", filter: "blur(60px)" }}
-            animate={{ x: [0, 30, -15, 0], y: [0, -40, 20, 0] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 7 }} />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 400, height: 400, bottom: "-5%", left: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 65%)", filter: "blur(60px)" }}
-            animate={{ x: [0, 50, -25, 0], y: [0, -40, 25, 0] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 8 }} />
-          <FloatingParticles />
+          <div className="absolute rounded-full orb-1"
+            style={{ width: 800, height: 800, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }} />
+          <div className="absolute rounded-full orb-2"
+            style={{ width: 500, height: 500, top: "-10%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 65%)", filter: "blur(70px)" }} />
         </div>
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
@@ -552,7 +455,10 @@ export default function HomePage() {
 
       {/* ── PROBLEMS ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
-        <FloatingOrbs />
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute rounded-full orb-1" style={{ width: 700, height: 700, top: "10%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 65%)", filter: "blur(90px)" }} />
+          <div className="absolute rounded-full orb-3" style={{ width: 500, height: 500, bottom: "5%", left: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 65%)", filter: "blur(80px)" }} />
+        </div>
         <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
           <Reveal className="mb-20">
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5">
@@ -593,15 +499,10 @@ export default function HomePage() {
 
       {/* ── SERVICES ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#0D0D0D] relative overflow-hidden">
-        <FloatingParticles count={14} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 800, height: 800, top: "20%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }}
-          animate={{ y: [0, -80, 40, 0], scale: [1, 1.1, 0.95, 1] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 600, height: 600, bottom: "10%", left: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 65%)", filter: "blur(80px)" }}
-          animate={{ x: [0, 60, -20, 0], y: [0, -50, 30, 0] }}
-          transition={{ duration: 19, repeat: Infinity, ease: "easeInOut", delay: 6 }} />
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute rounded-full orb-2" style={{ width: 800, height: 800, top: "20%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.11) 0%, transparent 60%)", filter: "blur(100px)" }} />
+          <div className="absolute rounded-full orb-3" style={{ width: 600, height: 600, bottom: "10%", left: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 65%)", filter: "blur(80px)" }} />
+        </div>
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
@@ -773,20 +674,10 @@ export default function HomePage() {
 
       {/* ── TESTIMONIALS ── */}
       <section className="py-32 bg-[#0D0D0D] relative overflow-hidden">
-        <FloatingParticles count={10} />
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 800, height: 800, top: "30%", left: "50%", transform: "translateX(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 60%)", filter: "blur(90px)" }}
-            animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 300, height: 300, top: "5%", right: "10%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 70%)", filter: "blur(50px)" }}
-            animate={{ x: [0, -40, 20, 0], y: [0, 50, -30, 0] }}
-            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 250, height: 250, bottom: "10%", left: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)", filter: "blur(45px)" }}
-            animate={{ x: [0, 40, -25, 0], y: [0, -45, 30, 0] }}
-            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 8 }} />
+          <div className="absolute rounded-full orb-1" style={{ width: 700, height: 700, top: "20%", left: "50%", transform: "translateX(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 60%)", filter: "blur(90px)" }} />
+          <div className="absolute rounded-full orb-3" style={{ width: 300, height: 300, top: "5%", right: "10%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)", filter: "blur(50px)" }} />
         </div>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
           <Reveal className="mb-16">

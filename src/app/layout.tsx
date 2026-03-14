@@ -3,7 +3,6 @@ import { Space_Grotesk, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -48,7 +47,6 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${cormorant.variable} ${inter.variable} bg-deep-black text-cream antialiased`}
       >
-        <CustomCursor />
         <Navigation />
         <main>{children}</main>
         <Footer />
