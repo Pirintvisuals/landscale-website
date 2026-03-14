@@ -151,6 +151,10 @@ export default function AboutPage() {
                 <p>The marketing agencies they hired didn&apos;t understand the industry — they treated every client the same. Generic strategies, vanity metrics, and no accountability.</p>
                 <p>That&apos;s when I realised: landscapers don&apos;t need another generic marketing agency. They need someone who understands their business AND knows how to build tech that actually solves their problems.</p>
                 <p>So I learned web development, studied AI automation, and built solutions specifically for landscaping businesses. Not one-size-fits-all templates — real tools that save time and make money.</p>
+                <motion.p className="text-cream/70 border-l-2 border-gold/30 pl-5 italic font-cormorant text-lg"
+                  initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
+                  I built the AI Estimator because I watched my family waste countless hours giving quotes to people who never hired them. The Estimator Agent solves this — it qualifies leads automatically and gives instant estimates, so landscapers only ever talk to serious buyers. It&apos;s the main thing I build for every client.
+                </motion.p>
               </div>
             </Reveal>
           </div>

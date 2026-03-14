@@ -152,7 +152,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-end max-w-5xl">
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8, ease: SPRING }} className="font-cormorant text-xl md:text-2xl text-cream/60 leading-relaxed font-light italic">
-              Premium websites & AI lead filtering for landscaping businesses. No more time-wasters. Only serious buyers who actually show up.
+              I build premium websites with AI-powered lead filtering — featuring intelligent estimator agents that qualify leads and give instant quotes, so you only talk to serious buyers.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }} className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1">
@@ -179,7 +179,7 @@ export default function HomePage() {
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0D0D0D] to-transparent z-10 pointer-events-none" />
         <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-14 whitespace-nowrap">
           {Array.from({ length: 2 }).flatMap((_, gi) =>
-            ["85% Time Saved on Quotes", "★ 24/7 AI Lead Filtering", "300% More Qualified Leads", "★ Premium Landscaping Websites", "AI Chatbots & Estimators", "★ UK & Worldwide", "SEO That Actually Converts"].map((item, i) => (
+            ["85% Time Saved on Quotes", "★ AI Estimator Agent", "300% More Qualified Leads", "★ Premium Landscaping Websites", "Intelligent Estimator Agents", "★ UK & Worldwide", "SEO That Actually Converts"].map((item, i) => (
               <span key={`${gi}-${i}`} className="font-grotesk font-medium text-xs text-gold/40 uppercase tracking-[0.2em] flex items-center gap-3">
                 {item}
               </span>
@@ -187,6 +187,130 @@ export default function HomePage() {
           )}
         </motion.div>
       </div>
+
+      {/* ── AI ESTIMATOR — FEATURED ── */}
+      <section id="ai-estimator" className="py-16 md:py-28 bg-[#080808] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div className="absolute rounded-full"
+            style={{ width: 900, height: 900, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }}
+            animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+        </div>
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
+          <Reveal>
+            <div className="relative bg-[#0D0D0D] border border-gold/25 rounded-3xl overflow-hidden">
+              {/* Gold top accent */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent" />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 0%, rgba(212,175,55,0.08) 0%, transparent 60%)" }} />
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                {/* Left — content */}
+                <div className="p-8 md:p-12 xl:p-16 relative">
+                  <div className="inline-flex items-center gap-2 mb-6 bg-gold/10 border border-gold/30 px-4 py-2 rounded-full">
+                    <motion.span className="w-2 h-2 rounded-full bg-gold" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
+                    <span className="font-grotesk text-xs font-bold uppercase tracking-[0.2em] text-gold">My Core Offering</span>
+                  </div>
+
+                  <h2 className="font-grotesk font-bold text-[clamp(32px,4.5vw,68px)] text-cream leading-[0.92] tracking-[-0.03em] mb-4">
+                    STOP WASTING TIME<br /><span className="text-gradient-gold">ON QUOTES</span>
+                  </h2>
+                  <p className="font-cormorant text-lg md:text-xl text-cream/50 font-light italic leading-relaxed mb-8">
+                    My AI Estimator Agent gives instant project quotes and qualifies every lead automatically — so you only talk to serious buyers.
+                  </p>
+
+                  {/* How it works */}
+                  <div className="space-y-4 mb-10">
+                    {[
+                      { step: "01", text: "Visitor asks for a quote on your website" },
+                      { step: "02", text: "AI asks qualifying questions — budget, timeline, scope" },
+                      { step: "03", text: "Gives instant estimate based on your real pricing" },
+                      { step: "04", text: "Only qualified, serious leads reach you" },
+                    ].map((item, i) => (
+                      <motion.div key={item.step}
+                        initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                        transition={{ delay: i * 0.1, duration: 0.6, ease: SPRING }}
+                        className="flex items-center gap-4 group">
+                        <span className="font-grotesk font-bold text-[11px] text-gold/50 tracking-[0.2em] w-6 flex-shrink-0">{item.step}</span>
+                        <div className="flex-1 flex items-center gap-3 bg-white/[0.03] border border-white/[0.06] group-hover:border-gold/20 group-hover:bg-gold/[0.03] rounded-xl px-4 py-3 transition-all duration-300">
+                          <motion.span className="w-1.5 h-1.5 rounded-full bg-gold/50 flex-shrink-0 group-hover:bg-gold transition-colors duration-300" />
+                          <span className="font-inter text-cream/70 text-sm group-hover:text-cream/90 transition-colors duration-300">{item.text}</span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Stat callout */}
+                  <div className="flex flex-wrap items-center gap-6 mb-10">
+                    <div className="text-center">
+                      <div className="font-grotesk font-bold text-[48px] text-gradient-gold leading-none tracking-[-0.04em]">15–20</div>
+                      <div className="font-inter text-xs text-text-muted uppercase tracking-[0.15em] mt-1">hours saved / week</div>
+                    </div>
+                    <div className="w-px h-12 bg-gold/15 hidden sm:block" />
+                    <div className="text-center">
+                      <div className="font-grotesk font-bold text-[48px] text-gradient-gold leading-none tracking-[-0.04em]">24/7</div>
+                      <div className="font-inter text-xs text-text-muted uppercase tracking-[0.15em] mt-1">works while you sleep</div>
+                    </div>
+                    <div className="w-px h-12 bg-gold/15 hidden sm:block" />
+                    <div className="text-center">
+                      <div className="font-grotesk font-bold text-[48px] text-gradient-gold leading-none tracking-[-0.04em]">0</div>
+                      <div className="font-inter text-xs text-text-muted uppercase tracking-[0.15em] mt-1">wasted quote calls</div>
+                    </div>
+                  </div>
+
+                  <Link href="/contact"
+                    className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:-translate-y-0.5">
+                    See How It Works →
+                  </Link>
+                </div>
+
+                {/* Right — demo card */}
+                <div className="relative lg:border-l border-gold/[0.08] p-8 md:p-12 xl:p-16 flex flex-col justify-center">
+                  <div className="absolute inset-0 pointer-events-none opacity-30" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(212,175,55,0.1) 0%, transparent 60%)" }} />
+                  <div className="relative z-10">
+                    {/* Chat UI mockup */}
+                    <div className="bg-[#0A0A0A] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+                      <div className="border-b border-white/[0.06] px-5 py-3.5 flex items-center gap-3">
+                        <motion.div className="w-2.5 h-2.5 rounded-full bg-gold" animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+                        <span className="font-grotesk text-xs font-semibold text-cream/50 uppercase tracking-[0.15em]">Estimator Agent — Online</span>
+                      </div>
+                      <div className="p-5 space-y-3">
+                        {[
+                          { from: "ai", text: "Hi! I can give you an instant quote. What type of project are you looking for?" },
+                          { from: "user", text: "Garden design + lawn installation, about 200m²" },
+                          { from: "ai", text: "What's your approximate budget range?" },
+                          { from: "user", text: "£3,000–5,000" },
+                          { from: "ai", text: "Based on your project, I estimate £3,200–4,500. Want me to connect you with the team?" },
+                        ].map((msg, i) => (
+                          <motion.div key={i}
+                            initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                            transition={{ delay: 0.1 + i * 0.12, duration: 0.5, ease: SPRING }}
+                            className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                            <div className={`max-w-[80%] px-4 py-2.5 rounded-2xl font-inter text-xs leading-relaxed ${
+                              msg.from === "ai"
+                                ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm"
+                                : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"
+                            }`}>{msg.text}</div>
+                          </motion.div>
+                        ))}
+                        <motion.div className="flex justify-start" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 }}>
+                          <div className="bg-gold text-deep-black font-grotesk font-bold text-xs px-4 py-2 rounded-full hover:bg-bright-gold transition-colors cursor-pointer">
+                            Yes, connect me! →
+                          </div>
+                        </motion.div>
+                      </div>
+                    </div>
+                    <p className="font-cormorant text-sm text-gold/40 italic mt-5 text-center">
+                      &ldquo;This is what runs on your website, 24/7, while you sleep.&rdquo;
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ── AI LEAD FILTERING — HERO SERVICE ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
@@ -365,39 +489,88 @@ export default function HomePage() {
               Everything You Need<br /><span className="text-gradient-gold">Under One Roof</span>
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Featured: AI Estimator */}
+          <Reveal className="mb-5">
+            <TiltCard>
+              <Link href="/services/ai-lead-generation" className="block group">
+                <div className="relative bg-[#111111] border border-gold/30 group-hover:border-gold/60 rounded-3xl overflow-hidden transition-all duration-400">
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ background: "radial-gradient(ellipse at 30% 30%, rgba(212,175,55,0.07) 0%, transparent 60%)" }} />
+                  <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-0">
+                    <div className="p-8 md:p-10 relative z-10">
+                      <div className="flex flex-wrap items-center gap-3 mb-6">
+                        <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 px-3 py-1.5 rounded-full">
+                          <motion.span className="w-1.5 h-1.5 rounded-full bg-gold" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
+                          <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">Core Offering</span>
+                        </div>
+                        <span className="font-grotesk text-[10px] font-bold text-white/[0.04] group-hover:text-gold/12 transition-colors duration-500 text-[64px] leading-none ml-auto select-none">01</span>
+                      </div>
+                      <h3 className="font-grotesk font-bold text-2xl md:text-3xl text-cream mb-3 tracking-tight group-hover:text-gold transition-colors duration-300">
+                        AI Estimator & Lead Qualification
+                      </h3>
+                      <p className="font-cormorant text-base text-gold/50 italic mb-4 leading-relaxed">
+                        Intelligent AI that gives instant landscaping quotes and filters out tyre-kickers before they waste your time.
+                      </p>
+                      <p className="font-inter text-text-muted text-sm leading-relaxed mb-6 max-w-lg">
+                        My core offering. An AI agent that qualifies every lead automatically, gives instant estimates based on your pricing, and only sends you serious buyers — saving you 15–20 hours every week.
+                      </p>
+                      <div className="grid grid-cols-2 gap-2 mb-6">
+                        {["Instant project estimates 24/7", "Automatic lead qualification", "Only serious buyers reach you", "Saves 15–20 hours per week"].map((f) => (
+                          <div key={f} className="flex items-start gap-2 font-inter text-xs text-text-muted group-hover:text-cream/60 transition-colors duration-300">
+                            <span className="w-1.5 h-1.5 rounded-full bg-gold/60 flex-shrink-0 mt-1 group-hover:bg-gold transition-colors duration-300" />{f}
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-2 font-grotesk font-semibold text-sm text-gold/50 group-hover:text-gold transition-all duration-300">
+                        See How It Works <motion.span animate={{ x: 0 }} whileHover={{ x: 4 }}>→</motion.span>
+                      </div>
+                    </div>
+                    <div className="hidden md:flex border-l border-gold/[0.08] p-8 flex-col justify-center items-center gap-6 relative">
+                      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(212,175,55,0.06) 0%, transparent 70%)" }} />
+                      <div className="space-y-3 w-full relative z-10">
+                        {[{ label: "Qualified leads", val: "+300%" }, { label: "Hours saved/week", val: "15–20" }, { label: "Response time", val: "<2s" }].map((s) => (
+                          <div key={s.label} className="bg-[#0A0A0A] border border-white/[0.06] rounded-xl px-4 py-3 flex justify-between items-center">
+                            <span className="font-inter text-xs text-text-muted">{s.label}</span>
+                            <span className="font-grotesk font-bold text-gold text-sm">{s.val}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </TiltCard>
+          </Reveal>
+
+          {/* Other services */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {[
-              { num: "01", title: "Premium Websites", href: "/services/website-design", desc: "Conversion-focused, luxury websites in Next.js or Framer. Loads fast, looks premium, turns visitors into clients.", features: ["Custom design", "Mobile-first", "Lead capture optimised", "Under 2s load"], accent: "Website", gradient: "from-blue-950/30 via-transparent to-transparent" },
-              { num: "02", title: "SEO & Marketing", href: "/services/seo-marketing", desc: "Dominate local Google search so the right clients find you first, every time.", features: ["Local SEO", "Google Business", "Keyword strategy", "Monthly reporting"], accent: "SEO", gradient: "from-emerald-950/30 via-transparent to-transparent" },
-              { num: "03", title: "AI Automation Suite", href: "/services/ai-lead-generation", desc: "Chatbots, estimators, receptionist agents, smart forms — the full AI stack for your business.", features: ["24/7 chatbot", "Instant estimates", "Auto qualification", "CRM integration"], accent: "AI", gradient: "from-gold/10 via-transparent to-transparent" },
+              { num: "02", title: "Premium Websites", href: "/services/website-design", desc: "Conversion-focused, luxury websites in Next.js or Framer. Fast, premium, turns visitors into clients.", features: ["Custom design", "Mobile-first", "Lead capture optimised", "Under 2s load"], accent: "Website" },
+              { num: "03", title: "SEO & Marketing", href: "/services/seo-marketing", desc: "Dominate local Google search so the right clients find you first, every time.", features: ["Local SEO", "Google Business", "Keyword strategy", "Monthly reporting"], accent: "SEO" },
             ].map((card, i) => (
-              <Reveal key={card.num} delay={i * 0.12}>
+              <Reveal key={card.num} delay={i * 0.1}>
                 <TiltCard className="h-full">
                   <Link href={card.href} className="block h-full group">
-                    <div className={`relative bg-[#111111] border border-white/[0.05] group-hover:border-gold/30 p-8 md:p-10 h-full flex flex-col transition-all duration-400 min-h-[460px] rounded-3xl overflow-hidden`}>
-                      {/* Hover gradient */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
-                      {/* Inner glow on hover */}
-                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/30 transition-all duration-500" />
+                    <div className="relative bg-[#111111] border border-white/[0.05] group-hover:border-gold/25 p-7 md:p-9 h-full flex flex-col transition-all duration-400 min-h-[320px] rounded-3xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/25 transition-all duration-500" />
                       <div className="relative z-10 flex flex-col h-full">
-                        <div className="flex items-start justify-between mb-8">
-                          <motion.span className="font-grotesk font-bold text-[64px] leading-none text-white/[0.04] group-hover:text-gold/12 transition-colors duration-500"
-                            whileHover={{ scale: 1.05 }}>{card.num}</motion.span>
-                          <span className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 border border-gold/15 px-3 py-1.5 rounded-full group-hover:border-gold/50 group-hover:text-gold group-hover:bg-gold/5 transition-all duration-300">{card.accent}</span>
+                        <div className="flex items-start justify-between mb-6">
+                          <motion.span className="font-grotesk font-bold text-[52px] leading-none text-white/[0.04] group-hover:text-gold/10 transition-colors duration-500">{card.num}</motion.span>
+                          <span className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/40 border border-gold/12 px-3 py-1.5 rounded-full group-hover:border-gold/40 group-hover:text-gold transition-all duration-300">{card.accent}</span>
                         </div>
-                        <h3 className="font-grotesk font-bold text-2xl text-cream mb-4 tracking-tight group-hover:text-gold transition-colors duration-300">{card.title}</h3>
-                        <p className="font-inter text-text-muted text-sm leading-relaxed mb-6 flex-1">{card.desc}</p>
-                        <ul className="space-y-2.5 mb-6">
+                        <h3 className="font-grotesk font-bold text-xl text-cream mb-3 tracking-tight group-hover:text-gold transition-colors duration-300">{card.title}</h3>
+                        <p className="font-inter text-text-muted text-sm leading-relaxed mb-5 flex-1">{card.desc}</p>
+                        <ul className="space-y-2 mb-5">
                           {card.features.map((f) => (
                             <li key={f} className="flex items-center gap-3 font-inter text-xs text-text-muted group-hover:text-cream/60 transition-colors duration-300">
-                              <motion.span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" whileHover={{ scale: 2 }} />
-                              {f}
+                              <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />{f}
                             </li>
                           ))}
                         </ul>
                         <div className="flex items-center gap-2 font-grotesk font-semibold text-sm text-gold/40 group-hover:text-gold transition-all duration-300">
-                          Learn More
-                          <motion.span className="inline-block" animate={{ x: 0 }} whileHover={{ x: 4 }}>→</motion.span>
+                          Learn More <motion.span animate={{ x: 0 }} whileHover={{ x: 4 }}>→</motion.span>
                         </div>
                       </div>
                     </div>
