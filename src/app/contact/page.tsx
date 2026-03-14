@@ -43,7 +43,7 @@ export default function ContactPage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative pt-40 pb-28 bg-[#080808] overflow-hidden min-h-[65vh] flex items-end">
+      <section ref={heroRef} className="relative pt-28 md:pt-40 pb-16 md:pb-28 bg-[#080808] overflow-hidden min-h-[65vh] flex items-end">
         {/* Orbs */}
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }}
@@ -75,7 +75,7 @@ export default function ContactPage() {
           CONTACT
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16 w-full pb-4">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 w-full pb-4">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-3 mb-8">
             <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ transformOrigin: "left" }} />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">Get in Touch</span>
@@ -105,12 +105,12 @@ export default function ContactPage() {
           animate={{ scale: [1, 1.1, 1], y: [0, -60, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }} />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 md:gap-20">
 
             {/* Left: tabs */}
             <Reveal>
-              <div className="relative bg-[#0A0A0A] border border-white/[0.06] hover:border-gold/15 transition-colors duration-500 p-8 md:p-10 rounded-2xl overflow-hidden">
+              <div className="relative bg-[#0A0A0A] border border-white/[0.06] hover:border-gold/15 transition-colors duration-500 p-5 md:p-8 lg:p-10 rounded-2xl overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
                 <div className="flex gap-2 mb-8 bg-white/[0.03] p-1 rounded-full w-fit">
                   <button

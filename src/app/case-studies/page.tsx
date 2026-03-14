@@ -85,7 +85,7 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
 
       {i > 0 && <div className="h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent" />}
 
-      <div className="relative overflow-hidden py-20 md:py-28">
+      <div className="relative overflow-hidden py-10 md:py-20 lg:py-28">
         {/* Per-card moving orb */}
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{
@@ -116,8 +116,8 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
           {project.index}
         </div>
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16">
-          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center ${!isEven ? "lg:[direction:rtl]" : ""}`}>
+        <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center ${!isEven ? "lg:[direction:rtl]" : ""}`}>
 
             {/* Screenshot */}
             <div className={`${!isEven ? "[direction:ltr]" : ""}`}>
@@ -219,7 +219,7 @@ export default function CaseStudiesPage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative pt-40 pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
+      <section ref={heroRef} className="relative pt-28 md:pt-40 pb-16 md:pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
         {/* Orbs */}
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }}
@@ -251,7 +251,7 @@ export default function CaseStudiesPage() {
           WORK
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16 w-full pb-4">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 w-full pb-4">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-3 mb-8">
             <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ transformOrigin: "left" }} />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">Live Work</span>
@@ -312,7 +312,7 @@ export default function CaseStudiesPage() {
       </div>
 
       {/* ── CTA ── */}
-      <section className="relative py-44 bg-[#060606] overflow-hidden text-center">
+      <section className="relative py-20 md:py-44 bg-[#060606] overflow-hidden text-center">
         <motion.div className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(212,175,55,0.20) 0%, transparent 55%)" }}
           animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />

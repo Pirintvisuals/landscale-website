@@ -60,7 +60,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative pt-40 pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
+      <section ref={heroRef} className="relative pt-28 md:pt-40 pb-16 md:pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 900, height: 900, top: "-30%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.22) 0%, transparent 60%)", filter: "blur(100px)" }}
           animate={{ x: [0, -60, 20, 0], y: [0, 50, -40, 0], scale: [1, 1.1, 0.95, 1] }}
@@ -88,7 +88,7 @@ export default function ServicesPage() {
           SERVICES
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16 w-full">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 w-full">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-3 mb-8">
             <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ transformOrigin: "left" }} />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">What I Do</span>
@@ -118,7 +118,7 @@ export default function ServicesPage() {
           animate={{ y: [0, -100, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }} />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           {webServices.map((service, i) => (
             <Reveal key={service.number} delay={i * 0.06}>
               <div className="relative border-b border-white/[0.05] py-16 md:py-20 group overflow-hidden">
@@ -130,10 +130,10 @@ export default function ServicesPage() {
                 <motion.div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{ background: "linear-gradient(105deg, transparent 40%, rgba(212,175,55,0.02) 50%, transparent 60%)" }} />
 
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-10 md:gap-16 items-start pl-4">
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-6 md:gap-16 items-start pl-4">
                   <div>
                     <motion.span
-                      className="font-grotesk font-bold text-[90px] leading-none text-white/[0.04] group-hover:text-gold/10 transition-colors duration-700 block select-none"
+                      className="hidden md:block font-grotesk font-bold text-[90px] leading-none text-white/[0.04] group-hover:text-gold/10 transition-colors duration-700 select-none"
                       whileHover={{ scale: 1.05 }}>
                       {service.number}
                     </motion.span>
@@ -183,7 +183,7 @@ export default function ServicesPage() {
       </div>
 
       {/* ── AI AUTOMATION ── */}
-      <section className="py-28 md:py-36 bg-[#0D0D0D] relative overflow-hidden">
+      <section className="py-16 md:py-28 lg:py-36 bg-[#0D0D0D] relative overflow-hidden">
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 900, height: 900, top: "-20%", left: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(110px)" }}
           animate={{ x: [0, 80, -30, 0], y: [0, -60, 80, 0], scale: [1, 1.15, 0.9, 1] }}
@@ -195,7 +195,7 @@ export default function ServicesPage() {
 
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <Reveal className="mb-16">
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5">
               <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ transformOrigin: "left" }} />
@@ -255,15 +255,15 @@ export default function ServicesPage() {
       </section>
 
       {/* ── PRICING ── */}
-      <section className="py-28 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-28 bg-[#0A0A0A] relative overflow-hidden">
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 700, height: 700, top: "50%", right: "-15%", transform: "translateY(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(90px)" }}
           animate={{ scale: [1, 1.15, 1], x: [0, -30, 0] }}
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <Reveal>
-            <div className="relative bg-[#111111] border border-gold/15 rounded-3xl p-12 md:p-16 lg:p-20 overflow-hidden">
+            <div className="relative bg-[#111111] border border-gold/15 rounded-3xl p-7 md:p-12 lg:p-20 overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent" />
               <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 40%, rgba(212,175,55,0.07) 0%, transparent 60%)" }} />
               <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -299,7 +299,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="relative py-44 bg-[#060606] overflow-hidden text-center">
+      <section className="relative py-20 md:py-44 bg-[#060606] overflow-hidden text-center">
         <motion.div className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(212,175,55,0.20) 0%, transparent 55%)" }}
           animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />

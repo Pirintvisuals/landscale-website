@@ -64,7 +64,7 @@ export default function AboutPage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative pt-40 pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
+      <section ref={heroRef} className="relative pt-28 md:pt-40 pb-16 md:pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
         {/* Orbs */}
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }}
@@ -96,7 +96,7 @@ export default function AboutPage() {
           STORY
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16 w-full pb-4">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 w-full pb-4">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-3 mb-8">
             <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ transformOrigin: "left" }} />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">About Landscale</span>
@@ -119,7 +119,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── STORY ── */}
-      <section className="py-32 md:py-44 bg-[#0D0D0D] relative overflow-hidden">
+      <section className="py-16 md:py-32 lg:py-44 bg-[#0D0D0D] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute top-0 right-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.012] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
         <motion.div className="absolute rounded-full pointer-events-none"
@@ -127,8 +127,8 @@ export default function AboutPage() {
           animate={{ scale: [1, 1.1, 1], y: [0, -60, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }} />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10 pt-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-28 items-start">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-28 items-start">
             <Reveal>
               <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6">
                 <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ transformOrigin: "left" }} />
@@ -165,7 +165,7 @@ export default function AboutPage() {
           animate={{ scale: [1, 1.15, 1], x: [0, 40, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }} />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10 py-32 md:py-44">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 py-16 md:py-32 lg:py-44">
           <Reveal className="mb-20">
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5">
               <span className="w-8 h-px bg-gold" />How I Work
@@ -187,7 +187,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8, ease: SPRING }}
-                className="relative bg-[#080808] p-10 md:p-14 group hover:bg-[#0D0D0D] transition-colors duration-500 overflow-hidden cursor-default">
+                className="relative bg-[#080808] p-6 md:p-10 xl:p-14 group hover:bg-[#0D0D0D] transition-colors duration-500 overflow-hidden cursor-default">
                 {/* Hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{ background: "radial-gradient(ellipse at 30% 30%, rgba(212,175,55,0.06) 0%, transparent 65%)" }} />
@@ -209,15 +209,15 @@ export default function AboutPage() {
       </section>
 
       {/* ── WHAT MAKES US DIFFERENT ── */}
-      <section className="py-32 md:py-44 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
         <div className="absolute left-0 top-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.012] select-none pointer-events-none tracking-[-0.05em]">EDGE</div>
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 700, height: 700, top: "20%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 60%)", filter: "blur(90px)" }}
           animate={{ scale: [1, 1.12, 1], y: [0, -50, 0] }}
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start">
             <div className="md:sticky md:top-32">
               <Reveal>
                 <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6"><span className="w-8 h-px bg-gold" />Why Different</span>
@@ -263,7 +263,7 @@ export default function AboutPage() {
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10 py-32 md:py-40">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 py-16 md:py-32 lg:py-40">
           <Reveal className="mb-20">
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5"><span className="w-8 h-px bg-gold" />Core Principles</span>
             <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,80px)] text-cream leading-[0.92] tracking-[-0.03em]">
@@ -282,7 +282,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7, ease: SPRING }}
-                className="bg-[#0D0D0D] p-10 md:p-14 group hover:bg-[#111111] transition-colors duration-500 relative overflow-hidden cursor-default">
+                className="bg-[#0D0D0D] p-6 md:p-10 xl:p-14 group hover:bg-[#111111] transition-colors duration-500 relative overflow-hidden cursor-default">
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/25 transition-all duration-500" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{ background: "radial-gradient(ellipse at 20% 30%, rgba(212,175,55,0.05) 0%, transparent 60%)" }} />
@@ -301,13 +301,13 @@ export default function AboutPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-32 md:py-44 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 600, height: 600, bottom: "-10%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(80px)" }}
           animate={{ scale: [1, 1.15, 1], x: [0, -30, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }} />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <Reveal className="mb-16">
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5"><span className="w-8 h-px bg-gold" />FAQ</span>
             <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
@@ -323,7 +323,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="relative py-48 md:py-64 bg-[#060606] overflow-hidden text-center">
+      <section className="relative py-24 md:py-48 lg:py-64 bg-[#060606] overflow-hidden text-center">
         <motion.div className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(212,175,55,0.22) 0%, transparent 55%)" }}
           animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
@@ -343,7 +343,7 @@ export default function AboutPage() {
           animate={{ x: ["-100%", "200%"] }}
           transition={{ duration: 5, repeat: Infinity, ease: "linear", repeatDelay: 7 }} />
 
-        <div className="relative z-10 max-w-2xl mx-auto px-8">
+        <div className="relative z-10 max-w-2xl mx-auto px-5 sm:px-8">
           <div className="overflow-hidden mb-4">
             <motion.h2 initial={{ y: "60%", opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 1, ease: SPRING }}
               className="font-grotesk font-bold text-[clamp(48px,8vw,112px)] text-cream leading-[0.88] tracking-[-0.04em]">

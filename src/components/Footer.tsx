@@ -12,7 +12,7 @@ export default function Footer() {
     <footer ref={ref} className="bg-[#080808] border-t border-white/[0.04] pt-24 pb-10 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
-      <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
         {/* CTA */}
         <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="mb-20 max-w-2xl">
           <p className="font-grotesk font-bold text-3xl md:text-4xl text-cream leading-tight mb-3">

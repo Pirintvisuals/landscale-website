@@ -100,7 +100,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-end pb-24 md:pb-32 overflow-hidden pt-20">
+      <section ref={heroRef} className="relative min-h-screen flex items-end pb-16 md:pb-24 lg:pb-32 overflow-hidden pt-20">
         <div className="absolute inset-0 bg-[#080808]">
           <FloatingOrbs />
           {/* Animated grid */}
@@ -120,7 +120,7 @@ export default function HomePage() {
           LANDSCALE
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16 w-full">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 w-full">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-10">
             <motion.span className="w-8 h-px bg-gold" animate={{ scaleX: [0, 1] }} transition={{ duration: 0.6, delay: 0.2 }} style={{ transformOrigin: "left" }} />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">AI-Powered Marketing for Landscapers</span>
@@ -189,7 +189,7 @@ export default function HomePage() {
       </div>
 
       {/* ── AI LEAD FILTERING — HERO SERVICE ── */}
-      <section className="py-32 md:py-44 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
         <div className="absolute inset-0">
           <motion.div className="absolute rounded-full pointer-events-none"
             style={{ width: 900, height: 900, top: "-30%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 65%)", filter: "blur(100px)" }}
@@ -199,7 +199,7 @@ export default function HomePage() {
         {/* Decorative vertical line */}
         <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold/10 to-transparent hidden md:block" />
 
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
           <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-16 md:gap-24 items-center">
             <Reveal>
               <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6">
@@ -285,7 +285,7 @@ export default function HomePage() {
             { value: 4, suffix: "+", label: "Live Projects Running Right Now", desc: "Real businesses, real results. Every project is live and proven in the market.", accent: "bottom-right" },
           ].map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.08}>
-              <div className={`relative overflow-hidden p-12 md:p-16 xl:p-20 border-b border-r border-white/[0.04] group hover:bg-[#0D0D0D] transition-colors duration-500 ${i % 2 === 1 ? "border-r-0" : ""} ${i >= 2 ? "border-b-0" : ""}`}>
+              <div className={`relative overflow-hidden p-7 md:p-12 xl:p-20 border-b border-r border-white/[0.04] group hover:bg-[#0D0D0D] transition-colors duration-500 ${i % 2 === 1 ? "border-r-0" : ""} ${i >= 2 ? "border-b-0" : ""}`}>
                 {/* Hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%)" }} />
                 {/* Giant background number */}
@@ -314,9 +314,9 @@ export default function HomePage() {
       </section>
 
       {/* ── PROBLEMS ── */}
-      <section className="py-32 md:py-44 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
         <FloatingOrbs />
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
           <Reveal className="mb-20">
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5">
               <span className="w-8 h-px bg-gold" />Sound Familiar?
@@ -355,10 +355,10 @@ export default function HomePage() {
       </section>
 
       {/* ── SERVICES ── */}
-      <section className="py-32 md:py-44 bg-[#0D0D0D] relative overflow-hidden">
+      <section className="py-16 md:py-32 lg:py-44 bg-[#0D0D0D] relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
           <Reveal className="mb-20">
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5"><span className="w-8 h-px bg-gold" />What I Do</span>
             <h2 className="font-grotesk font-bold text-[clamp(40px,6vw,80px)] leading-[0.92] tracking-[-0.03em] text-cream">
@@ -410,14 +410,14 @@ export default function HomePage() {
       </section>
 
       {/* ── WHY ME — dramatic ── */}
-      <section className="py-32 md:py-44 bg-[#080808] relative overflow-hidden">
+      <section className="py-16 md:py-32 lg:py-44 bg-[#080808] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <motion.div className="absolute rounded-full" style={{ width: 700, height: 700, bottom: "-20%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 65%)", filter: "blur(80px)" }}
             animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }} />
         </div>
         {/* Large decorative text */}
         <div className="absolute top-0 left-0 font-grotesk font-bold text-[18vw] leading-none text-white/[0.015] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
             <div className="md:sticky md:top-32">
               <Reveal>
@@ -463,7 +463,7 @@ export default function HomePage() {
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
         </div>
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
           <Reveal className="mb-16">
             <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
               WHAT CLIENTS<br /><span className="text-gradient-gold">SAY</span>
@@ -508,7 +508,7 @@ export default function HomePage() {
 
       {/* ── OUTSIDE LANDSCAPING ── */}
       <section className="py-24 bg-[#0A0A0A]">
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
           <Reveal>
             <div className="relative bg-[#111111] border border-gold/10 rounded-3xl p-12 md:p-20 text-center max-w-3xl mx-auto overflow-hidden">
               <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(212,175,55,0.10) 0%, transparent 65%)" }} />
@@ -530,7 +530,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="relative py-48 md:py-64 bg-[#060606] overflow-hidden">
+      <section className="relative py-24 md:py-48 lg:py-64 bg-[#060606] overflow-hidden">
         {/* Multiple layered glows */}
         <motion.div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(212,175,55,0.20) 0%, transparent 55%)" }} animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
         <motion.div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(212,175,55,0.12) 0%, transparent 45%)" }} animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
@@ -547,7 +547,7 @@ export default function HomePage() {
           animate={{ x: ["-100%", "200%"] }}
           transition={{ duration: 5, repeat: Infinity, ease: "linear", repeatDelay: 6 }} />
 
-        <div className="relative z-10 max-w-[1000px] mx-auto px-8 md:px-16 text-center">
+        <div className="relative z-10 max-w-[1000px] mx-auto px-5 sm:px-8 md:px-16 text-center">
           <div className="mb-10 overflow-hidden">
             <motion.h2 initial={{ y: "60%", opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 1, ease: SPRING }}
               className="font-grotesk font-bold text-[clamp(48px,9vw,128px)] text-cream leading-[0.88] tracking-[-0.04em]">
