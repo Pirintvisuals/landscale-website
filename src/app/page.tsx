@@ -278,121 +278,137 @@ export default function HomePage() {
                 <div className="relative lg:border-l border-gold/[0.08] p-8 md:p-12 xl:p-16 flex flex-col justify-center">
                   <div className="absolute inset-0 pointer-events-none opacity-30" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(212,175,55,0.1) 0%, transparent 60%)" }} />
                   <div className="relative z-10">
-                    {/* Chat UI — real flow */}
+                    {/* Chat UI — accurate flow */}
                     <div className="bg-[#0A0A0A] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
-                      {/* Header */}
                       <div className="border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <motion.div className="w-2.5 h-2.5 rounded-full bg-gold" animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 2, repeat: Infinity }} />
                           <span className="font-grotesk text-xs font-semibold text-cream/50 uppercase tracking-[0.15em]">Estimator Agent — Online</span>
                         </div>
-                        <span className="font-grotesk text-[9px] font-bold uppercase tracking-[0.15em] text-gold/40 border border-gold/15 px-2 py-0.5 rounded-full">7-step AI flow</span>
+                        <span className="font-grotesk text-[9px] font-bold uppercase tracking-[0.15em] text-gold/40 border border-gold/15 px-2 py-0.5 rounded-full">Live example</span>
                       </div>
 
-                      <div className="p-4 space-y-2 max-h-[420px] overflow-y-auto">
-                        {/* Step 1 */}
-                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/30 text-center py-1">Step 1 — Project Assessment</div>
+                      <div className="p-4 space-y-2 max-h-[520px] overflow-y-auto">
+
+                        {/* Project type */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Project Type</div>
                         {[
                           { from: "ai", text: "Hi! I can give you an instant quote. What type of project are you looking for?" },
                           { from: "user", text: "Patio installation" },
                         ].map((msg, i) => (
-                          <motion.div key={`s1-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                          <motion.div key={`p-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                             <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
                           </motion.div>
                         ))}
 
-                        {/* Step 2 */}
-                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/30 text-center py-1">Step 2 — Smart Follow-ups (Patio-specific)</div>
+                        {/* Smart patio questions */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Patio-specific questions</div>
                         {[
                           { from: "ai", text: "Does anything need to be removed first? Is the ground sloped?" },
-                          { from: "user", text: "Old decking removed, slightly sloped" },
-                          { from: "ai", text: "What materials? (pavers, concrete, natural stone) And approximate area?" },
-                          { from: "user", text: "Natural stone, about 40m²" },
+                          { from: "user", text: "Old decking needs removing, slightly sloped" },
+                          { from: "ai", text: "How big is the area that needs to be patioed? (m²)" },
+                          { from: "user", text: "About 40m²" },
+                          { from: "ai", text: "How wide is the entrance for equipment? (e.g. can a wheelbarrow fit through?)" },
+                          { from: "user", text: "Standard gate, about 90cm" },
+                          { from: "ai", text: "What materials are you thinking? (pavers, concrete, natural stone, porcelain)" },
+                          { from: "user", text: "Natural stone" },
+                          { from: "ai", text: "What's your postcode? (so we can check we cover your area)" },
+                          { from: "user", text: "SW11 4NL" },
+                          { from: "ai", text: "And your ideal timeline — when would you like this done?" },
+                          { from: "user", text: "Within the next 6–8 weeks" },
                         ].map((msg, i) => (
-                          <motion.div key={`s2-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 + i * 0.08, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                          <motion.div key={`q-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 + i * 0.07, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                             <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
                           </motion.div>
                         ))}
 
-                        {/* Step 3–4 */}
-                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/30 text-center py-1">Step 3–4 — Contact & Budget</div>
+                        {/* Budget */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Budget check</div>
                         {[
-                          { from: "ai", text: "Great — can I get your name, phone and email to send you the quote?" },
-                          { from: "user", text: "James, 07700 900123, james@email.com" },
-                          { from: "ai", text: "What's your budget range?" },
+                          { from: "ai", text: "What's your approximate budget for this project?" },
                           { from: "user", text: "£5,000–8,000" },
                         ].map((msg, i) => (
-                          <motion.div key={`s34-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 + i * 0.08, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                          <motion.div key={`b-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.55 + i * 0.08, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                             <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
                           </motion.div>
                         ))}
 
-                        {/* Step 5 — Instant estimate */}
-                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/30 text-center py-1">Step 5 — Instant Estimate</div>
-                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.65, duration: 0.5, ease: SPRING }} className="flex justify-start">
-                          <div className="max-w-[88%] bg-[#111] border border-gold/20 rounded-2xl rounded-tl-sm overflow-hidden">
+                        {/* Instant estimate — given before asking contact info */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Instant estimate — given right away</div>
+                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.7, duration: 0.5, ease: SPRING }} className="flex justify-start">
+                          <div className="max-w-[90%] bg-[#111] border border-gold/20 rounded-2xl rounded-tl-sm overflow-hidden">
                             <div className="bg-gold/10 px-4 py-2 border-b border-gold/10">
                               <span className="font-grotesk font-bold text-xs text-gold">Estimated: £6,000 – £6,600</span>
                             </div>
                             <div className="px-4 py-2.5 space-y-1">
-                              {[["Removal + prep", "£600–800"], ["Materials (natural stone)", "£2,400–2,800"], ["Labour", "£3,000–3,000"]].map(([label, val]) => (
+                              {[["Removal + prep", "£600–800"], ["Natural stone (40m²)", "£2,400–2,800"], ["Labour", "£3,000–3,000"]].map(([label, val]) => (
                                 <div key={label} className="flex justify-between font-inter text-[10px]">
-                                  <span className="text-cream/40">{label}</span>
-                                  <span className="text-cream/70">{val}</span>
+                                  <span className="text-cream/40">{label}</span><span className="text-cream/70">{val}</span>
                                 </div>
                               ))}
                             </div>
                           </div>
                         </motion.div>
 
-                        {/* Step 6–7 — Score + routing */}
-                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/30 text-center py-1">Step 6–7 — Lead Score & Routing</div>
-                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.8, duration: 0.5, ease: SPRING }} className="flex justify-start">
-                          <div className="max-w-[90%] bg-[#111] border border-gold/30 rounded-2xl rounded-tl-sm px-4 py-3 space-y-2">
+                        {/* Contact info collected AFTER estimate */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Contact info collected after — so owner gets it</div>
+                        {[
+                          { from: "ai", text: "To send this quote to the team and follow up with you, can I get your name, phone number and email?" },
+                          { from: "user", text: "James Thompson, 07700 900123, james@email.com" },
+                        ].map((msg, i) => (
+                          <motion.div key={`c-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.8 + i * 0.1, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                            <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
+                          </motion.div>
+                        ))}
+
+                        {/* Score + VIP */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Lead scored & routed automatically</div>
+                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1, duration: 0.5, ease: SPRING }} className="flex justify-start">
+                          <div className="max-w-[92%] bg-[#111] border border-gold/30 rounded-2xl rounded-tl-sm px-4 py-3 space-y-2">
                             <div className="flex items-center justify-between">
                               <span className="font-grotesk text-xs font-bold text-cream">Lead Score</span>
                               <div className="flex items-center gap-2">
                                 <div className="h-1.5 w-20 bg-white/[0.06] rounded-full overflow-hidden">
-                                  <motion.div className="h-full bg-gradient-to-r from-gold to-bright-gold rounded-full" initial={{ width: 0 }} whileInView={{ width: "88%" }} viewport={{ once: true }} transition={{ delay: 1, duration: 0.8, ease: "easeOut" }} />
+                                  <motion.div className="h-full bg-gradient-to-r from-gold to-bright-gold rounded-full" initial={{ width: 0 }} whileInView={{ width: "88%" }} viewport={{ once: true }} transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }} />
                                 </div>
                                 <span className="font-grotesk font-bold text-gold text-sm">88/100</span>
                               </div>
                             </div>
                             <div className="inline-flex items-center gap-2 bg-gold/15 border border-gold/35 px-3 py-1.5 rounded-full">
                               <span className="text-[10px]">⭐</span>
-                              <span className="font-grotesk font-bold text-[10px] text-gold uppercase tracking-[0.15em]">VIP Lead — Calendar booking sent</span>
+                              <span className="font-grotesk font-bold text-[10px] text-gold uppercase tracking-[0.15em]">VIP — Calendar booking link sent</span>
                             </div>
-                            <p className="font-inter text-[10px] text-cream/40">Budget matches, urgent timeline, perfect project fit. Owner notified immediately.</p>
+                            <p className="font-inter text-[10px] text-cream/40">Budget fits, local area, urgent timeline. Full details emailed to owner immediately.</p>
                           </div>
                         </motion.div>
 
-                        {/* Declined example */}
-                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-white/15 text-center py-1">If not a fit — AI declines for you</div>
-                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.9, duration: 0.4, ease: SPRING }} className="flex justify-start">
-                          <div className="max-w-[88%] bg-white/[0.03] border border-white/[0.07] rounded-2xl rounded-tl-sm px-3.5 py-2.5">
-                            <p className="font-inter text-[11px] text-cream/40 leading-relaxed">Thanks for reaching out! Unfortunately your location falls outside our service area. We&apos;re unable to take this on — but we wish you the best finding a local team. 🙏</p>
-                            <p className="font-inter text-[9px] text-white/20 mt-1.5 italic">No email sent to owner. Your time protected.</p>
+                        {/* Decline example */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-white/15 text-center py-1">If not a fit — AI declines politely, no email to owner</div>
+                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.1, duration: 0.4, ease: SPRING }} className="flex justify-start">
+                          <div className="max-w-[88%] bg-white/[0.03] border border-white/[0.06] rounded-2xl rounded-tl-sm px-3.5 py-2.5">
+                            <p className="font-inter text-[11px] text-cream/35 leading-relaxed">Thanks for reaching out! Unfortunately your location is outside our service area. We&apos;re unable to take this on, but we wish you luck finding a local team. 🙏</p>
+                            <p className="font-inter text-[9px] text-white/18 mt-1.5 italic">Owner never notified. Your time fully protected.</p>
                           </div>
                         </motion.div>
 
                         {/* Routing tiers */}
-                        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1, duration: 0.5 }} className="grid grid-cols-3 gap-1.5 pt-1">
+                        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1.2, duration: 0.5 }} className="grid grid-cols-3 gap-1.5 pt-1">
                           {[
-                            { score: "0–40", label: "Declined", color: "border-white/[0.08] text-white/20", dot: "bg-white/20" },
+                            { score: "0–40", label: "Declined", color: "border-white/[0.07] text-white/18", dot: "bg-white/18" },
                             { score: "41–80", label: "Qualified", color: "border-gold/20 text-gold/50", dot: "bg-gold/50" },
                             { score: "81–100", label: "VIP ★", color: "border-gold/50 text-gold bg-gold/5", dot: "bg-gold" },
                           ].map((tier) => (
                             <div key={tier.label} className={`border ${tier.color} rounded-lg px-2 py-1.5 text-center`}>
                               <div className={`w-1.5 h-1.5 rounded-full ${tier.dot} mx-auto mb-1`} />
                               <div className="font-grotesk font-bold text-[9px] uppercase tracking-[0.1em]">{tier.label}</div>
-                              <div className="font-inter text-[8px] text-cream/30 mt-0.5">{tier.score}</div>
+                              <div className="font-inter text-[8px] text-cream/25 mt-0.5">{tier.score}</div>
                             </div>
                           ))}
                         </motion.div>
                       </div>
                     </div>
                     <p className="font-cormorant text-sm text-gold/40 italic mt-4 text-center">
-                      &ldquo;This runs on your website, 24/7. You only hear from the VIPs.&rdquo;
+                      &ldquo;This runs on your website 24/7. You only hear from the ones worth your time.&rdquo;
                     </p>
                   </div>
                 </div>
