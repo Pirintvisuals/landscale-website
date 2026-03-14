@@ -68,25 +68,83 @@ function CountUp({ target, suffix = "", duration = 2.5 }: { target: number; suff
   return <span ref={ref}>{val}{suffix}</span>;
 }
 
+const PARTICLES = [
+  { x: 8, y: 12, s: 1.5, d: 24, dl: 0 }, { x: 82, y: 25, s: 2, d: 19, dl: 3 },
+  { x: 45, y: 58, s: 1, d: 28, dl: 7 }, { x: 20, y: 80, s: 2.5, d: 21, dl: 1 },
+  { x: 68, y: 40, s: 1.5, d: 16, dl: 5 }, { x: 30, y: 35, s: 1, d: 22, dl: 9 },
+  { x: 90, y: 70, s: 2, d: 17, dl: 2 }, { x: 55, y: 90, s: 1.5, d: 26, dl: 4 },
+  { x: 12, y: 50, s: 1, d: 20, dl: 8 }, { x: 75, y: 15, s: 2.5, d: 23, dl: 6 },
+  { x: 40, y: 72, s: 1, d: 18, dl: 11 }, { x: 60, y: 5, s: 1.5, d: 25, dl: 13 },
+  { x: 25, y: 45, s: 2, d: 14, dl: 2 }, { x: 88, y: 85, s: 1, d: 30, dl: 15 },
+  { x: 50, y: 25, s: 1.5, d: 19, dl: 10 }, { x: 15, y: 65, s: 1, d: 22, dl: 4 },
+  { x: 72, y: 55, s: 2, d: 17, dl: 9 }, { x: 35, y: 10, s: 1.5, d: 20, dl: 7 },
+];
+
+function FloatingParticles() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {PARTICLES.map((p, i) => (
+        <motion.div key={i}
+          className="absolute rounded-full bg-gold"
+          style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.s, height: p.s }}
+          animate={{ y: [0, -35, 15, 0], x: [0, 18, -10, 0], opacity: [0.1, 0.55, 0.07, 0.1] }}
+          transition={{ duration: p.d, repeat: Infinity, ease: "easeInOut", delay: p.dl }} />
+      ))}
+      {[
+        { x: 18, y: 28, w: 70, dl: 2 }, { x: 58, y: 52, w: 45, dl: 7 },
+        { x: 32, y: 74, w: 90, dl: 4 }, { x: 72, y: 18, w: 55, dl: 11 },
+        { x: 42, y: 88, w: 35, dl: 6 },
+      ].map((line, i) => (
+        <motion.div key={`l-${i}`}
+          className="absolute h-px"
+          style={{ left: `${line.x}%`, top: `${line.y}%`, width: line.w, background: "linear-gradient(to right, transparent, rgba(212,175,55,0.5), transparent)" }}
+          animate={{ opacity: [0, 0.8, 0], scaleX: [0.2, 1, 0.2] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: line.dl, repeatDelay: 5 }} />
+      ))}
+    </div>
+  );
+}
+
 function FloatingOrbs() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <motion.div className="absolute rounded-full"
-        style={{ width: 800, height: 800, top: "-20%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.30) 0%, transparent 65%)", filter: "blur(80px)" }}
+        style={{ width: 950, height: 950, top: "-20%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.34) 0%, transparent 65%)", filter: "blur(80px)" }}
         animate={{ x: [0, 80, -30, 0], y: [0, -60, 80, 0], scale: [1, 1.15, 0.9, 1] }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }} />
       <motion.div className="absolute rounded-full"
-        style={{ width: 600, height: 600, bottom: "-15%", right: "-10%", background: "radial-gradient(circle, rgba(45,95,63,0.18) 0%, transparent 65%)", filter: "blur(70px)" }}
+        style={{ width: 700, height: 700, bottom: "-15%", right: "-10%", background: "radial-gradient(circle, rgba(45,95,63,0.20) 0%, transparent 65%)", filter: "blur(70px)" }}
         animate={{ x: [0, -70, 40, 0], y: [0, 50, -70, 0], scale: [1, 0.85, 1.15, 1] }}
         transition={{ duration: 28, repeat: Infinity, ease: "easeInOut", delay: 6 }} />
       <motion.div className="absolute rounded-full"
-        style={{ width: 450, height: 450, top: "45%", left: "55%", background: "radial-gradient(circle, rgba(212,175,55,0.20) 0%, transparent 65%)", filter: "blur(60px)" }}
+        style={{ width: 550, height: 550, top: "45%", left: "55%", background: "radial-gradient(circle, rgba(212,175,55,0.24) 0%, transparent 65%)", filter: "blur(60px)" }}
         animate={{ x: [0, 100, -80, 0], y: [0, -100, 60, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 12 }} />
       <motion.div className="absolute rounded-full"
-        style={{ width: 300, height: 300, top: "20%", right: "20%", background: "radial-gradient(circle, rgba(255,215,100,0.08) 0%, transparent 65%)", filter: "blur(50px)" }}
+        style={{ width: 380, height: 380, top: "20%", right: "20%", background: "radial-gradient(circle, rgba(255,215,100,0.14) 0%, transparent 65%)", filter: "blur(50px)" }}
         animate={{ x: [0, -60, 30, 0], y: [0, 80, -40, 0] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 3 }} />
+      <motion.div className="absolute rounded-full"
+        style={{ width: 280, height: 280, top: "65%", left: "25%", background: "radial-gradient(circle, rgba(212,175,55,0.20) 0%, transparent 70%)", filter: "blur(40px)" }}
+        animate={{ x: [0, 55, -30, 0], y: [0, -55, 30, 0], scale: [1, 1.2, 0.9, 1] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 8 }} />
+      <motion.div className="absolute rounded-full"
+        style={{ width: 220, height: 220, top: "10%", left: "42%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 70%)", filter: "blur(35px)" }}
+        animate={{ x: [0, -45, 25, 0], y: [0, 65, -35, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 15 }} />
+      <motion.div className="absolute rounded-full"
+        style={{ width: 160, height: 160, bottom: "30%", left: "15%", background: "radial-gradient(circle, rgba(212,175,55,0.22) 0%, transparent 70%)", filter: "blur(30px)" }}
+        animate={{ x: [0, 35, -20, 0], y: [0, -40, 20, 0], scale: [1, 1.3, 0.8, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 5 }} />
+      {/* Vertical light beams */}
+      <motion.div className="absolute w-px"
+        style={{ left: "30%", top: 0, height: "100%", background: "linear-gradient(to bottom, transparent 0%, rgba(212,175,55,0.07) 40%, rgba(212,175,55,0.07) 60%, transparent 100%)" }}
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2, repeatDelay: 4 }} />
+      <motion.div className="absolute w-px"
+        style={{ left: "72%", top: 0, height: "100%", background: "linear-gradient(to bottom, transparent 0%, rgba(212,175,55,0.05) 40%, rgba(212,175,55,0.05) 60%, transparent 100%)" }}
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 5, repeatDelay: 6 }} />
     </div>
   );
 }
@@ -103,6 +161,7 @@ export default function HomePage() {
       <section ref={heroRef} className="relative min-h-screen flex items-end pb-16 md:pb-24 lg:pb-32 overflow-hidden pt-20">
         <div className="absolute inset-0 bg-[#080808]">
           <FloatingOrbs />
+          <FloatingParticles />
           {/* Animated grid */}
           <motion.div className="absolute inset-0 opacity-[0.025]"
             style={{ backgroundImage: "linear-gradient(rgba(212,175,55,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.8) 1px, transparent 1px)", backgroundSize: "80px 80px" }}
@@ -192,8 +251,17 @@ export default function HomePage() {
       <section id="ai-estimator" className="py-16 md:py-28 bg-[#080808] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <motion.div className="absolute rounded-full"
-            style={{ width: 900, height: 900, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }}
-            animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+            style={{ width: 900, height: 900, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }}
+            animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 500, height: 500, top: "-10%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 65%)", filter: "blur(70px)" }}
+            animate={{ x: [0, -40, 20, 0], y: [0, 50, -30, 0], scale: [1, 1.1, 0.95, 1] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 400, height: 400, bottom: "-5%", left: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 65%)", filter: "blur(60px)" }}
+            animate={{ x: [0, 50, -25, 0], y: [0, -40, 25, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 8 }} />
+          <FloatingParticles />
         </div>
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
@@ -418,90 +486,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── AI LEAD FILTERING — HERO SERVICE ── */}
-      <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div className="absolute rounded-full pointer-events-none"
-            style={{ width: 900, height: 900, top: "-30%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 65%)", filter: "blur(100px)" }}
-            animate={{ scale: [1, 1.1, 1], rotate: [0, 15, 0] }}
-            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }} />
-        </div>
-        {/* Decorative vertical line */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold/10 to-transparent hidden md:block" />
-
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-16 md:gap-24 items-center">
-            <Reveal>
-              <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6">
-                <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ transformOrigin: "left" }} />
-                Core Service
-              </span>
-              <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,80px)] text-cream leading-[0.92] tracking-[-0.03em] mb-6">
-                AI LEAD<br />FILTERING<br /><span className="text-gradient-gold">& QUALIFICATION</span>
-              </h2>
-              <p className="font-inter text-text-muted text-lg leading-relaxed mb-10 max-w-xl">
-                Most websites <em className="text-cream/70 not-italic">collect</em> leads. Mine <strong className="text-gold font-semibold">filter</strong> them. An AI system that works 24/7 — qualifying every enquiry, weeding out time-wasters, and only sending you buyers who are actually serious.
-              </p>
-              <div className="space-y-0 mb-10">
-                {[
-                  { step: "01", text: "AI chatbot engages every visitor the moment they land", icon: "◎" },
-                  { step: "02", text: "Asks qualifying questions — budget, timeline, location", icon: "◎" },
-                  { step: "03", text: "Provides instant estimates to serious buyers only", icon: "◎" },
-                  { step: "04", text: "Only the right leads reach you — ready to book", icon: "◎" },
-                ].map((item, i) => (
-                  <motion.div key={item.step} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.6, ease: SPRING }}
-                    className="flex items-center gap-5 py-4 border-b border-white/[0.04] group cursor-default">
-                    <span className="font-grotesk font-bold text-[10px] text-gold/40 tracking-[0.2em] flex-shrink-0 w-6">{item.step}</span>
-                    <motion.div className="w-1.5 h-1.5 rounded-full bg-gold/30 flex-shrink-0 group-hover:bg-gold transition-colors duration-300" />
-                    <p className="font-inter text-text-muted text-sm leading-relaxed group-hover:text-cream/80 transition-colors duration-300">{item.text}</p>
-                  </motion.div>
-                ))}
-              </div>
-              <Link href="/services/ai-lead-generation" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
-                See How It Works →
-              </Link>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <TiltCard>
-                <div className="relative bg-[#111111] border border-gold/15 rounded-3xl p-8 md:p-10 overflow-hidden">
-                  {/* Glow bg */}
-                  <div className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20 pointer-events-none" style={{ background: "radial-gradient(circle, #D4AF37 0%, transparent 70%)", filter: "blur(60px)", transform: "translate(30%, -30%)" }} />
-                  <div className="relative z-10">
-                    <div className="text-center mb-8">
-                      <motion.div className="font-grotesk font-bold text-[80px] text-gradient-gold leading-none tracking-[-0.04em]"
-                        initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: SPRING }}>
-                        <CountUp target={85} suffix="%" />
-                      </motion.div>
-                      <div className="font-inter text-text-muted text-xs uppercase tracking-[0.2em] mt-2">Time saved on wasted quotes</div>
-                    </div>
-                    <div className="space-y-3">
-                      {[
-                        { label: "Before", val: "2+ hrs/day chasing unqualified leads", bad: true },
-                        { label: "After", val: "Only serious buyers, ready to book", bad: false },
-                      ].map((row) => (
-                        <div key={row.label} className={`flex items-start gap-4 p-4 rounded-2xl border ${row.bad ? "bg-white/[0.03] border-white/[0.08]" : "bg-gold/5 border-gold/20"}`}>
-                          <div className={`font-grotesk text-[10px] font-bold uppercase tracking-[0.1em] flex-shrink-0 w-16 pt-0.5 ${row.bad ? "text-cream/30" : "text-gold/70"}`}>{row.label}</div>
-                          <div className="font-inter text-cream/80 text-sm">{row.val}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="font-cormorant text-base text-gold/50 italic mt-6 text-center leading-relaxed">
-                      &ldquo;I now spend my time on actual work, not chasing ghosts.&rdquo;
-                    </p>
-                  </div>
-                </div>
-              </TiltCard>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
       {/* ── STATS — dramatic layout ── */}
       <section className="bg-[#080808] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <motion.div className="absolute rounded-full" style={{ width: 1000, height: 1000, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 60%)", filter: "blur(80px)" }}
-            animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div className="absolute rounded-full" style={{ width: 1000, height: 1000, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(80px)" }}
+            animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 400, height: 400, top: "10%", left: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%)", filter: "blur(60px)" }}
+            animate={{ x: [0, 60, -20, 0], y: [0, 30, -40, 0] }}
+            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 3 }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 350, height: 350, bottom: "5%", right: "8%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)", filter: "blur(55px)" }}
+            animate={{ x: [0, -40, 30, 0], scale: [1, 1.15, 1] }}
+            transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 7 }} />
         </div>
 
         {/* Top accent line */}
@@ -691,8 +688,16 @@ export default function HomePage() {
       {/* ── WHY ME — dramatic ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#080808] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <motion.div className="absolute rounded-full" style={{ width: 700, height: 700, bottom: "-20%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 65%)", filter: "blur(80px)" }}
-            animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div className="absolute rounded-full" style={{ width: 750, height: 750, bottom: "-20%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 65%)", filter: "blur(80px)" }}
+            animate={{ scale: [1, 1.18, 1] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 500, height: 500, top: "-10%", left: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 65%)", filter: "blur(70px)" }}
+            animate={{ x: [0, 50, -30, 0], y: [0, 60, -40, 0], scale: [1, 1.1, 0.95, 1] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 5 }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 300, height: 300, top: "40%", left: "45%", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)", filter: "blur(50px)" }}
+            animate={{ x: [0, -60, 40, 0], y: [0, -50, 30, 0] }}
+            transition={{ duration: 17, repeat: Infinity, ease: "easeInOut", delay: 10 }} />
         </div>
         {/* Large decorative text */}
         <div className="absolute top-0 left-0 font-grotesk font-bold text-[18vw] leading-none text-white/[0.015] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
@@ -741,6 +746,17 @@ export default function HomePage() {
       <section className="py-32 bg-[#0D0D0D] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 800, height: 800, top: "30%", left: "50%", transform: "translateX(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 60%)", filter: "blur(90px)" }}
+            animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 300, height: 300, top: "5%", right: "10%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 70%)", filter: "blur(50px)" }}
+            animate={{ x: [0, -40, 20, 0], y: [0, 50, -30, 0] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 250, height: 250, bottom: "10%", left: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)", filter: "blur(45px)" }}
+            animate={{ x: [0, 40, -25, 0], y: [0, -45, 30, 0] }}
+            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 8 }} />
         </div>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
           <Reveal className="mb-16">
@@ -804,45 +820,6 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── FINAL CTA ── */}
-      <section className="relative py-24 md:py-48 lg:py-64 bg-[#060606] overflow-hidden">
-        {/* Multiple layered glows */}
-        <motion.div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(212,175,55,0.20) 0%, transparent 55%)" }} animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(212,175,55,0.12) 0%, transparent 45%)" }} animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
-        {/* Animated rings */}
-        {[200, 350, 500, 650].map((size, i) => (
-          <motion.div key={size} className="absolute rounded-full border border-gold/[0.04] pointer-events-none"
-            style={{ width: size, height: size, top: "50%", left: "50%", marginLeft: -size / 2, marginTop: -size / 2 }}
-            animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.2, 0.5] }}
-            transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.8 }} />
-        ))}
-        {/* Diagonal scan */}
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(105deg, transparent 40%, rgba(212,175,55,0.03) 50%, transparent 60%)" }}
-          animate={{ x: ["-100%", "200%"] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "linear", repeatDelay: 6 }} />
-
-        <div className="relative z-10 max-w-[1000px] mx-auto px-5 sm:px-8 md:px-16 text-center">
-          <div className="mb-10 overflow-hidden">
-            <motion.h2 initial={{ y: "60%", opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 1, ease: SPRING }}
-              className="font-grotesk font-bold text-[clamp(48px,9vw,128px)] text-cream leading-[0.88] tracking-[-0.04em]">
-              READY TO<br /><span className="text-gradient-gold">STOP WASTING</span><br />TIME?
-            </motion.h2>
-          </div>
-          <Reveal delay={0.2} className="mb-12">
-            <p className="font-cormorant text-xl md:text-2xl text-cream/40 font-light italic leading-relaxed max-w-xl mx-auto">
-              Book a free 30-minute audit. I&apos;ll show you exactly where you&apos;re losing leads and how to fix it — no obligation.
-            </p>
-          </Reveal>
-          <Reveal delay={0.35}>
-            <Link href="/contact" className="group inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-lg px-12 py-6 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] hover:-translate-y-1.5">
-              Book Free Audit Call
-              <motion.span animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="text-xl">→</motion.span>
-            </Link>
           </Reveal>
         </div>
       </section>

@@ -33,14 +33,6 @@ const webServices = [
     desc: "Get found by the right customers at the right time. Our SEO strategies are built specifically for landscaping businesses in the UK.",
     features: ["Local SEO domination", "Google Business Profile", "Keyword strategy & content", "Link building", "Monthly reporting", "Competitor analysis"],
   },
-  {
-    number: "03",
-    title: "AI Lead Generation",
-    subtitle: "Stop Wasting Time on Unqualified Leads",
-    href: "/services/ai-lead-generation",
-    desc: "Our AI-powered systems work 24/7 to capture, qualify, and nurture leads — so you only talk to clients who are serious.",
-    features: ["24/7 AI chatbot", "Automated quote estimates", "Smart lead qualification", "CRM automation", "Follow-up sequences", "Lead scoring"],
-  },
 ];
 
 const aiServices = [
@@ -106,6 +98,125 @@ export default function ServicesPage() {
             Everything built specifically for landscaping businesses. We understand your industry, your clients, and what it takes to grow.
           </motion.p>
         </motion.div>
+      </section>
+
+      {/* ── AI LEAD FILTERING — CORE OFFERING ── */}
+      <section className="py-16 md:py-28 bg-[#080808] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div className="absolute rounded-full"
+            style={{ width: 1000, height: 1000, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }}
+            animate={{ scale: [1, 1.18, 1] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 500, height: 500, top: "-10%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 65%)", filter: "blur(70px)" }}
+            animate={{ x: [0, -50, 25, 0], y: [0, 60, -30, 0] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 5 }} />
+          <motion.div className="absolute rounded-full"
+            style={{ width: 400, height: 400, bottom: "-5%", left: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 65%)", filter: "blur(60px)" }}
+            animate={{ x: [0, 55, -25, 0], y: [0, -45, 30, 0] }}
+            transition={{ duration: 17, repeat: Infinity, ease: "easeInOut", delay: 9 }} />
+        </div>
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
+          <div className="relative bg-[#0D0D0D] border border-gold/25 rounded-3xl overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent" />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 0%, rgba(212,175,55,0.07) 0%, transparent 60%)" }} />
+
+            <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-0">
+              {/* Left — content */}
+              <div className="p-8 md:p-12 xl:p-16 relative">
+                <div className="inline-flex items-center gap-2 mb-6 bg-gold/10 border border-gold/30 px-4 py-2 rounded-full">
+                  <motion.span className="w-2 h-2 rounded-full bg-gold" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
+                  <span className="font-grotesk text-xs font-bold uppercase tracking-[0.2em] text-gold">Core Offering</span>
+                </div>
+
+                <h2 className="font-grotesk font-bold text-[clamp(32px,4.5vw,68px)] text-cream leading-[0.92] tracking-[-0.03em] mb-4">
+                  AI LEAD<br />FILTERING<br /><span className="text-gradient-gold">& QUALIFICATION</span>
+                </h2>
+                <p className="font-cormorant text-lg md:text-xl text-cream/50 font-light italic leading-relaxed mb-8">
+                  Most websites collect leads. This system <em className="not-italic font-medium text-gold/70">filters</em> them — 24/7, automatically, so you only hear from serious buyers.
+                </p>
+
+                <div className="space-y-0 mb-10">
+                  {[
+                    { step: "01", text: "AI engages every visitor the moment they land on your site" },
+                    { step: "02", text: "Asks qualifying questions — budget, timeline, location, scope" },
+                    { step: "03", text: "Gives instant estimates to serious buyers — immediately" },
+                    { step: "04", text: "Only qualified, ready-to-book leads ever reach you" },
+                  ].map((item, i) => (
+                    <motion.div key={item.step}
+                      initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                      transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      className="flex items-center gap-5 py-4 border-b border-white/[0.04] group cursor-default">
+                      <span className="font-grotesk font-bold text-[10px] text-gold/40 tracking-[0.2em] flex-shrink-0 w-6">{item.step}</span>
+                      <motion.div className="w-1.5 h-1.5 rounded-full bg-gold/30 flex-shrink-0 group-hover:bg-gold transition-colors duration-300" />
+                      <p className="font-inter text-text-muted text-sm leading-relaxed group-hover:text-cream/80 transition-colors duration-300">{item.text}</p>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-6 mb-10">
+                  {[["85%", "time saved on quotes"], ["24/7", "works while you sleep"], ["0", "wasted calls"]].map(([val, label]) => (
+                    <div key={label} className="text-center">
+                      <div className="font-grotesk font-bold text-[40px] text-gradient-gold leading-none tracking-[-0.04em]">{val}</div>
+                      <div className="font-inter text-[10px] text-text-muted uppercase tracking-[0.15em] mt-1">{label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="relative bg-white/[0.025] border border-white/[0.07] rounded-2xl p-5 mb-8 overflow-hidden">
+                  <div className="absolute top-0 left-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-gold/50 to-transparent" />
+                  <p className="font-grotesk font-bold text-xs uppercase tracking-[0.15em] text-gold/60 mb-2 pl-4">Not just a chatbot</p>
+                  <p className="font-inter text-sm text-cream/70 leading-relaxed pl-4">
+                    This isn&apos;t a generic widget. It understands your business rules and makes decisions. Wrong location, wrong budget, not the right fit? It declines politely — and <em className="not-italic font-medium text-cream/90">you never even hear about it</em>.
+                  </p>
+                </div>
+
+                <Link href="/services/ai-lead-generation"
+                  className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:-translate-y-0.5">
+                  See Full Details →
+                </Link>
+              </div>
+
+              {/* Right — stats */}
+              <div className="relative lg:border-l border-gold/[0.08] p-8 md:p-12 xl:p-16 flex flex-col justify-center gap-6">
+                <div className="absolute inset-0 pointer-events-none opacity-30" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(212,175,55,0.10) 0%, transparent 60%)" }} />
+                <div className="relative z-10">
+                  <div className="text-center mb-8">
+                    <motion.div className="font-grotesk font-bold text-[80px] text-gradient-gold leading-none tracking-[-0.04em]"
+                      initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
+                      85%
+                    </motion.div>
+                    <div className="font-inter text-text-muted text-xs uppercase tracking-[0.2em] mt-2">Time saved on wasted quotes</div>
+                  </div>
+
+                  <div className="space-y-3 mb-8">
+                    {[
+                      { label: "Before", val: "2+ hrs/day chasing unqualified leads", bad: true },
+                      { label: "After", val: "Only serious buyers, ready to book", bad: false },
+                    ].map((row) => (
+                      <div key={row.label} className={`flex items-start gap-4 p-4 rounded-2xl border ${row.bad ? "bg-white/[0.03] border-white/[0.08]" : "bg-gold/5 border-gold/20"}`}>
+                        <div className={`font-grotesk text-[10px] font-bold uppercase tracking-[0.1em] flex-shrink-0 w-14 pt-0.5 ${row.bad ? "text-cream/30" : "text-gold/70"}`}>{row.label}</div>
+                        <div className="font-inter text-cream/80 text-sm">{row.val}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="space-y-3">
+                    {[{ label: "Qualified leads", val: "+300%" }, { label: "Hours saved/week", val: "15–20" }, { label: "Response time", val: "<2s" }].map((s) => (
+                      <div key={s.label} className="bg-[#0A0A0A] border border-white/[0.06] rounded-xl px-4 py-3 flex justify-between items-center">
+                        <span className="font-inter text-xs text-text-muted">{s.label}</span>
+                        <span className="font-grotesk font-bold text-gold text-sm">{s.val}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── WEB SERVICES ── */}
