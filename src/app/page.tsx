@@ -134,14 +134,19 @@ export default function HomePage() {
                   LANDSCAPERS
                 </motion.div>
               </div>
-              {["STOP CHASING", "DEAD LEADS."].map((line, i) => (
-                <div key={line} className="overflow-hidden">
-                  <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32 + i * 0.12, ease: SPRING }}
-                    className="text-[clamp(52px,9vw,128px)] text-cream">
-                    {line}
-                  </motion.div>
-                </div>
-              ))}
+              <div className="overflow-hidden">
+                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }}
+                  className="text-[clamp(52px,9vw,128px)] text-cream">
+                  STOP CHASING
+                </motion.div>
+              </div>
+              <div className="overflow-hidden">
+                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
+                  className="text-[clamp(52px,9vw,128px)] text-cream/20"
+                  style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
+                  DEAD LEADS.
+                </motion.div>
+              </div>
             </h1>
           </div>
 
