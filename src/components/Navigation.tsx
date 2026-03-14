@@ -7,10 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight, X, Menu } from "lucide-react";
 
 const services = [
-  { href: "/services/ai-lead-generation", label: "AI Lead Qualification", desc: "24/7 filtering — only serious buyers reach you", icon: "◆", tag: "Core" },
-  { href: "/services/ai-lead-generation", label: "AI Estimator Agent", desc: "Instant project quotes on your site — no call needed", icon: "▲", tag: null },
-  { href: "/services/website-design", label: "Website Design", desc: "Luxury sites that turn visitors into clients", icon: "◈", tag: null },
-  { href: "/services/seo-marketing", label: "SEO & Marketing", desc: "Dominate local Google search", icon: "●", tag: null },
+  { href: "/services/ai-lead-generation", label: "AI Estimator Agent", desc: "Instant project quotes on your site — no call needed", icon: "▲", tag: "Core" },
+  { href: "/services/ai-lead-generation", label: "AI Chatbot", desc: "Qualifies leads 24/7, filters out time-wasters", icon: "◆", tag: null },
+  { href: "/services/website-design", label: "Website Design", desc: "Luxury sites with local SEO built in", icon: "◈", tag: null },
 ];
 
 const navLinks = [

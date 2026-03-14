@@ -17,37 +17,38 @@ function Reveal({ children, delay = 0, className = "", y = 50 }: { children: Rea
   );
 }
 
-const services = [
+// ── 3 core services ──────────────────────────────────────────────────────────
+const coreServices = [
   {
     num: "01",
-    tag: "Core Offering",
+    tag: "AI Estimator",
     tagPulse: true,
-    title: "AI Lead\nQualification",
-    titleGold: "& Filtering",
-    subtitle: "24/7 filtering — only serious buyers ever reach you.",
-    desc: "Every visitor gets engaged by an AI that qualifies them on budget, location, and timeline. If they're not a fit, it declines politely. If they are, their full details land in your inbox — ready to book.",
-    features: ["Budget & location check", "Automatic lead scoring", "Declines bad fits politely", "Owner never bothered by junk", "24/7 availability", "Instant SMS/email alerts"],
+    title: "AI Estimator\nAgent",
+    titleGold: "Instant Quotes",
+    subtitle: "Project estimates delivered on your site — no phone call needed.",
+    desc: "A visitor asks for a quote. The AI asks specific questions about scope, area, materials, entrance, postcode and timeline — then gives an accurate estimate immediately, 24/7. You only hear from leads who already know the price and still want to book.",
+    features: ["Patio, lawn, landscaping & more", "Project-specific questions", "Instant line-item breakdown", "Postcode & site-access checks", "Contact details collected after quote", "Saves 15–20 hrs/week on quoting"],
     stats: [
-      { label: "Qualified leads", val: "+300%" },
-      { label: "Hours saved/week", val: "15–20" },
-      { label: "Response time", val: "<2s" },
+      { label: "Quote delivery", val: "<2s" },
+      { label: "Hours saved", val: "15–20/wk" },
+      { label: "Wasted quote calls", val: "0" },
     ],
     href: "/services/ai-lead-generation",
     cta: "See How It Works",
   },
   {
     num: "02",
-    tag: "AI Estimator",
+    tag: "AI Chatbot",
     tagPulse: true,
-    title: "AI Estimator\nAgent",
-    titleGold: "Instant Quotes",
-    subtitle: "Project estimates delivered on your site — no phone call needed.",
-    desc: "A visitor asks for a quote. The AI asks about scope, area, materials, and timeline — then gives an accurate estimate immediately, 24/7. You only hear from leads who already know the price and still want to book.",
-    features: ["Patio, landscaping & more", "Project-specific questions", "Instant line-item breakdown", "Saves 15–20 hrs/week", "Postcode & area checks", "Contact info collected after quote"],
+    title: "AI Chatbot\n& Qualifier",
+    titleGold: "24/7 on Your Site",
+    subtitle: "Engages every visitor, filters out time-wasters, passes the rest straight to you.",
+    desc: "The chatbot greets every visitor, asks about budget, location and timeline, and makes a decision. Wrong area, wrong budget, not the right fit? It declines politely — you never hear about it. Serious lead? Their full details land in your inbox.",
+    features: ["Budget, location & timeline check", "Automatic lead scoring", "Declines unfit leads politely", "Owner never bothered by junk", "Instant contact via SMS or email", "24/7 with no extra effort from you"],
     stats: [
-      { label: "Quote delivery", val: "<2s" },
-      { label: "Hours saved", val: "15–20/wk" },
-      { label: "Wasted calls", val: "0" },
+      { label: "Qualified leads", val: "+300%" },
+      { label: "Response time", val: "<2s" },
+      { label: "Junk leads reaching you", val: "0" },
     ],
     href: "/services/ai-lead-generation",
     cta: "See How It Works",
@@ -56,35 +57,42 @@ const services = [
     num: "03",
     tag: "Website",
     tagPulse: false,
-    title: "Premium\nWebsites",
-    titleGold: "That Convert",
-    subtitle: "Luxury websites that turn visitors into high-value clients.",
-    desc: "Premium, conversion-optimised websites built exclusively for landscaping businesses. Luxury design with smart lead capture — your website becomes your best salesperson, working 24/7.",
-    features: ["Bespoke luxury design", "Mobile-first & responsive", "Lead capture optimisation", "Fast loading (under 2s)", "CRM integration ready", "Analytics & tracking setup"],
+    title: "Premium\nWebsite",
+    titleGold: "Built to Convert",
+    subtitle: "Luxury websites for landscaping businesses — with local SEO built in.",
+    desc: "A bespoke, fast-loading website that positions you as the premium choice in your area. Built on Next.js or Framer, designed to convert visitors into enquiries — and optimised for local Google search and Google Business Profile from day one.",
+    features: ["Bespoke luxury design", "Mobile-first & under 2s load", "Lead capture & contact forms", "Local SEO built in from day one", "Google Business Profile setup", "Analytics & conversion tracking"],
     stats: [
       { label: "Load time", val: "<2s" },
-      { label: "Conversion boost", val: "+40%" },
-      { label: "Mobile-first", val: "100%" },
+      { label: "Local SEO", val: "Included" },
+      { label: "Google Business", val: "Setup" },
     ],
     href: "/services/website-design",
     cta: "Learn More",
   },
+];
+
+// ── Additional / smaller services ────────────────────────────────────────────
+const extraServices = [
   {
-    num: "04",
-    tag: "SEO",
-    tagPulse: false,
-    title: "SEO &\nMarketing",
-    titleGold: "Local Domination",
-    subtitle: "Dominate local Google search so the right clients find you first.",
-    desc: "Get found by the right customers at the right time. Our SEO strategies are built specifically for landscaping businesses in the UK — so you rank above competitors in your area.",
-    features: ["Local SEO domination", "Google Business Profile", "Keyword strategy & content", "Link building", "Monthly reporting", "Competitor analysis"],
-    stats: [
-      { label: "Google ranking", val: "Top 3" },
-      { label: "Local visibility", val: "+80%" },
-      { label: "Reporting", val: "Monthly" },
-    ],
-    href: "/services/seo-marketing",
-    cta: "Learn More",
+    icon: "★",
+    title: "AI Review Agent",
+    desc: "After a job is done, the AI automatically messages the client asking them to rate their experience from 1–10. Score 7 or above? They get a direct link to leave a Google review. Below 7? The AI asks what went wrong — so you can fix it before it becomes a public complaint.",
+  },
+  {
+    icon: "◆",
+    title: "AI Receptionist",
+    desc: "An AI that answers calls exactly like a real receptionist — takes down the caller's name, number and reason for calling, and sends you a summary. Can run 24/7 or only kick in out of hours / when you don't pick up. Never miss a lead because you were on a job.",
+  },
+  {
+    icon: "◈",
+    title: "SEO & Google Business",
+    desc: "Already have a website? We handle your local SEO and Google Business Profile setup separately — keyword strategy, content, local citations, and monthly reporting so you climb the rankings in your area.",
+  },
+  {
+    icon: "▲",
+    title: "Operations Dashboard",
+    desc: "A bespoke dashboard that keeps your landscaping jobs perfectly sorted. It automatically logs what work was done, when it happened, the final cost, and the client's review. A crystal-clear picture of your daily operations — helping you spot your most profitable jobs and keeping admin strictly to a minimum.",
   },
 ];
 
@@ -114,7 +122,7 @@ export default function ServicesPage() {
             <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ transformOrigin: "left" }} />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">What I Do</span>
           </motion.div>
-          {["FOUR SERVICES.", "ONE GOAL."].map((line, i) => (
+          {["THREE CORE SERVICES.", "ONE GOAL."].map((line, i) => (
             <div key={line} className="overflow-hidden">
               <motion.h1 initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2 + i * 0.12, ease: SPRING }}
                 className={`font-grotesk font-bold text-[clamp(48px,8vw,120px)] leading-[0.9] tracking-[-0.04em] ${i === 1 ? "text-gradient-gold" : "text-cream"}`}>
@@ -150,7 +158,7 @@ export default function ServicesPage() {
         </div>
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 py-16 md:py-24 space-y-6 relative z-10">
-          {services.map((svc, i) => (
+          {coreServices.map((svc, i) => (
             <Reveal key={svc.num} delay={i * 0.06}>
               <div className="relative bg-[#0D0D0D] border border-gold/20 hover:border-gold/50 rounded-3xl overflow-hidden transition-all duration-300 group hover:-translate-y-1">
                 {/* Top gold line */}
@@ -232,14 +240,54 @@ export default function ServicesPage() {
         </div>
 
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
+        {/* ── ALSO AVAILABLE ── */}
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 py-16 md:py-20 relative z-10">
+          <Reveal className="mb-10">
+            <div className="flex items-center gap-4 mb-3">
+              <span className="w-8 h-px bg-gold/40 block" />
+              <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.25em] text-gold/50">Also Available</span>
+            </div>
+            <h3 className="font-grotesk font-bold text-[clamp(22px,3vw,40px)] text-cream/80 tracking-[-0.02em]">
+              More tools I build
+            </h3>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {extraServices.map((svc, i) => (
+              <Reveal key={svc.title} delay={i * 0.07}>
+                <div className="relative bg-[#0A0A0A] border border-white/[0.06] hover:border-gold/35 hover:-translate-y-1 rounded-2xl p-6 flex flex-col gap-3 transition-all duration-300 group h-full">
+                  <div className="w-10 h-10 rounded-xl bg-gold/8 border border-gold/15 flex items-center justify-center text-gold text-base group-hover:bg-gold/15 group-hover:border-gold/30 transition-all duration-300 flex-shrink-0">
+                    {svc.icon}
+                  </div>
+                  <h4 className="font-grotesk font-bold text-sm text-cream group-hover:text-gold transition-colors duration-300">{svc.title}</h4>
+                  <p className="font-inter text-xs text-text-muted leading-relaxed flex-1">{svc.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Book a call CTA */}
+          <Reveal className="mt-10">
+            <div className="relative bg-[#0D0D0D] border border-gold/15 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 0% 50%, rgba(212,175,55,0.05) 0%, transparent 60%)" }} />
+              <div className="relative z-10">
+                <p className="font-grotesk font-bold text-base text-cream mb-1">Have a different idea in mind?</p>
+                <p className="font-inter text-sm text-text-muted">If you need something that&apos;s not listed here, get in touch — if it helps landscapers win better clients, I can probably build it.</p>
+              </div>
+              <a href="tel:+447478075473"
+                className="relative z-10 flex-shrink-0 inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 whitespace-nowrap">
+                Book a Call →
+              </a>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* ── PRICING ── */}
       <section className="py-16 md:py-28 bg-[#0A0A0A] relative overflow-hidden">
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 700, height: 700, top: "50%", right: "-15%", transform: "translateY(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(90px)" }}
-          animate={{ scale: [1, 1.15, 1], x: [0, -30, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} />
+        <div className="absolute rounded-full orb-2 pointer-events-none" style={{ width: 700, height: 700, top: "50%", right: "-15%", transform: "translateY(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.11) 0%, transparent 60%)", filter: "blur(90px)" }} />
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <Reveal>

@@ -512,90 +512,50 @@ export default function HomePage() {
               Everything You Need<br /><span className="text-gradient-gold">Under One Roof</span>
             </h2>
           </Reveal>
-          {/* Two featured cards: AI Estimator + AI Chatbot — separate products */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          {/* Three core services */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
                 num: "01", tag: "AI Estimator", href: "/services/ai-lead-generation",
                 title: "AI Estimator Agent",
-                italic: "Instant project quotes on your website — no phone call needed.",
-                desc: "A visitor asks for a quote. The AI asks about scope, area, materials, and timeline — then gives an accurate estimate immediately, 24/7. You only hear from leads who already know the price and still want to book.",
-                features: ["Instant estimates 24/7", "Project-specific questions", "Patio, landscaping & more", "Saves 15–20 hrs/week"],
-                stats: [{ label: "Response time", val: "<2s" }, { label: "Hours saved", val: "15–20/wk" }],
+                italic: "Instant project quotes — no phone call needed.",
+                desc: "Visitors ask for a quote. The AI collects area, materials, postcode and timeline, then gives an accurate estimate immediately. You hear from leads who already know the price.",
+                features: ["Project-specific questions", "Instant line-item estimate", "Contact collected after quote", "Saves 15–20 hrs/week"],
               },
               {
                 num: "02", tag: "AI Chatbot", href: "/services/ai-lead-generation",
-                title: "AI Lead Qualification",
-                italic: "24/7 lead filtering — only serious buyers ever reach you.",
-                desc: "Every visitor gets engaged by an AI that qualifies them on budget, location, and timeline. If they're not a fit, the AI declines politely. If they are, their details land in your inbox — ready to book.",
-                features: ["Budget & location check", "Automatic lead scoring", "Declines bad fits politely", "Owner never bothered"],
-                stats: [{ label: "Qualified leads", val: "+300%" }, { label: "Wasted calls", val: "0" }],
+                title: "AI Chatbot",
+                italic: "Qualifies leads 24/7, filters out time-wasters.",
+                desc: "The chatbot greets every visitor, checks budget, location and timeline, and makes a decision. Wrong fit? It declines politely. Right fit? Their details land straight in your inbox.",
+                features: ["Budget & location check", "Automatic lead scoring", "Declines bad fits politely", "Instant alert to you"],
+              },
+              {
+                num: "03", tag: "Website", href: "/services/website-design",
+                title: "Premium Website",
+                italic: "Built to convert — with local SEO included.",
+                desc: "A bespoke, fast-loading website that positions you as the premium choice. Luxury design, smart lead capture, local SEO and Google Business Profile setup from day one.",
+                features: ["Bespoke luxury design", "Under 2s load time", "Local SEO built in", "Google Business setup"],
               },
             ].map((card, i) => (
               <Reveal key={card.num} delay={i * 0.1}>
                 <TiltCard className="h-full">
                   <Link href={card.href} className="block h-full group">
-                    <div className="relative bg-[#111111] border border-gold/20 group-hover:border-gold/55 p-7 md:p-9 h-full flex flex-col transition-all duration-300 rounded-3xl overflow-hidden group-hover:-translate-y-1.5">
-                      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+                    <div className="relative bg-[#111111] border border-gold/18 group-hover:border-gold/50 p-7 h-full flex flex-col transition-all duration-300 rounded-3xl overflow-hidden group-hover:-translate-y-1.5 min-h-[360px]">
+                      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/45 to-transparent" />
                       <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        style={{ background: "radial-gradient(ellipse at 30% 0%, rgba(212,175,55,0.08) 0%, transparent 60%)" }} />
+                        style={{ background: "radial-gradient(ellipse at 30% 0%, rgba(212,175,55,0.07) 0%, transparent 60%)" }} />
                       <div className="relative z-10 flex flex-col h-full">
                         <div className="flex items-start justify-between mb-5">
-                          <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 px-3 py-1.5 rounded-full">
+                          <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/25 px-3 py-1.5 rounded-full">
                             <motion.span className="w-1.5 h-1.5 rounded-full bg-gold" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
                             <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{card.tag}</span>
                           </div>
-                          <motion.span className="font-grotesk font-bold text-[52px] leading-none text-white/[0.04] group-hover:text-gold/10 transition-colors duration-500">{card.num}</motion.span>
+                          <span className="font-grotesk font-bold text-[48px] leading-none text-white/[0.04] group-hover:text-gold/10 transition-colors duration-500 select-none">{card.num}</span>
                         </div>
-                        <h3 className="font-grotesk font-bold text-xl md:text-2xl text-cream mb-2 tracking-tight group-hover:text-gold transition-colors duration-300">{card.title}</h3>
+                        <h3 className="font-grotesk font-bold text-xl text-cream mb-2 tracking-tight group-hover:text-gold transition-colors duration-300">{card.title}</h3>
                         <p className="font-cormorant text-sm text-gold/50 italic mb-3 leading-relaxed">{card.italic}</p>
                         <p className="font-inter text-text-muted text-sm leading-relaxed mb-5 flex-1">{card.desc}</p>
-                        <ul className="space-y-2 mb-5">
-                          {card.features.map((f) => (
-                            <li key={f} className="flex items-center gap-3 font-inter text-xs text-text-muted group-hover:text-cream/60 transition-colors duration-300">
-                              <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />{f}
-                            </li>
-                          ))}
-                        </ul>
-                        <div className="flex items-center gap-4 pt-4 border-t border-white/[0.04]">
-                          {card.stats.map((s) => (
-                            <div key={s.label}>
-                              <div className="font-grotesk font-bold text-lg text-gold">{s.val}</div>
-                              <div className="font-inter text-[10px] text-text-muted">{s.label}</div>
-                            </div>
-                          ))}
-                          <div className="ml-auto flex items-center gap-2 font-grotesk font-semibold text-sm text-gold/40 group-hover:text-gold transition-all duration-300">
-                            Learn More →
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </TiltCard>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Website + SEO */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {[
-              { num: "03", title: "Premium Websites", href: "/services/website-design", desc: "Conversion-focused, luxury websites in Next.js or Framer. Fast, premium, turns visitors into clients.", features: ["Custom design", "Mobile-first", "Lead capture optimised", "Under 2s load"], accent: "Website" },
-              { num: "04", title: "SEO & Marketing", href: "/services/seo-marketing", desc: "Dominate local Google search so the right clients find you first, every time.", features: ["Local SEO", "Google Business", "Keyword strategy", "Monthly reporting"], accent: "SEO" },
-            ].map((card, i) => (
-              <Reveal key={card.num} delay={i * 0.1}>
-                <TiltCard className="h-full">
-                  <Link href={card.href} className="block h-full group">
-                    <div className="relative bg-[#111111] border border-white/[0.05] group-hover:border-gold/40 p-7 md:p-9 h-full flex flex-col transition-all duration-300 min-h-[280px] rounded-3xl overflow-hidden group-hover:-translate-y-1.5">
-                      <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/30 transition-all duration-500" />
-                      <div className="relative z-10 flex flex-col h-full">
-                        <div className="flex items-start justify-between mb-6">
-                          <motion.span className="font-grotesk font-bold text-[52px] leading-none text-white/[0.04] group-hover:text-gold/10 transition-colors duration-500">{card.num}</motion.span>
-                          <span className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/40 border border-gold/12 px-3 py-1.5 rounded-full group-hover:border-gold/40 group-hover:text-gold transition-all duration-300">{card.accent}</span>
-                        </div>
-                        <h3 className="font-grotesk font-bold text-xl text-cream mb-3 tracking-tight group-hover:text-gold transition-colors duration-300">{card.title}</h3>
-                        <p className="font-inter text-text-muted text-sm leading-relaxed mb-5 flex-1">{card.desc}</p>
-                        <ul className="space-y-2 mb-5">
+                        <ul className="space-y-2 mb-5 pt-4 border-t border-white/[0.04]">
                           {card.features.map((f) => (
                             <li key={f} className="flex items-center gap-3 font-inter text-xs text-text-muted group-hover:text-cream/60 transition-colors duration-300">
                               <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />{f}
