@@ -71,7 +71,7 @@ export default function Footer() {
           <div>
             <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">Connect</h4>
             <ul className="space-y-3">
-              <li><a href="mailto:landscale.agency@gmail.com" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">Email</a></li>
+              <li><a href="mailto:landscale.agency@gmail.com" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">landscale.agency@gmail.com</a></li>
               <li><a href="#" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">Instagram (coming soon)</a></li>
               <li><a href="#" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">LinkedIn (coming soon)</a></li>
             </ul>

@@ -560,15 +560,10 @@ export default function HomePage() {
             </p>
           </Reveal>
           <Reveal delay={0.35}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/contact" className="group inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-lg px-12 py-6 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] hover:-translate-y-1.5">
-                Book Free Audit Call
-                <motion.span animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="text-xl">→</motion.span>
-              </Link>
-              <a href="mailto:landscale.agency@gmail.com" className="font-inter text-text-muted/60 text-sm hover:text-gold transition-colors">
-                or email landscale.agency@gmail.com
-              </a>
-            </div>
+            <Link href="/contact" className="group inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-lg px-12 py-6 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] hover:-translate-y-1.5">
+              Book Free Audit Call
+              <motion.span animate={{ x: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="text-xl">→</motion.span>
+            </Link>
           </Reveal>
         </div>
       </section>
