@@ -128,21 +128,20 @@ export default function HomePage() {
 
           <div className="mb-10">
             <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em]">
-              {["STOP CHASING", "DEAD LEADS,"].map((line, i) => (
+              <div className="overflow-hidden">
+                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }}
+                  className="text-[clamp(52px,9vw,128px)] text-gradient-gold">
+                  LANDSCAPERS
+                </motion.div>
+              </div>
+              {["STOP CHASING", "DEAD LEADS."].map((line, i) => (
                 <div key={line} className="overflow-hidden">
-                  <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2 + i * 0.12, ease: SPRING }}
-                    className={`text-[clamp(52px,9vw,128px)] ${i === 1 ? "text-gradient-gold" : "text-cream"}`}>
+                  <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32 + i * 0.12, ease: SPRING }}
+                    className="text-[clamp(52px,9vw,128px)] text-cream">
                     {line}
                   </motion.div>
                 </div>
               ))}
-              <div className="overflow-hidden">
-                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
-                  className="text-[clamp(52px,9vw,128px)] text-cream/20"
-                  style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
-                  LANDSCAPERS.
-                </motion.div>
-              </div>
             </h1>
           </div>
 
@@ -246,8 +245,8 @@ export default function HomePage() {
                         { label: "Before", val: "2+ hrs/day chasing unqualified leads", bad: true },
                         { label: "After", val: "Only serious buyers, ready to book", bad: false },
                       ].map((row) => (
-                        <div key={row.label} className={`flex items-start gap-4 p-4 rounded-2xl border ${row.bad ? "bg-red-950/10 border-red-900/20" : "bg-gold/5 border-gold/20"}`}>
-                          <div className={`font-grotesk text-[10px] font-bold uppercase tracking-[0.1em] flex-shrink-0 w-16 pt-0.5 ${row.bad ? "text-red-400/60" : "text-gold/70"}`}>{row.label}</div>
+                        <div key={row.label} className={`flex items-start gap-4 p-4 rounded-2xl border ${row.bad ? "bg-white/[0.03] border-white/[0.08]" : "bg-gold/5 border-gold/20"}`}>
+                          <div className={`font-grotesk text-[10px] font-bold uppercase tracking-[0.1em] flex-shrink-0 w-16 pt-0.5 ${row.bad ? "text-cream/30" : "text-gold/70"}`}>{row.label}</div>
                           <div className="font-inter text-cream/80 text-sm">{row.val}</div>
                         </div>
                       ))}
@@ -519,36 +518,6 @@ export default function HomePage() {
                 <Link href="/contact" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
                   Book Your Free Audit →
                 </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── LEAD MAGNET ── */}
-      <section className="py-24 bg-[#0D0D0D] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <motion.div className="absolute rounded-full" style={{ width: 600, height: 600, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 65%)", filter: "blur(80px)" }}
-            animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
-        </div>
-        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
-          <Reveal>
-            <div className="relative bg-[#111111] border border-gold/10 rounded-3xl p-10 md:p-16 text-center overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-              <div className="relative z-10">
-                <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5 justify-center"><span className="w-8 h-px bg-gold" />Free Guide</span>
-                <h2 className="font-grotesk font-bold text-[clamp(28px,4vw,52px)] text-cream leading-tight tracking-[-0.02em] mb-4">
-                  10 Ways Landscapers<br /><span className="text-gradient-gold">Lose Leads</span> (And How to Fix Them)
-                </h2>
-                <p className="font-inter text-text-muted text-base leading-relaxed max-w-xl mx-auto mb-8">
-                  Download the free guide — discover why your website isn&apos;t converting, what the #1 quoting mistake is, and simple fixes that boost lead quality instantly.
-                </p>
-                <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
-                  <input type="email" placeholder="your@email.com" className="flex-1 px-6 py-4 rounded-full bg-white/[0.04] border border-white/[0.08] focus:border-gold text-cream font-inter text-sm outline-none transition-colors placeholder:text-text-muted" />
-                  <button type="submit" className="bg-gold text-deep-black font-grotesk font-bold text-sm px-7 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] whitespace-nowrap">
-                    Download Now →
-                  </button>
-                </form>
               </div>
             </div>
           </Reveal>

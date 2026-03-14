@@ -15,8 +15,11 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto px-8 md:px-16">
         {/* CTA */}
         <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="mb-20 max-w-2xl">
-          <p className="font-grotesk font-bold text-3xl md:text-4xl text-cream leading-tight mb-6">
+          <p className="font-grotesk font-bold text-3xl md:text-4xl text-cream leading-tight mb-3">
             Ready to dominate your{" "}<span className="text-gradient-gold">local market?</span>
+          </p>
+          <p className="font-cormorant text-lg text-cream/45 font-light italic leading-relaxed mb-7">
+            Book a free 30-minute audit. I&apos;ll show you exactly where you&apos;re losing leads and how to fix it — no obligation.
           </p>
           <Link href="/contact" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
             Book Your Free Audit <span className="text-lg">→</span>

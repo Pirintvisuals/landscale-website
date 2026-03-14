@@ -96,3 +96,9 @@ input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: #D4AF37 !important;
 }
+
+/* ── Cursor pulse keyframe ── */
+@keyframes cursorPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.15; transform: scale(1.3); }
+}

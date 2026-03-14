@@ -1,74 +1,95 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const ARROW = "M 2 2 L 2 18 L 6 14 L 10 22 L 12.5 21 L 8.5 13 L 14 13 Z";
-
-interface TrailDot { id: number; x: number; y: number; opacity: number }
+const TRAIL_COUNT = 6;
 
 export default function CustomCursor() {
-  const [isTouch, setIsTouch] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHover, setIsHover] = useState(false);
-  const [isButton, setIsButton] = useState(false);
-  const [trail, setTrail] = useState<TrailDot[]>([]);
-
-  const trailRef = useRef<TrailDot[]>([]);
-  const trailIdRef = useRef(0);
+  const mainRef = useRef<HTMLDivElement>(null);
+  const trailRefs = useRef<HTMLDivElement[]>([]);
+  const target = useRef({ x: -200, y: -200 });
+  const pos = useRef({ x: -200, y: -200 });
+  const trail = useRef<{ x: number; y: number }[]>(
+    Array.from({ length: TRAIL_COUNT }, () => ({ x: -200, y: -200 }))
+  );
   const rafRef = useRef<number>(0);
-  const posRef = useRef({ x: -100, y: -100 });
-
-  const rawX = useMotionValue(-100);
-  const rawY = useMotionValue(-100);
-  const x = useSpring(rawX, { stiffness: 600, damping: 38, mass: 0.3 });
-  const y = useSpring(rawY, { stiffness: 600, damping: 38, mass: 0.3 });
-
-  const startFade = useCallback(() => {
-    cancelAnimationFrame(rafRef.current);
-    const fade = () => {
-      trailRef.current = trailRef.current
-        .map((d) => ({ ...d, opacity: d.opacity * 0.78 }))
-        .filter((d) => d.opacity > 0.025);
-      setTrail([...trailRef.current]);
-      if (trailRef.current.length > 0) rafRef.current = requestAnimationFrame(fade);
-    };
-    rafRef.current = requestAnimationFrame(fade);
-  }, []);
+  const tiltRef = useRef(0);
+  const tiltTargetRef = useRef(0);
+  const tiltAnimRef = useRef<number>(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.matchMedia("(hover: none)").matches) { setIsTouch(true); return; }
+    if (window.matchMedia("(hover: none)").matches) return;
 
-    const onMove = (e: MouseEvent) => {
-      const cx = e.clientX;
-      const cy = e.clientY;
-      posRef.current = { x: cx, y: cy };
-      rawX.set(cx);
-      rawY.set(cy);
-      if (!isVisible) setIsVisible(true);
+    document.documentElement.style.cursor = "none";
 
-      const id = ++trailIdRef.current;
-      trailRef.current = [{ id, x: cx, y: cy, opacity: 0.5 }, ...trailRef.current.slice(0, 7)];
-      setTrail([...trailRef.current]);
-      startFade();
+    const tick = () => {
+      // Snap main cursor — lerp 0.72 = near-instant, no lag
+      pos.current.x += (target.current.x - pos.current.x) * 0.72;
+      pos.current.y += (target.current.y - pos.current.y) * 0.72;
+
+      if (mainRef.current) {
+        mainRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px) rotate(${tiltRef.current}deg)`;
+      }
+
+      // Trail chain
+      trail.current[0].x += (pos.current.x - trail.current[0].x) * 0.45;
+      trail.current[0].y += (pos.current.y - trail.current[0].y) * 0.45;
+      for (let i = 1; i < TRAIL_COUNT; i++) {
+        trail.current[i].x += (trail.current[i - 1].x - trail.current[i].x) * 0.45;
+        trail.current[i].y += (trail.current[i - 1].y - trail.current[i].y) * 0.45;
+      }
+      trailRefs.current.forEach((el, i) => {
+        if (!el) return;
+        el.style.transform = `translate(${trail.current[i].x}px, ${trail.current[i].y}px) scale(${1 - i * 0.1})`;
+        el.style.opacity = String((1 - i / TRAIL_COUNT) * 0.32);
+      });
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+
+    // Tilt lerp loop
+    const animTilt = () => {
+      tiltRef.current += (tiltTargetRef.current - tiltRef.current) * 0.18;
+      if (Math.abs(tiltTargetRef.current - tiltRef.current) > 0.1) {
+        tiltAnimRef.current = requestAnimationFrame(animTilt);
+      } else {
+        tiltRef.current = tiltTargetRef.current;
+      }
     };
 
-    const onLeave = () => setIsVisible(false);
-    const onEnter = () => setIsVisible(true);
+    const onMove = (e: MouseEvent) => {
+      target.current = { x: e.clientX, y: e.clientY };
+      if (mainRef.current) mainRef.current.style.opacity = "1";
+    };
+    const onLeave = () => { if (mainRef.current) mainRef.current.style.opacity = "0"; };
+    const onEnter = () => { if (mainRef.current) mainRef.current.style.opacity = "1"; };
 
-    const onEnterInteractive = () => { setIsHover(true); };
-    const onLeaveInteractive = () => { setIsHover(false); setIsButton(false); };
-    const onEnterButton = () => { setIsHover(true); setIsButton(true); };
+    const setHover = (hover: boolean, btn: boolean) => {
+      tiltTargetRef.current = btn ? -18 : 0;
+      cancelAnimationFrame(tiltAnimRef.current);
+      animTilt();
+
+      const svg = mainRef.current?.querySelector("svg");
+      if (svg) {
+        svg.style.filter = hover
+          ? "drop-shadow(0 0 10px rgba(212,175,55,0.95)) drop-shadow(0 0 4px rgba(255,220,80,1))"
+          : "drop-shadow(0 0 5px rgba(212,175,55,0.95)) drop-shadow(0 0 1.5px rgba(255,220,80,1))";
+      }
+      const path = mainRef.current?.querySelector("path");
+      if (path) path.setAttribute("fill", hover ? "#FFD700" : "#D4AF37");
+    };
 
     const bindElements = () => {
       document.querySelectorAll("a, [role='button']").forEach((el) => {
-        el.addEventListener("mouseenter", onEnterInteractive);
-        el.addEventListener("mouseleave", onLeaveInteractive);
+        el.addEventListener("mouseenter", () => setHover(true, false));
+        el.addEventListener("mouseleave", () => setHover(false, false));
       });
       document.querySelectorAll("button").forEach((el) => {
-        el.addEventListener("mouseenter", onEnterButton);
-        el.addEventListener("mouseleave", onLeaveInteractive);
+        el.addEventListener("mouseenter", () => setHover(true, true));
+        el.addEventListener("mouseleave", () => setHover(false, false));
       });
     };
 
@@ -81,82 +102,57 @@ export default function CustomCursor() {
     document.addEventListener("mouseenter", onEnter);
 
     return () => {
+      document.documentElement.style.cursor = "";
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseenter", onEnter);
       observer.disconnect();
       cancelAnimationFrame(rafRef.current);
+      cancelAnimationFrame(tiltAnimRef.current);
     };
-  }, [rawX, rawY, isVisible, startFade]);
-
-  if (isTouch) return null;
-
-  const glowBlur = isHover ? 10 : 5;
-  const glowSpread = isHover ? 3 : 1.5;
-  const tilt = isButton ? -18 : 0;
+  }, []);
 
   return (
     <>
-      {/* ── Trail arrows ── */}
-      {trail.map((dot, i) => {
-        const scale = 1 - i * 0.09;
-        return (
-          <div
-            key={dot.id}
-            className="fixed pointer-events-none z-[9997]"
-            style={{
-              left: dot.x,
-              top: dot.y,
-              opacity: dot.opacity * (1 - i * 0.1),
-              transform: `scale(${scale})`,
-              transformOrigin: "0 0",
-              willChange: "opacity",
-            }}>
-            <svg width="16" height="24" viewBox="0 0 16 26" fill="none"
-              style={{ filter: `drop-shadow(0 0 ${3 - i * 0.3}px rgba(212,175,55,${0.6 - i * 0.06}))` }}>
-              <path d={ARROW} fill="rgba(212,175,55,0.5)" stroke="rgba(212,175,55,0.3)" strokeWidth="0.5" />
-            </svg>
-          </div>
-        );
-      })}
+      {/* Trail */}
+      {Array.from({ length: TRAIL_COUNT }).map((_, i) => (
+        <div
+          key={i}
+          ref={(el) => { if (el) trailRefs.current[i] = el; }}
+          className="fixed top-0 left-0 pointer-events-none z-[9997]"
+          style={{ willChange: "transform, opacity", opacity: 0 }}
+        >
+          <svg width="14" height="22" viewBox="0 0 16 26" fill="none"
+            style={{ filter: `drop-shadow(0 0 ${3 - i * 0.4}px rgba(212,175,55,0.7))` }}>
+            <path d={ARROW} fill="rgba(212,175,55,0.5)" />
+          </svg>
+        </div>
+      ))}
 
-      {/* ── Main cursor arrow ── */}
-      <motion.div
+      {/* Main cursor */}
+      <div
+        ref={mainRef}
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
-        style={{ x, y, opacity: isVisible ? 1 : 0 }}
-        animate={{ rotate: tilt }}
-        transition={{ type: "spring", stiffness: 300, damping: 22 }}>
-
-        {/* Outer glow halo */}
-        <motion.div
-          className="absolute rounded-full pointer-events-none"
-          animate={isHover
-            ? { opacity: [0.5, 0.2, 0.5], scale: [1, 1.4, 1] }
-            : { opacity: [0.2, 0.07, 0.2], scale: [1, 1.2, 1] }}
-          transition={{ duration: isHover ? 0.9 : 1.8, repeat: Infinity, ease: "easeInOut" }}
+        style={{ willChange: "transform", opacity: 0 }}
+      >
+        <div
+          className="absolute rounded-full"
           style={{
             width: 36, height: 36,
             top: -8, left: -8,
-            background: "radial-gradient(circle, rgba(212,175,55,0.6) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(212,175,55,0.55) 0%, transparent 70%)",
             filter: "blur(10px)",
+            animation: "cursorPulse 1.8s ease-in-out infinite",
           }}
         />
-
-        {/* Arrow SVG */}
         <svg width="16" height="24" viewBox="0 0 16 26" fill="none"
           style={{
-            filter: `drop-shadow(0 0 ${glowBlur}px rgba(212,175,55,0.95)) drop-shadow(0 0 ${glowSpread}px rgba(255,220,80,1))`,
-            transition: "filter 0.25s ease",
+            filter: "drop-shadow(0 0 5px rgba(212,175,55,0.95)) drop-shadow(0 0 1.5px rgba(255,220,80,1))",
+            transition: "filter 0.2s ease",
           }}>
-          <path d={ARROW}
-            fill={isHover ? "#FFD700" : "#D4AF37"}
-            stroke={isHover ? "rgba(255,240,120,0.9)" : "rgba(212,175,55,0.6)"}
-            strokeWidth="0.75"
-            strokeLinejoin="round"
-            style={{ transition: "fill 0.2s ease" }}
-          />
+          <path d={ARROW} fill="#D4AF37" stroke="rgba(212,175,55,0.6)" strokeWidth="0.75" strokeLinejoin="round" />
         </svg>
-      </motion.div>
+      </div>
     </>
   );
 }
