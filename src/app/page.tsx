@@ -464,6 +464,7 @@ export default function HomePage() {
                 italic: "Instant project quotes — no phone call needed.",
                 desc: "Visitors ask for a quote. The AI collects area, materials, postcode and timeline, then gives an accurate estimate immediately. You hear from leads who already know the price.",
                 features: ["Project-specific questions", "Instant line-item estimate", "Contact collected after quote", "Saves 15–20 hrs/week"],
+                stats: [{ val: "24/7", label: "Availability" }, { val: "<2s", label: "Response" }, { val: "0", label: "Missed leads" }],
               },
               {
                 num: "02", tag: "AI Chatbot", href: "/services/ai-lead-generation",
@@ -471,13 +472,15 @@ export default function HomePage() {
                 italic: "Qualifies leads 24/7, filters out time-wasters.",
                 desc: "The chatbot greets every visitor, checks budget, location and timeline, and makes a decision. Wrong fit? It declines politely. Right fit? Their details land straight in your inbox.",
                 features: ["Budget & location check", "Automatic lead scoring", "Declines bad fits politely", "Instant alert to you"],
+                stats: [{ val: "+300%", label: "Qualified leads" }, { val: "<2s", label: "Response" }, { val: "0", label: "Junk leads" }],
               },
               {
                 num: "03", tag: "Website", href: "/services/website-design",
                 title: "Premium Website",
                 italic: "Built to convert — with local SEO included.",
                 desc: "A bespoke, fast-loading website that positions you as the premium choice. Luxury design, smart lead capture, local SEO and Google Business Profile setup from day one.",
-                features: ["Bespoke luxury design", "Under 2s load time", "Local SEO built in", "Google Business setup"],
+                features: ["Bespoke luxury design", "<0.8s load time", "Local SEO built in", "Google Business setup"],
+                stats: [{ val: "100", label: "PageSpeed" }, { val: "<0.8s", label: "Load time" }, { val: "100", label: "SEO Score" }],
               },
             ].map((card, i) => (
               <Reveal key={card.num} delay={i * 0.1}>
@@ -497,7 +500,16 @@ export default function HomePage() {
                         <h3 className="font-grotesk font-bold text-xl text-cream mb-2 tracking-tight group-hover:text-gold transition-colors duration-300">{card.title}</h3>
                         <p className="font-cormorant text-sm text-gold/50 italic mb-3 leading-relaxed">{card.italic}</p>
                         <p className="font-inter text-text-muted text-sm leading-relaxed mb-5 flex-1">{card.desc}</p>
-                        <ul className="space-y-2 mb-5 pt-4 border-t border-white/[0.04]">
+                        {/* Metric stats */}
+                        <div className="grid grid-cols-3 gap-2 mb-5 pt-4 border-t border-white/[0.04]">
+                          {card.stats.map((s) => (
+                            <div key={s.label} className="flex flex-col items-center bg-[#0A0A0A] border border-white/[0.05] group-hover:border-gold/15 rounded-xl py-2.5 transition-colors duration-300">
+                              <span className="font-grotesk font-bold text-sm text-gold leading-none">{s.val}</span>
+                              <span className="font-inter text-[9px] text-text-muted mt-1 text-center">{s.label}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <ul className="space-y-2 mb-5">
                           {card.features.map((f) => (
                             <li key={f} className="flex items-center gap-3 font-inter text-xs text-text-muted group-hover:text-cream/60 transition-colors duration-300">
                               <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />{f}
