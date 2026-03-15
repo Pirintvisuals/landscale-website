@@ -18,6 +18,11 @@ const projects = [
     tag: "Website Design",
     desc: "Professional landscaping company with decades of experience but a dated web presence. Needed a site that matched the quality of their work and started capturing leads automatically.",
     what: ["Custom Framer website", "Multilingual (HU/EN)", "Smart contact forms", "Mobile-first design"],
+    metrics: [
+      { label: "Performance", val: "96" },
+      { label: "SEO", val: "100" },
+      { label: "Load time", val: "<1s" },
+    ],
     url: "https://lavothakertkft.framer.website/",
     file: "lavothakertkft",
     index: "01",
@@ -30,6 +35,11 @@ const projects = [
     tag: "Website + Lead Capture",
     desc: "High-end residential landscaping business targeting premium clients. The brief: look as luxurious as the gardens they build. Elegant design with conversion-optimised lead capture throughout.",
     what: ["Luxury Framer build", "Premium photography layout", "Lead capture optimisation", "Portfolio showcase"],
+    metrics: [
+      { label: "Performance", val: "96" },
+      { label: "SEO", val: "100" },
+      { label: "Load time", val: "<0.8s" },
+    ],
     url: "https://mimosagardens.framer.website/",
     file: "mimosa-gardens",
     index: "02",
@@ -42,6 +52,11 @@ const projects = [
     tag: "Custom Next.js Build",
     desc: "Engineering office needing a professional web platform to showcase technical projects, attract quality clients, and handle enquiries. Built from scratch in Next.js for full performance and control.",
     what: ["Custom Next.js build", "Portfolio & project showcase", "Technical documentation", "Client enquiry system"],
+    metrics: [
+      { label: "Performance", val: "96" },
+      { label: "Best Practices", val: "100" },
+      { label: "Load time", val: "<0.6s" },
+    ],
     url: "https://viszcad.vercel.app/index.html",
     file: "viszcad",
     index: "03",
@@ -54,6 +69,11 @@ const projects = [
     tag: "AI Chatbot + Estimator + Smart Forms",
     desc: "A full demonstration of everything Landscale can build — live AI chatbot for lead qualification, an instant estimator agent, and smart form automation. This is the gold standard for landscaping websites.",
     what: ["Live AI chatbot", "Instant estimator agent", "Smart form automation", "Full Framer build"],
+    metrics: [
+      { label: "Performance", val: "96" },
+      { label: "SEO", val: "100" },
+      { label: "Availability", val: "100" },
+    ],
     url: "https://landscaletemplate.framer.website/",
     file: "landscale-template",
     index: "04",
@@ -188,6 +208,20 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
                       {item}
                     </motion.span>
                   ))}
+                </div>
+              </div>
+
+              {/* Performance metrics */}
+              <div className="flex flex-wrap items-center gap-3">
+                {project.metrics.map((m) => (
+                  <div key={m.label} className="flex flex-col items-center bg-[#0A0A0A] border border-gold/15 rounded-xl px-4 py-2.5 min-w-[72px]">
+                    <span className="font-grotesk font-bold text-base text-gold leading-none">{m.val}</span>
+                    <span className="font-inter text-[10px] text-text-muted mt-1">{m.label}</span>
+                  </div>
+                ))}
+                <div className="flex flex-col items-center bg-[#0A0A0A] border border-white/[0.07] rounded-xl px-4 py-2.5">
+                  <span className="font-grotesk font-bold text-base text-cream/70 leading-none">Mobile</span>
+                  <span className="font-inter text-[10px] text-text-muted mt-1">Optimized</span>
                 </div>
               </div>
 

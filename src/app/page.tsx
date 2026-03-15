@@ -623,6 +623,39 @@ export default function HomePage() {
       </section>
 
 
+      {/* ── TRUST METRICS ── */}
+      <section className="py-16 md:py-24 bg-[#080808] relative overflow-hidden">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-gold/20 to-transparent mb-16 md:mb-20" />
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
+          <Reveal className="mb-12 md:mb-16 text-center">
+            <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.25em] text-gold/50 block mb-4">By The Numbers</span>
+            <h2 className="font-grotesk font-bold text-[clamp(28px,4vw,56px)] text-cream tracking-[-0.03em]">
+              Why Landscapers<br /><span className="text-gradient-gold">Trust Landscale</span>
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {[
+              { value: "100/100", label: "Google PageSpeed Score", desc: "Perfect performance on every build" },
+              { value: "<0.8s", label: "Average Load Time", desc: "Faster than 99% of competitor sites" },
+              { value: "5+", label: "Landscaping Businesses", desc: "Live, proven results in the market" },
+              { value: "UK + INT", label: "Coverage", desc: "Serving clients across UK & internationally" },
+            ].map((item, i) => (
+              <Reveal key={item.label} delay={i * 0.08}>
+                <div className="relative bg-[#0D0D0D] border border-white/[0.06] hover:border-gold/30 rounded-2xl p-6 md:p-8 flex flex-col gap-3 transition-all duration-300 group hover:-translate-y-1 h-full">
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.05) 0%, transparent 70%)" }} />
+                  <div className="font-grotesk font-bold text-[clamp(24px,3vw,42px)] text-gradient-gold tracking-[-0.03em] leading-none">
+                    {item.value}
+                  </div>
+                  <div className="font-grotesk font-semibold text-sm text-cream">{item.label}</div>
+                  <p className="font-inter text-xs text-text-muted leading-relaxed">{item.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-gold/20 to-transparent mt-16 md:mt-20" />
+      </section>
+
       {/* ── CHATBOT ── */}
       <Link href="/contact">
         <motion.div className="fixed bottom-6 right-6 z-[200]" whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.94 }}>
