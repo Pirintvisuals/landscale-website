@@ -71,7 +71,7 @@ export default function ContactPage() {
           transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 6 }} />
 
         {/* Watermark */}
-        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[14vw] leading-none text-white/[0.015] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
+        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[14vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
           CONTACT
         </div>
 

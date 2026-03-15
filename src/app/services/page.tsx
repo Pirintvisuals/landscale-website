@@ -114,7 +114,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 opacity-[0.020] pointer-events-none"
           style={{ backgroundImage: "linear-gradient(rgba(212,175,55,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,1) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
 
-        <div className="absolute bottom-0 left-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.015] select-none pointer-events-none tracking-[-0.05em] translate-y-[20%]">
+        <div className="absolute bottom-0 left-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em] translate-y-[20%]">
           SERVICES
         </div>
 
@@ -180,7 +180,7 @@ export default function ServicesPage() {
                         )}
                         <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{svc.tag}</span>
                       </div>
-                      <span className="font-grotesk font-bold text-[56px] leading-none text-white/[0.035] group-hover:text-gold/08 transition-colors duration-500 select-none">{svc.num}</span>
+                      <span className="font-grotesk font-bold text-[56px] leading-none text-white/[0.075] group-hover:text-gold/08 transition-colors duration-500 select-none">{svc.num}</span>
                     </div>
 
                     {/* Title */}
@@ -230,7 +230,7 @@ export default function ServicesPage() {
                       ))}
                     </div>
                     {/* Service number watermark */}
-                    <div className="absolute bottom-6 right-8 font-grotesk font-bold text-[100px] leading-none text-white/[0.02] select-none pointer-events-none">
+                    <div className="absolute bottom-6 right-8 font-grotesk font-bold text-[100px] leading-none text-white/[0.06] select-none pointer-events-none">
                       {svc.num}
                     </div>
                   </div>

@@ -96,14 +96,14 @@ export default function HomePage() {
         </div>
 
         {/* Giant watermark */}
-        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[20vw] leading-none text-white/[0.018] select-none pointer-events-none tracking-[-0.05em] translate-y-[15%]">
+        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[20vw] leading-none text-white/[0.055] select-none pointer-events-none tracking-[-0.05em] translate-y-[15%]">
           LANDSCALE
         </div>
 
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 w-full">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-10">
             <motion.span className="w-8 h-px bg-gold" animate={{ scaleX: [0, 1] }} transition={{ duration: 0.6, delay: 0.2 }} style={{ transformOrigin: "left" }} />
-            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">AI-Powered Marketing for Landscapers</span>
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">AI-Powered Lead Qualification for Landscapers</span>
           </motion.div>
 
           <div className="mb-10">
@@ -420,7 +420,7 @@ export default function HomePage() {
                 {/* Hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%)" }} />
                 {/* Giant background number */}
-                <div className="absolute bottom-0 right-4 font-grotesk font-bold leading-none text-white/[0.03] group-hover:text-gold/[0.06] transition-colors duration-500 select-none pointer-events-none"
+                <div className="absolute bottom-0 right-4 font-grotesk font-bold leading-none text-white/[0.07] group-hover:text-gold/[0.18] transition-colors duration-500 select-none pointer-events-none"
                   style={{ fontSize: "clamp(120px,16vw,240px)" }}>
                   <CountUp target={stat.value} suffix={stat.suffix} />
                 </div>
@@ -473,7 +473,7 @@ export default function HomePage() {
                     {/* Animated border glow */}
                     <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: "inset 0 0 30px rgba(212,175,55,0.06)" }} />
                     <div className="relative z-10">
-                      <motion.div className="font-grotesk font-bold text-[80px] leading-none text-white/[0.04] group-hover:text-gold/12 transition-all duration-700 mb-6 select-none"
+                      <motion.div className="font-grotesk font-bold text-[80px] leading-none text-white/[0.08] group-hover:text-gold/25 transition-all duration-700 mb-6 select-none"
                         whileHover={{ scale: 1.05 }}>
                         {item.num}
                       </motion.div>
@@ -541,7 +541,7 @@ export default function HomePage() {
                             <motion.span className="w-1.5 h-1.5 rounded-full bg-gold" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
                             <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{card.tag}</span>
                           </div>
-                          <span className="font-grotesk font-bold text-[48px] leading-none text-white/[0.04] group-hover:text-gold/10 transition-colors duration-500 select-none">{card.num}</span>
+                          <span className="font-grotesk font-bold text-[48px] leading-none text-white/[0.08] group-hover:text-gold/22 transition-colors duration-500 select-none">{card.num}</span>
                         </div>
                         <h3 className="font-grotesk font-bold text-xl text-cream mb-2 tracking-tight group-hover:text-gold transition-colors duration-300">{card.title}</h3>
                         <p className="font-cormorant text-sm text-gold/50 italic mb-3 leading-relaxed">{card.italic}</p>
@@ -590,7 +590,7 @@ export default function HomePage() {
             transition={{ duration: 17, repeat: Infinity, ease: "easeInOut", delay: 10 }} />
         </div>
         {/* Large decorative text */}
-        <div className="absolute top-0 left-0 font-grotesk font-bold text-[18vw] leading-none text-white/[0.015] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
+        <div className="absolute top-0 left-0 font-grotesk font-bold text-[18vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
             <div className="md:sticky md:top-32">
@@ -618,7 +618,7 @@ export default function HomePage() {
                     whileHover={{ x: 6 }} transition={{ duration: 0.3, ease: "easeOut" }}>
                     <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gold/0 group-hover:bg-gold transition-all duration-300" />
                     <div className="flex items-start gap-6 pl-4">
-                      <span className="font-grotesk font-bold text-[36px] text-white/[0.05] group-hover:text-gold/20 transition-colors duration-500 mt-1 flex-shrink-0 leading-none">{pillar.num}</span>
+                      <span className="font-grotesk font-bold text-[36px] text-white/[0.09] group-hover:text-gold/35 transition-colors duration-500 mt-1 flex-shrink-0 leading-none">{pillar.num}</span>
                       <div>
                         <h3 className="font-grotesk font-bold text-xl md:text-2xl text-cream mb-3 tracking-tight group-hover:text-gold transition-colors duration-300">{pillar.title}</h3>
                         <p className="font-inter text-text-muted text-base leading-relaxed">{pillar.desc}</p>

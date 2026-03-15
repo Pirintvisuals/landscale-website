@@ -92,7 +92,7 @@ export default function AboutPage() {
           transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 5 }} />
 
         {/* Watermark */}
-        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[14vw] leading-none text-white/[0.015] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
+        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[14vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
           STORY
         </div>
 
@@ -121,7 +121,7 @@ export default function AboutPage() {
       {/* ── STORY ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#0D0D0D] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-        <div className="absolute top-0 right-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.012] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
+        <div className="absolute top-0 right-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 700, height: 700, top: "-10%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }}
           animate={{ scale: [1, 1.1, 1], y: [0, -60, 0] }}
@@ -198,7 +198,7 @@ export default function AboutPage() {
                 {/* Top accent on hover */}
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/30 transition-all duration-500" />
                 {/* Giant ghost step */}
-                <div className="absolute bottom-2 right-4 font-grotesk font-bold leading-none text-white/[0.025] group-hover:text-gold/[0.07] transition-colors duration-500 select-none pointer-events-none"
+                <div className="absolute bottom-2 right-4 font-grotesk font-bold leading-none text-white/[0.065] group-hover:text-gold/[0.20] transition-colors duration-500 select-none pointer-events-none"
                   style={{ fontSize: "clamp(90px,12vw,160px)" }}>{item.step}</div>
                 <div className="relative z-10">
                   <div className="font-grotesk font-bold text-[10px] uppercase tracking-[0.3em] text-gold/40 mb-4">{item.step}</div>
@@ -214,7 +214,7 @@ export default function AboutPage() {
 
       {/* ── WHAT MAKES US DIFFERENT ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
-        <div className="absolute left-0 top-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.012] select-none pointer-events-none tracking-[-0.05em]">EDGE</div>
+        <div className="absolute left-0 top-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em]">EDGE</div>
         <motion.div className="absolute rounded-full pointer-events-none"
           style={{ width: 700, height: 700, top: "20%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 60%)", filter: "blur(90px)" }}
           animate={{ scale: [1, 1.12, 1], y: [0, -50, 0] }}
@@ -244,7 +244,7 @@ export default function AboutPage() {
                     whileHover={{ x: 6 }} transition={{ duration: 0.3, ease: "easeOut" }}>
                     <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gold/0 group-hover:bg-gold transition-all duration-300" />
                     <div className="flex items-start gap-6 pl-4">
-                      <span className="font-grotesk font-bold text-[36px] text-white/[0.05] group-hover:text-gold/20 transition-colors duration-500 mt-1 flex-shrink-0 leading-none">{pillar.num}</span>
+                      <span className="font-grotesk font-bold text-[36px] text-white/[0.09] group-hover:text-gold/20 transition-colors duration-500 mt-1 flex-shrink-0 leading-none">{pillar.num}</span>
                       <div>
                         <h3 className="font-grotesk font-bold text-xl md:text-2xl text-cream mb-3 tracking-tight group-hover:text-gold transition-colors duration-300">{pillar.title}</h3>
                         <p className="font-inter text-text-muted text-base leading-relaxed mb-3">{pillar.desc}</p>

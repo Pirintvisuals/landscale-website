@@ -64,7 +64,7 @@ export default function AiLeadGenerationPage() {
             ].map((item, i) => (
               <Reveal key={item.step} delay={i * 0.1}>
                 <div className="flex gap-8 md:gap-16 items-start py-10 border-b border-white/[0.06] group">
-                  <div className="font-grotesk font-bold text-[56px] leading-none text-white/[0.04] group-hover:text-gold/15 transition-colors duration-500 flex-shrink-0 w-20">{item.step}</div>
+                  <div className="font-grotesk font-bold text-[56px] leading-none text-white/[0.08] group-hover:text-gold/15 transition-colors duration-500 flex-shrink-0 w-20">{item.step}</div>
                   <div className="pt-2">
                     <h3 className="font-grotesk font-bold text-xl md:text-2xl text-cream mb-3 group-hover:text-gold transition-colors duration-300">{item.title}</h3>
                     <p className="font-inter text-text-muted text-base leading-relaxed max-w-xl">{item.desc}</p>

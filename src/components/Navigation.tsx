@@ -64,10 +64,10 @@ export default function Navigation() {
           {/* ── Logo ── */}
           <Link href="/" className="flex items-center flex-shrink-0 z-10">
             <div
-              className="w-[148px] h-[52px] rounded-xl"
+              className="w-[180px] h-[60px] rounded-xl"
               style={{
                 backgroundImage: "url('/landscape_1.png')",
-                backgroundSize: "148px 148px",
+                backgroundSize: "180px 180px",
                 backgroundPosition: "center 38%",
                 backgroundRepeat: "no-repeat",
               }}

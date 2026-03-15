@@ -111,7 +111,7 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
           transition={{ duration: 0.4 }} />
 
         {/* Giant watermark number */}
-        <div className={`absolute font-grotesk font-bold select-none pointer-events-none tracking-[-0.06em] transition-all duration-700 ${hovered ? "text-gold/[0.05]" : "text-white/[0.02]"} ${isEven ? "-right-4 bottom-0" : "-left-4 bottom-0"}`}
+        <div className={`absolute font-grotesk font-bold select-none pointer-events-none tracking-[-0.06em] transition-all duration-700 ${hovered ? "text-gold/[0.05]" : "text-white/[0.06]"} ${isEven ? "-right-4 bottom-0" : "-left-4 bottom-0"}`}
           style={{ fontSize: "clamp(160px,20vw,280px)", lineHeight: 1 }}>
           {project.index}
         </div>
@@ -247,7 +247,7 @@ export default function CaseStudiesPage() {
           transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 5 }} />
 
         {/* Watermark */}
-        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[15vw] leading-none text-white/[0.015] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
+        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[15vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
           WORK
         </div>
 
