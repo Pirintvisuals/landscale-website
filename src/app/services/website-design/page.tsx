@@ -47,19 +47,32 @@ export default function WebsiteDesignPage() {
               What&apos;s <span className="text-gradient-gold">Included</span>
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { title: "Luxury Bespoke Design", desc: "Custom-built to reflect your brand. No templates, no shortcuts — premium design that sets you apart." },
-              { title: "Mobile-First & Responsive", desc: "Over 60% of your visitors are on mobile. Your site looks and performs flawlessly on every device." },
-              { title: "Lead Capture Optimisation", desc: "Strategic placement of contact forms, phone CTAs, and quote request forms that actually get filled in." },
-              { title: "Fast Loading (Under 2s)", desc: "Slow sites lose customers. Every element is optimised for blazing fast load times." },
-              { title: "SEO-Ready Foundation", desc: "Proper structure, meta tags, schema markup, and technical SEO built in from day one." },
-              { title: "Analytics & Tracking", desc: "Google Analytics 4 setup so you know exactly where your leads are coming from." },
+              { num: "01", title: "Luxury Bespoke Design", desc: "Custom-built to reflect your brand. No templates, no shortcuts — premium design that sets you apart." },
+              { num: "02", title: "Mobile-First & Responsive", desc: "Over 60% of your visitors are on mobile. Your site looks and performs flawlessly on every device." },
+              { num: "03", title: "Lead Capture Optimisation", desc: "Strategic placement of contact forms, phone CTAs, and quote request forms that actually get filled in." },
+              { num: "04", title: "Loads Under 0.8s", desc: "Slow sites lose customers. Every element is optimised for sub-second load times — 100/100 PageSpeed." },
+              { num: "05", title: "SEO-Ready Foundation", desc: "Proper structure, meta tags, schema markup, and technical SEO built in from day one." },
+              { num: "06", title: "Analytics & Tracking", desc: "Google Analytics 4 setup so you know exactly where your leads are coming from." },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 0.08}>
-                <div className="bg-[#0A0A0A] p-8 md:p-10 h-full group hover:bg-[#0D0D0D] transition-colors border-r border-b border-white/[0.04]">
-                  <h3 className="font-grotesk font-bold text-lg md:text-xl text-cream mb-3 group-hover:text-gold transition-colors duration-300">{item.title}</h3>
-                  <p className="font-inter text-text-muted text-sm leading-relaxed">{item.desc}</p>
+                <div className="relative bg-[#0A0A0A] border border-white/[0.06] hover:border-gold/40 rounded-2xl p-8 h-full flex flex-col gap-4 group transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                  {/* Gold top accent */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.07) 0%, transparent 65%)" }} />
+                  {/* Number */}
+                  <div className="flex items-center justify-between relative z-10">
+                    <span className="font-grotesk font-bold text-[10px] uppercase tracking-[0.25em] text-gold/40 group-hover:text-gold/70 transition-colors duration-300">{item.num}</span>
+                    <div className="w-6 h-6 rounded-full border border-gold/20 group-hover:border-gold/50 flex items-center justify-center transition-all duration-300 group-hover:bg-gold/10">
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="text-gold/40 group-hover:text-gold transition-colors duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </div>
+                  </div>
+                  <div className="relative z-10 flex flex-col gap-2 flex-1">
+                    <h3 className="font-grotesk font-bold text-lg text-cream group-hover:text-gold transition-colors duration-300">{item.title}</h3>
+                    <p className="font-inter text-text-muted text-sm leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}

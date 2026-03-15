@@ -47,19 +47,32 @@ export default function SeoMarketingPage() {
               Our <span className="text-gradient-gold">SEO Strategy</span>
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { title: "Local SEO Domination", desc: "We optimise your entire online presence for your local area — so you appear when it matters most." },
-              { title: "Google Business Profile", desc: "Fully optimised GMB profile that gets you into the local pack — the 3 results above everything else." },
-              { title: "Keyword Strategy", desc: "Research-backed targeting of keywords your ideal clients actually search for — not just generic terms." },
-              { title: "Content Marketing", desc: "Educational content that builds authority, attracts links, and keeps you relevant in Google's eyes." },
-              { title: "Link Building", desc: "High-quality backlinks from relevant sites that signal to Google you&apos;re the real deal." },
-              { title: "Monthly Reporting", desc: "Clear, jargon-free reports showing rankings, traffic, and — most importantly — leads generated." },
+              { num: "01", title: "Local SEO Domination", desc: "We optimise your entire online presence for your local area — so you appear when it matters most." },
+              { num: "02", title: "Google Business Profile", desc: "Fully optimised GMB profile that gets you into the local pack — the 3 results above everything else." },
+              { num: "03", title: "Keyword Strategy", desc: "Research-backed targeting of keywords your ideal clients actually search for — not just generic terms." },
+              { num: "04", title: "Content Marketing", desc: "Educational content that builds authority, attracts links, and keeps you relevant in Google's eyes." },
+              { num: "05", title: "Link Building", desc: "High-quality backlinks from relevant sites that signal to Google you&apos;re the real deal." },
+              { num: "06", title: "Monthly Reporting", desc: "Clear, jargon-free reports showing rankings, traffic, and — most importantly — leads generated." },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 0.08}>
-                <div className="bg-[#0A0A0A] p-8 md:p-10 h-full group hover:bg-[#0D0D0D] transition-colors border-r border-b border-white/[0.04]">
-                  <h3 className="font-grotesk font-bold text-lg md:text-xl text-cream mb-3 group-hover:text-gold transition-colors duration-300">{item.title}</h3>
-                  <p className="font-inter text-text-muted text-sm leading-relaxed">{item.desc}</p>
+                <div className="relative bg-[#0A0A0A] border border-white/[0.06] hover:border-gold/40 rounded-2xl p-8 h-full flex flex-col gap-4 group transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                  {/* Gold top accent */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.07) 0%, transparent 65%)" }} />
+                  {/* Number */}
+                  <div className="flex items-center justify-between relative z-10">
+                    <span className="font-grotesk font-bold text-[10px] uppercase tracking-[0.25em] text-gold/40 group-hover:text-gold/70 transition-colors duration-300">{item.num}</span>
+                    <div className="w-6 h-6 rounded-full border border-gold/20 group-hover:border-gold/50 flex items-center justify-center transition-all duration-300 group-hover:bg-gold/10">
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="text-gold/40 group-hover:text-gold transition-colors duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </div>
+                  </div>
+                  <div className="relative z-10 flex flex-col gap-2 flex-1">
+                    <h3 className="font-grotesk font-bold text-lg text-cream group-hover:text-gold transition-colors duration-300">{item.title}</h3>
+                    <p className="font-inter text-text-muted text-sm leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
