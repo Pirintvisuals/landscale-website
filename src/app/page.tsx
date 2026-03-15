@@ -684,14 +684,16 @@ export default function HomePage() {
 
 
       {/* ── CHATBOT ── */}
-      <motion.div className="fixed bottom-6 right-6 z-[200]" whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.94 }}>
-        <div className="relative w-14 h-14 rounded-full bg-[#111111] border border-gold/30 flex items-center justify-center shadow-[0_4px_30px_rgba(0,0,0,0.6)] cursor-pointer hover:border-gold/70 hover:bg-[#1a1a1a] transition-all duration-300">
-          <motion.div className="absolute inset-0 rounded-full border border-gold/20" animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }} transition={{ duration: 2.5, repeat: Infinity }} />
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-gold relative z-10">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-        </div>
-      </motion.div>
+      <Link href="/contact">
+        <motion.div className="fixed bottom-6 right-6 z-[200]" whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.94 }}>
+          <div className="relative w-14 h-14 rounded-full bg-[#111111] border border-gold/30 flex items-center justify-center shadow-[0_4px_30px_rgba(0,0,0,0.6)] cursor-pointer hover:border-gold/70 hover:bg-[#1a1a1a] transition-all duration-300">
+            <motion.div className="absolute inset-0 rounded-full border border-gold/20" animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }} transition={{ duration: 2.5, repeat: Infinity }} />
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-gold relative z-10">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+        </motion.div>
+      </Link>
     </>
   );
 }
