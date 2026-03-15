@@ -459,7 +459,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
-                num: "01", tag: "AI Estimator", href: "/services/ai-lead-generation",
+                num: "01", tag: "AI Estimator", href: "/services/ai-estimator",
                 title: "AI Estimator Agent",
                 italic: "Instant project quotes — no phone call needed.",
                 desc: "Visitors ask for a quote. The AI collects area, materials, postcode and timeline, then gives an accurate estimate immediately. You hear from leads who already know the price.",
@@ -467,7 +467,7 @@ export default function HomePage() {
                 stats: [{ val: "24/7", label: "Availability" }, { val: "<2s", label: "Response" }, { val: "0", label: "Missed leads" }],
               },
               {
-                num: "02", tag: "AI Chatbot", href: "/services/ai-lead-generation",
+                num: "02", tag: "AI Chatbot", href: "/services/ai-chatbot",
                 title: "AI Chatbot",
                 italic: "Qualifies leads 24/7, filters out time-wasters.",
                 desc: "The chatbot greets every visitor, checks budget, location and timeline, and makes a decision. Wrong fit? It declines politely. Right fit? Their details land straight in your inbox.",

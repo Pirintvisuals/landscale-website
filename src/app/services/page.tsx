@@ -26,7 +26,7 @@ const coreServices = [
       { label: "Response time", val: "<2s" },
       { label: "Conversations", val: "Unlimited" },
     ],
-    href: "/services/ai-lead-generation",
+    href: "/services/ai-estimator",
     cta: "See How It Works",
   },
   {
@@ -43,7 +43,7 @@ const coreServices = [
       { label: "Response time", val: "<2s" },
       { label: "Junk leads reaching you", val: "0" },
     ],
-    href: "/services/ai-lead-generation",
+    href: "/services/ai-chatbot",
     cta: "See How It Works",
   },
   {

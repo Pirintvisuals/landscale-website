@@ -7,8 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe } from "lucide-react";
 
 const services = [
-  { href: "/services/ai-lead-generation", label: "AI Estimator Agent", desc: "Instant project quotes on your site — no call needed", Icon: Zap, tag: "Core" },
-  { href: "/services/ai-lead-generation", label: "AI Chatbot", desc: "Qualifies leads 24/7, filters out time-wasters", Icon: MessageCircle, tag: null },
+  { href: "/services/ai-estimator", label: "AI Estimator Agent", desc: "Instant project quotes on your site — no call needed", Icon: Zap, tag: "Core" },
+  { href: "/services/ai-chatbot", label: "AI Chatbot", desc: "Qualifies leads 24/7, filters out time-wasters", Icon: MessageCircle, tag: null },
   { href: "/services/website-design", label: "Website Design", desc: "Luxury sites with local SEO built in", Icon: Globe, tag: null },
 ];
 

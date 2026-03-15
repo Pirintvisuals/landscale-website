@@ -56,8 +56,8 @@ export default function Footer() {
             <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">Services</h4>
             <ul className="space-y-3">
               {[
-                { href: "/services/ai-lead-generation", label: "AI Estimator Agent" },
-                { href: "/services/ai-lead-generation", label: "AI Chatbot" },
+                { href: "/services/ai-estimator", label: "AI Estimator Agent" },
+                { href: "/services/ai-chatbot", label: "AI Chatbot" },
                 { href: "/services/website-design", label: "Premium Website" },
                 { href: "/services", label: "All Services" },
               ].map((link) => (
