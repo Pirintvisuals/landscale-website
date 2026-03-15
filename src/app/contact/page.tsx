@@ -37,30 +37,18 @@ export default function ContactPage() {
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative pt-28 md:pt-40 pb-16 md:pb-28 bg-[#080808] overflow-hidden min-h-[65vh] flex items-end">
         {/* Orbs */}
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }}
-          animate={{ x: [0, 70, -20, 0], y: [0, -50, 60, 0], scale: [1, 1.1, 0.95, 1] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 600, height: 600, bottom: "-10%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 60%)", filter: "blur(80px)" }}
-          animate={{ x: [0, -60, 30, 0], y: [0, 40, -50, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 7 }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 400, height: 400, top: "35%", right: "25%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 65%)", filter: "blur(60px)" }}
-          animate={{ x: [0, 60, -40, 0], y: [0, -60, 40, 0] }}
-          transition={{ duration: 17, repeat: Infinity, ease: "easeInOut", delay: 3 }} />
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }} />
+        <div className="absolute rounded-full pointer-events-none orb-2"
+          style={{ width: 600, height: 600, bottom: "-10%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 60%)", filter: "blur(80px)" }} />
+        <div className="absolute rounded-full pointer-events-none orb-3"
+          style={{ width: 400, height: 400, top: "35%", right: "25%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 65%)", filter: "blur(60px)" }} />
 
         {/* Moving grid */}
-        <motion.div className="absolute inset-0 opacity-[0.018]"
+        <div className="absolute inset-0 opacity-[0.018]"
           style={{ backgroundImage: "linear-gradient(rgba(212,175,55,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,1) 1px, transparent 1px)", backgroundSize: "80px 80px" }}
-          animate={{ backgroundPosition: ["0px 0px", "80px 80px"] }}
-          transition={{ duration: 24, repeat: Infinity, ease: "linear" }} />
+          />
 
-        {/* Diagonal scan */}
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(105deg, transparent 40%, rgba(212,175,55,0.025) 50%, transparent 60%)" }}
-          animate={{ x: ["-100%", "200%"] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 6 }} />
 
         {/* Watermark */}
         <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[14vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
@@ -92,10 +80,8 @@ export default function ContactPage() {
       {/* ── MAIN CONTENT ── */}
       <section className="py-20 pb-36 bg-[#0D0D0D] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent mb-20" />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 700, height: 700, top: "0%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }}
-          animate={{ scale: [1, 1.1, 1], y: [0, -60, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }} />
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 700, height: 700, top: "0%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }} />
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 md:gap-20">
@@ -189,10 +175,6 @@ export default function ContactPage() {
                         </div>
                         <button type="submit" disabled={status === "loading"}
                           className="w-full relative bg-gold text-deep-black font-grotesk font-bold text-base py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 disabled:opacity-50 overflow-hidden group">
-                          <motion.div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none"
-                            style={{ background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%)" }}
-                            animate={{ x: ["-100%", "200%"] }}
-                            transition={{ duration: 1.2, repeat: Infinity, ease: "linear", repeatDelay: 2 }} />
                           <span className="relative z-10">{status === "loading" ? "Sending..." : "Book Free Audit Call →"}</span>
                         </button>
                         {status === "error" && <p className="font-inter text-red-400 text-xs text-center">Something went wrong. Please email us directly.</p>}

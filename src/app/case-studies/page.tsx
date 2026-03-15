@@ -214,30 +214,18 @@ export default function CaseStudiesPage() {
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative pt-28 md:pt-40 pb-16 md:pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
         {/* Orbs */}
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }}
-          animate={{ x: [0, 70, -20, 0], y: [0, -50, 60, 0], scale: [1, 1.1, 0.95, 1] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 500, height: 500, bottom: "0%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 60%)", filter: "blur(70px)" }}
-          animate={{ x: [0, -60, 30, 0], y: [0, 40, -50, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 7 }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 350, height: 350, top: "35%", right: "25%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 65%)", filter: "blur(60px)" }}
-          animate={{ x: [0, 80, -40, 0], y: [0, -70, 40, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }} />
+        <div className="absolute rounded-full pointer-events-none orb-2"
+          style={{ width: 500, height: 500, bottom: "0%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 60%)", filter: "blur(70px)" }} />
+        <div className="absolute rounded-full pointer-events-none orb-3"
+          style={{ width: 350, height: 350, top: "35%", right: "25%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 65%)", filter: "blur(60px)" }} />
 
         {/* Moving grid */}
-        <motion.div className="absolute inset-0 opacity-[0.018]"
+        <div className="absolute inset-0 opacity-[0.018]"
           style={{ backgroundImage: "linear-gradient(rgba(212,175,55,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,1) 1px, transparent 1px)", backgroundSize: "80px 80px" }}
-          animate={{ backgroundPosition: ["0px 0px", "80px 80px"] }}
-          transition={{ duration: 28, repeat: Infinity, ease: "linear" }} />
+          />
 
-        {/* Diagonal scan */}
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(105deg, transparent 40%, rgba(212,175,55,0.025) 50%, transparent 60%)" }}
-          animate={{ x: ["-100%", "200%"] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 5 }} />
 
         {/* Watermark */}
         <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[15vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
@@ -281,10 +269,8 @@ export default function CaseStudiesPage() {
       {/* ── PROJECTS ── */}
       <section className="bg-[#0A0A0A] relative overflow-hidden">
         {/* Global slow-moving background orb */}
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 1200, height: 1200, top: "20%", left: "50%", transform: "translateX(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 55%)", filter: "blur(120px)" }}
-          animate={{ scale: [1, 1.2, 1], y: [0, -80, 0] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }} />
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 1200, height: 1200, top: "20%", left: "50%", transform: "translateX(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 55%)", filter: "blur(120px)" }} />
 
         {projects.map((project, i) => (
           <ProjectCard key={project.id} project={project} i={i} />
@@ -306,24 +292,8 @@ export default function CaseStudiesPage() {
 
       {/* ── CTA ── */}
       <section className="relative py-20 md:py-44 bg-[#060606] overflow-hidden text-center">
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(212,175,55,0.20) 0%, transparent 55%)" }}
-          animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(212,175,55,0.12) 0%, transparent 45%)" }}
-          animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
 
-        {[180, 320, 480, 640].map((size, i) => (
-          <motion.div key={size} className="absolute rounded-full border border-gold/[0.05] pointer-events-none"
-            style={{ width: size, height: size, top: "50%", left: "50%", marginLeft: -size / 2, marginTop: -size / 2 }}
-            animate={{ scale: [1, 1.12, 1], opacity: [0.6, 0.15, 0.6] }}
-            transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.9 }} />
-        ))}
 
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(105deg, transparent 40%, rgba(212,175,55,0.025) 50%, transparent 60%)" }}
-          animate={{ x: ["-100%", "200%"] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "linear", repeatDelay: 6 }} />
 
         <div className="relative z-10 max-w-2xl mx-auto px-8">
           <Reveal>

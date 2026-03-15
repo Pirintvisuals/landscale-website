@@ -58,30 +58,18 @@ export default function AboutPage() {
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative pt-28 md:pt-40 pb-16 md:pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
         {/* Orbs */}
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }}
-          animate={{ x: [0, 70, -20, 0], y: [0, -50, 60, 0], scale: [1, 1.1, 0.95, 1] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 600, height: 600, bottom: "-10%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 60%)", filter: "blur(80px)" }}
-          animate={{ x: [0, -60, 30, 0], y: [0, 40, -50, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 7 }} />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 350, height: 350, top: "30%", right: "20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 65%)", filter: "blur(60px)" }}
-          animate={{ x: [0, 60, -40, 0], y: [0, -60, 40, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }} />
+        <div className="absolute rounded-full pointer-events-none orb-2"
+          style={{ width: 600, height: 600, bottom: "-10%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 60%)", filter: "blur(80px)" }} />
+        <div className="absolute rounded-full pointer-events-none orb-3"
+          style={{ width: 350, height: 350, top: "30%", right: "20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 65%)", filter: "blur(60px)" }} />
 
         {/* Moving grid */}
-        <motion.div className="absolute inset-0 opacity-[0.018]"
+        <div className="absolute inset-0 opacity-[0.018]"
           style={{ backgroundImage: "linear-gradient(rgba(212,175,55,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,1) 1px, transparent 1px)", backgroundSize: "80px 80px" }}
-          animate={{ backgroundPosition: ["0px 0px", "80px 80px"] }}
-          transition={{ duration: 26, repeat: Infinity, ease: "linear" }} />
+          />
 
-        {/* Diagonal scan */}
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(105deg, transparent 40%, rgba(212,175,55,0.025) 50%, transparent 60%)" }}
-          animate={{ x: ["-100%", "200%"] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 5 }} />
 
         {/* Watermark */}
         <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[14vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
@@ -114,10 +102,8 @@ export default function AboutPage() {
       <section className="py-16 md:py-32 lg:py-44 bg-[#0D0D0D] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute top-0 right-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 700, height: 700, top: "-10%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }}
-          animate={{ scale: [1, 1.1, 1], y: [0, -60, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }} />
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 700, height: 700, top: "-10%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }} />
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-28 items-start">
@@ -156,10 +142,8 @@ export default function AboutPage() {
       {/* ── PROCESS ── */}
       <section className="bg-[#080808] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 800, height: 800, bottom: "-20%", left: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }}
-          animate={{ scale: [1, 1.15, 1], x: [0, 40, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }} />
+        <div className="absolute rounded-full pointer-events-none orb-2"
+          style={{ width: 800, height: 800, bottom: "-20%", left: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }} />
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 py-16 md:py-32 lg:py-44">
           <Reveal className="mb-20">
@@ -207,10 +191,8 @@ export default function AboutPage() {
       {/* ── WHAT MAKES US DIFFERENT ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
         <div className="absolute left-0 top-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em]">EDGE</div>
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 700, height: 700, top: "20%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 60%)", filter: "blur(90px)" }}
-          animate={{ scale: [1, 1.12, 1], y: [0, -50, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }} />
+        <div className="absolute rounded-full pointer-events-none orb-3"
+          style={{ width: 700, height: 700, top: "20%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 60%)", filter: "blur(90px)" }} />
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start">
@@ -254,10 +236,8 @@ export default function AboutPage() {
       {/* ── VALUES ── */}
       <section className="bg-[#0D0D0D] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 600, height: 600, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 60%)", filter: "blur(80px)" }}
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }} />
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 600, height: 600, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 60%)", filter: "blur(80px)" }} />
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 py-16 md:py-32 lg:py-40">
           <Reveal className="mb-20">
@@ -298,10 +278,8 @@ export default function AboutPage() {
 
       {/* ── FAQ ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
-        <motion.div className="absolute rounded-full pointer-events-none"
-          style={{ width: 600, height: 600, bottom: "-10%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(80px)" }}
-          animate={{ scale: [1, 1.15, 1], x: [0, -30, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }} />
+        <div className="absolute rounded-full pointer-events-none orb-2"
+          style={{ width: 600, height: 600, bottom: "-10%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(80px)" }} />
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
           <Reveal className="mb-16">
@@ -320,24 +298,8 @@ export default function AboutPage() {
 
       {/* ── CTA ── */}
       <section className="relative py-24 md:py-48 lg:py-64 bg-[#060606] overflow-hidden text-center">
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(212,175,55,0.22) 0%, transparent 55%)" }}
-          animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(212,175,55,0.12) 0%, transparent 45%)" }}
-          animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
 
-        {[180, 320, 500, 660].map((size, i) => (
-          <motion.div key={size} className="absolute rounded-full border border-gold/[0.05] pointer-events-none"
-            style={{ width: size, height: size, top: "50%", left: "50%", marginLeft: -size / 2, marginTop: -size / 2 }}
-            animate={{ scale: [1, 1.14, 1], opacity: [0.6, 0.15, 0.6] }}
-            transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.9 }} />
-        ))}
 
-        <motion.div className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(105deg, transparent 40%, rgba(212,175,55,0.025) 50%, transparent 60%)" }}
-          animate={{ x: ["-100%", "200%"] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "linear", repeatDelay: 7 }} />
 
         <div className="relative z-10 max-w-2xl mx-auto px-5 sm:px-8">
           <div className="overflow-hidden mb-4">
