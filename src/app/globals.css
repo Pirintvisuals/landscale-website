@@ -112,6 +112,13 @@ input:focus, textarea:focus, select:focus {
 .orb-2 { animation: orbFloat2 24s ease-in-out infinite; animation-delay: -8s; will-change: transform; }
 .orb-3 { animation: orbFloat3 18s ease-in-out infinite; animation-delay: -4s; will-change: transform; }
 
+/* Navbar entrance — CSS only, no framer-motion on the header element */
+@keyframes navSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+.nav-entrance { animation: navSlideDown 0.65s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
 /* Disable orb animations on mobile — too GPU-intensive on small devices */
 @media (max-width: 767px) {
   .orb-1, .orb-2, .orb-3 { animation: none; }

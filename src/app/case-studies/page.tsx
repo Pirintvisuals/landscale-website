@@ -148,7 +148,7 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
                     transition={{ duration: 0.3 }}>
                     <a href={project.url} target="_blank" rel="noopener noreferrer"
                       className="bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3 rounded-full hover:bg-bright-gold transition-colors shadow-[0_0_30px_rgba(212,175,55,0.5)]">
-                      View Live Site ↗
+                      View Live Site →
                     </a>
                   </motion.div>
 
@@ -193,7 +193,7 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
 
               <a href={project.url} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-7 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
-                Visit Live Site ↗
+                Visit Live Site →
               </a>
             </div>
           </div>
@@ -271,7 +271,7 @@ export default function CaseStudiesPage() {
                 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.9 + i * 0.07, duration: 0.4 }}
                 className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] px-4 py-2 rounded-full border border-gold/25 text-gold/70 hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300">
-                {p.name} ↗
+                {p.name} →
               </motion.a>
             ))}
           </motion.div>

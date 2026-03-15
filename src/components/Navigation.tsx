@@ -26,6 +26,8 @@ export default function Navigation() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const isServicesActive = pathname.startsWith("/services");
@@ -33,7 +35,17 @@ export default function Navigation() {
   useEffect(() => { setMenuOpen(false); setMobileServicesOpen(false); }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      // Hide on scroll-down past 100px, show on scroll-up — never hide when menu is open
+      if (y > 100) {
+        setNavHidden(y > lastScrollY.current);
+      } else {
+        setNavHidden(false);
+      }
+      lastScrollY.current = y;
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -50,11 +62,10 @@ export default function Navigation() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: SPRING }}
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+      <header
+        className={`nav-entrance fixed top-0 left-0 right-0 z-[100] transition-[transform,background-color,border-color,box-shadow] duration-300 ${
+          navHidden && !menuOpen ? "-translate-y-full" : "translate-y-0"
+        } ${
           scrolled
             ? "bg-[#0D0D0D]/95 backdrop-blur-xl border-b border-white/[0.07] shadow-[0_8px_40px_rgba(0,0,0,0.6)]"
             : "bg-[#0D0D0D]/75 backdrop-blur-md border-b border-white/[0.04]"
@@ -188,7 +199,7 @@ export default function Navigation() {
             </AnimatePresence>
           </button>
         </div>
-      </motion.header>
+      </header>
 
       {/* ── Mobile Menu ── */}
       <AnimatePresence>
