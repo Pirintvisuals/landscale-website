@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import { Star, Phone, Search, LayoutDashboard } from "lucide-react";
 
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
@@ -75,22 +76,22 @@ const coreServices = [
 // ── Additional / smaller services ────────────────────────────────────────────
 const extraServices = [
   {
-    icon: "★",
+    Icon: Star,
     title: "AI Review Agent",
     desc: "After a job is done, the AI automatically messages the client asking them to rate their experience from 1–10. Score 7 or above? They get a direct link to leave a Google review. Below 7? The AI asks what went wrong — so you can fix it before it becomes a public complaint.",
   },
   {
-    icon: "◆",
+    Icon: Phone,
     title: "AI Receptionist",
     desc: "An AI that answers calls exactly like a real receptionist — takes down the caller's name, number and reason for calling, and sends you a summary. Can run 24/7 or only kick in out of hours / when you don't pick up. Never miss a lead because you were on a job.",
   },
   {
-    icon: "◈",
+    Icon: Search,
     title: "SEO & Google Business",
     desc: "Already have a website? We handle your local SEO and Google Business Profile setup separately — keyword strategy, content, local citations, and monthly reporting so you climb the rankings in your area.",
   },
   {
-    icon: "▲",
+    Icon: LayoutDashboard,
     title: "Operations Dashboard",
     desc: "A bespoke dashboard that keeps your landscaping jobs perfectly sorted. It automatically logs what work was done, when it happened, the final cost, and the client's review. A crystal-clear picture of your daily operations — helping you spot your most profitable jobs and keeping admin strictly to a minimum.",
   },
@@ -257,8 +258,8 @@ export default function ServicesPage() {
             {extraServices.map((svc, i) => (
               <Reveal key={svc.title} delay={i * 0.07}>
                 <div className="relative bg-[#0A0A0A] border border-white/[0.06] hover:border-gold/35 hover:-translate-y-1 rounded-2xl p-6 flex flex-col gap-3 transition-all duration-300 group h-full">
-                  <div className="w-10 h-10 rounded-xl bg-gold/8 border border-gold/15 flex items-center justify-center text-gold text-base group-hover:bg-gold/15 group-hover:border-gold/30 transition-all duration-300 flex-shrink-0">
-                    {svc.icon}
+                  <div className="w-10 h-10 rounded-xl bg-gold/[0.08] border border-gold/15 flex items-center justify-center text-gold group-hover:bg-gold/15 group-hover:border-gold/30 transition-all duration-300 flex-shrink-0">
+                    <svc.Icon size={16} />
                   </div>
                   <h4 className="font-grotesk font-bold text-sm text-cream group-hover:text-gold transition-colors duration-300">{svc.title}</h4>
                   <p className="font-inter text-xs text-text-muted leading-relaxed flex-1">{svc.desc}</p>

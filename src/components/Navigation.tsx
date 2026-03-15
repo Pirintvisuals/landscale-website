@@ -4,12 +4,12 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ArrowRight, X, Menu } from "lucide-react";
+import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe } from "lucide-react";
 
 const services = [
-  { href: "/services/ai-lead-generation", label: "AI Estimator Agent", desc: "Instant project quotes on your site — no call needed", icon: "▲", tag: "Core" },
-  { href: "/services/ai-lead-generation", label: "AI Chatbot", desc: "Qualifies leads 24/7, filters out time-wasters", icon: "◆", tag: null },
-  { href: "/services/website-design", label: "Website Design", desc: "Luxury sites with local SEO built in", icon: "◈", tag: null },
+  { href: "/services/ai-lead-generation", label: "AI Estimator Agent", desc: "Instant project quotes on your site — no call needed", Icon: Zap, tag: "Core" },
+  { href: "/services/ai-lead-generation", label: "AI Chatbot", desc: "Qualifies leads 24/7, filters out time-wasters", Icon: MessageCircle, tag: null },
+  { href: "/services/website-design", label: "Website Design", desc: "Luxury sites with local SEO built in", Icon: Globe, tag: null },
 ];
 
 const navLinks = [
@@ -124,12 +124,12 @@ export default function Navigation() {
                               ? "bg-gold/10 border border-gold/20"
                               : "hover:bg-white/[0.06] border border-transparent hover:border-white/[0.08]"
                           }`}>
-                          <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-sm transition-all duration-200 ${
+                          <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200 ${
                             pathname === svc.href
                               ? "bg-gold/15 border border-gold/30 text-gold"
                               : "bg-white/[0.04] border border-white/[0.07] text-gold/60 group-hover/item:bg-gold/10 group-hover/item:border-gold/30 group-hover/item:text-gold"
                           }`}>
-                            {svc.icon}
+                            <svc.Icon size={15} />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
@@ -223,7 +223,7 @@ export default function Navigation() {
                         className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group/s ${
                           pathname === svc.href ? "bg-gold/10 text-gold" : "text-cream/50 hover:text-cream hover:bg-white/[0.03]"
                         }`}>
-                        <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.07] flex items-center justify-center text-gold/60 text-xs flex-shrink-0">{svc.icon}</div>
+                        <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.07] flex items-center justify-center text-gold/60 flex-shrink-0"><svc.Icon size={13} /></div>
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
                             <span className="font-grotesk font-semibold text-base">{svc.label}</span>

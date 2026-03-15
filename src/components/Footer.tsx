@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Instagram, Linkedin } from "lucide-react";
 
 export default function Footer() {
   const ref = useRef(null);
@@ -55,10 +56,10 @@ export default function Footer() {
             <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">Services</h4>
             <ul className="space-y-3">
               {[
-                { href: "/services/ai-lead-generation", label: "AI Lead Filtering" },
-                { href: "/services/website-design", label: "Custom Websites" },
-                { href: "/services/seo-marketing", label: "SEO & Marketing" },
-                { href: "/services/ai-lead-generation", label: "AI Chatbots" },
+                { href: "/services/ai-lead-generation", label: "AI Estimator Agent" },
+                { href: "/services/ai-lead-generation", label: "AI Chatbot" },
+                { href: "/services/website-design", label: "Premium Website" },
+                { href: "/services", label: "All Services" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="font-inter text-text-muted text-sm hover:text-gold transition-colors inline-block">{link.label}</Link>
@@ -72,8 +73,18 @@ export default function Footer() {
             <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">Connect</h4>
             <ul className="space-y-3">
               <li><a href="mailto:landscale.agency@gmail.com" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">landscale.agency@gmail.com</a></li>
-              <li><a href="#" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">Instagram (coming soon)</a></li>
-              <li><a href="#" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">LinkedIn (coming soon)</a></li>
+              <li>
+                <a href="https://www.instagram.com/pirintmilan/" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-inter text-text-muted text-sm hover:text-gold transition-colors">
+                  <Instagram size={13} className="flex-shrink-0" />Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/mil%C3%A1n-pirint-0598413b7/" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-inter text-text-muted text-sm hover:text-gold transition-colors">
+                  <Linkedin size={13} className="flex-shrink-0" />LinkedIn
+                </a>
+              </li>
             </ul>
           </div>
         </motion.div>
