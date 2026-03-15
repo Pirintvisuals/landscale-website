@@ -3,19 +3,11 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
 
-function Reveal({ children, delay = 0, className = "", y = 50 }: { children: React.ReactNode; delay?: number; className?: string; y?: number }) {
-  
-  
-  return (
-    <motion.div initial={{ opacity: 0, y }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.08 }} transition={{ duration: 0.65, delay, ease: SPRING }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
 
 function TiltCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -110,19 +102,19 @@ export default function HomePage() {
             <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em]">
               <div className="overflow-hidden">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }}
-                  className="text-[clamp(52px,9vw,128px)] text-gradient-gold">
+                  className="text-[clamp(34px,9vw,128px)] text-gradient-gold">
                   LANDSCAPERS
                 </motion.div>
               </div>
               <div className="overflow-hidden">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }}
-                  className="text-[clamp(52px,9vw,128px)] text-cream">
+                  className="text-[clamp(34px,9vw,128px)] text-cream">
                   STOP CHASING
                 </motion.div>
               </div>
               <div className="overflow-hidden">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
-                  className="text-[clamp(52px,9vw,128px)] text-cream/20"
+                  className="text-[clamp(34px,9vw,128px)] text-cream/20"
                   style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
                   DEAD LEADS.
                 </motion.div>

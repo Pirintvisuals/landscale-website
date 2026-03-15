@@ -3,18 +3,10 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
-function Reveal({ children, delay = 0, className = "", y = 50 }: { children: React.ReactNode; delay?: number; className?: string; y?: number }) {
-  
-  
-  return (
-    <motion.div initial={{ opacity: 0, y }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.08 }} transition={{ duration: 0.65, delay, ease: SPRING }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
 
 const faqs = [
   { q: "How long does it take to build a website?", a: "Depends on the project. A Framer template customisation can be done in 1–2 weeks. A fully custom Next.js site takes 3–6 weeks. I'll give you a clear timeline during the free audit." },

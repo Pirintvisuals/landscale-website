@@ -2,18 +2,10 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
-function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
-  
-  
-  return (
-    <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.08 }} transition={{ duration: 0.65, delay, ease: SPRING }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
 
 const inputCls = "w-full bg-[#0A0A0A] border border-white/[0.08] hover:border-gold/20 focus:border-gold text-cream font-inter text-sm px-5 py-4 outline-none transition-colors duration-200 placeholder:text-text-muted rounded-xl";
 
