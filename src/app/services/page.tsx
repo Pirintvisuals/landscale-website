@@ -136,7 +136,7 @@ export default function ServicesPage() {
         <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#080808] to-transparent z-10 pointer-events-none" />
         <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 28, repeat: Infinity, ease: "linear" }} className="flex gap-14 whitespace-nowrap">
           {Array.from({ length: 2 }).flatMap((_, gi) =>
-            ["Premium Websites", "★ AI Lead Filtering", "Local SEO", "★ 24/7 AI Estimator", "Instant Quotes", "★ Lead Qualification", "Smart Automation"].map((item, j) => (
+            ["Premium Websites", "• AI Lead Filtering", "Local SEO", "• 24/7 AI Estimator", "Instant Quotes", "• Lead Qualification", "Smart Automation"].map((item, j) => (
               <span key={`${gi}-${j}`} className="font-grotesk text-xs font-medium text-gold/30 uppercase tracking-[0.2em]">{item}</span>
             ))
           )}
@@ -167,8 +167,7 @@ export default function ServicesPage() {
                     <div className="flex items-center justify-between mb-6">
                       <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 px-3 py-1.5 rounded-full">
                         {svc.tagPulse && (
-                          <motion.span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0"
-                            animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
+                          <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0 animate-pulse" />
                         )}
                         <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{svc.tag}</span>
                       </div>
@@ -347,7 +346,7 @@ export default function ServicesPage() {
               Book a free audit — I&apos;ll analyse your business and tell you exactly what will move the needle.
             </p>
             <Link href="/contact" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-1">
-              <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>Get Free Audit →</motion.span>
+              Get Free Audit →
             </Link>
           </Reveal>
         </div>

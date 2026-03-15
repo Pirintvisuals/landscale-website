@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, useInView, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 
@@ -9,36 +9,6 @@ const SPRING = [0.16, 1, 0.3, 1] as const;
 
 
 
-function TiltCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const rotateX = useMotionValue(0);
-  const rotateY = useMotionValue(0);
-  const scale = useMotionValue(1);
-  const springRotateX = useSpring(rotateX, { stiffness: 180, damping: 22 });
-  const springRotateY = useSpring(rotateY, { stiffness: 180, damping: 22 });
-  const springScale = useSpring(scale, { stiffness: 180, damping: 22 });
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-    const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-    rotateX.set(-y * 6); rotateY.set(x * 6); scale.set(1.02);
-  }, [rotateX, rotateY, scale]);
-
-  const handleMouseLeave = useCallback(() => {
-    rotateX.set(0); rotateY.set(0); scale.set(1);
-  }, [rotateX, rotateY, scale]);
-
-  return (
-    <motion.div ref={cardRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
-      style={{ rotateX: springRotateX, rotateY: springRotateY, scale: springScale, transformStyle: "preserve-3d", perspective: 1000 }}
-      className={className}>
-      {children}
-    </motion.div>
-  );
-}
 
 function CountUp({ target, suffix = "", duration = 2.5 }: { target: number; suffix?: string; duration?: number }) {
   const ref = useRef(null);
@@ -92,7 +62,7 @@ export default function HomePage() {
           LANDSCALE
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 w-full">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-3 sm:px-8 md:px-16 w-full">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-10">
             <motion.span className="w-8 h-px bg-gold" animate={{ scaleX: [0, 1] }} transition={{ duration: 0.6, delay: 0.2 }} style={{ transformOrigin: "left" }} />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">AI-Powered Lead Qualification for Landscapers</span>
@@ -102,19 +72,19 @@ export default function HomePage() {
             <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em]">
               <div className="overflow-hidden">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }}
-                  className="text-[clamp(34px,9vw,128px)] text-gradient-gold">
+                  className="text-[clamp(42px,11vw,128px)] text-gradient-gold">
                   LANDSCAPERS
                 </motion.div>
               </div>
               <div className="overflow-hidden">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }}
-                  className="text-[clamp(34px,9vw,128px)] text-cream">
+                  className="text-[clamp(42px,11vw,128px)] text-cream">
                   STOP CHASING
                 </motion.div>
               </div>
               <div className="overflow-hidden">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
-                  className="text-[clamp(34px,9vw,128px)] text-cream/20"
+                  className="text-[clamp(42px,11vw,128px)] text-cream/20"
                   style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
                   DEAD LEADS.
                 </motion.div>
@@ -129,7 +99,7 @@ export default function HomePage() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }} className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1">
                 Get Your Free Audit
-                <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>→</motion.span>
+                <span>→</span>
               </Link>
               <Link href="/case-studies" className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-base px-8 py-5 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300">
                 See My Work
@@ -151,7 +121,7 @@ export default function HomePage() {
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0D0D0D] to-transparent z-10 pointer-events-none" />
         <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-14 whitespace-nowrap">
           {Array.from({ length: 2 }).flatMap((_, gi) =>
-            ["85% Time Saved on Quotes", "★ AI Estimator Agent", "300% More Qualified Leads", "★ Premium Landscaping Websites", "Intelligent Estimator Agents", "★ UK & Worldwide", "SEO That Actually Converts"].map((item, i) => (
+            ["85% Time Saved on Quotes", "• AI Estimator Agent", "300% More Qualified Leads", "• Premium Landscaping Websites", "Intelligent Estimator Agents", "• UK & Worldwide", "SEO That Actually Converts"].map((item, i) => (
               <span key={`${gi}-${i}`} className="font-grotesk font-medium text-xs text-gold/40 uppercase tracking-[0.2em] flex items-center gap-3">
                 {item}
               </span>
@@ -182,7 +152,7 @@ export default function HomePage() {
                 {/* Left — content */}
                 <div className="p-8 md:p-12 xl:p-16 relative">
                   <div className="inline-flex items-center gap-2 mb-6 bg-gold/10 border border-gold/30 px-4 py-2 rounded-full">
-                    <motion.span className="w-2 h-2 rounded-full bg-gold" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
+                    <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
                     <span className="font-grotesk text-xs font-bold uppercase tracking-[0.2em] text-gold">My Core Offering</span>
                   </div>
 
@@ -246,7 +216,7 @@ export default function HomePage() {
                     <div className="bg-[#0A0A0A] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
                       <div className="border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <motion.div className="w-2.5 h-2.5 rounded-full bg-gold" animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+                          <div className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
                           <span className="font-grotesk text-xs font-semibold text-cream/50 uppercase tracking-[0.15em]">Estimator Agent — Online</span>
                         </div>
                         <span className="font-grotesk text-[9px] font-bold uppercase tracking-[0.15em] text-gold/40 border border-gold/15 px-2 py-0.5 rounded-full">Live example</span>
@@ -260,9 +230,9 @@ export default function HomePage() {
                           { from: "ai", text: "Hi! I can give you an instant quote. What type of project are you looking for?" },
                           { from: "user", text: "Patio installation" },
                         ].map((msg, i) => (
-                          <motion.div key={`p-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                          <div key={`p-${i}`} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                             <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
-                          </motion.div>
+                          </div>
                         ))}
 
                         {/* Smart patio questions */}
@@ -281,9 +251,9 @@ export default function HomePage() {
                           { from: "ai", text: "And your ideal timeline — when would you like this done?" },
                           { from: "user", text: "Within the next 6–8 weeks" },
                         ].map((msg, i) => (
-                          <motion.div key={`q-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 + i * 0.07, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                          <div key={`q-${i}`} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                             <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
-                          </motion.div>
+                          </div>
                         ))}
 
                         {/* Budget */}
@@ -292,14 +262,14 @@ export default function HomePage() {
                           { from: "ai", text: "What's your approximate budget for this project?" },
                           { from: "user", text: "£5,000–8,000" },
                         ].map((msg, i) => (
-                          <motion.div key={`b-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.55 + i * 0.08, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                          <div key={`b-${i}`} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                             <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
-                          </motion.div>
+                          </div>
                         ))}
 
                         {/* Instant estimate — given before asking contact info */}
                         <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Instant estimate — given right away</div>
-                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.7, duration: 0.5, ease: SPRING }} className="flex justify-start">
+                        <div className="flex justify-start">
                           <div className="max-w-[90%] bg-[#111] border border-gold/20 rounded-2xl rounded-tl-sm overflow-hidden">
                             <div className="bg-gold/10 px-4 py-2 border-b border-gold/10">
                               <span className="font-grotesk font-bold text-xs text-gold">Estimated: £6,000 – £6,600</span>
@@ -312,7 +282,7 @@ export default function HomePage() {
                               ))}
                             </div>
                           </div>
-                        </motion.div>
+                        </div>
 
                         {/* Contact info collected AFTER estimate */}
                         <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Contact info collected after — so owner gets it</div>
@@ -320,14 +290,14 @@ export default function HomePage() {
                           { from: "ai", text: "To send this quote to the team and follow up with you, can I get your name, phone number and email?" },
                           { from: "user", text: "James Thompson, 07700 900123, james@email.com" },
                         ].map((msg, i) => (
-                          <motion.div key={`c-${i}`} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.8 + i * 0.1, duration: 0.4, ease: SPRING }} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                          <div key={`c-${i}`} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                             <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
-                          </motion.div>
+                          </div>
                         ))}
 
                         {/* Score + VIP */}
                         <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Lead scored & routed automatically</div>
-                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1, duration: 0.5, ease: SPRING }} className="flex justify-start">
+                        <div className="flex justify-start">
                           <div className="max-w-[92%] bg-[#111] border border-gold/30 rounded-2xl rounded-tl-sm px-4 py-3 space-y-2">
                             <div className="flex items-center justify-between">
                               <span className="font-grotesk text-xs font-bold text-cream">Lead Score</span>
@@ -339,21 +309,21 @@ export default function HomePage() {
                               </div>
                             </div>
                             <div className="inline-flex items-center gap-2 bg-gold/15 border border-gold/35 px-3 py-1.5 rounded-full">
-                              <span className="text-[10px]">⭐</span>
+                              <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
                               <span className="font-grotesk font-bold text-[10px] text-gold uppercase tracking-[0.15em]">VIP — Calendar booking link sent</span>
                             </div>
                             <p className="font-inter text-[10px] text-cream/40">Budget fits, local area, urgent timeline. Full details emailed to owner immediately.</p>
                           </div>
-                        </motion.div>
+                        </div>
 
                         {/* Decline example */}
                         <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-white/15 text-center py-1">If not a fit — AI declines politely, no email to owner</div>
-                        <motion.div initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.1, duration: 0.4, ease: SPRING }} className="flex justify-start">
+                        <div className="flex justify-start">
                           <div className="max-w-[88%] bg-white/[0.03] border border-white/[0.06] rounded-2xl rounded-tl-sm px-3.5 py-2.5">
-                            <p className="font-inter text-[11px] text-cream/35 leading-relaxed">Thanks for reaching out! Unfortunately your location is outside our service area. We&apos;re unable to take this on, but we wish you luck finding a local team. 🙏</p>
+                            <p className="font-inter text-[11px] text-cream/35 leading-relaxed">Thanks for reaching out! Unfortunately your location is outside our service area. We&apos;re unable to take this on, but we wish you luck finding a local team. </p>
                             <p className="font-inter text-[9px] text-white/18 mt-1.5 italic">Owner never notified. Your time fully protected.</p>
                           </div>
-                        </motion.div>
+                        </div>
 
                         {/* Routing tiers */}
                         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1.2, duration: 0.5 }} className="grid grid-cols-3 gap-1.5 pt-1">
@@ -385,16 +355,9 @@ export default function HomePage() {
       {/* ── STATS — dramatic layout ── */}
       <section className="bg-[#080808] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <motion.div className="absolute rounded-full" style={{ width: 1000, height: 1000, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(80px)" }}
-            animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 400, height: 400, top: "10%", left: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%)", filter: "blur(60px)" }}
-            animate={{ x: [0, 60, -20, 0], y: [0, 30, -40, 0] }}
-            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 3 }} />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 350, height: 350, bottom: "5%", right: "8%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)", filter: "blur(55px)" }}
-            animate={{ x: [0, -40, 30, 0], scale: [1, 1.15, 1] }}
-            transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 7 }} />
+          <div className="absolute rounded-full orb-1" style={{ width: 1000, height: 1000, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(80px)" }} />
+          <div className="absolute rounded-full orb-2" style={{ width: 400, height: 400, top: "10%", left: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%)", filter: "blur(60px)" }} />
+          <div className="absolute rounded-full orb-3" style={{ width: 350, height: 350, bottom: "5%", right: "8%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)", filter: "blur(55px)" }} />
         </div>
 
         {/* Top accent line */}
@@ -458,22 +421,19 @@ export default function HomePage() {
               { num: "03", title: "You're Invisible on Google", desc: "Your competitors show up first when local customers search. You're on page 3 — practically invisible.", offset: "md:mt-8", color: "from-orange-950/15 to-transparent" },
             ].map((item, i) => (
               <Reveal key={item.num} delay={i * 0.12} className={item.offset}>
-                <TiltCard className="h-full">
                   <div className="relative bg-[#111111] border border-white/[0.05] hover:border-gold/45 hover:-translate-y-1.5 p-8 md:p-10 h-full min-h-[320px] flex flex-col transition-all duration-300 rounded-3xl overflow-hidden group">
                     {/* Gradient bg on hover */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
                     {/* Animated border glow */}
                     <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: "inset 0 0 30px rgba(212,175,55,0.06)" }} />
                     <div className="relative z-10">
-                      <motion.div className="font-grotesk font-bold text-[80px] leading-none text-white/[0.08] group-hover:text-gold/25 transition-all duration-700 mb-6 select-none"
-                        whileHover={{ scale: 1.05 }}>
+                      <div className="font-grotesk font-bold text-[80px] leading-none text-white/[0.08] group-hover:text-gold/25 transition-all duration-700 mb-6 select-none hover:scale-105">
                         {item.num}
-                      </motion.div>
+                      </div>
                       <h3 className="font-grotesk font-bold text-xl md:text-2xl text-cream mb-4 leading-tight tracking-tight group-hover:text-gold transition-colors duration-300">{item.title}</h3>
                       <p className="font-inter text-text-muted text-base leading-relaxed flex-1">{item.desc}</p>
                     </div>
                   </div>
-                </TiltCard>
               </Reveal>
             ))}
           </div>
@@ -521,7 +481,6 @@ export default function HomePage() {
               },
             ].map((card, i) => (
               <Reveal key={card.num} delay={i * 0.1}>
-                <TiltCard className="h-full">
                   <Link href={card.href} className="block h-full group">
                     <div className="relative bg-[#111111] border border-gold/18 group-hover:border-gold/50 p-7 h-full flex flex-col transition-all duration-300 rounded-3xl overflow-hidden group-hover:-translate-y-1.5 min-h-[360px]">
                       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/45 to-transparent" />
@@ -530,7 +489,7 @@ export default function HomePage() {
                       <div className="relative z-10 flex flex-col h-full">
                         <div className="flex items-start justify-between mb-5">
                           <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/25 px-3 py-1.5 rounded-full">
-                            <motion.span className="w-1.5 h-1.5 rounded-full bg-gold" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
+                            <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
                             <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{card.tag}</span>
                           </div>
                           <span className="font-grotesk font-bold text-[48px] leading-none text-white/[0.08] group-hover:text-gold/22 transition-colors duration-500 select-none">{card.num}</span>
@@ -551,7 +510,6 @@ export default function HomePage() {
                       </div>
                     </div>
                   </Link>
-                </TiltCard>
               </Reveal>
             ))}
           </div>
@@ -570,16 +528,9 @@ export default function HomePage() {
       {/* ── WHY ME — dramatic ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#080808] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <motion.div className="absolute rounded-full" style={{ width: 750, height: 750, bottom: "-20%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 65%)", filter: "blur(80px)" }}
-            animate={{ scale: [1, 1.18, 1] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }} />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 500, height: 500, top: "-10%", left: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 65%)", filter: "blur(70px)" }}
-            animate={{ x: [0, 50, -30, 0], y: [0, 60, -40, 0], scale: [1, 1.1, 0.95, 1] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 5 }} />
-          <motion.div className="absolute rounded-full"
-            style={{ width: 300, height: 300, top: "40%", left: "45%", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)", filter: "blur(50px)" }}
-            animate={{ x: [0, -60, 40, 0], y: [0, -50, 30, 0] }}
-            transition={{ duration: 17, repeat: Infinity, ease: "easeInOut", delay: 10 }} />
+          <div className="absolute rounded-full orb-1" style={{ width: 750, height: 750, bottom: "-20%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 65%)", filter: "blur(80px)" }} />
+          <div className="absolute rounded-full orb-2" style={{ width: 500, height: 500, top: "-10%", left: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 65%)", filter: "blur(70px)" }} />
+          <div className="absolute rounded-full orb-3" style={{ width: 300, height: 300, top: "40%", left: "45%", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%)", filter: "blur(50px)" }} />
         </div>
         {/* Large decorative text */}
         <div className="absolute top-0 left-0 font-grotesk font-bold text-[18vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
@@ -606,8 +557,7 @@ export default function HomePage() {
                 { num: "03", title: "Results-Driven, Always", desc: "I measure success in leads and revenue, not impressions. If something isn't working, I change it.", icon: "●" },
               ].map((pillar, i) => (
                 <Reveal key={pillar.num} delay={i * 0.15}>
-                  <motion.div className="border-b border-white/[0.05] py-10 group relative overflow-hidden cursor-default"
-                    whileHover={{ x: 6 }} transition={{ duration: 0.3, ease: "easeOut" }}>
+                  <div className="border-b border-white/[0.05] py-10 group relative overflow-hidden cursor-default hover:translate-x-1.5 transition-transform duration-300">
                     <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gold/0 group-hover:bg-gold transition-all duration-300" />
                     <div className="flex items-start gap-6 pl-4">
                       <span className="font-grotesk font-bold text-[36px] text-white/[0.09] group-hover:text-gold/35 transition-colors duration-500 mt-1 flex-shrink-0 leading-none">{pillar.num}</span>
@@ -616,7 +566,7 @@ export default function HomePage() {
                         <p className="font-inter text-text-muted text-base leading-relaxed">{pillar.desc}</p>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </Reveal>
               ))}
             </div>
@@ -644,15 +594,14 @@ export default function HomePage() {
               { quote: "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.", name: "Péter Mantlik", company: "ViszCAD", stars: 5 },
             ].map((t, i) => (
               <Reveal key={t.name} delay={i * 0.12}>
-                <TiltCard className="h-full">
                   <div className="relative bg-[#111111] border border-white/[0.05] hover:border-gold/45 hover:-translate-y-1.5 p-8 rounded-3xl flex flex-col gap-5 transition-all duration-300 h-full overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     {/* Giant quote mark */}
                     <div className="absolute top-4 right-6 font-cormorant text-[100px] leading-none text-gold/[0.06] select-none pointer-events-none group-hover:text-gold/[0.1] transition-colors duration-500">&ldquo;</div>
                     <div className="relative z-10">
                       <div className="flex gap-1 mb-4">
-                        {Array.from({ length: t.stars }).map((_, si) => (
-                          <motion.span key={si} className="text-gold text-sm" initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: si * 0.08 + i * 0.12 }}>★</motion.span>
+                        {Array.from({ length: t.stars }).map((_, i) => (
+                          <span key={i}>★</span>
                         ))}
                       </div>
                       <p className="font-cormorant text-xl font-light text-cream italic leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
@@ -667,7 +616,6 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-                </TiltCard>
               </Reveal>
             ))}
           </div>
@@ -679,7 +627,7 @@ export default function HomePage() {
       <Link href="/contact">
         <motion.div className="fixed bottom-6 right-6 z-[200]" whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.94 }}>
           <div className="relative w-14 h-14 rounded-full bg-[#111111] border border-gold/30 flex items-center justify-center shadow-[0_4px_30px_rgba(0,0,0,0.6)] cursor-pointer hover:border-gold/70 hover:bg-[#1a1a1a] transition-all duration-300">
-            <motion.div className="absolute inset-0 rounded-full border border-gold/20" animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }} transition={{ duration: 2.5, repeat: Infinity }} />
+            <div className="absolute inset-0 rounded-full border border-gold/20 animate-ping opacity-50" />
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-gold relative z-10">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
             </svg>

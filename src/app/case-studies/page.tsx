@@ -297,7 +297,7 @@ export default function CaseStudiesPage() {
         <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#080808] to-transparent z-10 pointer-events-none" />
         <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 22, repeat: Infinity, ease: "linear" }} className="flex gap-12 whitespace-nowrap">
           {Array.from({ length: 2 }).flatMap((_, gi) =>
-            ["Framer Websites", "★ Custom Next.js", "AI Chatbots", "★ Lead Generation", "SEO & Marketing", "★ UK & Worldwide", "Smart Forms", "★ Estimator Agents"].map((item, j) => (
+            ["Framer Websites", "• Custom Next.js", "AI Chatbots", "• Lead Generation", "SEO & Marketing", "• UK & Worldwide", "Smart Forms", "• Estimator Agents"].map((item, j) => (
               <span key={`${gi}-${j}`} className="font-grotesk text-xs font-medium text-gold/30 uppercase tracking-[0.2em]">{item}</span>
             ))
           )}
@@ -339,7 +339,7 @@ export default function CaseStudiesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/contact"
                 className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-1">
-                <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>Book Free Audit →</motion.span>
+                Book Free Audit →
               </Link>
               <a href="mailto:landscale.agency@gmail.com" className="font-inter text-text-muted/60 text-sm hover:text-gold transition-colors">
                 landscale.agency@gmail.com
