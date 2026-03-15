@@ -637,7 +637,7 @@ export default function HomePage() {
             {[
               { value: "100/100", label: "Google PageSpeed Score", desc: "Perfect performance on every build" },
               { value: "<0.8s", label: "Average Load Time", desc: "Faster than 99% of competitor sites" },
-              { value: "5+", label: "Landscaping Businesses", desc: "Live, proven results in the market" },
+              { value: "4", label: "Landscaping Businesses", desc: "Live, proven results in the market" },
               { value: "UK + INT", label: "Coverage", desc: "Serving clients across UK & internationally" },
             ].map((item, i) => (
               <Reveal key={item.label} delay={i * 0.08}>
