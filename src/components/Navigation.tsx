@@ -24,12 +24,13 @@ const SPRING = [0.16, 1, 0.3, 1] as const;
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const isServicesActive = pathname.startsWith("/services");
 
-  useEffect(() => setMenuOpen(false), [pathname]);
+  useEffect(() => { setMenuOpen(false); setMobileServicesOpen(false); }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -211,31 +212,51 @@ export default function Navigation() {
                 </Link>
               </motion.div>
 
-              {/* Services */}
+              {/* Services — collapsible */}
               <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1, ease: SPRING }}>
-                <div className={`flex items-center justify-between pt-5 pb-3 ${isServicesActive ? "text-gold" : "text-cream/80"}`}>
+                <button
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className={`w-full flex items-center justify-between py-5 border-b ${mobileServicesOpen ? "border-transparent" : "border-white/[0.05]"} ${isServicesActive ? "text-gold" : "text-cream/80"}`}>
                   <span className="font-grotesk font-bold text-3xl">Services</span>
-                </div>
-                <div className="space-y-1 pb-4 border-b border-white/[0.05] pl-2">
-                  {services.map((svc, i) => (
-                    <motion.div key={svc.label} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.14 + i * 0.04, ease: SPRING }}>
-                      <Link href={svc.href}
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group/s ${
-                          pathname === svc.href ? "bg-gold/10 text-gold" : "text-cream/50 hover:text-cream hover:bg-white/[0.03]"
-                        }`}>
-                        <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.07] flex items-center justify-center text-gold/60 flex-shrink-0"><svc.Icon size={13} /></div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <span className="font-grotesk font-semibold text-base">{svc.label}</span>
-                            {svc.tag && <span className="font-grotesk text-[8px] font-bold uppercase tracking-[0.15em] text-gold bg-gold/10 border border-gold/20 px-1.5 py-0.5 rounded-full">{svc.tag}</span>}
-                          </div>
-                          <div className="font-inter text-xs text-text-muted">{svc.desc}</div>
-                        </div>
-                        <ArrowRight size={14} className="opacity-0 group-hover/s:opacity-60 group-hover/s:translate-x-0.5 transition-all duration-150 text-gold" />
-                      </Link>
+                  <motion.span animate={{ rotate: mobileServicesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                    <ChevronDown size={20} className="opacity-50" />
+                  </motion.span>
+                </button>
+                <AnimatePresence>
+                  {mobileServicesOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden border-b border-white/[0.05]">
+                      <div className="space-y-1 pb-4 pl-2 pt-1">
+                        {services.map((svc, i) => (
+                          <motion.div key={svc.label} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04, ease: SPRING }}>
+                            <Link href={svc.href} onClick={() => setMenuOpen(false)}
+                              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group/s ${
+                                pathname === svc.href ? "bg-gold/10 text-gold" : "text-cream/50 hover:text-cream hover:bg-white/[0.03]"
+                              }`}>
+                              <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.07] flex items-center justify-center text-gold/60 flex-shrink-0"><svc.Icon size={13} /></div>
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2">
+                                  <span className="font-grotesk font-semibold text-base">{svc.label}</span>
+                                  {svc.tag && <span className="font-grotesk text-[8px] font-bold uppercase tracking-[0.15em] text-gold bg-gold/10 border border-gold/20 px-1.5 py-0.5 rounded-full">{svc.tag}</span>}
+                                </div>
+                                <div className="font-inter text-xs text-text-muted">{svc.desc}</div>
+                              </div>
+                              <ArrowRight size={14} className="opacity-0 group-hover/s:opacity-60 group-hover/s:translate-x-0.5 transition-all duration-150 text-gold" />
+                            </Link>
+                          </motion.div>
+                        ))}
+                        <Link href="/services" onClick={() => setMenuOpen(false)}
+                          className="flex items-center gap-2 px-3 py-2 font-grotesk text-xs font-bold uppercase tracking-[0.15em] text-gold/50 hover:text-gold transition-colors duration-150">
+                          <ArrowRight size={11} />View all services
+                        </Link>
+                      </div>
                     </motion.div>
-                  ))}
-                </div>
+                  )}
+                </AnimatePresence>
               </motion.div>
 
               {/* Other links */}

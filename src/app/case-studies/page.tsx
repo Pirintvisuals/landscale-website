@@ -1,17 +1,17 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
 function Reveal({ children, delay = 0, className = "", y = 40 }: { children: React.ReactNode; delay?: number; className?: string; y?: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.12 });
+  
+  
   return (
-    <motion.div ref={ref} initial={{ opacity: 0, y }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.9, delay, ease: SPRING }} className={className}>
+    <motion.div initial={{ opacity: 0, y }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.08 }} transition={{ duration: 0.65, delay, ease: SPRING }} className={className}>
       {children}
     </motion.div>
   );
@@ -69,16 +69,17 @@ const projects = [
 ];
 
 function ProjectCard({ project, i }: { project: typeof projects[0]; i: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.08 });
+  
+  
   const [hovered, setHovered] = useState(false);
   const isEven = i % 2 === 0;
 
   return (
-    <motion.div ref={ref}
-      initial={{ opacity: 0, y: 80 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1, delay: 0.05, ease: SPRING }}
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.08 }}
+      transition={{ duration: 0.7, delay: 0.05, ease: SPRING }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="relative">
