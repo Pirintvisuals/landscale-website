@@ -240,15 +240,6 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  {/* Not just a chatbot callout */}
-                  <div className="relative bg-white/[0.025] border border-white/[0.07] rounded-2xl p-5 mb-8 overflow-hidden">
-                    <div className="absolute top-0 left-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-gold/50 to-transparent" />
-                    <p className="font-grotesk font-bold text-xs uppercase tracking-[0.15em] text-gold/60 mb-2 pl-4">Not just a chatbot</p>
-                    <p className="font-inter text-sm text-cream/70 leading-relaxed pl-4">
-                      This isn&apos;t a generic chat widget. It gathers real project details, understands your business rules, and makes decisions. If a lead is too far away, has the wrong budget, or simply isn&apos;t the right fit — the AI tells them <em className="text-cream/90 not-italic font-medium">politely and professionally</em>, and never bothers you with it. You only hear about the ones worth your time.
-                    </p>
-                  </div>
-
                   <Link href="/contact"
                     className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:-translate-y-0.5">
                     See How It Works →
@@ -572,6 +563,15 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
+
+          {/* See all services CTA */}
+          <Reveal className="mt-10 text-center">
+            <p className="font-inter text-sm text-text-muted mb-4">Looking for something else? I also build AI Review Agents, AI Receptionists, Operations Dashboards, and more.</p>
+            <Link href="/services"
+              className="inline-flex items-center gap-2 border border-gold/30 text-gold font-grotesk font-semibold text-sm px-7 py-3 rounded-full hover:bg-gold/10 hover:border-gold/60 transition-all duration-300">
+              See All Services →
+            </Link>
+          </Reveal>
         </div>
       </section>
 
