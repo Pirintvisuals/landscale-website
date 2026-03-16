@@ -17,7 +17,7 @@ const config: Config = {
         charcoal: "#1A1A1A",
         "dark-slate": "#151515",
         "text-cream": "#F5F1E8",
-        "text-muted": "#666666",
+        "text-muted": "#A8A8A8",
         "accent-green": "#2D5F3F",
         "accent-teal": "#1B4D3E",
       },

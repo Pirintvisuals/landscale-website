@@ -245,15 +245,21 @@ export default function ServicesPage() {
             </h3>
           </Reveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {extraServices.map((svc, i) => (
               <Reveal key={svc.title} delay={i * 0.07}>
-                <div className="relative bg-[#0A0A0A] border border-white/[0.06] hover:border-gold/35 hover:-translate-y-1 rounded-2xl p-6 flex flex-col gap-3 transition-all duration-300 group h-full">
-                  <div className="w-10 h-10 rounded-xl bg-gold/[0.08] border border-gold/15 flex items-center justify-center text-gold group-hover:bg-gold/15 group-hover:border-gold/30 transition-all duration-300 flex-shrink-0">
-                    <svc.Icon size={16} />
+                <div className="relative bg-[#0A0A0A] border border-white/[0.06] hover:border-gold/40 hover:-translate-y-2 rounded-2xl p-8 flex flex-col gap-5 transition-all duration-300 group h-full overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse at 0% 0%, rgba(212,175,55,0.05) 0%, transparent 60%)" }} />
+                  <div className="relative z-10 flex items-start gap-5">
+                    <div className="w-12 h-12 rounded-xl bg-gold/[0.08] border border-gold/15 flex items-center justify-center text-gold group-hover:bg-gold/15 group-hover:border-gold/30 transition-all duration-300 flex-shrink-0">
+                      <svc.Icon size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-grotesk font-bold text-lg text-cream group-hover:text-gold transition-colors duration-300 mb-1">{svc.title}</h4>
+                      <p className="font-inter text-sm text-text-muted leading-relaxed">{svc.desc}</p>
+                    </div>
                   </div>
-                  <h4 className="font-grotesk font-bold text-sm text-cream group-hover:text-gold transition-colors duration-300">{svc.title}</h4>
-                  <p className="font-inter text-xs text-text-muted leading-relaxed flex-1">{svc.desc}</p>
                 </div>
               </Reveal>
             ))}
