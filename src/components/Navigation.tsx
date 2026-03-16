@@ -88,7 +88,7 @@ export default function Navigation() {
           </Link>
 
           {/* ── Desktop Nav ── */}
-          <nav className="hidden md:flex items-center gap-1.5 absolute left-1/2 -translate-x-1/2">
+          <nav className="hidden lg:flex items-center gap-1.5 absolute left-1/2 -translate-x-1/2">
 
             {/* Home */}
             <Link href="/"
@@ -181,7 +181,7 @@ export default function Navigation() {
 
           {/* ── CTA ── */}
           <Link href="/contact"
-            className="hidden md:inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] hover:-translate-y-0.5 flex-shrink-0">
+            className="hidden lg:inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] hover:-translate-y-0.5 flex-shrink-0">
             Free Audit
             <ArrowRight size={14} />
           </Link>
@@ -189,7 +189,7 @@ export default function Navigation() {
           {/* ── Mobile toggle ── */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden relative w-9 h-9 flex items-center justify-center rounded-xl border border-white/[0.08] hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 z-10"
+            className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-xl border border-white/[0.08] hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 z-10"
             aria-label="Toggle menu">
             <AnimatePresence mode="wait">
               {menuOpen
