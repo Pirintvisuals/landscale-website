@@ -24,16 +24,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Landscale Agency — Marketing for Elite Landscaping Businesses | UK",
+  title: "Landscale Agency - AI Estimator for Landscaping Businesses | Save 20+ Hours/Week",
   description:
-    "AI-powered marketing agency for landscaping businesses. Premium websites, local SEO, and automated lead generation. Stop wasting time on bad leads.",
+    "AI-powered instant estimator for landscaping businesses. Give automatic quotes, filter out bad leads, save 20+ hours per week. Custom websites with intelligent lead qualification built in.",
   keywords:
-    "landscaping marketing agency UK, landscaping website design UK, SEO for landscapers UK, AI lead generation for landscapers",
+    "AI estimator for landscapers, landscaping website design UK, AI lead generation for landscapers, landscaping marketing agency UK, instant quote tool landscaping",
   openGraph: {
-    title: "Landscale Agency — Stop Wasting Time on Shitty Leads",
+    title: "Landscale Agency - AI Estimator for Landscaping Businesses",
     description:
-      "AI-powered marketing for landscaping businesses. Premium websites, local SEO, 24/7 lead generation.",
+      "Give automatic quotes, filter out bad leads, save 20+ hours per week. AI-powered websites built exclusively for landscaping businesses.",
     type: "website",
+    url: "https://landscale.agency",
+    siteName: "Landscale Agency",
+    images: [{ url: "https://landscale.agency/logo-schema.png", width: 512, height: 512, alt: "Landscale Agency" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Landscale Agency - AI Estimator for Landscaping Businesses",
+    description: "Give automatic quotes, filter out bad leads, save 20+ hours per week.",
+    images: ["https://landscale.agency/logo-schema.png"],
   },
 };
 
@@ -42,8 +51,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Landscale Agency",
+    url: "https://landscale.agency",
+    logo: "https://landscale.agency/logo-schema.png",
+    description: "AI-powered instant estimator and website builder for landscaping businesses.",
+    email: "landscale.agency@gmail.com",
+    areaServed: ["GB", "Worldwide"],
+    sameAs: [],
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body
         className={`${spaceGrotesk.variable} ${cormorant.variable} ${inter.variable} bg-deep-black text-cream antialiased`}
       >
