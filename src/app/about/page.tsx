@@ -116,14 +116,14 @@ export default function AboutPage() {
                 WHY I SPECIALISE<br />IN{" "}<span className="text-gradient-gold">LANDSCAPING</span>
               </h2>
               <p className="font-cormorant text-xl text-cream/40 font-light italic leading-relaxed">
-                &ldquo;I grew up in a family of landscapers. I saw the industry from the inside — and the gap in the market was obvious.&rdquo;
+                &ldquo;I&apos;m Milan. I grew up in Hungary in a family of landscapers — I saw the industry from the inside, and the gap in the market was obvious.&rdquo;
               </p>
             </Reveal>
             <Reveal delay={0.1}>
               <div className="space-y-6 font-inter text-text-muted leading-relaxed text-base">
                 <motion.p className="text-cream/70 border-l-2 border-gold/30 pl-5 italic font-cormorant text-lg"
                   initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-                  I grew up in a family of landscapers. I saw firsthand how hard they work — early mornings, physical labour, dealing with demanding clients.
+                  I&apos;m Milan — I grew up in Hungary in a family of landscapers. I saw firsthand how hard they work — early mornings, physical labour, dealing with demanding clients.
                 </motion.p>
                 <p>But I also saw them struggle with marketing. Outdated websites. Missed leads. Hours wasted on quotes for tyre-kickers. No system to filter serious buyers from window shoppers.</p>
                 <p>The marketing agencies they hired didn&apos;t understand the industry — they treated every client the same. Generic strategies, vanity metrics, and no accountability.</p>
