@@ -338,7 +338,7 @@ export default function CaseStudiesPage() {
               WANT RESULTS<br /><span className="text-gradient-gold">LIKE THESE?</span>
             </h2>
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
-              Book a free audit — I&apos;ll analyse your current online presence and show you exactly what&apos;s possible for yours.
+              Book a free audit — we&apos;ll analyse your current online presence and show you exactly what&apos;s possible for yours.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/contact"

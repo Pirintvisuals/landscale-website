@@ -113,7 +113,7 @@ export default function ServicesPage() {
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 w-full">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-3 mb-8">
             <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ transformOrigin: "left" }} />
-            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">What I Do</span>
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">What We Do</span>
           </motion.div>
           {["THREE CORE SERVICES.", "ONE GOAL."].map((line, i) => (
             <div key={line} className="overflow-hidden">
@@ -241,7 +241,7 @@ export default function ServicesPage() {
               <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.25em] text-gold/50">Also Available</span>
             </div>
             <h3 className="font-grotesk font-bold text-[clamp(22px,3vw,40px)] text-cream/80 tracking-[-0.02em]">
-              More tools I build
+              More tools we build
             </h3>
           </Reveal>
 
@@ -272,7 +272,7 @@ export default function ServicesPage() {
               <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 0% 50%, rgba(212,175,55,0.05) 0%, transparent 60%)" }} />
               <div className="relative z-10">
                 <p className="font-grotesk font-bold text-base text-cream mb-1">Have a different idea in mind?</p>
-                <p className="font-inter text-sm text-text-muted">If you need something that&apos;s not listed here, get in touch — if it helps landscapers win better clients, I can probably build it.</p>
+                <p className="font-inter text-sm text-text-muted">If you need something that&apos;s not listed here, get in touch — if it helps landscapers win better clients, we can probably build it.</p>
               </div>
               <a href="tel:+447478075473"
                 className="relative z-10 flex-shrink-0 inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 whitespace-nowrap">
@@ -299,7 +299,7 @@ export default function ServicesPage() {
                     Every Project<br />Is <span className="text-gradient-gold">Different</span>
                   </h2>
                   <p className="font-inter text-text-muted text-base leading-relaxed max-w-md">
-                    There&apos;s no one-size-fits-all price. The scope, complexity, and goals of each project are unique. Want a ballpark number? Just call — I&apos;ll give you an honest answer in 5 minutes.
+                    There&apos;s no one-size-fits-all price. The scope, complexity, and goals of each project are unique. Want a ballpark number? Just call — we&apos;ll give you an honest answer in 5 minutes.
                   </p>
                 </div>
                 <div className="flex flex-col gap-4">
@@ -349,7 +349,7 @@ export default function ServicesPage() {
               NOT SURE WHICH<br /><span className="text-gradient-gold">SERVICE YOU NEED?</span>
             </h2>
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
-              Book a free audit — I&apos;ll analyse your business and tell you exactly what will move the needle.
+              Book a free audit — we&apos;ll analyse your business and tell you exactly what will move the needle.
             </p>
             <Link href="/contact" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-1">
               Get Free Audit →

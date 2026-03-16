@@ -94,7 +94,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-end max-w-5xl">
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8, ease: SPRING }} className="font-cormorant text-xl md:text-2xl text-cream/60 leading-relaxed font-light italic">
-              I build premium websites with AI-powered lead filtering — featuring intelligent estimator agents that qualify leads and give instant quotes, so you only talk to serious buyers.
+              We build premium websites with AI-powered lead filtering — featuring intelligent estimator agents that qualify leads and give instant quotes, so you only talk to serious buyers.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }} className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1">
@@ -102,7 +102,7 @@ export default function HomePage() {
                 <span>→</span>
               </Link>
               <Link href="/case-studies" className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-base px-8 py-5 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300">
-                See My Work
+                See Our Work
               </Link>
             </motion.div>
           </div>
@@ -153,14 +153,14 @@ export default function HomePage() {
                 <div className="p-8 md:p-12 xl:p-16 relative">
                   <div className="inline-flex items-center gap-2 mb-6 bg-gold/10 border border-gold/30 px-4 py-2 rounded-full">
                     <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-                    <span className="font-grotesk text-xs font-bold uppercase tracking-[0.2em] text-gold">My Core Offering</span>
+                    <span className="font-grotesk text-xs font-bold uppercase tracking-[0.2em] text-gold">Our Core Offering</span>
                   </div>
 
                   <h2 className="font-grotesk font-bold text-[clamp(32px,4.5vw,68px)] text-cream leading-[0.92] tracking-[-0.03em] mb-4">
                     STOP WASTING TIME<br /><span className="text-gradient-gold">ON QUOTES</span>
                   </h2>
                   <p className="font-cormorant text-lg md:text-xl text-cream/50 font-light italic leading-relaxed mb-8">
-                    My AI Estimator Agent gives instant project quotes and qualifies every lead automatically — so you only talk to serious buyers.
+                    Our AI Estimator Agent gives instant project quotes and qualifies every lead automatically — so you only talk to serious buyers.
                   </p>
 
                   {/* How it works */}
@@ -450,7 +450,7 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
           <Reveal className="mb-20">
-            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5"><span className="w-8 h-px bg-gold" />What I Do</span>
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5"><span className="w-8 h-px bg-gold" />What We Do</span>
             <h2 className="font-grotesk font-bold text-[clamp(40px,6vw,80px)] leading-[0.92] tracking-[-0.03em] text-cream">
               Everything You Need<br /><span className="text-gradient-gold">Under One Roof</span>
             </h2>
@@ -528,7 +528,7 @@ export default function HomePage() {
 
           {/* See all services CTA */}
           <Reveal className="mt-10 text-center">
-            <p className="font-inter text-sm text-text-muted mb-4">Looking for something else? I also build AI Review Agents, AI Receptionists, Operations Dashboards, and more.</p>
+            <p className="font-inter text-sm text-text-muted mb-4">Looking for something else? We also build AI Review Agents, AI Receptionists, Operations Dashboards, and more.</p>
             <Link href="/services"
               className="inline-flex items-center gap-2 border border-gold/30 text-gold font-grotesk font-semibold text-sm px-7 py-3 rounded-full hover:bg-gold/10 hover:border-gold/60 transition-all duration-300">
               See All Services →

@@ -72,7 +72,7 @@ export default function ContactPage() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.55, ease: SPRING }}
             className="font-cormorant text-xl md:text-2xl text-cream/50 font-light italic leading-relaxed max-w-xl mt-8">
-            Book a free 30-minute audit. I&apos;ll review your situation, identify the gaps, and show you how to fix them.
+            Book a free 30-minute audit. We&apos;ll review your situation, identify the gaps, and show you how to fix them.
           </motion.p>
         </motion.div>
       </section>
@@ -190,7 +190,7 @@ export default function ContactPage() {
               <div className="space-y-8">
                 <div>
                   <h2 className="font-grotesk font-bold text-2xl text-cream mb-4 tracking-tight">Contact Info</h2>
-                  <p className="font-inter text-text-muted text-sm leading-relaxed">Book directly or fill in the form — I&apos;ll reach out within 24 hours.</p>
+                  <p className="font-inter text-text-muted text-sm leading-relaxed">Book directly or fill in the form — we&apos;ll reach out within 24 hours.</p>
                 </div>
 
                 {[
