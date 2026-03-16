@@ -72,19 +72,19 @@ export default function HomePage() {
             <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em]">
               <div className="overflow-hidden">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }}
-                  className="text-[clamp(42px,11vw,128px)] text-gradient-gold">
+                  className="text-[clamp(42px,9vw,128px)] text-gradient-gold">
                   LANDSCAPERS
                 </motion.div>
               </div>
               <div className="overflow-hidden">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }}
-                  className="text-[clamp(42px,11vw,128px)] text-cream">
+                  className="text-[clamp(42px,9vw,128px)] text-cream">
                   STOP CHASING
                 </motion.div>
               </div>
               <div className="overflow-hidden">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
-                  className="text-[clamp(42px,11vw,128px)] text-cream/20"
+                  className="text-[clamp(42px,9vw,128px)] text-cream/20"
                   style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
                   DEAD LEADS.
                 </motion.div>
@@ -414,11 +414,11 @@ export default function HomePage() {
               The Problems<br /><span className="text-gradient-gold">Holding You Back</span>
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { num: "01", title: "Your Website Isn't Generating Leads", desc: "You've got a website, but it collects digital dust. Visitors come, they leave, you never hear from them.", offset: "md:mt-0", color: "from-red-950/20 to-transparent" },
-              { num: "02", title: "You Waste Hours on Unqualified Leads", desc: "Time-wasters who want the cheapest job, won't commit, or ghost you after quotes. Your time is worth more.", offset: "md:mt-16", color: "from-amber-950/20 to-transparent" },
-              { num: "03", title: "You're Invisible on Google", desc: "Your competitors show up first when local customers search. You're on page 3 — practically invisible.", offset: "md:mt-8", color: "from-orange-950/15 to-transparent" },
+              { num: "01", title: "Your Website Isn't Generating Leads", desc: "You've got a website, but it collects digital dust. Visitors come, they leave, you never hear from them.", offset: "lg:mt-0", color: "from-red-950/20 to-transparent" },
+              { num: "02", title: "You Waste Hours on Unqualified Leads", desc: "Time-wasters who want the cheapest job, won't commit, or ghost you after quotes. Your time is worth more.", offset: "lg:mt-16", color: "from-amber-950/20 to-transparent" },
+              { num: "03", title: "You're Invisible on Google", desc: "Your competitors show up first when local customers search. You're on page 3 — practically invisible.", offset: "lg:mt-8", color: "from-orange-950/15 to-transparent" },
             ].map((item, i) => (
               <Reveal key={item.num} delay={i * 0.12} className={item.offset}>
                   <div className="relative bg-[#111111] border border-white/[0.05] hover:border-gold/45 hover:-translate-y-1.5 p-8 md:p-10 h-full min-h-[320px] flex flex-col transition-all duration-300 rounded-3xl overflow-hidden group">
@@ -456,7 +456,7 @@ export default function HomePage() {
             </h2>
           </Reveal>
           {/* Three core services */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               {
                 num: "01", tag: "AI Estimator", href: "/services/ai-estimator",
@@ -464,7 +464,7 @@ export default function HomePage() {
                 italic: "Instant project quotes — no phone call needed.",
                 desc: "Visitors ask for a quote. The AI collects area, materials, postcode and timeline, then gives an accurate estimate immediately. You hear from leads who already know the price.",
                 features: ["Project-specific questions", "Instant line-item estimate", "Contact collected after quote", "Saves 15–20 hrs/week"],
-                stats: [{ val: "24/7", label: "Availability" }, { val: "<2s", label: "Response" }, { val: "0", label: "Missed leads" }],
+                stats: [{ val: "24/7", label: "Availability" }, { val: "<0.8s", label: "Response" }, { val: "0", label: "Missed leads" }],
               },
               {
                 num: "02", tag: "AI Chatbot", href: "/services/ai-chatbot",
@@ -472,7 +472,7 @@ export default function HomePage() {
                 italic: "Qualifies leads 24/7, filters out time-wasters.",
                 desc: "The chatbot greets every visitor, checks budget, location and timeline, and makes a decision. Wrong fit? It declines politely. Right fit? Their details land straight in your inbox.",
                 features: ["Budget & location check", "Automatic lead scoring", "Declines bad fits politely", "Instant alert to you"],
-                stats: [{ val: "+300%", label: "Qualified leads" }, { val: "<2s", label: "Response" }, { val: "0", label: "Junk leads" }],
+                stats: [{ val: "+300%", label: "Qualified leads" }, { val: "<0.8s", label: "Response" }, { val: "0", label: "Junk leads" }],
               },
               {
                 num: "03", tag: "Website", href: "/services/website-design",
@@ -599,7 +599,7 @@ export default function HomePage() {
               WHAT CLIENTS<br /><span className="text-gradient-gold">SAY</span>
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { quote: "The form has completely transformed how we handle inquiries. It filters out unqualified leads automatically and acts like a 24/7 receptionist — saving us hours every week. We only talk to serious buyers now.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5 },
               { quote: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.", name: "Basil", company: "Mimosa Gardens", stars: 5 },

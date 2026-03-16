@@ -57,21 +57,23 @@ export default function SeoMarketingPage() {
               { num: "06", title: "Monthly Reporting", desc: "Clear, jargon-free reports showing rankings, traffic, and — most importantly — leads generated." },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 0.08}>
-                <div className="relative bg-[#0A0A0A] border border-white/[0.06] hover:border-gold/40 rounded-2xl p-8 h-full flex flex-col gap-4 group transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                  {/* Gold top accent */}
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative bg-[#0D0D0D] border border-white/[0.06] hover:border-gold/50 hover:bg-[#121212] rounded-2xl p-8 h-full flex flex-col gap-4 group transition-all duration-300 hover:-translate-y-4 overflow-hidden hover:shadow-[0_24px_50px_rgba(0,0,0,0.5),0_0_0_1px_rgba(212,175,55,0.12)]">
+                  {/* Top accent — slides from center */}
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                   {/* Hover glow */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.07) 0%, transparent 65%)" }} />
-                  {/* Number */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.10) 0%, transparent 60%)" }} />
+                  {/* Ghost number */}
+                  <div className="absolute bottom-0 right-3 font-grotesk font-bold text-[88px] leading-none text-white/0 group-hover:text-gold/[0.07] transition-colors duration-500 select-none pointer-events-none tracking-[-0.04em]">{item.num}</div>
+                  {/* Number + arrow */}
                   <div className="flex items-center justify-between relative z-10">
-                    <span className="font-grotesk font-bold text-[10px] uppercase tracking-[0.25em] text-gold/40 group-hover:text-gold/70 transition-colors duration-300">{item.num}</span>
-                    <div className="w-6 h-6 rounded-full border border-gold/20 group-hover:border-gold/50 flex items-center justify-center transition-all duration-300 group-hover:bg-gold/10">
-                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="text-gold/40 group-hover:text-gold transition-colors duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <span className="font-grotesk font-bold text-[11px] uppercase tracking-[0.25em] text-white/[0.15] group-hover:text-gold/70 transition-colors duration-300">{item.num}</span>
+                    <div className="w-7 h-7 rounded-full border border-white/[0.06] group-hover:border-gold/45 group-hover:bg-gold/10 flex items-center justify-center transition-all duration-300">
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="text-white/20 group-hover:text-gold transition-colors duration-300"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </div>
                   </div>
                   <div className="relative z-10 flex flex-col gap-2 flex-1">
-                    <h3 className="font-grotesk font-bold text-lg text-cream group-hover:text-gold transition-colors duration-300">{item.title}</h3>
-                    <p className="font-inter text-text-muted text-sm leading-relaxed">{item.desc}</p>
+                    <h3 className="font-grotesk font-bold text-lg text-cream group-hover:text-white transition-colors duration-300">{item.title}</h3>
+                    <p className="font-inter text-text-muted text-sm leading-relaxed group-hover:text-cream/60 transition-colors duration-300">{item.desc}</p>
                   </div>
                 </div>
               </Reveal>
