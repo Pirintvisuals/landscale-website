@@ -110,7 +110,7 @@ export default function AboutPage() {
             <Reveal>
               <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6">
                 <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ transformOrigin: "left" }} />
-                Our Story
+                Founder's Story
               </span>
               <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em] mb-6">
                 WHY I SPECIALISE<br />IN{" "}<span className="text-gradient-gold">LANDSCAPING</span>
