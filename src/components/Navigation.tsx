@@ -177,18 +177,18 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
-          </nav>
 
-          {/* ── HU language link ── */}
-          <Link href="/hu"
-            className={`hidden lg:inline-flex items-center gap-1.5 px-3 py-2 rounded-full font-grotesk text-sm font-semibold tracking-wide transition-all duration-200 flex-shrink-0 ${
-              pathname === "/hu"
-                ? "bg-gold/15 border border-gold/40 text-gold"
-                : "border border-white/[0.08] text-cream/40 hover:border-gold/40 hover:text-gold hover:bg-gold/5"
-            }`}>
-            <span className="text-base leading-none">🇭🇺</span>
-            <span className="text-xs">Magyar</span>
-          </Link>
+            {/* HU language link */}
+            <Link href="/hu"
+              className={`relative inline-flex items-center gap-1.5 px-3 py-2 rounded-full font-grotesk text-sm font-semibold tracking-wide transition-all duration-200 ${
+                pathname === "/hu"
+                  ? "bg-gold/15 border border-gold/40 text-gold"
+                  : "text-cream/50 hover:text-gold hover:bg-gold/5 border border-white/[0.06] hover:border-gold/30"
+              }`}>
+              <span className="text-base leading-none">🇭🇺</span>
+              <span>Magyar</span>
+            </Link>
+          </nav>
 
           {/* ── CTA ── */}
           <Link href="/contact"
