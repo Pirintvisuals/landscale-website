@@ -30,31 +30,31 @@ const SPRING = [0.16, 1, 0.3, 1] as const;
 ───────────────────────────────────────────── */
 const testimonials = [
   {
-    name: "Placeholder — Ügyfél neve",
-    business: "Tereprendezés, London",
+    name: "Balázs Lavotha",
+    business: "Lavotha Kert Kft",
     quote:
-      "Ide kerül majd egy valódi ügyfél véleménye. A Landscale csapata megkeresi a megfelelő referenciát és beilleszti ezt a szövegdobozt.",
-    initials: "?",
+      "The form has completely transformed how we handle inquiries. It filters out unqualified leads automatically and acts like a 24/7 receptionist — saving us hours every week. We only talk to serious buyers now.",
+    initials: "BL",
     rating: 5,
-    placeholder: true,
+    placeholder: false,
   },
   {
-    name: "Placeholder — Ügyfél neve",
-    business: "Építőipar, Birmingham",
+    name: "Basil",
+    business: "Mimosa Gardens",
     quote:
-      "Ide kerül majd egy valódi ügyfél véleménye. A Landscale csapata megkeresi a megfelelő referenciát és beilleszti ezt a szövegdobozt.",
-    initials: "?",
+      "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.",
+    initials: "B",
     rating: 5,
-    placeholder: true,
+    placeholder: false,
   },
   {
-    name: "Placeholder — Ügyfél neve",
-    business: "Takarítás & Karbantartás, Manchester",
+    name: "Péter Mantlik",
+    business: "ViszCAD",
     quote:
-      "Ide kerül majd egy valódi ügyfél véleménye. A Landscale csapata megkeresi a megfelelő referenciát és beilleszti ezt a szövegdobozt.",
-    initials: "?",
+      "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.",
+    initials: "PM",
     rating: 5,
-    placeholder: true,
+    placeholder: false,
   },
 ];
 
