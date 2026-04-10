@@ -178,24 +178,26 @@ export default function Navigation() {
               </Link>
             ))}
 
-            {/* HU language link */}
-            <Link href="/hu"
-              className={`relative inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-grotesk text-sm font-semibold tracking-wide transition-all duration-200 ${
-                pathname === "/hu"
-                  ? "bg-gold text-deep-black shadow-[0_0_16px_rgba(212,175,55,0.45)]"
-                  : "text-cream/60 hover:text-cream hover:bg-white/[0.06] border border-transparent hover:border-white/[0.08]"
-              }`}>
-              <span className="text-sm leading-none">🇭🇺</span>
-              <span>Magyar</span>
-            </Link>
           </nav>
 
-          {/* ── CTA ── */}
-          <Link href="/contact"
-            className="hidden lg:inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] hover:-translate-y-0.5 flex-shrink-0">
-            Free Audit
-            <ArrowRight size={14} />
-          </Link>
+          {/* ── Right side: language toggle + CTA ── */}
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+            <Link href="/hu"
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-grotesk text-xs font-bold tracking-wide transition-all duration-200 ${
+                pathname === "/hu"
+                  ? "text-gold bg-gold/10 border border-gold/30"
+                  : "text-cream/35 border border-white/[0.07] hover:text-cream/70 hover:border-white/[0.14] hover:bg-white/[0.04]"
+              }`}>
+              <span className="text-sm leading-none">🇭🇺</span>
+              <span>HU</span>
+            </Link>
+            <div className="w-px h-5 bg-white/[0.10]" />
+            <Link href="/contact"
+              className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] hover:-translate-y-0.5">
+              Free Audit
+              <ArrowRight size={14} />
+            </Link>
+          </div>
 
           {/* ── Mobile toggle ── */}
           <button

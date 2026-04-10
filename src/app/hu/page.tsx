@@ -52,7 +52,7 @@ const testimonials = [
     name: "Balázs Lavotha",
     business: "Lavotha Kert Kft",
     quote:
-      "The form has completely transformed how we handle inquiries. It filters out unqualified leads automatically and acts like a 24/7 receptionist — saving us hours every week. We only talk to serious buyers now.",
+      "Az ajánlatkérő teljesen átalakította, ahogy az érdeklődőket kezeljük. Automatikusan kiszűri a nem komoly ajánlatkérőket, és 24/7 recepciósként működik — hetente órákat spórolunk. Most már csak azokkal beszélünk, akik valóban megrendelők lesznek.",
     initials: "BL",
     rating: 5,
     placeholder: false,
@@ -61,7 +61,7 @@ const testimonials = [
     name: "Basil",
     business: "Mimosa Gardens",
     quote:
-      "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.",
+      "A weboldal lenyűgöző, és azonnal prémium szolgáltatásnak pozicionál minket. Több ügyfelünk is elmondta, hogy ez a leglátványosabb kerttervezős oldal, amit valaha láttak. Már most megtérül az érdeklődők minőségén keresztül.",
     initials: "B",
     rating: 5,
     placeholder: false,
@@ -70,20 +70,74 @@ const testimonials = [
     name: "Péter Mantlik",
     business: "ViszCAD",
     quote:
-      "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.",
+      "Milan pontosan azt szállította, amire szükségünk volt, rekordidő alatt. Az oldal gyors, profi, és jobb ügyfeleket vonz. Az együttműködés elejétől a végéig gördülékeny volt — csak ajánlani tudom.",
     initials: "PM",
     rating: 5,
     placeholder: false,
   },
 ];
 
-const services = [
-  { icon: Leaf, label: "Tereprendezés & Kertészet" },
-  { icon: Hammer, label: "Építőipar & Felújítás" },
-  { icon: Sparkles, label: "Takarítás & Portaszolgálat" },
-  { icon: Droplets, label: "Vízvezetékszerelés" },
-  { icon: Zap, label: "Elektromos munkák" },
-  { icon: Wrench, label: "Karbantartás & Handyman" },
+const industries = [
+  {
+    num: "01",
+    icon: Leaf,
+    label: "Tereprendezés & Kertészet",
+    desc: "Szezonális roham, felesleges árajánlat-kérők, véget nem érő egyeztetések. Az AI szűri, mi éri meg az idődet.",
+    project: {
+      name: "Lavotha Kert Kft.",
+      tagline: "Webdesign · Miskolc",
+      metrics: ["96 Teljesítmény", "100 SEO"],
+      image: "/images/case-studies/lavothakertkft.png",
+      url: "https://www.kertepites-miskolc.hu/",
+    },
+  },
+  {
+    num: "02",
+    icon: Hammer,
+    label: "Építőipar & Felújítás",
+    desc: "Nagy projektek, komoly büdzsék — de rengeteg nem komoly érdeklődő. Az AI csak a valódi megrendelőket engedi át.",
+    project: {
+      name: "Tiszaújváros Transz Kft.",
+      tagline: "Webdesign · Kazincbarcika",
+      metrics: ["95 Teljesítmény", "100 SEO"],
+      image: "/images/case-studies/tiszaujvarostransz.png",
+      url: "https://tiszaujvarostransz.hu/",
+    },
+  },
+  {
+    num: "03",
+    icon: Sparkles,
+    label: "Takarítás & Portaszolgálat",
+    desc: "Visszatérő ügyfelek, rugalmas időpontok, egyszerű árazás — az AI azonnal ajánlatot ad és ütemezi a munkát.",
+    project: null,
+  },
+  {
+    num: "04",
+    icon: Droplets,
+    label: "Vízvezetékszerelés",
+    desc: "Sürgős hívások, gyors döntések szükségesek — az AI kiszűri, mi valóban sürgős, és csak a fizető ügyfeleket kapcsolja hozzád.",
+    project: {
+      name: "ViszCAD",
+      tagline: "Webdesign · Magyarország",
+      metrics: ["★★★★★", "Ajánlott"],
+      image: "/images/case-studies/viszcad.png",
+      url: null,
+    },
+  },
+  {
+    num: "05",
+    icon: Zap,
+    label: "Elektromos munkák",
+    desc: "Minősített munkák, biztonsági előírások — az AI felméri az igényt és csak az odaillő projekteket hozza be.",
+    project: null,
+  },
+  {
+    num: "06",
+    icon: Wrench,
+    label: "Karbantartás & Handyman",
+    desc: "Változatos feladatok, gyors fordulók — az AI automatikusan fogadja az igényeket és szervezi az időpontokat.",
+    project: null,
+  },
 ];
 
 const features = [
@@ -207,15 +261,13 @@ export default function HuPage() {
                 Ingyenes konzultáció
                 <ArrowRight size={16} />
               </Link>
-              <a
-                href="https://wa.me/447478075473"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/case-studies"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-base px-8 py-5 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300"
               >
-                <MessageCircle size={16} />
-                WhatsApp üzenet
-              </a>
+                Korábbi projektjeink
+                <ArrowRight size={16} />
+              </Link>
             </motion.div>
           </div>
 
@@ -243,22 +295,39 @@ export default function HuPage() {
       </div>
 
       {/* ── STATS BAR ── */}
-      <section className="bg-[#0A0A0A] py-12 md:py-16 relative overflow-hidden">
+      <section className="bg-[#0A0A0A] py-16 md:py-24 relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
             {[
-              { val: "15–20", suffix: "óra", label: "Megtakarítás hetente" },
-              { val: "24/7", suffix: "", label: "Folyamatos elérhetőség" },
-              { val: "3×", suffix: "", label: "Több komoly érdeklődő" },
-              { val: "0", suffix: " percen belül", label: "Azonnali válasz" },
+              {
+                num: 85, suffix: "%",
+                label: "Megtakarított idő az érdeklődők szűrésénél",
+                desc: "Vége a felesleges telefonoknak. Az AI kiszűri a nem komoly érdeklődőket, mielőtt hozzád érnének.",
+              },
+              {
+                num: 300, suffix: "%",
+                label: "Átlagos növekedés a minősített érdeklődőkben",
+                desc: "Nem csak több érdeklődő — jobbak. Nagyobb büdzsé, átgondoltabb igény, gyorsabb döntés.",
+              },
+              {
+                num: 24, suffix: "/7",
+                label: "Órán át dolgozik az AI",
+                desc: "Amíg te alszol, az AI szűri az érdeklődőket, válaszol a kérdésekre és időpontot foglal.",
+              },
+              {
+                num: 4, suffix: "+",
+                label: "Élő projekt fut most is",
+                desc: "Valódi vállalkozások, valódi eredmények. Minden projekt éles, és igazolt a piacon.",
+              },
             ].map((stat, i) => (
               <Reveal key={stat.label} delay={i * 0.1}>
-                <div className="text-center group">
-                  <div className="font-grotesk font-bold text-[clamp(28px,4vw,52px)] text-gradient-gold leading-none tracking-[-0.04em]">
-                    {stat.val}<span className="text-[0.5em] text-gold/70">{stat.suffix}</span>
+                <div className="flex flex-col items-center text-center group px-4">
+                  <div className="font-grotesk font-bold text-[clamp(40px,5vw,72px)] text-gradient-gold leading-none tracking-[-0.04em]">
+                    <CountUp target={stat.num} suffix={stat.suffix} />
                   </div>
-                  <div className="font-inter text-xs text-text-muted uppercase tracking-[0.15em] mt-2">{stat.label}</div>
+                  <div className="font-grotesk font-semibold text-cream text-sm mt-3 mb-2 leading-snug">{stat.label}</div>
+                  <div className="font-inter text-xs text-text-muted leading-relaxed">{stat.desc}</div>
                 </div>
               </Reveal>
             ))}
@@ -268,7 +337,7 @@ export default function HuPage() {
       </section>
 
       {/* ── PROBLEM SECTION ── */}
-      <section className="py-16 md:py-32 lg:py-44 bg-[#0D0D0D] relative overflow-hidden">
+      <section className="py-16 md:py-20 lg:py-24 bg-[#0D0D0D] relative overflow-hidden">
         <div className="absolute top-0 right-0 font-grotesk font-bold text-[15vw] leading-none text-white/[0.06] select-none pointer-events-none tracking-[-0.05em]">PROBLÉMA</div>
         <div className="absolute rounded-full orb-2 pointer-events-none"
           style={{ width: 700, height: 700, top: "10%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }} />
@@ -326,12 +395,12 @@ export default function HuPage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="py-16 md:py-32 lg:py-44 bg-[#080808] relative overflow-hidden">
+      <section className="py-16 md:py-20 lg:py-24 bg-[#080808] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute rounded-full orb-1 pointer-events-none"
           style={{ width: 800, height: 800, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 60%)", filter: "blur(100px)" }} />
 
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-16">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-8">
           <Reveal className="mb-16 md:mb-24">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-gold block" />
@@ -357,7 +426,7 @@ export default function HuPage() {
                   </div>
 
                   <h3 className="font-grotesk font-bold text-[clamp(28px,3.5vw,54px)] text-cream leading-[0.92] tracking-[-0.03em] mb-4">
-                    AZ AI DOLGOZIK.<br /><span className="text-gradient-gold">TE CSAK ÉPÍT​SZ.</span>
+                    AZ AI DOLGOZIK.<br /><span className="text-gradient-gold">TE CSAK ÉPÍTSZ.</span>
                   </h3>
                   <p className="font-cormorant text-lg md:text-xl text-cream/50 font-light italic leading-relaxed mb-8">
                     A rendszer automatikusan kezeli az érdeklődőket — te csak a komoly megrendelőkkel találkozol.
@@ -555,54 +624,114 @@ export default function HuPage() {
         </div>
       </section>
 
-      {/* ── SERVICES COVERED ── */}
-      <section className="py-16 md:py-32 bg-[#0A0A0A] relative overflow-hidden">
+      {/* ── INDUSTRIES ── */}
+      <section className="py-16 md:py-20 bg-[#0A0A0A] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute rounded-full orb-3 pointer-events-none"
           style={{ width: 700, height: 700, bottom: "-10%", left: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(90px)" }} />
 
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-16">
-          <Reveal className="mb-16">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-8">
+          <Reveal className="mb-12 md:mb-16">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-gold block" />
               <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">Iparágak</span>
             </div>
-            <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
-              MINDEN<br /><span className="text-gradient-gold">SZOLGÁLTATÓ</span><br />VÁLLALKOZÁSNAK.
-            </h2>
-            <p className="font-cormorant text-xl text-cream/40 font-light italic leading-relaxed max-w-2xl mt-6">
-              Nem csak tereprendezés — az AI rendszerünk bármilyen magyar szolgáltató vállalkozásnak tökéletesen működik.
-            </p>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+              <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
+                MINDEN<br /><span className="text-gradient-gold">SZOLGÁLTATÓ</span><br />VÁLLALKOZÁSNAK.
+              </h2>
+              <p className="font-cormorant text-lg text-cream/40 font-light italic leading-relaxed max-w-sm">
+                Nem csak kertészet — az AI bármilyen felújítási, szolgáltató és kézműves vállalkozásnál működik.
+              </p>
+            </div>
           </Reveal>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-white/[0.04]">
-            {services.map((svc, i) => (
+          <div className="divide-y divide-white/[0.05]">
+            {industries.map((ind, i) => (
               <motion.div
-                key={svc.label}
-                initial={{ opacity: 0, y: 30 }}
+                key={ind.num}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.7, ease: SPRING }}
-                className="bg-[#0A0A0A] p-8 md:p-10 xl:p-12 group hover:bg-[#0F0F0F] transition-colors duration-500 relative overflow-hidden cursor-default"
+                transition={{ delay: i * 0.07, duration: 0.6, ease: SPRING }}
+                className="group grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 lg:gap-12 py-8 hover:bg-white/[0.015] rounded-2xl -mx-4 px-4 transition-colors duration-300 cursor-default"
               >
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/25 transition-all duration-500" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse at 20% 30%, rgba(212,175,55,0.05) 0%, transparent 60%)" }} />
-                <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-5 group-hover:bg-gold/20 group-hover:border-gold/40 group-hover:scale-110 transition-all duration-300">
-                    <svc.icon size={20} />
+                {/* Left — industry info */}
+                <div className="flex items-start gap-5">
+                  <span className="font-grotesk font-bold text-[11px] tracking-[0.25em] text-gold/25 group-hover:text-gold/50 transition-colors duration-300 pt-2 flex-shrink-0 w-7">{ind.num}</span>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-3 mb-2.5">
+                      <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold/20 group-hover:border-gold/40 group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                        <ind.icon size={18} />
+                      </div>
+                      <h3 className="font-grotesk font-bold text-lg md:text-xl text-cream group-hover:text-white transition-colors duration-300">{ind.label}</h3>
+                      {ind.project && (
+                        <span className="font-grotesk text-[8px] font-bold uppercase tracking-[0.15em] text-gold bg-gold/10 border border-gold/25 px-2 py-1 rounded-full">Élő projekt ★</span>
+                      )}
+                    </div>
+                    <p className="font-inter text-sm text-text-muted leading-relaxed max-w-lg">{ind.desc}</p>
                   </div>
-                  <h3 className="font-grotesk font-bold text-base md:text-lg text-cream group-hover:text-gold transition-colors duration-300">{svc.label}</h3>
+                </div>
+
+                {/* Right — case study card or placeholder */}
+                <div className="lg:self-center">
+                  {ind.project ? (
+                    ind.project.url ? (
+                      <a href={ind.project.url} target="_blank" rel="noopener noreferrer"
+                        className="group/card block bg-[#111] border border-white/[0.07] rounded-2xl overflow-hidden hover:border-gold/35 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
+                        <div className="relative h-28 overflow-hidden">
+                          <Image src={ind.project.image} alt={ind.project.name} fill className="object-cover object-top transition-transform duration-500 group-hover/card:scale-[1.05]" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                          <div className="absolute top-2.5 right-2.5">
+                            <ExternalLink size={11} className="text-gold/50 group-hover/card:text-gold transition-colors duration-200" />
+                          </div>
+                        </div>
+                        <div className="px-4 py-3 flex items-center justify-between gap-3">
+                          <div className="min-w-0">
+                            <div className="font-grotesk font-bold text-sm text-cream truncate">{ind.project.name}</div>
+                            <div className="font-inter text-[10px] text-text-muted mt-0.5">{ind.project.tagline}</div>
+                          </div>
+                          <div className="flex gap-1.5 flex-shrink-0">
+                            {ind.project.metrics.map((m) => (
+                              <span key={m} className="font-grotesk text-[9px] font-bold text-gold/70 bg-gold/10 border border-gold/20 px-2 py-1 rounded-full whitespace-nowrap">{m}</span>
+                            ))}
+                          </div>
+                        </div>
+                      </a>
+                    ) : (
+                      <div className="bg-[#111] border border-white/[0.07] rounded-2xl overflow-hidden">
+                        <div className="relative h-28 overflow-hidden">
+                          <Image src={ind.project.image} alt={ind.project.name} fill className="object-cover object-top" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                        </div>
+                        <div className="px-4 py-3 flex items-center justify-between gap-3">
+                          <div className="min-w-0">
+                            <div className="font-grotesk font-bold text-sm text-cream truncate">{ind.project.name}</div>
+                            <div className="font-inter text-[10px] text-text-muted mt-0.5">{ind.project.tagline}</div>
+                          </div>
+                          <div className="flex gap-1.5 flex-shrink-0">
+                            {ind.project.metrics.map((m) => (
+                              <span key={m} className="font-grotesk text-[9px] font-bold text-gold/70 bg-gold/10 border border-gold/20 px-2 py-1 rounded-full whitespace-nowrap">{m}</span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  ) : (
+                    <div className="hidden lg:flex items-center justify-end">
+                      <span className="font-grotesk text-[9px] font-bold uppercase tracking-[0.2em] text-white/[0.12] border border-white/[0.05] px-3 py-2 rounded-full">Hamarosan</span>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
-        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent mt-0" />
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent mt-8" />
       </section>
 
       {/* ── FEATURES ── */}
-      <section className="py-16 md:py-32 lg:py-44 bg-[#0D0D0D] relative overflow-hidden">
+      <section className="py-16 md:py-20 lg:py-24 bg-[#0D0D0D] relative overflow-hidden">
         <div className="absolute left-0 top-0 font-grotesk font-bold text-[15vw] leading-none text-white/[0.06] select-none pointer-events-none tracking-[-0.05em]">FUNKCIÓK</div>
         <div className="absolute rounded-full orb-1 pointer-events-none"
           style={{ width: 700, height: 700, top: "20%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(90px)" }} />
@@ -614,7 +743,7 @@ export default function HuPage() {
               <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">Mit kapsz</span>
             </div>
             <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,80px)] text-cream leading-[0.92] tracking-[-0.03em]">
-              AZ AI AMIT<br /><span className="text-gradient-gold">ELVÉGEZ HELYETTED.</span>
+              AZ AI ELVÉGZI<br /><span className="text-gradient-gold">HELYETTED.</span>
             </h2>
           </Reveal>
 
@@ -651,13 +780,13 @@ export default function HuPage() {
       </section>
 
       {/* ── CASE STUDIES ── */}
-      <section className="py-16 md:py-32 lg:py-44 bg-[#080808] relative overflow-hidden">
+      <section className="py-16 md:py-20 lg:py-24 bg-[#080808] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute top-0 right-0 font-grotesk font-bold text-[14vw] leading-none text-white/[0.06] select-none pointer-events-none tracking-[-0.05em]">MUNKÁK</div>
         <div className="absolute rounded-full orb-2 pointer-events-none"
           style={{ width: 700, height: 700, bottom: "0%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }} />
 
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-16">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-8">
           <Reveal className="mb-16 md:mb-20">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-gold block" />
@@ -825,12 +954,12 @@ export default function HuPage() {
         ║  4. Save and deploy                                         ║
         ╚══════════════════════════════════════════════════════════════╝
       */}
-      <section className="py-16 md:py-32 lg:py-44 bg-[#080808] relative overflow-hidden">
+      <section className="py-16 md:py-20 lg:py-24 bg-[#080808] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute rounded-full orb-2 pointer-events-none"
           style={{ width: 700, height: 700, bottom: "-10%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(80px)" }} />
 
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-16">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-8">
           <Reveal className="mb-16 md:mb-20">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-gold block" />
@@ -888,12 +1017,12 @@ export default function HuPage() {
       </section>
 
       {/* ── OFFER / PRICING ── */}
-      <section className="py-16 md:py-32 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-[#0A0A0A] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         <div className="absolute rounded-full orb-1 pointer-events-none"
           style={{ width: 600, height: 600, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 60%)", filter: "blur(80px)" }} />
 
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-16">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
             <Reveal>
               <div className="inline-flex items-center gap-3 mb-6">
@@ -957,7 +1086,7 @@ export default function HuPage() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="relative py-24 md:py-48 lg:py-64 bg-[#060606] overflow-hidden text-center">
+      <section className="relative py-20 md:py-28 lg:py-36 bg-[#060606] overflow-hidden text-center">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute rounded-full orb-1"
             style={{ width: 1000, height: 1000, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }} />
