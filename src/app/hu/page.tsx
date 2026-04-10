@@ -175,20 +175,20 @@ export default function HuPage() {
 
           {/* Headline */}
           <div className="mb-10">
-            <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em]">
-              <div className="overflow-hidden">
+            <h1 className="font-grotesk font-bold leading-[0.92] tracking-[-0.04em]">
+              <div className="overflow-hidden pt-2">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-gradient-gold">
-                  VÉGE A
+                  LEGYÉL TE
                 </motion.div>
               </div>
-              <div className="overflow-hidden">
+              <div className="overflow-hidden pt-2">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-cream">
-                  FELESLEGES
+                  A KÖRNYÉK
                 </motion.div>
               </div>
-              <div className="overflow-hidden">
+              <div className="overflow-hidden pt-2">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-cream/20" style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
-                  ÉRDEKLŐDŐKNEK.
+                  LEGKERESETTEBB.
                 </motion.div>
               </div>
             </h1>
@@ -196,7 +196,7 @@ export default function HuPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-end max-w-5xl">
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8, ease: SPRING }} className="font-cormorant text-xl md:text-2xl text-cream/60 leading-relaxed font-light italic">
-              AI chatbot és automatikus árajánlat-rendszer magyar szolgáltató vállalkozásoknak — tereprendezéstől az elektromos munkákig.
+              AI chatbot és automatikus árajánlat-rendszer — miközben te dolgozol, a rendszer szűri az érdeklődőket és megrendeléseket hoz.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }} className="flex flex-col sm:flex-row gap-4">
