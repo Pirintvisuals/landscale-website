@@ -111,7 +111,7 @@ const industries = [
       tagline: "Webdesign · Magyarország",
       metrics: ["★★★★★", "Ajánlott"],
       image: "/images/case-studies/viszcad.png",
-      url: null,
+      url: "https://viszcad.vercel.app/index.html",
     },
   },
 ];
