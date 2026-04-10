@@ -23,9 +23,26 @@ const projects = [
       { label: "SEO", val: "100" },
       { label: "Load time", val: "<1s" },
     ],
-    url: "https://lavothakertkft.framer.website/",
+    url: "https://www.kertepites-miskolc.hu/",
     file: "lavothakertkft",
     index: "01",
+  },
+  {
+    id: "tiszaujvarostransz",
+    name: "Tiszaújváros Transz",
+    tagline: "High-End Construction — Corporate Digital Presence",
+    location: "Hungary",
+    tag: "Website Design",
+    desc: "One of the region's leading construction companies, with 25+ years of industry experience and a portfolio spanning civil engineering, general contracting, and infrastructure projects. They needed a website that reflected their scale and reputation — professional, fast, and built to win corporate contracts.",
+    what: ["Corporate website build", "Services & references showcase", "ISO certification display", "Client acquisition system"],
+    metrics: [
+      { label: "Performance", val: "95" },
+      { label: "SEO", val: "100" },
+      { label: "Load time", val: "<1s" },
+    ],
+    url: "https://tiszaujvarostransz.hu/",
+    file: "tiszaujvarostransz",
+    index: "02",
   },
   {
     id: "mimosa-gardens",
@@ -42,7 +59,7 @@ const projects = [
     ],
     url: "https://mimosagardens.framer.website/",
     file: "mimosa-gardens",
-    index: "02",
+    index: "03",
   },
   {
     id: "viszcad",
@@ -59,7 +76,7 @@ const projects = [
     ],
     url: "https://viszcad.vercel.app/index.html",
     file: "viszcad",
-    index: "03",
+    index: "04",
   },
   {
     id: "landscale-template",
@@ -76,7 +93,7 @@ const projects = [
     ],
     url: "https://landscaletemplate.framer.website/",
     file: "landscale-template",
-    index: "04",
+    index: "05",
   },
 ];
 

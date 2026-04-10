@@ -19,7 +19,9 @@ import {
   Leaf,
   Sparkles,
   CalendarDays,
+  ExternalLink,
 } from "lucide-react";
+import Image from "next/image";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -527,6 +529,159 @@ export default function HuPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── CASE STUDIES ── */}
+      <section className="py-16 md:py-32 lg:py-44 bg-[#080808] relative overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        <div className="absolute top-0 right-0 font-grotesk font-bold text-[14vw] leading-none text-white/[0.06] select-none pointer-events-none tracking-[-0.05em]">MUNKÁK</div>
+        <div className="absolute rounded-full orb-2 pointer-events-none"
+          style={{ width: 700, height: 700, bottom: "0%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 60%)", filter: "blur(100px)" }} />
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-16">
+          <Reveal className="mb-16 md:mb-20">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="w-8 h-px bg-gold block" />
+              <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">Referenciák</span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+              <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
+                VALÓDI<br /><span className="text-gradient-gold">PROJEKTEK.</span>
+              </h2>
+              <Link href="/case-studies"
+                className="inline-flex items-center gap-2 font-grotesk text-sm font-semibold text-gold/60 hover:text-gold transition-colors duration-200 border border-gold/20 hover:border-gold/50 px-5 py-2.5 rounded-full flex-shrink-0 self-start sm:self-auto">
+                Összes projekt
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+          </Reveal>
+
+          <div className="space-y-6 md:space-y-8">
+            {[
+              {
+                name: "Lavotha Kert Kft.",
+                tagline: "Magyar kertépítés — Digitális átalakulás",
+                location: "Miskolc, Magyarország",
+                tag: "Webdesign",
+                desc: "Tapasztalt kertészeti vállalkozás, amely évtizedes szakmai múlttal rendelkezett, de elavult online jelenléttel. Olyan weboldalt kaptak, amely valóban tükrözi munkájuk minőségét és automatikusan szűri az érdeklődőket.",
+                metrics: [
+                  { label: "Teljesítmény", val: "96" },
+                  { label: "SEO", val: "100" },
+                  { label: "Betöltés", val: "<1s" },
+                ],
+                url: "https://www.kertepites-miskolc.hu/",
+                file: "lavothakertkft",
+                index: "01",
+              },
+              {
+                name: "Tiszaújváros Transz Kft.",
+                tagline: "Prémium építőipari vállalat — Professzionális online megjelenés",
+                location: "Kazincbarcika, Magyarország",
+                tag: "Webdesign",
+                desc: "A régió egyik vezető építőipari vállalkozása, 25 éves iparági tapasztalattal. Mérnöki kivitelezés, általános vállalkozás és infrastruktúra-projektek — olyan weboldalt igényeltek, amely megfelel súlyuknak és hitelességüknek a megrendelők szemében.",
+                metrics: [
+                  { label: "Teljesítmény", val: "95" },
+                  { label: "SEO", val: "100" },
+                  { label: "Betöltés", val: "<1s" },
+                ],
+                url: "https://tiszaujvarostransz.hu/",
+                file: "tiszaujvarostransz",
+                index: "02",
+              },
+            ].map((project, i) => {
+              const isEven = i % 2 === 0;
+              return (
+                <motion.div
+                  key={project.name}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.08 }}
+                  transition={{ duration: 0.7, delay: i * 0.1, ease: SPRING }}
+                  className="relative bg-[#0D0D0D] border border-white/[0.06] rounded-2xl overflow-hidden group hover:border-gold/20 transition-all duration-500"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/30 transition-all duration-500" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{ background: `radial-gradient(ellipse at ${isEven ? "0%" : "100%"} 50%, rgba(212,175,55,0.05) 0%, transparent 60%)` }} />
+
+                  <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 ${!isEven ? "lg:[direction:rtl]" : ""}`}>
+                    {/* Image */}
+                    <div className={`${!isEven ? "[direction:ltr]" : ""} relative`}>
+                      <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[220px] overflow-hidden">
+                        <Image
+                          src={`/images/case-studies/${project.file}.png`}
+                          alt={project.name}
+                          fill
+                          className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                        <div className="absolute inset-0 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/30" />
+
+                        {/* Location badge */}
+                        <div className="absolute top-4 left-4 z-10">
+                          <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm border border-gold/20 text-gold/80">
+                            {project.location}
+                          </span>
+                        </div>
+
+                        {/* Index watermark */}
+                        <div className="absolute bottom-2 right-4 font-grotesk font-bold text-[80px] leading-none text-white/[0.07] select-none pointer-events-none tracking-[-0.05em]">
+                          {project.index}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className={`${!isEven ? "[direction:ltr]" : ""} p-8 md:p-10 xl:p-12 flex flex-col justify-center space-y-5`}>
+                      <div className="flex items-center gap-3">
+                        <span className="font-grotesk font-bold text-[10px] uppercase tracking-[0.25em] text-gold/40">{project.index}</span>
+                        <span className="h-px flex-1 bg-gold/10" />
+                        <span className="font-grotesk text-xs font-semibold uppercase tracking-[0.12em] text-gold/60 border border-gold/20 px-3 py-1 rounded-full">{project.tag}</span>
+                      </div>
+
+                      <div>
+                        <h3 className="font-grotesk font-bold text-[clamp(24px,3vw,44px)] text-cream mb-2 tracking-[-0.02em] leading-[0.95]">
+                          {project.name}
+                        </h3>
+                        <p className="font-cormorant text-base text-gold/50 italic leading-relaxed">{project.tagline}</p>
+                      </div>
+
+                      <p className="font-inter text-text-muted text-sm leading-relaxed">{project.desc}</p>
+
+                      {/* Metrics */}
+                      <div className="flex flex-wrap gap-4 py-4 border-t border-white/[0.05]">
+                        {project.metrics.map((m) => (
+                          <div key={m.label} className="text-center min-w-[70px]">
+                            <div className="font-grotesk font-bold text-[clamp(20px,2.5vw,32px)] text-gradient-gold leading-none tracking-[-0.04em]">{m.val}</div>
+                            <div className="font-inter text-[10px] text-text-muted uppercase tracking-[0.12em] mt-1">{m.label}</div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-grotesk font-bold text-sm text-gold/70 hover:text-gold transition-colors duration-200 group/link"
+                      >
+                        Weboldal megtekintése
+                        <ExternalLink size={13} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-200" />
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* CTA to full case studies */}
+          <Reveal delay={0.1} className="mt-12 text-center">
+            <Link href="/case-studies"
+              className="inline-flex items-center gap-3 border border-gold/25 text-cream/70 font-grotesk font-semibold text-sm px-8 py-4 rounded-full hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300">
+              Összes referencia projekt megtekintése
+              <ArrowRight size={15} />
+            </Link>
+          </Reveal>
         </div>
       </section>
 
