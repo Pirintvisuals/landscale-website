@@ -208,22 +208,17 @@ export default function HuPage() {
             <h1 className="font-grotesk font-bold leading-[0.92] tracking-[-0.04em]">
               <div className="overflow-hidden pt-2">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-gradient-gold">
-                  LEGYÉL TE
+                  VÉGE A
                 </motion.div>
               </div>
               <div className="overflow-hidden pt-2">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-cream">
-                  A KÖRNYÉK
+                  KOMOLYTALAN
                 </motion.div>
               </div>
               <div className="overflow-hidden pt-2">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-cream/20" style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
-                  LEGKERESETTEBB
-                </motion.div>
-              </div>
-              <div className="overflow-hidden pt-2">
-                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.56, ease: SPRING }} className="text-[clamp(28px,5.5vw,80px)] text-cream/15" style={{ WebkitTextStroke: "1px rgba(245,241,232,0.18)" }}>
-                  FELÚJÍTÁSI SZAKEMBERE.
+                  ÉRDEKLŐDŐKNEK.
                 </motion.div>
               </div>
             </h1>
