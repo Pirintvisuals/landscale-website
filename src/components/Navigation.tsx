@@ -188,7 +188,6 @@ export default function Navigation() {
                   ? "text-gold bg-gold/10 border border-gold/30"
                   : "text-cream/35 border border-white/[0.07] hover:text-cream/70 hover:border-white/[0.14] hover:bg-white/[0.04]"
               }`}>
-              <span className="text-sm leading-none">🇭🇺</span>
               <span>HU</span>
             </Link>
             <div className="w-px h-5 bg-white/[0.10]" />
