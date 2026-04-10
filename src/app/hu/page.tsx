@@ -90,7 +90,7 @@ const features = [
     num: "04",
     icon: MessageCircle,
     title: "Magyar és Angol Nyelven",
-    desc: "A rendszer mindkét nyelven kommunikál — tökéletesen alkalmas a brit piacon dolgozó magyar vállalkozásoknak.",
+    desc: "A rendszer magyar és angol nyelven is kommunikál — tökéletesen alkalmas a külföldön dolgozó magyar vállalkozásoknak.",
   },
   {
     num: "05",
@@ -150,7 +150,7 @@ export default function HuPage() {
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-10">
             <motion.span className="w-8 h-px bg-gold" animate={{ scaleX: [0, 1] }} transition={{ duration: 0.6, delay: 0.2 }} style={{ transformOrigin: "left" }} />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">
-              Magyar vállalkozásoknak · Egyesült Királyság
+              Magyar vállalkozásoknak · Landscale
             </span>
           </motion.div>
 
@@ -177,7 +177,7 @@ export default function HuPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-end max-w-5xl">
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8, ease: SPRING }} className="font-cormorant text-xl md:text-2xl text-cream/60 leading-relaxed font-light italic">
-              AI chatbot és automatikus árajánlat-rendszer brit alapú magyar szolgáltató vállalkozásoknak — tereprendezéstől az elektromos munkákig.
+              AI chatbot és automatikus árajánlat-rendszer magyar szolgáltató vállalkozásoknak — tereprendezéstől az elektromos munkákig.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }} className="flex flex-col sm:flex-row gap-4">
@@ -451,7 +451,7 @@ export default function HuPage() {
               MINDEN<br /><span className="text-gradient-gold">SZOLGÁLTATÓ</span><br />VÁLLALKOZÁSNAK.
             </h2>
             <p className="font-cormorant text-xl text-cream/40 font-light italic leading-relaxed max-w-2xl mt-6">
-              Nem csak tereprendezés — az AI rendszerünk bármilyen brit alapú magyar szolgáltató cégnek tökéletesen működik.
+              Nem csak tereprendezés — az AI rendszerünk bármilyen magyar szolgáltató vállalkozásnak tökéletesen működik.
             </p>
           </Reveal>
 

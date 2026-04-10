@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Chatbot & Automatikus Árajánlat | Magyar Vállalkozásoknak az UK-ban | Landscale",
+  title: "AI Chatbot & Automatikus Árajánlat | Magyar Vállalkozásoknak | Landscale",
   description:
-    "AI chatbot és automatikus árajánlat-rendszer brit alapú magyar szolgáltató vállalkozásoknak. Tereprendezés, építőipar, takarítás, vízvezetékszerelés. Heti 15–20 óra megtakarítás, 24/7 elérhetőség.",
+    "AI chatbot és automatikus árajánlat-rendszer magyar szolgáltató vállalkozásoknak. Tereprendezés, építőipar, takarítás, vízvezetékszerelés. Heti 15–20 óra megtakarítás, 24/7 elérhetőség.",
   keywords:
-    "AI chatbot magyar vállalkozás UK, automatikus árajánlat rendszer, magyar szolgáltató brit piac, tereprendezés AI, építőipar chatbot, takarítás automatizálás",
+    "AI chatbot magyar vállalkozás, automatikus árajánlat rendszer, magyar szolgáltató, tereprendezés AI, építőipar chatbot, takarítás automatizálás",
   openGraph: {
-    title: "AI Chatbot & Automatikus Árajánlat | Magyar Vállalkozásoknak az UK-ban",
+    title: "AI Chatbot & Automatikus Árajánlat | Magyar Vállalkozásoknak | Landscale",
     description:
       "Hagyd, hogy az AI szűrje ki a komoly ügyfeleket. 24/7 automatikus válasz, azonnali árajánlat, több megrendelés.",
     type: "website",

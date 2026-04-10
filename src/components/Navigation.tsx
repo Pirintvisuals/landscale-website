@@ -179,6 +179,17 @@ export default function Navigation() {
             ))}
           </nav>
 
+          {/* ── HU language link ── */}
+          <Link href="/hu"
+            className={`hidden lg:inline-flex items-center gap-1.5 px-3 py-2 rounded-full font-grotesk text-sm font-semibold tracking-wide transition-all duration-200 flex-shrink-0 ${
+              pathname === "/hu"
+                ? "bg-gold/15 border border-gold/40 text-gold"
+                : "border border-white/[0.08] text-cream/40 hover:border-gold/40 hover:text-gold hover:bg-gold/5"
+            }`}>
+            <span className="text-base leading-none">🇭🇺</span>
+            <span className="text-xs">Magyar</span>
+          </Link>
+
           {/* ── CTA ── */}
           <Link href="/contact"
             className="hidden lg:inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] hover:-translate-y-0.5 flex-shrink-0">
@@ -292,6 +303,11 @@ export default function Navigation() {
                   <a href="tel:+447478075473" className="block font-grotesk font-semibold text-sm text-gold/70 hover:text-gold transition-colors">+44 7478 075473</a>
                   <p className="font-inter text-text-muted text-xs">landscale.agency@gmail.com</p>
                 </div>
+                <Link href="/hu" onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 border border-white/[0.08] rounded-full py-3 font-grotesk text-sm font-semibold text-cream/40 hover:border-gold/40 hover:text-gold hover:bg-gold/5 transition-all duration-200">
+                  <span className="text-base leading-none">🇭🇺</span>
+                  Magyar oldal
+                </Link>
               </motion.div>
             </div>
           </motion.div>
