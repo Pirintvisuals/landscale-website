@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import {
@@ -24,6 +24,23 @@ import {
 import Image from "next/image";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
+
+function CountUp({ target, suffix = "", duration = 2.2 }: { target: number; suffix?: string; duration?: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / (duration * 1000), 1);
+      setVal(Math.floor((1 - Math.pow(1 - p, 4)) * target));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [inView, target, duration]);
+  return <span ref={ref}>{val}{suffix}</span>;
+}
 
 /* ─────────────────────────────────────────────
    TESTIMONIALS
@@ -403,32 +420,133 @@ export default function HuPage() {
                       <div className="border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
-                          <span className="font-grotesk text-xs font-semibold text-cream/50 uppercase tracking-[0.15em]">AI Asszisztens — Online</span>
+                          <span className="font-grotesk text-xs font-semibold text-cream/50 uppercase tracking-[0.15em]">Árajánlat Ügynök — Online</span>
                         </div>
                         <span className="font-grotesk text-[9px] font-bold uppercase tracking-[0.15em] text-gold/40 border border-gold/15 px-2 py-0.5 rounded-full">Élő példa</span>
                       </div>
-                      <div className="p-4 space-y-2">
+
+                      <div className="p-4 space-y-2 max-h-[520px] overflow-y-auto">
+
+                        {/* Project type */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Projekt típusa</div>
                         {[
-                          { from: "ai", text: "Szia! Segíthetek azonnali árajánlattal. Milyen munkáról van szó?" },
-                          { from: "user", text: "Teraszt szeretnék lerakni" },
-                          { from: "ai", text: "Mekkora területről van szó hozzávetőlegesen? (m²)" },
-                          { from: "user", text: "Kb. 35 m²" },
-                          { from: "ai", text: "Milyen anyagot szeretne? (kő, porcelán, tégla)" },
-                          { from: "user", text: "Természetes kő" },
-                          { from: "ai", text: "Mi a hozzávetőleges kerete a projektre?" },
-                          { from: "user", text: "£4,000–6,000 körül" },
-                          { from: "ai", text: "Köszönöm! Az Ön projektjére vonatkozó becsült ár: £4,200–5,800. Mikor lenne ideális az elvégzés?" },
-                          { from: "user", text: "4–6 héten belül" },
-                          { from: "ai", text: "Tökéletes — most összekötöm Önt a csapattal a pontos felméréshez. ✓" },
+                          { from: "ai", text: "Szia! Azonnali árajánlatot tudok adni. Milyen munkáról van szó?" },
+                          { from: "user", text: "Terasz lerakás" },
                         ].map((msg, i) => (
-                          <div key={i} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
-                            <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>
-                              {msg.text}
-                            </div>
+                          <div key={`pt-${i}`} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                            <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
                           </div>
                         ))}
+
+                        {/* Project-specific questions */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Terasz-specifikus kérdések</div>
+                        {[
+                          { from: "ai", text: "Kell-e valamit elbontani előtte? Lejtős a terep?" },
+                          { from: "user", text: "Régi teraszlapok vannak, kis lejtés van" },
+                          { from: "ai", text: "Mekkora a terület hozzávetőlegesen? (m²)" },
+                          { from: "user", text: "Kb. 40m²" },
+                          { from: "ai", text: "Mekkora a bejáró szélessége a gépeknek? (pl. elfér egy talicska?)" },
+                          { from: "user", text: "Normál kapu, kb. 90cm" },
+                          { from: "ai", text: "Milyen anyagot gondolt? (kő, porcelán, tégla, beton)" },
+                          { from: "user", text: "Természetes kő" },
+                          { from: "ai", text: "Melyik városban/kerületben van a projekt?" },
+                          { from: "user", text: "Miskolc" },
+                          { from: "ai", text: "Mi az ideális határidő — mikor kellene elkészülnie?" },
+                          { from: "user", text: "6–8 héten belül" },
+                        ].map((msg, i) => (
+                          <div key={`q-${i}`} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                            <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
+                          </div>
+                        ))}
+
+                        {/* Budget */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Büdzsé ellenőrzés</div>
+                        {[
+                          { from: "ai", text: "Mi a hozzávetőleges büdzsé erre a projektre?" },
+                          { from: "user", text: "350 000–500 000 Ft körül" },
+                        ].map((msg, i) => (
+                          <div key={`b-${i}`} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                            <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
+                          </div>
+                        ))}
+
+                        {/* Instant estimate — given before asking contact info */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Azonnali árajánlat — azonnal megkapja</div>
+                        <div className="flex justify-start">
+                          <div className="max-w-[90%] bg-[#111] border border-gold/20 rounded-2xl rounded-tl-sm overflow-hidden">
+                            <div className="bg-gold/10 px-4 py-2 border-b border-gold/10">
+                              <span className="font-grotesk font-bold text-xs text-gold">Becsült ár: 370 000 – 450 000 Ft</span>
+                            </div>
+                            <div className="px-4 py-2.5 space-y-1">
+                              {[["Elbontás + előkészítés", "40–60 000 Ft"], ["Természetes kő (40m²)", "180–220 000 Ft"], ["Munkadíj", "150–170 000 Ft"]].map(([label, val]) => (
+                                <div key={label} className="flex justify-between font-inter text-[10px]">
+                                  <span className="text-cream/40">{label}</span><span className="text-cream/70">{val}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Contact info collected AFTER estimate */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Kapcsolati adatok — az árajánlat után kérdezzük</div>
+                        {[
+                          { from: "ai", text: "Az árajánlat elküldéséhez és visszahíváshoz megadná a nevét, telefonszámát és e-mail-címét?" },
+                          { from: "user", text: "Kovács Péter, 06 20 123 4567, kovacs.peter@gmail.com" },
+                        ].map((msg, i) => (
+                          <div key={`c-${i}`} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                            <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl font-inter text-xs leading-relaxed ${msg.from === "ai" ? "bg-white/[0.04] border border-white/[0.07] text-cream/70 rounded-tl-sm" : "bg-gold/15 border border-gold/25 text-gold rounded-tr-sm"}`}>{msg.text}</div>
+                          </div>
+                        ))}
+
+                        {/* Lead score */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-gold/25 text-center py-1">Érdeklődő pontozva és automatikusan irányítva</div>
+                        <div className="flex justify-start">
+                          <div className="max-w-[92%] bg-[#111] border border-gold/30 rounded-2xl rounded-tl-sm px-4 py-3 space-y-2">
+                            <div className="flex items-center justify-between">
+                              <span className="font-grotesk text-xs font-bold text-cream">Lead pontszám</span>
+                              <div className="flex items-center gap-2">
+                                <div className="h-1.5 w-20 bg-white/[0.06] rounded-full overflow-hidden">
+                                  <motion.div className="h-full bg-gradient-to-r from-gold to-bright-gold rounded-full" initial={{ width: 0 }} whileInView={{ width: "92%" }} viewport={{ once: true }} transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }} />
+                                </div>
+                                <span className="font-grotesk font-bold text-gold text-sm">92/100</span>
+                              </div>
+                            </div>
+                            <div className="inline-flex items-center gap-2 bg-gold/15 border border-gold/35 px-3 py-1.5 rounded-full">
+                              <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
+                              <span className="font-grotesk font-bold text-[10px] text-gold uppercase tracking-[0.15em]">VIP — Naptármeghívó elküldve</span>
+                            </div>
+                            <p className="font-inter text-[10px] text-cream/40">Büdzsé megfelelő, helyi terület, sürgős határidő. Adatok azonnal elküldve a csapatnak.</p>
+                          </div>
+                        </div>
+
+                        {/* Decline example */}
+                        <div className="font-grotesk text-[9px] uppercase tracking-[0.2em] text-white/15 text-center py-1">Ha nem megfelelő — az AI udvariasan elutasítja, nincs értesítés</div>
+                        <div className="flex justify-start">
+                          <div className="max-w-[88%] bg-white/[0.03] border border-white/[0.06] rounded-2xl rounded-tl-sm px-3.5 py-2.5">
+                            <p className="font-inter text-[11px] text-cream/35 leading-relaxed">Köszönjük érdeklődését! Sajnos a projekt helyszíne kívül esik a szolgáltatási területünkön. Nem tudjuk vállalni, de sok sikert kívánunk a megfelelő csapat megtalálásához.</p>
+                            <p className="font-inter text-[9px] text-white/18 mt-1.5 italic">A tulaj nem kap értesítést. Ideje teljesen védett.</p>
+                          </div>
+                        </div>
+
+                        {/* Routing tiers */}
+                        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1.2, duration: 0.5 }} className="grid grid-cols-3 gap-1.5 pt-1">
+                          {[
+                            { score: "0–40", label: "Elutasítva", color: "border-white/[0.07] text-white/18", dot: "bg-white/18" },
+                            { score: "41–80", label: "Minősített", color: "border-gold/20 text-gold/50", dot: "bg-gold/50" },
+                            { score: "81–100", label: "VIP ★", color: "border-gold/50 text-gold bg-gold/5", dot: "bg-gold" },
+                          ].map((tier) => (
+                            <div key={tier.label} className={`border ${tier.color} rounded-lg px-2 py-1.5 text-center`}>
+                              <div className={`w-1.5 h-1.5 rounded-full ${tier.dot} mx-auto mb-1`} />
+                              <div className="font-grotesk font-bold text-[9px] uppercase tracking-[0.1em]">{tier.label}</div>
+                              <div className="font-inter text-[8px] text-cream/25 mt-0.5">{tier.score}</div>
+                            </div>
+                          ))}
+                        </motion.div>
                       </div>
                     </div>
+                    <p className="font-cormorant text-sm text-gold/40 italic mt-4 text-center">
+                      &ldquo;Ez fut a weboldaladon 24/7. Csak azokkal találkozol, akik megérik az idődet.&rdquo;
+                    </p>
                   </div>
                 </div>
               </div>
@@ -650,12 +768,18 @@ export default function HuPage() {
 
                       {/* Metrics */}
                       <div className="flex flex-wrap gap-4 py-4 border-t border-white/[0.05]">
-                        {project.metrics.map((m) => (
-                          <div key={m.label} className="text-center min-w-[70px]">
-                            <div className="font-grotesk font-bold text-[clamp(20px,2.5vw,32px)] text-gradient-gold leading-none tracking-[-0.04em]">{m.val}</div>
-                            <div className="font-inter text-[10px] text-text-muted uppercase tracking-[0.12em] mt-1">{m.label}</div>
-                          </div>
-                        ))}
+                        {project.metrics.map((m) => {
+                          const numeric = parseInt(m.val);
+                          const isNumeric = !isNaN(numeric) && !m.val.startsWith("<");
+                          return (
+                            <div key={m.label} className="text-center min-w-[70px]">
+                              <div className="font-grotesk font-bold text-[clamp(20px,2.5vw,32px)] text-gradient-gold leading-none tracking-[-0.04em]">
+                                {isNumeric ? <CountUp target={numeric} /> : m.val}
+                              </div>
+                              <div className="font-inter text-[10px] text-text-muted uppercase tracking-[0.12em] mt-1">{m.label}</div>
+                            </div>
+                          );
+                        })}
                       </div>
 
                       <a

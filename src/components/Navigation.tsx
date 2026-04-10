@@ -180,12 +180,12 @@ export default function Navigation() {
 
             {/* HU language link */}
             <Link href="/hu"
-              className={`relative inline-flex items-center gap-1.5 px-3 py-2 rounded-full font-grotesk text-sm font-semibold tracking-wide transition-all duration-200 ${
+              className={`relative inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-grotesk text-sm font-semibold tracking-wide transition-all duration-200 ${
                 pathname === "/hu"
-                  ? "bg-gold/15 border border-gold/40 text-gold"
-                  : "text-cream/50 hover:text-gold hover:bg-gold/5 border border-white/[0.06] hover:border-gold/30"
+                  ? "bg-gold text-deep-black shadow-[0_0_16px_rgba(212,175,55,0.45)]"
+                  : "text-cream/60 hover:text-cream hover:bg-white/[0.06] border border-transparent hover:border-white/[0.08]"
               }`}>
-              <span className="text-base leading-none">🇭🇺</span>
+              <span className="text-sm leading-none">🇭🇺</span>
               <span>Magyar</span>
             </Link>
           </nav>
