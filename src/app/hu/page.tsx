@@ -79,10 +79,9 @@ const testimonials = [
 
 const industries = [
   {
-    num: "01",
     icon: Leaf,
     label: "Tereprendezés & Kertészet",
-    desc: "Szezonális roham, felesleges árajánlat-kérők, véget nem érő egyeztetések. Az AI szűri, mi éri meg az idődet.",
+    desc: "Szezonális roham, felesleges árajánlat-kérők, véget nem érő egyeztetések. Az AI szűri, mi éri meg az idődet — a komoly megrendelők jutnak csak el hozzád.",
     project: {
       name: "Lavotha Kert Kft.",
       tagline: "Webdesign · Miskolc",
@@ -92,10 +91,9 @@ const industries = [
     },
   },
   {
-    num: "02",
     icon: Hammer,
     label: "Építőipar & Felújítás",
-    desc: "Nagy projektek, komoly büdzsék — de rengeteg nem komoly érdeklődő. Az AI csak a valódi megrendelőket engedi át.",
+    desc: "Nagy projektek, komoly büdzsék — de rengeteg nem komoly érdeklődő. Az AI csak a valódi megrendelőket engedi át, te pedig az építéssel foglalkozol.",
     project: {
       name: "Tiszaújváros Transz Kft.",
       tagline: "Webdesign · Kazincbarcika",
@@ -105,17 +103,9 @@ const industries = [
     },
   },
   {
-    num: "03",
-    icon: Sparkles,
-    label: "Takarítás & Portaszolgálat",
-    desc: "Visszatérő ügyfelek, rugalmas időpontok, egyszerű árazás — az AI azonnal ajánlatot ad és ütemezi a munkát.",
-    project: null,
-  },
-  {
-    num: "04",
     icon: Droplets,
     label: "Vízvezetékszerelés",
-    desc: "Sürgős hívások, gyors döntések szükségesek — az AI kiszűri, mi valóban sürgős, és csak a fizető ügyfeleket kapcsolja hozzád.",
+    desc: "Sürgős hívások, gyors döntések — az AI kiszűri, mi valóban sürgős, és csak a fizető ügyfeleket kapcsolja hozzád. Nincs több éjjeli spam.",
     project: {
       name: "ViszCAD",
       tagline: "Webdesign · Magyarország",
@@ -123,20 +113,6 @@ const industries = [
       image: "/images/case-studies/viszcad.png",
       url: null,
     },
-  },
-  {
-    num: "05",
-    icon: Zap,
-    label: "Elektromos munkák",
-    desc: "Minősített munkák, biztonsági előírások — az AI felméri az igényt és csak az odaillő projekteket hozza be.",
-    project: null,
-  },
-  {
-    num: "06",
-    icon: Wrench,
-    label: "Karbantartás & Handyman",
-    desc: "Változatos feladatok, gyors fordulók — az AI automatikusan fogadja az igényeket és szervezi az időpontokat.",
-    project: null,
   },
 ];
 
@@ -242,7 +218,12 @@ export default function HuPage() {
               </div>
               <div className="overflow-hidden pt-2">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-cream/20" style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
-                  LEGKERESETTEBB.
+                  LEGKERESETTEBB
+                </motion.div>
+              </div>
+              <div className="overflow-hidden pt-2">
+                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.56, ease: SPRING }} className="text-[clamp(28px,5.5vw,80px)] text-cream/15" style={{ WebkitTextStroke: "1px rgba(245,241,232,0.18)" }}>
+                  FELÚJÍTÁSI SZAKEMBERE.
                 </motion.div>
               </div>
             </h1>
@@ -646,86 +627,106 @@ export default function HuPage() {
             </div>
           </Reveal>
 
-          <div className="divide-y divide-white/[0.05]">
+          {/* Featured industry cards — 3 column grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 mb-10">
             {industries.map((ind, i) => (
               <motion.div
-                key={ind.num}
-                initial={{ opacity: 0, y: 20 }}
+                key={ind.label}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.07, duration: 0.6, ease: SPRING }}
-                className="group grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 lg:gap-12 py-8 hover:bg-white/[0.015] rounded-2xl -mx-4 px-4 transition-colors duration-300 cursor-default"
+                transition={{ delay: i * 0.1, duration: 0.7, ease: SPRING }}
+                className="group relative bg-[#0D0D0D] border border-white/[0.07] rounded-3xl overflow-hidden hover:border-gold/30 hover:shadow-[0_16px_50px_rgba(0,0,0,0.6)] transition-all duration-400"
               >
-                {/* Left — industry info */}
-                <div className="flex items-start gap-5">
-                  <span className="font-grotesk font-bold text-[11px] tracking-[0.25em] text-gold/25 group-hover:text-gold/50 transition-colors duration-300 pt-2 flex-shrink-0 w-7">{ind.num}</span>
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-3 mb-2.5">
-                      <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold/20 group-hover:border-gold/40 group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                        <ind.icon size={18} />
-                      </div>
-                      <h3 className="font-grotesk font-bold text-lg md:text-xl text-cream group-hover:text-white transition-colors duration-300">{ind.label}</h3>
-                      {ind.project && (
-                        <span className="font-grotesk text-[8px] font-bold uppercase tracking-[0.15em] text-gold bg-gold/10 border border-gold/25 px-2 py-1 rounded-full">Élő projekt ★</span>
-                      )}
-                    </div>
-                    <p className="font-inter text-sm text-text-muted leading-relaxed max-w-lg">{ind.desc}</p>
+                {/* Top accent */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/50 transition-all duration-400" />
+
+                {/* Screenshot */}
+                <div className="relative h-52 overflow-hidden">
+                  <Image
+                    src={ind.project.image}
+                    alt={ind.project.name}
+                    fill
+                    className="object-cover object-top transition-transform duration-600 group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-black/30 to-transparent" />
+                  {/* Live badge */}
+                  <div className="absolute top-3.5 left-3.5">
+                    <span className="inline-flex items-center gap-1.5 font-grotesk text-[9px] font-bold uppercase tracking-[0.15em] text-gold bg-black/70 border border-gold/30 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                      Élő projekt
+                    </span>
                   </div>
+                  {/* External link */}
+                  {ind.project.url && (
+                    <a href={ind.project.url} target="_blank" rel="noopener noreferrer"
+                      className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full bg-black/70 border border-white/10 flex items-center justify-center hover:border-gold/40 hover:bg-gold/10 transition-all duration-200 backdrop-blur-sm">
+                      <ExternalLink size={11} className="text-white/50 hover:text-gold transition-colors duration-200" />
+                    </a>
+                  )}
                 </div>
 
-                {/* Right — case study card or placeholder */}
-                <div className="lg:self-center">
-                  {ind.project ? (
-                    ind.project.url ? (
-                      <a href={ind.project.url} target="_blank" rel="noopener noreferrer"
-                        className="group/card block bg-[#111] border border-white/[0.07] rounded-2xl overflow-hidden hover:border-gold/35 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
-                        <div className="relative h-28 overflow-hidden">
-                          <Image src={ind.project.image} alt={ind.project.name} fill className="object-cover object-top transition-transform duration-500 group-hover/card:scale-[1.05]" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                          <div className="absolute top-2.5 right-2.5">
-                            <ExternalLink size={11} className="text-gold/50 group-hover/card:text-gold transition-colors duration-200" />
-                          </div>
-                        </div>
-                        <div className="px-4 py-3 flex items-center justify-between gap-3">
-                          <div className="min-w-0">
-                            <div className="font-grotesk font-bold text-sm text-cream truncate">{ind.project.name}</div>
-                            <div className="font-inter text-[10px] text-text-muted mt-0.5">{ind.project.tagline}</div>
-                          </div>
-                          <div className="flex gap-1.5 flex-shrink-0">
-                            {ind.project.metrics.map((m) => (
-                              <span key={m} className="font-grotesk text-[9px] font-bold text-gold/70 bg-gold/10 border border-gold/20 px-2 py-1 rounded-full whitespace-nowrap">{m}</span>
-                            ))}
-                          </div>
-                        </div>
-                      </a>
-                    ) : (
-                      <div className="bg-[#111] border border-white/[0.07] rounded-2xl overflow-hidden">
-                        <div className="relative h-28 overflow-hidden">
-                          <Image src={ind.project.image} alt={ind.project.name} fill className="object-cover object-top" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                        </div>
-                        <div className="px-4 py-3 flex items-center justify-between gap-3">
-                          <div className="min-w-0">
-                            <div className="font-grotesk font-bold text-sm text-cream truncate">{ind.project.name}</div>
-                            <div className="font-inter text-[10px] text-text-muted mt-0.5">{ind.project.tagline}</div>
-                          </div>
-                          <div className="flex gap-1.5 flex-shrink-0">
-                            {ind.project.metrics.map((m) => (
-                              <span key={m} className="font-grotesk text-[9px] font-bold text-gold/70 bg-gold/10 border border-gold/20 px-2 py-1 rounded-full whitespace-nowrap">{m}</span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  ) : (
-                    <div className="hidden lg:flex items-center justify-end">
-                      <span className="font-grotesk text-[9px] font-bold uppercase tracking-[0.2em] text-white/[0.12] border border-white/[0.05] px-3 py-2 rounded-full">Hamarosan</span>
+                {/* Content */}
+                <div className="p-6">
+                  {/* Industry */}
+                  <div className="flex items-center gap-2.5 mb-4">
+                    <div className="w-8 h-8 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold/20 group-hover:border-gold/40 transition-all duration-300 flex-shrink-0">
+                      <ind.icon size={15} />
                     </div>
-                  )}
+                    <span className="font-grotesk font-bold text-[11px] uppercase tracking-[0.2em] text-gold/60">{ind.label}</span>
+                  </div>
+
+                  {/* Project name */}
+                  <h3 className="font-grotesk font-bold text-xl text-cream mb-2 group-hover:text-white transition-colors duration-300">{ind.project.name}</h3>
+                  <p className="font-inter text-[10px] text-text-muted mb-4">{ind.project.tagline}</p>
+
+                  {/* Desc */}
+                  <p className="font-inter text-sm text-cream/45 leading-relaxed mb-5">{ind.desc}</p>
+
+                  {/* Metrics */}
+                  <div className="flex flex-wrap gap-2">
+                    {ind.project.metrics.map((m) => (
+                      <span key={m} className="font-grotesk text-[9px] font-bold text-gold/70 bg-gold/10 border border-gold/20 px-2.5 py-1 rounded-full">{m}</span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Other industries — compact CTA block */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.7, ease: SPRING }}
+            className="relative bg-white/[0.02] border border-white/[0.06] rounded-2xl px-8 py-7 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8"
+          >
+            <div className="flex-1">
+              <div className="flex flex-wrap gap-2 mb-3">
+                {[
+                  { icon: Sparkles, label: "Takarítás & Portaszolgálat" },
+                  { icon: Zap, label: "Elektromos munkák" },
+                  { icon: Wrench, label: "Karbantartás & Handyman" },
+                ].map((item) => (
+                  <span key={item.label} className="inline-flex items-center gap-1.5 font-grotesk text-[10px] font-semibold text-cream/35 border border-white/[0.07] px-3 py-1.5 rounded-full">
+                    <item.icon size={10} className="text-gold/40" />
+                    {item.label}
+                  </span>
+                ))}
+              </div>
+              <p className="font-inter text-sm text-cream/40 leading-relaxed">
+                Ezek csak példák — rengeteg más iparágban is dolgoztam már. Ha bizonytalan vagy, keress meg és megmondom, tudok-e segíteni.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="flex-shrink-0 inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3.5 rounded-full btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 whitespace-nowrap"
+            >
+              Kérdezz bátran
+              <ArrowRight size={14} />
+            </Link>
+          </motion.div>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent mt-8" />
       </section>
