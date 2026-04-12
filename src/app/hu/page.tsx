@@ -54,6 +54,7 @@ const testimonials = [
     quote:
       "Az ajánlatkérő teljesen átalakította, ahogy az érdeklődőket kezeljük. Automatikusan kiszűri a nem komoly ajánlatkérőket, és 24/7 recepciósként működik — hetente órákat spórolunk. Most már csak azokkal beszélünk, akik valóban megrendelők lesznek.",
     initials: "BL",
+    logo: "/images/lavotha-logo.jpg",
     rating: 5,
     placeholder: false,
   },
@@ -63,6 +64,7 @@ const testimonials = [
     quote:
       "A weboldal lenyűgöző, és azonnal prémium szolgáltatásnak pozicionál minket. Több ügyfelünk is elmondta, hogy ez a leglátványosabb kerttervezős oldal, amit valaha láttak. Már most megtérül az érdeklődők minőségén keresztül.",
     initials: "B",
+    logo: "/images/mimosa-logo.jpg",
     rating: 5,
     placeholder: false,
   },
@@ -72,6 +74,7 @@ const testimonials = [
     quote:
       "Milan pontosan azt szállította, amire szükségünk volt, rekordidő alatt. Az oldal gyors, profi, és jobb ügyfeleket vonz. Az együttműködés elejétől a végéig gördülékeny volt — csak ajánlani tudom.",
     initials: "PM",
+    logo: "/images/viszcad-logo.png",
     rating: 5,
     placeholder: false,
   },
@@ -87,6 +90,7 @@ const industries = [
       tagline: "Webdesign · Miskolc",
       metrics: ["96 Teljesítmény", "100 SEO"],
       image: "/images/case-studies/lavothakertkft.png",
+      logo: "/images/lavotha-logo.jpg",
       url: "https://www.kertepites-miskolc.hu/",
     },
   },
@@ -99,6 +103,7 @@ const industries = [
       tagline: "Webdesign · Kazincbarcika",
       metrics: ["95 Teljesítmény", "100 SEO"],
       image: "/images/case-studies/tiszaujvarostransz.png",
+      logo: null,
       url: "https://tiszaujvarostransz.hu/",
     },
   },
@@ -111,6 +116,7 @@ const industries = [
       tagline: "Webdesign · Magyarország",
       metrics: ["★★★★★", "Ajánlott"],
       image: "/images/case-studies/viszcad.png",
+      logo: "/images/viszcad-logo.png",
       url: "https://www.viszcadkft.hu/",
     },
   },
@@ -675,8 +681,15 @@ export default function HuPage() {
                     <span className="font-grotesk font-bold text-[11px] uppercase tracking-[0.2em] text-gold/60">{ind.label}</span>
                   </div>
 
-                  {/* Project name */}
-                  <h3 className="font-grotesk font-bold text-xl text-cream mb-2 group-hover:text-white transition-colors duration-300">{ind.project.name}</h3>
+                  {/* Project name + logo */}
+                  <div className="flex items-center gap-3 mb-2">
+                    {ind.project.logo && (
+                      <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
+                        <Image src={ind.project.logo} alt={ind.project.name} width={28} height={28} className="object-contain w-full h-full" />
+                      </div>
+                    )}
+                    <h3 className="font-grotesk font-bold text-xl text-cream group-hover:text-white transition-colors duration-300">{ind.project.name}</h3>
+                  </div>
                   <p className="font-inter text-[10px] text-text-muted mb-4">{ind.project.tagline}</p>
 
                   {/* Desc */}
@@ -837,8 +850,12 @@ export default function HuPage() {
                   </p>
                   {/* Author */}
                   <div className="flex items-center gap-3 pt-5 border-t border-white/[0.06]">
-                    <div className="w-10 h-10 rounded-full bg-gold/15 border border-gold/25 flex items-center justify-center flex-shrink-0">
-                      <span className="font-grotesk font-bold text-xs text-gold">{t.initials}</span>
+                    <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
+                      {t.logo ? (
+                        <Image src={t.logo} alt={t.business} width={36} height={36} className="object-contain w-full h-full" />
+                      ) : (
+                        <span className="font-grotesk font-bold text-xs text-gold">{t.initials}</span>
+                      )}
                     </div>
                     <div>
                       <div className={`font-grotesk font-bold text-sm ${t.placeholder ? "text-cream/20" : "text-cream"}`}>{t.name}</div>
