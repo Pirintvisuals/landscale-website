@@ -211,18 +211,18 @@ export default function HuPage() {
 
           {/* Headline */}
           <div className="mb-10">
-            <h1 className="font-grotesk font-bold leading-[0.92] tracking-[-0.04em]">
-              <div className="overflow-hidden pt-2">
+            <h1 className="font-grotesk font-bold leading-[1] tracking-[-0.04em]">
+              <div className="overflow-hidden py-1">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-gradient-gold">
                   VÉGE A
                 </motion.div>
               </div>
-              <div className="overflow-hidden pt-2">
+              <div className="overflow-hidden py-1">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-cream">
                   KOMOLYTALAN
                 </motion.div>
               </div>
-              <div className="overflow-hidden pt-2">
+              <div className="overflow-hidden py-1">
                 <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }} className="text-[clamp(40px,8.5vw,120px)] text-cream/20" style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
                   ÉRDEKLŐDŐKNEK.
                 </motion.div>
