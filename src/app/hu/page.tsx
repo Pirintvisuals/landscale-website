@@ -926,7 +926,7 @@ export default function HuPage() {
                       Foglalj időpontot
                     </Link>
                     <a
-                      href="https://m.me/milan.pirin"
+                      href="https://m.me/100083279266241"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-sm px-6 py-4 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300"
@@ -985,7 +985,7 @@ export default function HuPage() {
             {/* Contact options */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-4">
               <a
-                href="https://m.me/milan.pirin"
+                href="https://m.me/100083279266241"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-inter text-text-muted text-sm hover:text-gold transition-colors group"
