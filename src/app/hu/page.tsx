@@ -408,7 +408,7 @@ export default function HuPage() {
                   </div>
 
                   <h3 className="font-grotesk font-bold text-[clamp(28px,3.5vw,54px)] text-cream leading-[0.92] tracking-[-0.03em] mb-4">
-                    AZ AI DOLGOZIK.<br /><span className="text-gradient-gold">TE CSAK ÉPÍTSZ.</span>
+                    AZ AI DOLGOZIK.<br /><span className="text-gradient-gold">TE CSAK ÉPÍTESZ.</span>
                   </h3>
                   <p className="font-cormorant text-lg md:text-xl text-cream/50 font-light italic leading-relaxed mb-8">
                     A rendszer automatikusan kezeli az érdeklődőket — te csak a komoly megrendelőkkel találkozol.
