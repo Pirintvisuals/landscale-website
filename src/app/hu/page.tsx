@@ -940,20 +940,27 @@ export default function HuPage() {
             </Reveal>
           </div>
         </div>
-        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent mt-16 md:mt-24" />
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent mt-8 md:mt-12" />
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="relative py-20 md:py-28 lg:py-36 bg-[#060606] overflow-hidden text-center">
+      <section className="relative py-14 md:py-20 lg:py-24 bg-[#060606] overflow-hidden text-center">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute rounded-full orb-1"
-            style={{ width: 1000, height: 1000, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }} />
+          <div className="absolute rounded-full"
+            style={{ width: 900, height: 900, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.22) 0%, transparent 60%)", filter: "blur(80px)" }} />
         </div>
-        <div className="absolute inset-0 opacity-[0.018] pointer-events-none"
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{ backgroundImage: "linear-gradient(rgba(212,175,55,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,1) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
 
-        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-8">
-          <div className="overflow-hidden mb-4">
+        <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8">
+          {/* Gold top line */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="h-px flex-1 max-w-[80px] bg-gradient-to-r from-transparent to-gold/40" />
+            <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.3em] text-gold/60">Landscale · Magyar vállalkozásoknak</span>
+            <div className="h-px flex-1 max-w-[80px] bg-gradient-to-l from-transparent to-gold/40" />
+          </div>
+
+          <div className="overflow-hidden mb-6">
             <motion.h2
               initial={{ y: "60%", opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -965,46 +972,46 @@ export default function HuPage() {
             </motion.h2>
           </div>
 
-          <Reveal delay={0.2} className="mb-12">
+          <Reveal delay={0.2} className="mb-10">
             <p className="font-cormorant text-xl md:text-2xl text-cream/65 font-light italic leading-relaxed max-w-2xl mx-auto">
               Vedd fel velünk a kapcsolatot — megmutatjuk, mennyit spórolhatsz és mennyivel növelheted a bevételed.
             </p>
           </Reveal>
 
           <Reveal delay={0.35}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
+            {/* Primary CTA */}
+            <div className="flex justify-center mb-8">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-lg px-12 py-6 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] hover:-translate-y-1.5"
+                className="group relative inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-lg px-12 py-6 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_80px_rgba(212,175,55,0.6)] hover:-translate-y-1.5"
               >
+                <span className="absolute inset-0 rounded-sm ring-2 ring-gold/0 group-hover:ring-gold/30 group-hover:ring-offset-2 group-hover:ring-offset-transparent transition-all duration-300" />
                 Ingyenes konzultáció foglalása
-                <ArrowRight size={18} />
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
             </div>
 
-            {/* Contact options */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-4">
+            {/* Contact options — styled pills */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
                 href="https://m.me/100083279266241"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-inter text-text-muted text-sm hover:text-gold transition-colors group"
+                className="inline-flex items-center gap-2 font-grotesk font-semibold text-sm text-cream/60 border border-white/[0.08] px-5 py-2.5 rounded-full hover:border-gold/40 hover:text-gold hover:bg-gold/5 transition-all duration-200"
               >
-                <MessageCircle size={16} className="group-hover:text-gold transition-colors" />
+                <MessageCircle size={14} />
                 Facebook üzenet
               </a>
-              <span className="hidden sm:block text-white/10">|</span>
               <a
                 href="tel:+36702501739"
-                className="inline-flex items-center gap-2 font-inter text-text-muted text-sm hover:text-gold transition-colors group"
+                className="inline-flex items-center gap-2 font-grotesk font-semibold text-sm text-cream/60 border border-white/[0.08] px-5 py-2.5 rounded-full hover:border-gold/40 hover:text-gold hover:bg-gold/5 transition-all duration-200"
               >
-                <Phone size={16} className="group-hover:text-gold transition-colors" />
+                <Phone size={14} />
                 +36 70 250 1739
               </a>
-              <span className="hidden sm:block text-white/10">|</span>
               <a
                 href="mailto:landscale.agency@gmail.com"
-                className="font-inter text-text-muted/60 text-sm hover:text-gold transition-colors"
+                className="inline-flex items-center gap-2 font-grotesk font-semibold text-sm text-cream/60 border border-white/[0.08] px-5 py-2.5 rounded-full hover:border-gold/40 hover:text-gold hover:bg-gold/5 transition-all duration-200"
               >
                 landscale.agency@gmail.com
               </a>
