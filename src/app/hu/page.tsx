@@ -410,7 +410,7 @@ export default function HuPage() {
                   <h3 className="font-grotesk font-bold text-[clamp(28px,3.5vw,54px)] text-cream leading-[0.92] tracking-[-0.03em] mb-4">
                     AZ AI DOLGOZIK.<br /><span className="text-gradient-gold">TE CSAK ÉPÍTESZ.</span>
                   </h3>
-                  <p className="font-cormorant text-lg md:text-xl text-cream/50 font-light italic leading-relaxed mb-8">
+                  <p className="font-cormorant text-lg md:text-xl text-cream/70 font-light italic leading-relaxed mb-8">
                     A rendszer automatikusan kezeli az érdeklődőket — te csak a komoly megrendelőkkel találkozol.
                   </p>
 
@@ -471,7 +471,7 @@ export default function HuPage() {
                       <div className="border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
-                          <span className="font-grotesk text-xs font-semibold text-cream/50 uppercase tracking-[0.15em]">Árajánlat Ügynök — Online</span>
+                          <span className="font-grotesk text-xs font-semibold text-cream/70 uppercase tracking-[0.15em]">Árajánlat Ügynök — Online</span>
                         </div>
                         <span className="font-grotesk text-[9px] font-bold uppercase tracking-[0.15em] text-gold/40 border border-gold/15 px-2 py-0.5 rounded-full">Élő példa</span>
                       </div>
@@ -531,7 +531,7 @@ export default function HuPage() {
                             <div className="px-4 py-2.5 space-y-1">
                               {[["Elbontás + előkészítés", "40–60 000 Ft"], ["Természetes kő (40m²)", "180–220 000 Ft"], ["Munkadíj", "150–170 000 Ft"]].map(([label, val]) => (
                                 <div key={label} className="flex justify-between font-inter text-[10px]">
-                                  <span className="text-cream/40">{label}</span><span className="text-cream/70">{val}</span>
+                                  <span className="text-cream/65">{label}</span><span className="text-cream/70">{val}</span>
                                 </div>
                               ))}
                             </div>
@@ -566,7 +566,7 @@ export default function HuPage() {
                               <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
                               <span className="font-grotesk font-bold text-[10px] text-gold uppercase tracking-[0.15em]">VIP — Naptármeghívó elküldve</span>
                             </div>
-                            <p className="font-inter text-[10px] text-cream/40">Büdzsé megfelelő, helyi terület, sürgős határidő. Adatok azonnal elküldve a csapatnak.</p>
+                            <p className="font-inter text-[10px] text-cream/65">Büdzsé megfelelő, helyi terület, sürgős határidő. Adatok azonnal elküldve a csapatnak.</p>
                           </div>
                         </div>
 
@@ -622,7 +622,7 @@ export default function HuPage() {
               <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
                 MINDEN<br /><span className="text-gradient-gold">SZOLGÁLTATÓ</span><br />VÁLLALKOZÁSNAK.
               </h2>
-              <p className="font-cormorant text-lg text-cream/40 font-light italic leading-relaxed max-w-sm">
+              <p className="font-cormorant text-lg text-cream/65 font-light italic leading-relaxed max-w-sm">
                 Nem csak kertészet — az AI bármilyen felújítási, szolgáltató és kézműves vállalkozásnál működik.
               </p>
             </div>
@@ -727,7 +727,7 @@ export default function HuPage() {
                   </span>
                 ))}
               </div>
-              <p className="font-inter text-sm text-cream/40 leading-relaxed">
+              <p className="font-inter text-sm text-cream/65 leading-relaxed">
                 Ezek csak példák — rengeteg más iparágban is dolgoztam már. Ha bizonytalan vagy, keress meg és megmondom, tudok-e segíteni.
               </p>
             </div>
@@ -966,7 +966,7 @@ export default function HuPage() {
           </div>
 
           <Reveal delay={0.2} className="mb-12">
-            <p className="font-cormorant text-xl md:text-2xl text-cream/40 font-light italic leading-relaxed max-w-2xl mx-auto">
+            <p className="font-cormorant text-xl md:text-2xl text-cream/65 font-light italic leading-relaxed max-w-2xl mx-auto">
               Vedd fel velünk a kapcsolatot — megmutatjuk, mennyit spórolhatsz és mennyivel növelheted a bevételed.
             </p>
           </Reveal>
