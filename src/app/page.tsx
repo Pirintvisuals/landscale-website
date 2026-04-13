@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
@@ -601,9 +602,9 @@ export default function HomePage() {
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { quote: "Milan built our new website with great care and attention to every detail. His input gave the site an aesthetic and professional look that our new clients have spoken highly of. I recommend him to everyone who values a quality online presence.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5 },
-              { quote: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.", name: "Basil", company: "Mimosa Gardens", stars: 5 },
-              { quote: "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.", name: "Péter Mantlik", company: "ViszCAD", stars: 5 },
+              { quote: "Milan built our new website with great care and attention to every detail. His input gave the site an aesthetic and professional look that our new clients have spoken highly of. I recommend him to everyone who values a quality online presence.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5, logo: "/images/lavotha-logo.jpg" },
+              { quote: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.", name: "Basil", company: "Mimosa Gardens", stars: 5, logo: "/images/mimosa-logo.jpg" },
+              { quote: "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.", name: "Péter Mantlik", company: "ViszCAD", stars: 5, logo: "/images/viszcad-logo.png" },
             ].map((t, i) => (
               <Reveal key={t.name} delay={i * 0.12}>
                   <div className="relative bg-[#111111] border border-white/[0.05] hover:border-gold/45 hover:-translate-y-1.5 p-8 rounded-3xl flex flex-col gap-5 transition-all duration-300 h-full overflow-hidden group">
@@ -619,8 +620,12 @@ export default function HomePage() {
                       <p className="font-cormorant text-xl font-light text-cream italic leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
                     </div>
                     <div className="flex items-center gap-4 relative z-10">
-                      <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/25 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors duration-300">
-                        <span className="font-grotesk font-bold text-xs text-gold">{t.name[0]}</span>
+                      <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
+                        {t.logo ? (
+                          <Image src={t.logo} alt={t.company} width={36} height={36} className="object-contain w-full h-full" />
+                        ) : (
+                          <span className="font-grotesk font-bold text-xs text-gold">{t.name[0]}</span>
+                        )}
                       </div>
                       <div>
                         <div className="font-grotesk font-semibold text-sm text-cream">{t.name}</div>
