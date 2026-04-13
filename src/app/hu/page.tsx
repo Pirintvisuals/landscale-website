@@ -52,7 +52,7 @@ const testimonials = [
     name: "Balázs Lavotha",
     business: "Lavotha Kert Kft",
     quote:
-      "Az ajánlatkérő teljesen átalakította, ahogy az érdeklődőket kezeljük. Automatikusan kiszűri a nem komoly ajánlatkérőket, és 24/7 recepciósként működik — hetente órákat spórolunk. Most már csak azokkal beszélünk, akik valóban megrendelők lesznek.",
+      "Új honlapunkat Milán nagy körültekintéssel és minden részletre kiterjedően készítette el. Észrevételeivel esztétikus és professzionális megjelenést kölcsönzött az oldalnak, melyről új ügyfeleink elismerően számoltak be. Rugalmas hozzáállása miatt ajánlom mindenkinek, akinek számít az igényes online megjelenés!",
     initials: "BL",
     logo: "/images/lavotha-logo.jpg",
     rating: 5,

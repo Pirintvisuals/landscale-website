@@ -601,7 +601,7 @@ export default function HomePage() {
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { quote: "The form has completely transformed how we handle inquiries. It filters out unqualified leads automatically and acts like a 24/7 receptionist — saving us hours every week. We only talk to serious buyers now.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5 },
+              { quote: "Milan built our new website with great care and attention to every detail. His input gave the site an aesthetic and professional look that our new clients have spoken highly of. I recommend him to everyone who values a quality online presence.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5 },
               { quote: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.", name: "Basil", company: "Mimosa Gardens", stars: 5 },
               { quote: "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.", name: "Péter Mantlik", company: "ViszCAD", stars: 5 },
             ].map((t, i) => (
