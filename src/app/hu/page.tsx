@@ -606,6 +606,186 @@ export default function HuPage() {
         </div>
       </section>
 
+      {/* ── SERVICES BREAKDOWN ── */}
+      <section className="py-16 md:py-20 lg:py-24 bg-[#080808] relative overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        <div className="absolute rounded-full orb-2 pointer-events-none"
+          style={{ width: 700, height: 700, top: "20%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 60%)", filter: "blur(100px)" }} />
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-8">
+          <Reveal className="mb-12 md:mb-16">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <span className="w-8 h-px bg-gold block" />
+              <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">Mit kapsz</span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+              <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
+                HÁROM ESZKÖZ.<br /><span className="text-gradient-gold">EGY RENDSZER.</span>
+              </h2>
+              <p className="font-cormorant text-lg text-cream/65 font-light italic leading-relaxed max-w-sm">
+                Minden automatikusan fut — miközben te dolgozol, az AI szűri, válaszol és megrendeléseket hoz.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Top 2 main cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+
+            {/* Estimator Agent */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0, duration: 0.7, ease: SPRING }}
+              className="relative bg-[#0D0D0D] border border-gold/25 rounded-3xl overflow-hidden group"
+            >
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent" />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 80% 0%, rgba(212,175,55,0.07) 0%, transparent 60%)" }} />
+              <div className="p-8 md:p-10 relative z-10">
+                <div className="flex items-start justify-between gap-4 mb-6">
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 px-3 py-1.5 rounded-full mb-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                      <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">01 · Fő funkció</span>
+                    </div>
+                    <h3 className="font-grotesk font-bold text-[clamp(24px,3vw,36px)] text-cream leading-tight tracking-[-0.02em]">Becslés Agent</h3>
+                    <p className="font-cormorant text-base text-gold/70 italic mt-1">Azonnali árajánlat — emberi beavatkozás nélkül</p>
+                  </div>
+                  <div className="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center flex-shrink-0">
+                    <Zap size={22} className="text-gold" />
+                  </div>
+                </div>
+                <p className="font-inter text-sm text-cream/65 leading-relaxed mb-6">
+                  Interaktív chat a weboldaladon, ami végigkérdezi az érdeklődőt: milyen munka, mekkora költségkeret, mikor kellene, hol. Azonnal árbecslést ad — te pedig csak a komoly megrendelőket kapod meg, pontozva.
+                </p>
+                <div className="space-y-2.5 mb-6">
+                  {[
+                    "Projekt típusa, helyszín, határidő, budget felmérése",
+                    "Azonnali ár-becslés a te valós áraidra alapozva",
+                    "0–100 pontszám minden érdeklődőre — te döntöd el, kit hívol",
+                    "Minden adat emailben hozzád, CRM-be vagy Excel-be",
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-2.5">
+                      <CheckCircle size={14} className="text-gold mt-0.5 flex-shrink-0" />
+                      <span className="font-inter text-sm text-cream/70">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center gap-3 pt-5 border-t border-white/[0.06]">
+                  <div className="flex gap-2">
+                    {["0 pont = komolytalan", "100 pont = tökéletes"].map((tag) => (
+                      <span key={tag} className="font-grotesk text-[9px] font-bold uppercase tracking-[0.12em] text-gold/60 bg-gold/8 border border-gold/15 px-2.5 py-1 rounded-full">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Chatbot */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.7, ease: SPRING }}
+              className="relative bg-[#0D0D0D] border border-white/[0.08] rounded-3xl overflow-hidden group hover:border-gold/20 transition-all duration-400"
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/30 transition-all duration-400" />
+              <div className="p-8 md:p-10 relative z-10">
+                <div className="flex items-start justify-between gap-4 mb-6">
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 rounded-full mb-3">
+                      <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-cream/40">02 · Szűrés</span>
+                    </div>
+                    <h3 className="font-grotesk font-bold text-[clamp(24px,3vw,36px)] text-cream leading-tight tracking-[-0.02em]">AI Chatbot</h3>
+                    <p className="font-cormorant text-base text-cream/50 italic mt-1">FAQ + lead szűrés 24/7</p>
+                  </div>
+                  <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 group-hover:bg-gold/10 group-hover:border-gold/20 transition-all duration-300">
+                    <MessageCircle size={22} className="text-cream/40 group-hover:text-gold transition-colors duration-300" />
+                  </div>
+                </div>
+                <p className="font-inter text-sm text-cream/65 leading-relaxed mb-6">
+                  Chat widget az oldalon, ami válaszol az alap kérdésekre, és azonnal kiszűri a nem megfelelő érdeklődőket — még mielőtt hozzád érnének. Ha valaki nem jó fit, megmondja neki.
+                </p>
+                <div className="space-y-2.5">
+                  {[
+                    "Automatikus válasz: \"Vállaltok patiot?\" \"Hova dolgoztok?\"",
+                    "Kiszűri: túl messze, túl alacsony budget, nem azt csináljuk",
+                    "Minden infót továbbít emailben vagy CRM-be",
+                    "A rossz lead nem pazarolja az idődet",
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-2.5">
+                      <CheckCircle size={14} className="text-gold/60 mt-0.5 flex-shrink-0" />
+                      <span className="font-inter text-sm text-cream/65">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Bottom 2 smaller cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+            {/* AI Receptionist */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.7, ease: SPRING }}
+              className="relative bg-[#0D0D0D] border border-white/[0.08] rounded-3xl p-7 group hover:border-gold/20 transition-all duration-400 overflow-hidden"
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 group-hover:bg-gold/10 group-hover:border-gold/20 transition-all duration-300">
+                  <Phone size={18} className="text-cream/40 group-hover:text-gold transition-colors duration-300" />
+                </div>
+                <div>
+                  <div className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-cream/30 mb-1">03 · Opcionális</div>
+                  <h3 className="font-grotesk font-bold text-xl text-cream">AI Recepcionista</h3>
+                  <p className="font-cormorant text-sm text-cream/50 italic">Telefonos asszisztens — off-hours</p>
+                </div>
+              </div>
+              <p className="font-inter text-sm text-cream/65 leading-relaxed mb-4">
+                Csak akkor veszi fel, ha te nem tudsz. Válaszol kérdésekre, időpontot foglal, és ha nem tudja kezelni — továbbít hozzád. Ugyanaz a telefonszám, a kliens észre sem veszi.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Off-hours lefedés", "Időpontfoglalás", "Átirányítás"].map((tag) => (
+                  <span key={tag} className="font-grotesk text-[9px] font-bold uppercase tracking-[0.12em] text-cream/30 border border-white/[0.06] px-2.5 py-1 rounded-full">{tag}</span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Website */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.7, ease: SPRING }}
+              className="relative bg-[#0D0D0D] border border-white/[0.08] rounded-3xl p-7 group hover:border-gold/20 transition-all duration-400 overflow-hidden"
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 group-hover:bg-gold/10 group-hover:border-gold/20 transition-all duration-300">
+                  <TrendingUp size={18} className="text-cream/40 group-hover:text-gold transition-colors duration-300" />
+                </div>
+                <div>
+                  <div className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-cream/30 mb-1">04 · Alap</div>
+                  <h3 className="font-grotesk font-bold text-xl text-cream">Weboldal</h3>
+                  <p className="font-cormorant text-sm text-cream/50 italic">Ha még nincs, megcsinálom</p>
+                </div>
+              </div>
+              <p className="font-inter text-sm text-cream/65 leading-relaxed mb-4">
+                Prémium, gyors weboldal helyi SEO-val — az AI eszközök alapja. Ha még nincs weboldalad, ezt is megcsinálom. Ha van, az AI-t arra integrálom.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["100/100 SEO", "Sub-1s betöltés", "Mobilra optimalizált"].map((tag) => (
+                  <span key={tag} className="font-grotesk text-[9px] font-bold uppercase tracking-[0.12em] text-cream/30 border border-white/[0.06] px-2.5 py-1 rounded-full">{tag}</span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent mt-16" />
+      </section>
+
       {/* ── INDUSTRIES ── */}
       <section className="py-16 md:py-20 bg-[#0A0A0A] relative overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
