@@ -41,6 +41,72 @@ function HeroOrbs() {
   );
 }
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is an AI Estimator for landscaping businesses?",
+      acceptedAnswer: { "@type": "Answer", text: "An AI Estimator is a chat widget on your website that asks visitors about their project (scope, area, budget, postcode) and delivers an instant price estimate 24/7 — before they even give their contact details. This filters out unserious inquiries and saves you 15–20 hours per week." },
+    },
+    {
+      "@type": "Question",
+      name: "How does the AI chatbot qualify leads?",
+      acceptedAnswer: { "@type": "Answer", text: "The chatbot asks qualifying questions about budget, location, project type, and timeline. Leads outside your service area or below your minimum job size are politely declined automatically. Serious buyers are forwarded to you with their full brief attached." },
+    },
+    {
+      "@type": "Question",
+      name: "How long does it take to build a landscaping website?",
+      acceptedAnswer: { "@type": "Answer", text: "Most projects are completed in 2–4 weeks from the discovery call. The site includes local SEO, sub-1-second load times, and AI lead qualification built in from day one." },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need a website already to use the AI tools?",
+      acceptedAnswer: { "@type": "Answer", text: "No. If you don't have a website, Landscale builds one for you. If you already have a site, the AI estimator and chatbot can be integrated directly into it." },
+    },
+    {
+      "@type": "Question",
+      name: "What types of businesses does Landscale work with?",
+      acceptedAnswer: { "@type": "Answer", text: "Landscale works with landscaping, gardening, construction, plumbing, cleaning, electrical, and other home service businesses in the UK and Hungary." },
+    },
+  ],
+};
+
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Landscale Agency",
+  url: "https://landscale.agency",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: "3",
+    bestRating: "5",
+    worstRating: "5",
+  },
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Balázs Lavotha" },
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      reviewBody: "Milan built our new website with great care and attention to every detail. His input gave the site an aesthetic and professional look that our new clients have spoken highly of.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Basil" },
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      reviewBody: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Péter Mantlik" },
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      reviewBody: "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients.",
+    },
+  ],
+};
+
 export default function HomePage() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -49,6 +115,8 @@ export default function HomePage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative min-h-screen flex items-end pb-16 md:pb-24 lg:pb-32 overflow-hidden pt-20">
         <div className="absolute inset-0 bg-[#080808]">

@@ -161,6 +161,38 @@ const features = [
   },
 ];
 
+const huFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Mi az az AI becslés agent?",
+      acceptedAnswer: { "@type": "Answer", text: "Egy chat widget a weboldaladon, ami megkérdezi az érdeklődőt a projektjéről (típus, méret, helyszín, határidő, büdzsé), majd azonnal árbecslést ad — 24/7, emberi beavatkozás nélkül. Csak a komoly megrendelők jutnak el hozzád." },
+    },
+    {
+      "@type": "Question",
+      name: "Hogyan szűri ki az AI a nem komoly érdeklődőket?",
+      acceptedAnswer: { "@type": "Answer", text: "Az AI minden érdeklődőt 0–100 pontozási rendszerrel értékel büdzsé, helyszín, projektméret és határidő alapján. Az alacsony pontszámú (komolytalan) érdeklődőket automatikusan kiszűri, a magas pontszámúakat emailben továbbítja hozzád." },
+    },
+    {
+      "@type": "Question",
+      name: "Mennyi idő alatt készül el a weboldal?",
+      acceptedAnswer: { "@type": "Answer", text: "A legtöbb project 2–4 hét alatt elkészül az első egyeztetéstől számítva. Az oldal helyi SEO-val, gyors betöltési idővel és beépített AI lead-szűréssel érkezik." },
+    },
+    {
+      "@type": "Question",
+      name: "Milyen iparágaknak szól ez a szolgáltatás?",
+      acceptedAnswer: { "@type": "Answer", text: "Tereprendezés, kertészet, építőipar, felújítás, vízvezetékszerelés, takarítás, elektromos munkák és egyéb szolgáltató vállalkozások számára." },
+    },
+    {
+      "@type": "Question",
+      name: "Kell meglévő weboldal az AI eszközök használatához?",
+      acceptedAnswer: { "@type": "Answer", text: "Nem. Ha még nincs weboldalad, azt is elkészítem. Ha van, az AI becslés agentet és chatbotot integrálom a meglévő oldalra." },
+    },
+  ],
+};
+
 export default function HuPage() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -169,6 +201,7 @@ export default function HuPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(huFaqSchema) }} />
       {/* ── HERO ── */}
       <section
         ref={heroRef}
