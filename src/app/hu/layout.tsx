@@ -1,18 +1,26 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Chatbot & Automatikus Árajánlat | Magyar Vállalkozásoknak | Landscale",
+  title: "AI Becslés Agent & Chatbot Magyar Vállalkozásoknak | Landscale",
   description:
-    "AI chatbot és automatikus árajánlat-rendszer magyar szolgáltató vállalkozásoknak. Tereprendezés, építőipar, takarítás, vízvezetékszerelés. Heti 15–20 óra megtakarítás, 24/7 elérhetőség.",
+    "AI-alapú automatikus árajánlat és lead-szűrő rendszer magyar szolgáltató vállalkozásoknak. Tereprendezés, kertészet, építőipar, vízvezetékszerelés. Vége a komolytalan érdeklődőknek — 24/7 automatikus válasz.",
   keywords:
-    "AI chatbot magyar vállalkozás, automatikus árajánlat rendszer, magyar szolgáltató, tereprendezés AI, építőipar chatbot, takarítás automatizálás",
+    "AI chatbot magyar vállalkozás, automatikus árajánlat rendszer Magyarország, tereprendezés weboldal, kertészet AI lead szűrés, építőipar chatbot, vízvezetékszerelés weboldal, magyar szolgáltató automatizálás, webdesign Miskolc, webdesign Magyarország",
+  alternates: {
+    canonical: "https://landscale.agency/hu",
+    languages: {
+      "hu": "https://landscale.agency/hu",
+      "en": "https://landscale.agency",
+    },
+  },
   openGraph: {
-    title: "AI Chatbot & Automatikus Árajánlat | Magyar Vállalkozásoknak | Landscale",
+    title: "AI Becslés Agent & Chatbot Magyar Vállalkozásoknak | Landscale",
     description:
-      "Hagyd, hogy az AI szűrje ki a komoly ügyfeleket. 24/7 automatikus válasz, azonnali árajánlat, több megrendelés.",
+      "Vége a komolytalan érdeklődőknek. AI-alapú rendszer, ami 24/7 szűri a leadeket, azonnali árajánlatot ad, és csak a komoly megrendelőket engedi át hozzád.",
     type: "website",
     url: "https://landscale.agency/hu",
     siteName: "Landscale Agency",
+    locale: "hu_HU",
     images: [{ url: "https://landscale.agency/logo-schema.png", width: 512, height: 512, alt: "Landscale Agency" }],
   },
 };
