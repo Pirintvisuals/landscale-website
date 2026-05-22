@@ -123,3 +123,11 @@ input:focus, textarea:focus, select:focus {
 @media (max-width: 767px) {
   .orb-1, .orb-2, .orb-3 { animation: none; }
 }
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .orb-1, .orb-2, .orb-3 { animation: none; }
+  .btn-shine::before { display: none; }
+  .nav-entrance { animation: none; }
+  .animate-spotlight { animation: none; opacity: 0.6; }
+}
