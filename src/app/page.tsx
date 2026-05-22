@@ -201,7 +201,7 @@ export default function HomePage() {
             {/* ── RIGHT: AI visual ── */}
             <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5, ease: SPRING }}
               className="hidden lg:flex items-center justify-center">
-              <div className="w-full max-w-[420px] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)]">
+              <div className="w-full max-w-[400px] h-[560px] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
                 <HeroVisual />
               </div>
             </motion.div>
@@ -218,21 +218,6 @@ export default function HomePage() {
 
         </motion.div>
       </section>
-
-      {/* ── TICKER ── */}
-      <div className="border-y border-gold/[0.08] bg-[#0D0D0D] py-4 overflow-hidden relative">
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0D0D0D] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0D0D0D] to-transparent z-10 pointer-events-none" />
-        <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-14 whitespace-nowrap">
-          {Array.from({ length: 2 }).flatMap((_, gi) =>
-            ["85% Time Saved on Quotes", "• AI Estimator Agent", "300% More Qualified Leads", "• Roofing · Landscaping · Hardscaping", "Intelligent Estimator Agents", "• Construction · Remodelling · Plumbing", "SEO That Actually Converts"].map((item, i) => (
-              <span key={`${gi}-${i}`} className="font-grotesk font-medium text-xs text-gold/40 uppercase tracking-[0.2em] flex items-center gap-3">
-                {item}
-              </span>
-            ))
-          )}
-        </motion.div>
-      </div>
 
       {/* ── AI ESTIMATOR — FEATURED ── */}
       <section id="ai-estimator" className="py-16 md:py-28 bg-[#080808] relative overflow-hidden">
