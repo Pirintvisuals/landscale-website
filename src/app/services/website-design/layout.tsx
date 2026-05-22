@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Website Design for Landscaping & Home Service Businesses | Landscale",
+  title: "Website Design for Tradesmen & Contractors | Landscale",
   description:
-    "Premium, conversion-focused websites for landscaping, construction, and home service businesses. Built with local SEO, sub-1s load times, and AI lead qualification built in.",
+    "Premium, conversion-focused websites for roofers, landscapers, hardscapers, builders, remodellers and all tradesmen. Built with local SEO, sub-1s load times, and AI lead qualification built in.",
   keywords:
-    "landscaping website design UK, home service business website, construction company website, landscaper website designer, premium landscaping web design, local SEO website landscaping",
+    "roofing website design UK, contractor website design, hardscaping website designer, construction company website UK, tradesmen web design, local SEO contractor website",
   alternates: { canonical: "https://landscale.agency/services/website-design" },
   openGraph: {
-    title: "Website Design for Landscaping & Home Service Businesses | Landscale",
+    title: "Website Design for Tradesmen & Contractors | Landscale",
     description:
       "Luxury, conversion-focused websites that make you look premium and turn visitors into high-value clients. Local SEO and AI lead qualification built in.",
     type: "website",

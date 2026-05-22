@@ -5,6 +5,9 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
+import { SplineScene } from "@/components/ui/splite";
+import { Spotlight } from "@/components/ui/spotlight";
+import { Card } from "@/components/ui/card";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -47,7 +50,7 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What is an AI Estimator for landscaping businesses?",
+      name: "What is an AI Estimator for tradesmen and contractors?",
       acceptedAnswer: { "@type": "Answer", text: "An AI Estimator is a chat widget on your website that asks visitors about their project (scope, area, budget, postcode) and delivers an instant price estimate 24/7 — before they even give their contact details. This filters out unserious inquiries and saves you 15–20 hours per week." },
     },
     {
@@ -57,7 +60,7 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "How long does it take to build a landscaping website?",
+      name: "How long does it take to build a trade or contractor website?",
       acceptedAnswer: { "@type": "Answer", text: "Most projects are completed in 2–4 weeks from the discovery call. The site includes local SEO, sub-1-second load times, and AI lead qualification built in from day one." },
     },
     {
@@ -118,69 +121,103 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-end pb-16 md:pb-24 lg:pb-32 overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-[#080808]">
-          <HeroOrbs />
-          {/* Static grid */}
-          <div className="absolute inset-0 opacity-[0.022] pointer-events-none"
-            style={{ backgroundImage: "linear-gradient(rgba(212,175,55,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.8) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
-        </div>
+      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#080808] pt-[68px]">
+        <HeroOrbs />
+        <div className="absolute inset-0 opacity-[0.022] pointer-events-none"
+          style={{ backgroundImage: "linear-gradient(rgba(212,175,55,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.8) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
 
-        {/* Giant watermark */}
-        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[20vw] leading-none text-white/[0.055] select-none pointer-events-none tracking-[-0.05em] translate-y-[15%]">
-          LANDSCALE
-        </div>
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-8 md:px-16 py-10">
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-3 sm:px-8 md:px-16 w-full">
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-10">
+          {/* Badge */}
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-6">
             <motion.span className="w-8 h-px bg-gold" animate={{ scaleX: [0, 1] }} transition={{ duration: 0.6, delay: 0.2 }} style={{ transformOrigin: "left" }} />
-            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">AI-Powered Lead Qualification for Landscapers</span>
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">AI-Powered Lead Qualification for Tradesmen</span>
           </motion.div>
 
-          <div className="mb-10">
-            <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em]">
-              <div className="overflow-hidden">
-                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }}
-                  className="text-[clamp(42px,9vw,128px)] text-gradient-gold">
-                  LANDSCAPERS
-                </motion.div>
-              </div>
-              <div className="overflow-hidden">
-                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }}
-                  className="text-[clamp(42px,9vw,128px)] text-cream">
-                  STOP CHASING
-                </motion.div>
-              </div>
-              <div className="overflow-hidden">
-                <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
-                  className="text-[clamp(42px,9vw,128px)] text-cream/20"
-                  style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
-                  DEAD LEADS.
-                </motion.div>
-              </div>
-            </h1>
-          </div>
+          {/* Card: full-width, split layout */}
+          <Card className="w-full bg-black/[0.96] border border-white/[0.08] rounded-3xl overflow-hidden relative min-h-[560px] md:min-h-[640px]">
+            <Spotlight className="-top-40 left-0 md:left-40 md:-top-20" fill="#D4AF37" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-end max-w-5xl">
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8, ease: SPRING }} className="font-cormorant text-xl md:text-2xl text-cream/60 leading-relaxed font-light italic">
-              We build premium websites with AI-powered lead filtering — featuring intelligent estimator agents that qualify leads and give instant quotes, so you only talk to serious buyers.
-            </motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }} className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1">
-                Get Your Free Audit
-                <span>→</span>
-              </Link>
-              <Link href="/case-studies" className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-base px-8 py-5 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300">
-                See Our Work
-              </Link>
-            </motion.div>
-          </div>
+            <div className="flex flex-col md:flex-row h-full min-h-[560px] md:min-h-[640px]">
+
+              {/* Left — text */}
+              <div className="flex flex-col justify-center p-8 md:p-12 xl:p-16 gap-6 w-full md:w-[52%] relative z-10">
+                <div>
+                  <h1 className="font-grotesk font-bold leading-[0.9] tracking-[-0.04em]">
+                    <div className="overflow-hidden py-1">
+                      <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }}
+                        className="text-[clamp(40px,5.5vw,88px)] text-gradient-gold">
+                        TRADESMEN
+                      </motion.div>
+                    </div>
+                    <div className="overflow-hidden py-1">
+                      <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }}
+                        className="text-[clamp(40px,5.5vw,88px)] text-cream">
+                        STOP CHASING
+                      </motion.div>
+                    </div>
+                    <div className="overflow-hidden py-1">
+                      <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
+                        className="text-[clamp(40px,5.5vw,88px)] text-cream/20"
+                        style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
+                        DEAD LEADS.
+                      </motion.div>
+                    </div>
+                  </h1>
+                </div>
+
+                <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8, ease: SPRING }}
+                  className="font-cormorant text-lg md:text-xl text-cream/55 leading-relaxed font-light italic max-w-md">
+                  We build premium websites with AI-powered lead filtering — intelligent estimator agents that qualify leads and give instant quotes, so you only talk to serious buyers.
+                </motion.p>
+
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }}
+                  className="flex flex-col sm:flex-row gap-3">
+                  <Link href="/contact" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-7 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-0.5">
+                    Get Your Free Audit
+                    <span>→</span>
+                  </Link>
+                  <Link href="/case-studies" className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-sm px-7 py-4 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300">
+                    See Our Work
+                  </Link>
+                </motion.div>
+
+                {/* Trust row */}
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
+                  className="flex items-center gap-4 pt-2">
+                  <div className="flex -space-x-2">
+                    {["/images/lavotha-logo.jpg", "/images/mimosa-logo.jpg", "/images/viszcad-logo.png"].map((src, i) => (
+                      <div key={i} className="w-7 h-7 rounded-full bg-white border-2 border-[#111] overflow-hidden flex items-center justify-center">
+                        <Image src={src} alt="" width={28} height={28} className="object-contain w-full h-full" />
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <div className="flex gap-0.5 text-gold text-xs leading-none mb-0.5">★★★★★</div>
+                    <p className="font-inter text-[11px] text-cream/40">Trusted by trade businesses</p>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Right — 3D robot */}
+              <div className="flex-1 relative min-h-[320px] md:min-h-0">
+                <SplineScene
+                  scene="https://prod.spline.design/kZDDjO5HlFTv7Nvb/scene.splinecode"
+                  className="w-full h-full absolute inset-0"
+                />
+              </div>
+
+            </div>
+          </Card>
 
           {/* Scroll indicator */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }} className="absolute bottom-10 right-16 hidden md:flex flex-col items-center gap-3">
-            <motion.div animate={{ y: [0, 14, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} className="w-px h-20 bg-gradient-to-b from-gold/80 to-transparent" />
-            <span className="font-grotesk text-[9px] uppercase tracking-[0.35em] text-text-muted rotate-90 origin-center translate-y-10">Scroll</span>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
+            className="flex justify-center mt-8 flex-col items-center gap-2">
+            <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-px h-10 bg-gradient-to-b from-gold/60 to-transparent" />
+            <span className="font-grotesk text-[9px] uppercase tracking-[0.3em] text-text-muted">Scroll</span>
           </motion.div>
+
         </motion.div>
       </section>
 
@@ -190,7 +227,7 @@ export default function HomePage() {
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0D0D0D] to-transparent z-10 pointer-events-none" />
         <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-14 whitespace-nowrap">
           {Array.from({ length: 2 }).flatMap((_, gi) =>
-            ["85% Time Saved on Quotes", "• AI Estimator Agent", "300% More Qualified Leads", "• Premium Landscaping Websites", "Intelligent Estimator Agents", "• UK & Worldwide", "SEO That Actually Converts"].map((item, i) => (
+            ["85% Time Saved on Quotes", "• AI Estimator Agent", "300% More Qualified Leads", "• Roofing · Landscaping · Hardscaping", "Intelligent Estimator Agents", "• Construction · Remodelling · Plumbing", "SEO That Actually Converts"].map((item, i) => (
               <span key={`${gi}-${i}`} className="font-grotesk font-medium text-xs text-gold/40 uppercase tracking-[0.2em] flex items-center gap-3">
                 {item}
               </span>
@@ -621,10 +658,10 @@ export default function HomePage() {
               <Reveal>
                 <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6"><span className="w-8 h-px bg-gold" />Why Me</span>
                 <h2 className="font-grotesk font-bold text-[clamp(40px,5vw,80px)] text-cream leading-[0.92] tracking-[-0.03em] mb-8">
-                  WHY ELITE<br />LANDSCAPERS<br /><span className="text-gradient-gold">CHOOSE ME</span>
+                  WHY ELITE<br />TRADESMEN<br /><span className="text-gradient-gold">CHOOSE ME</span>
                 </h2>
                 <p className="font-cormorant text-xl text-cream/40 font-light italic leading-relaxed max-w-sm mb-10">
-                  I grew up around landscaping. I understand your industry at a level a generalist agency never could.
+                  I grew up around tradespeople. I understand your industry at a level a generalist agency never could.
                 </p>
                 <Link href="/about" className="inline-flex items-center gap-2 font-grotesk text-sm font-semibold text-gold/60 hover:text-gold transition-colors border-b border-gold/20 hover:border-gold pb-1">
                   My story →
@@ -633,7 +670,7 @@ export default function HomePage() {
             </div>
             <div className="space-y-0">
               {[
-                { num: "01", title: "Deep Industry Knowledge", desc: "My family works in landscaping. I understand the seasonality, the client types, the challenges. You won't need to educate me.", icon: "◆" },
+                { num: "01", title: "Deep Industry Knowledge", desc: "My family are tradespeople. I understand the work cycles, the client types, the pressures. You won't need to explain your business to me.", icon: "◆" },
                 { num: "02", title: "AI-First Approach", desc: "I use the latest AI tools to automate lead qualification, estimates, and follow-ups — so you focus on the work you love.", icon: "▲" },
                 { num: "03", title: "Results-Driven, Always", desc: "I measure success in leads and revenue, not impressions. If something isn't working, I change it.", icon: "●" },
               ].map((pillar, i) => (
@@ -715,14 +752,14 @@ export default function HomePage() {
           <Reveal className="mb-12 md:mb-16 text-center">
             <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.25em] text-gold/50 block mb-4">By The Numbers</span>
             <h2 className="font-grotesk font-bold text-[clamp(28px,4vw,56px)] text-cream tracking-[-0.03em]">
-              Why Landscapers<br /><span className="text-gradient-gold">Trust Landscale</span>
+              Why Tradesmen<br /><span className="text-gradient-gold">Trust Landscale</span>
             </h2>
           </Reveal>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
               { value: "100/100", label: "Google PageSpeed Score", desc: "Perfect performance on every build" },
               { value: "<0.8s", label: "Average Load Time", desc: "Faster than 99% of competitor sites" },
-              { value: "4", label: "Landscaping Businesses", desc: "Live, proven results in the market" },
+              { value: "4", label: "Trade Businesses Live", desc: "Real results across roofing, landscaping, construction & more" },
               { value: "UK + INT", label: "Coverage", desc: "Serving clients across UK & internationally" },
             ].map((item, i) => (
               <Reveal key={item.label} delay={i * 0.08}>

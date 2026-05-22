@@ -61,7 +61,7 @@ export default function ContactPage() {
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">Get in Touch</span>
           </motion.div>
 
-          {["LET'S GROW YOUR", "LANDSCAPING BUSINESS."].map((line, i) => (
+          {["LET'S GROW YOUR", "TRADE BUSINESS."].map((line, i) => (
             <div key={i} className="overflow-hidden">
               <motion.h1 initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2 + i * 0.12, ease: SPRING }}
                 className={`font-grotesk font-bold text-[clamp(36px,6.5vw,96px)] leading-[0.92] tracking-[-0.04em] ${i === 1 ? "text-gradient-gold" : "text-cream"}`}>
@@ -139,7 +139,7 @@ export default function ContactPage() {
                           </div>
                           <div>
                             <label className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Email *</label>
-                            <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={inputCls} placeholder="james@yourlandscaping.co.uk" />
+                            <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={inputCls} placeholder="james@yourtradebusiness.co.uk" />
                           </div>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

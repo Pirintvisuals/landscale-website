@@ -24,11 +24,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Landscale Agency - AI Estimator & Chatbot for Home Service Businesses | Save 20+ Hours/Week",
+  title: "Landscale Agency - AI Estimator & Chatbot for Tradesmen | Save 20+ Hours/Week",
   description:
-    "AI-powered estimator and chatbot for landscaping, construction, and home service businesses. Give automatic quotes, filter out bad leads, save 20+ hours per week. Custom websites with intelligent lead qualification built in.",
+    "AI-powered estimator and chatbot for roofers, landscapers, hardscapers, builders, remodellers and all tradesmen. Give automatic quotes, filter out bad leads, save 20+ hours per week. Premium websites with intelligent lead qualification built in.",
   keywords:
-    "AI estimator for landscapers, landscaping website design UK, AI lead generation for landscapers, landscaping marketing agency UK, instant quote tool landscaping, AI chatbot home services, construction website design, home service business automation",
+    "AI estimator for tradesmen, roofing website design UK, AI lead generation for contractors, landscaping marketing agency UK, instant quote tool construction, AI chatbot tradesmen, hardscaping website design, remodelling business automation, home service business website UK",
   alternates: {
     canonical: "https://landscale.agency",
     languages: {
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Landscale Agency - AI Estimator & Chatbot for Home Service Businesses",
+    title: "Landscale Agency - AI Estimator & Chatbot for Tradesmen",
     description:
-      "Give automatic quotes, filter out bad leads, save 20+ hours per week. AI-powered websites built for landscaping, construction, and home service businesses.",
+      "Give automatic quotes, filter out bad leads, save 20+ hours per week. AI-powered websites built for roofers, landscapers, hardscapers, builders, and all tradesmen.",
     type: "website",
     url: "https://landscale.agency",
     siteName: "Landscale Agency",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Landscale Agency - AI Estimator & Chatbot for Home Service Businesses",
+    title: "Landscale Agency - AI Estimator & Chatbot for Tradesmen",
     description: "Give automatic quotes, filter out bad leads, save 20+ hours per week.",
     images: ["https://landscale.agency/logo-schema.png"],
   },
@@ -73,7 +73,7 @@ export default function RootLayout({
     name: "Landscale Agency",
     url: "https://landscale.agency",
     logo: "https://landscale.agency/logo-schema.png",
-    description: "AI-powered estimator, chatbot, and website builder for landscaping, construction, and home service businesses.",
+    description: "AI-powered estimator, chatbot, and website builder for roofers, landscapers, hardscapers, builders, remodellers, and all tradesmen.",
     email: "landscale.agency@gmail.com",
     founder: { "@type": "Person", name: "Milan Pirint" },
     areaServed: ["GB", "HU", "Worldwide"],

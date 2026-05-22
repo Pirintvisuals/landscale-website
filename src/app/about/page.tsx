@@ -10,7 +10,7 @@ const SPRING = [0.16, 1, 0.3, 1] as const;
 
 const faqs = [
   { q: "How long does it take to build a website?", a: "Depends on the project. A Framer template customisation can be done in 1–2 weeks. A fully custom Next.js site takes 3–6 weeks. I'll give you a clear timeline during the free audit." },
-  { q: "Do you only work with landscapers?", a: "No, but they're my main priority and specialty. I also work with engineering firms, construction companies, and other home service businesses. Book an audit and we'll see if I'm the right fit." },
+  { q: "What types of tradesmen do you work with?", a: "Roofers, landscapers, hardscapers, builders, remodellers, plumbers, construction firms — any trade business that wants to stop chasing bad leads and start attracting serious buyers. Book an audit and we'll see if I'm the right fit." },
   { q: "What do you use to build websites — Framer or code?", a: "Depends on your needs and budget. Framer is great if you want to edit content yourself and need something fast. Custom Next.js is better for complex sites with advanced features. I'll recommend what makes sense during the audit." },
   { q: "What AI services do you offer?", a: "I build AI review agents (qualify leads), AI receptionists (book appointments), AI estimators (instant quotes), custom chatbots, and smart form automation. The exact solution depends on your business needs." },
   { q: "How much does a project cost?", a: "It depends on scope. I can't give a price upfront because every project is different. During the free audit, I'll give you a custom proposal with clear pricing based on what you actually need." },
@@ -93,7 +93,7 @@ export default function AboutPage() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.55, ease: SPRING }}
             className="font-cormorant text-xl md:text-2xl text-cream/50 font-light italic leading-relaxed max-w-2xl mt-8">
-            Built exclusively for landscaping businesses — because I know the industry inside-out, from the ground up.
+            Built for tradesmen — roofers, landscapers, hardscapers, builders, remodellers and everyone in between.
           </motion.p>
         </motion.div>
       </section>
@@ -113,7 +113,7 @@ export default function AboutPage() {
                 Founder&apos;s Story
               </span>
               <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em] mb-6">
-                WHY I SPECIALISE<br />IN{" "}<span className="text-gradient-gold">LANDSCAPING</span>
+                WHY I SPECIALISE<br />IN{" "}<span className="text-gradient-gold">THE TRADES</span>
               </h2>
               <p className="font-cormorant text-xl text-cream/40 font-light italic leading-relaxed">
                 &ldquo;I&apos;m Milan. I grew up in Hungary in a family of landscapers — I saw the industry from the inside, and the gap in the market was obvious.&rdquo;
@@ -127,11 +127,11 @@ export default function AboutPage() {
                 </motion.p>
                 <p>But I also saw them struggle with marketing. Outdated websites. Missed leads. Hours wasted on quotes for tyre-kickers. No system to filter serious buyers from window shoppers.</p>
                 <p>The marketing agencies they hired didn&apos;t understand the industry — they treated every client the same. Generic strategies, vanity metrics, and no accountability.</p>
-                <p>That&apos;s when I realised: landscapers don&apos;t need another generic marketing agency. They need someone who understands their business AND knows how to build tech that actually solves their problems.</p>
-                <p>So I learned web development, studied AI automation, and built solutions specifically for landscaping businesses. Not one-size-fits-all templates — real tools that save time and make money.</p>
+                <p>That&apos;s when I realised: tradespeople don&apos;t need another generic marketing agency. They need someone who understands their business AND knows how to build tech that actually solves their problems.</p>
+                <p>So I learned web development, studied AI automation, and built solutions for roofers, landscapers, hardscapers, builders, remodellers and every trade in between. Not one-size-fits-all templates — real tools that save time and make money.</p>
                 <motion.p className="text-cream/70 border-l-2 border-gold/30 pl-5 italic font-cormorant text-lg"
                   initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
-                  I built the AI Estimator because I watched my family waste countless hours giving quotes to people who never hired them. The Estimator Agent solves this — it qualifies leads automatically and gives instant estimates, so landscapers only ever talk to serious buyers. It&apos;s the main thing I build for every client.
+                  I built the AI Estimator because I watched my family waste countless hours giving quotes to people who never hired them. The Estimator Agent solves this — it qualifies leads automatically and gives instant estimates, so tradesmen only ever talk to serious buyers. It&apos;s the core of every project I build.
                 </motion.p>
               </div>
             </Reveal>
@@ -209,7 +209,7 @@ export default function AboutPage() {
             </div>
             <div className="space-y-0">
               {[
-                { num: "01", title: "Deep Industry Knowledge", desc: "My parents work in landscaping. I've grown up seeing the industry from the inside. I understand seasonality, client psychology, project types, margins. You won't need to explain your business to me.", detail: "Every strategy I build is grounded in industry reality — not generic marketing theory." },
+                { num: "01", title: "Deep Industry Knowledge", desc: "My family are in the trades. I've grown up seeing the industry from the inside. I understand work cycles, client psychology, project types, and margins. You won't need to explain your business to me.", detail: "Every strategy I build is grounded in trade industry reality — not generic marketing theory." },
                 { num: "02", title: "Tech-Forward Approach", desc: "I use the latest AI and automation tools — not because it's trendy, but because it genuinely solves real problems. Lead qualification, automated estimates, 24/7 chatbots.", detail: "I stay ahead so you don't have to. You get the tools, without the headache." },
                 { num: "03", title: "Results-Driven, Always", desc: "I don't measure success by impressions or clicks. Qualified leads and revenue generated. Every strategy has a clear ROI goal — I hold myself accountable.", detail: "If something isn't working, I change it. I'm invested in your growth." },
               ].map((pillar, i) => (
@@ -250,7 +250,7 @@ export default function AboutPage() {
             {[
               { title: "Honesty First", desc: "I tell you what you need to hear, not what you want to hear. If something won't work, I'll say so.", icon: "◎" },
               { title: "No Vanity Metrics", desc: "I don't celebrate page views or follower counts. I celebrate leads generated and revenue grown.", icon: "◆" },
-              { title: "Industry-Only Focus", desc: "I only work with landscaping businesses (and a handful of others). This lets me be genuinely excellent at one thing.", icon: "▲" },
+              { title: "Trades-Only Focus", desc: "I only work with tradesmen and contractors — roofers, landscapers, builders, remodellers and the rest. This focus lets me be genuinely excellent at one thing.", icon: "▲" },
               { title: "Long-Term Thinking", desc: "I build strategies for sustainable growth, not quick wins that collapse in 6 months.", icon: "●" },
             ].map((value, i) => (
               <motion.div key={value.title}

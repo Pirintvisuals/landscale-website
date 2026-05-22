@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "See real results: Lavotha Kert Kft (96 Performance, 100 SEO), Tiszaújváros Transz Kft (95 Performance, 100 SEO), ViszCAD. AI-powered websites that generate and qualify leads automatically.",
   keywords:
-    "landscaping website case study, AI estimator results, home service business website examples, landscaping lead generation results UK",
+    "trade business website case study, AI estimator results, contractor website examples, tradesmen lead generation results UK, landscaping website case study",
   openGraph: {
     title: "Case Studies — Real Results for Home Service Businesses | Landscale",
     description:

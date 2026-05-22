@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Book a free 30-minute audit with Landscale. We'll show you exactly where your business is losing leads and how AI automation can fix it. No pressure, no hidden fees.",
   keywords:
-    "book free audit landscaping website, AI lead generation consultation, landscaping business website quote, free website audit UK",
+    "book free audit tradesmen website, AI lead generation consultation, contractor website quote, free website audit UK, roofer website free audit",
   openGraph: {
     title: "Book a Free Audit — Landscale Agency",
     description:

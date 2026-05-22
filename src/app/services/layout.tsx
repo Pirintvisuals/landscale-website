@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services — AI Estimator, Chatbot & Website Design for Home Service Businesses | Landscale",
+  title: "Services — AI Estimator, Chatbot & Website Design for Tradesmen | Landscale",
   description:
-    "AI Estimator Agent, AI Chatbot, Website Design, and Local SEO for landscaping, construction, and home service businesses. Stop wasting time on bad leads — automate with Landscale.",
+    "AI Estimator Agent, AI Chatbot, Website Design, and Local SEO for roofers, landscapers, hardscapers, builders, remodellers and all tradesmen. Stop wasting time on bad leads — automate with Landscale.",
   keywords:
-    "AI estimator landscaping, AI chatbot home services, landscaping website design, local SEO home service business, lead automation landscaping UK",
+    "AI estimator tradesmen, AI chatbot roofers, contractor website design UK, local SEO tradesmen, lead automation construction UK, hardscaping website design, remodelling business automation",
   alternates: { canonical: "https://landscale.agency/services" },
   openGraph: {
     title: "Services — AI Estimator, Chatbot & Website Design | Landscale",

@@ -329,7 +329,7 @@ export default function CaseStudiesPage() {
               </span>
               <h2 className="font-grotesk font-bold text-[clamp(28px,4vw,56px)] text-cream leading-[0.92] tracking-[-0.03em]">
                 The Complete<br />
-                <span className="text-gradient-gold">AI Landscaping Stack.</span>
+                <span className="text-gradient-gold">AI Trade Business Stack.</span>
               </h2>
               <p className="font-cormorant text-lg text-cream/50 font-light italic mt-3 max-w-lg mx-auto">
                 Live AI chatbot, instant estimator, and smart forms — all running on one site.
