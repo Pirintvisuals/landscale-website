@@ -5,9 +5,9 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
-import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
 import { Card } from "@/components/ui/card";
+import { HeroVisual } from "@/components/ui/hero-visual";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -199,12 +199,9 @@ export default function HomePage() {
                 </motion.div>
               </div>
 
-              {/* Right — 3D robot, explicit h-full, scroll forwarded to page */}
-              <div className="flex-1 relative hidden md:block">
-                <SplineScene
-                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-full"
-                />
+              {/* Right — animated AI estimator demo */}
+              <div className="flex-1 relative hidden md:block border-l border-white/[0.05]">
+                <HeroVisual />
               </div>
 
             </div>
