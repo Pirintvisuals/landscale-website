@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -315,6 +316,37 @@ export default function CaseStudiesPage() {
             ))}
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* ── SCROLL SHOWCASE ── */}
+      <section className="bg-[#080808] overflow-hidden">
+        <ContainerScroll
+          titleComponent={
+            <div className="mb-6">
+              <span className="inline-flex items-center gap-2 font-grotesk text-[10px] font-bold uppercase tracking-[0.3em] text-gold/60 mb-4 block">
+                <span className="w-6 h-px bg-gold/40 inline-block" />
+                Featured Work
+              </span>
+              <h2 className="font-grotesk font-bold text-[clamp(28px,4vw,56px)] text-cream leading-[0.92] tracking-[-0.03em]">
+                The Complete<br />
+                <span className="text-gradient-gold">AI Landscaping Stack.</span>
+              </h2>
+              <p className="font-cormorant text-lg text-cream/50 font-light italic mt-3 max-w-lg mx-auto">
+                Live AI chatbot, instant estimator, and smart forms — all running on one site.
+              </p>
+            </div>
+          }
+        >
+          <a href="https://landscaletemplate.framer.website/" target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+            <Image
+              src="/images/case-studies/landscale-template.png"
+              alt="Landscale AI Template — Full AI Stack Demo"
+              fill
+              className="object-cover object-top hover:scale-[1.02] transition-transform duration-700"
+              priority
+            />
+          </a>
+        </ContainerScroll>
       </section>
 
       {/* ── PROJECTS ── */}
