@@ -121,44 +121,45 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-[#080808] pt-[68px]">
+      <section ref={heroRef} className="relative bg-[#080808] pt-[68px]">
         <HeroOrbs />
         <div className="absolute inset-0 opacity-[0.022] pointer-events-none"
           style={{ backgroundImage: "linear-gradient(rgba(212,175,55,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.8) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-8 md:px-16 py-10">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-8 md:px-16 py-10 md:py-14">
 
           {/* Badge */}
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-6">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-5">
             <motion.span className="w-8 h-px bg-gold" animate={{ scaleX: [0, 1] }} transition={{ duration: 0.6, delay: 0.2 }} style={{ transformOrigin: "left" }} />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">AI-Powered Lead Qualification for Tradesmen</span>
           </motion.div>
 
-          {/* Card: full-width, split layout */}
-          <Card className="w-full bg-black/[0.96] border border-white/[0.08] rounded-3xl overflow-hidden relative min-h-[560px] md:min-h-[640px]">
-            <Spotlight className="-top-40 left-0 md:left-40 md:-top-20" fill="#D4AF37" />
+          {/* ── HERO CARD ── exact Aceternity pattern, explicit height so h-full works */}
+          <Card className="w-full h-[520px] md:h-[600px] bg-black/[0.96] border border-white/[0.08] rounded-2xl overflow-hidden relative">
+            <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
-            <div className="flex flex-col md:flex-row h-full min-h-[560px] md:min-h-[640px]">
+            <div className="flex h-full">
 
               {/* Left — text */}
-              <div className="flex flex-col justify-center p-8 md:p-12 xl:p-16 gap-6 w-full md:w-[52%] relative z-10">
+              <div className="flex-1 p-8 md:p-12 xl:p-16 relative z-10 flex flex-col justify-center gap-6">
+
                 <div>
                   <h1 className="font-grotesk font-bold leading-[0.9] tracking-[-0.04em]">
                     <div className="overflow-hidden py-1">
                       <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }}
-                        className="text-[clamp(40px,5.5vw,88px)] text-gradient-gold">
+                        className="text-[clamp(36px,4.5vw,72px)] text-gradient-gold">
                         TRADESMEN
                       </motion.div>
                     </div>
                     <div className="overflow-hidden py-1">
                       <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }}
-                        className="text-[clamp(40px,5.5vw,88px)] text-cream">
+                        className="text-[clamp(36px,4.5vw,72px)] text-cream">
                         STOP CHASING
                       </motion.div>
                     </div>
                     <div className="overflow-hidden py-1">
                       <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
-                        className="text-[clamp(40px,5.5vw,88px)] text-cream/20"
+                        className="text-[clamp(36px,4.5vw,72px)] text-cream/20"
                         style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
                         DEAD LEADS.
                       </motion.div>
@@ -167,43 +168,42 @@ export default function HomePage() {
                 </div>
 
                 <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8, ease: SPRING }}
-                  className="font-cormorant text-lg md:text-xl text-cream/55 leading-relaxed font-light italic max-w-md">
-                  We build premium websites with AI-powered lead filtering — intelligent estimator agents that qualify leads and give instant quotes, so you only talk to serious buyers.
+                  className="font-cormorant text-lg text-cream/50 leading-relaxed font-light italic max-w-sm">
+                  Premium websites with AI-powered lead filtering — so you only ever talk to serious buyers.
                 </motion.p>
 
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }}
                   className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/contact" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-7 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-0.5">
-                    Get Your Free Audit
-                    <span>→</span>
+                  <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:-translate-y-0.5 cursor-pointer">
+                    Get Your Free Audit →
                   </Link>
-                  <Link href="/case-studies" className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-sm px-7 py-4 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300">
+                  <Link href="/case-studies" className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/60 font-grotesk font-medium text-sm px-6 py-3 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-200 cursor-pointer">
                     See Our Work
                   </Link>
                 </motion.div>
 
                 {/* Trust row */}
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
-                  className="flex items-center gap-4 pt-2">
+                  className="flex items-center gap-3">
                   <div className="flex -space-x-2">
                     {["/images/lavotha-logo.jpg", "/images/mimosa-logo.jpg", "/images/viszcad-logo.png"].map((src, i) => (
-                      <div key={i} className="w-7 h-7 rounded-full bg-white border-2 border-[#111] overflow-hidden flex items-center justify-center">
+                      <div key={i} className="w-7 h-7 rounded-full bg-white border-2 border-[#111] overflow-hidden flex-shrink-0">
                         <Image src={src} alt="" width={28} height={28} className="object-contain w-full h-full" />
                       </div>
                     ))}
                   </div>
                   <div>
-                    <div className="flex gap-0.5 text-gold text-xs leading-none mb-0.5">★★★★★</div>
-                    <p className="font-inter text-[11px] text-cream/40">Trusted by trade businesses</p>
+                    <div className="text-gold text-[11px] leading-none mb-0.5">★★★★★</div>
+                    <p className="font-inter text-[10px] text-cream/35">Trusted by trade businesses</p>
                   </div>
                 </motion.div>
               </div>
 
-              {/* Right — 3D robot */}
-              <div className="flex-1 relative min-h-[320px] md:min-h-0">
+              {/* Right — 3D robot, explicit h-full, scroll forwarded to page */}
+              <div className="flex-1 relative hidden md:block">
                 <SplineScene
-                  scene="https://prod.spline.design/kZDDjO5HlFTv7Nvb/scene.splinecode"
-                  className="w-full h-full absolute inset-0"
+                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                  className="w-full h-full"
                 />
               </div>
 
@@ -211,11 +211,11 @@ export default function HomePage() {
           </Card>
 
           {/* Scroll indicator */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
-            className="flex justify-center mt-8 flex-col items-center gap-2">
-            <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-px h-10 bg-gradient-to-b from-gold/60 to-transparent" />
-            <span className="font-grotesk text-[9px] uppercase tracking-[0.3em] text-text-muted">Scroll</span>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }}
+            className="flex justify-center mt-6 flex-col items-center gap-2">
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-px h-8 bg-gradient-to-b from-gold/50 to-transparent" />
+            <span className="font-grotesk text-[8px] uppercase tracking-[0.3em] text-text-muted">Scroll</span>
           </motion.div>
 
         </motion.div>
