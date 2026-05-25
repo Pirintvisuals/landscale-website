@@ -120,8 +120,8 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-[#080808]">
+      <section ref={heroRef} className="relative min-h-screen flex items-center pt-20">
+        <div className="absolute inset-0 overflow-hidden bg-[#080808]">
           <HeroOrbs />
           <div className="absolute inset-0 opacity-[0.022] pointer-events-none"
             style={{ backgroundImage: "linear-gradient(rgba(212,175,55,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.8) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
