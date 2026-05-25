@@ -133,8 +133,8 @@ export default function HomePage() {
           LANDSCALE
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-24 xl:gap-32 items-center min-h-[85vh]">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 xl:gap-20 items-center min-h-[85vh]">
 
             {/* ── LEFT: text ── */}
             <div className="flex flex-col justify-center py-16 lg:py-0">
