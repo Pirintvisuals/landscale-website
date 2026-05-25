@@ -127,14 +127,13 @@ export default function HomePage() {
             style={{ backgroundImage: "linear-gradient(rgba(212,175,55,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.8) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
         </div>
 
-        <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
         <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[20vw] leading-none text-white/[0.04] select-none pointer-events-none tracking-[-0.05em] translate-y-[15%]">
           LANDSCALE
         </div>
 
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 xl:gap-20 items-center min-h-[85vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 xl:gap-20 items-center py-8 lg:py-12">
 
             {/* ── LEFT: text ── */}
             <div className="flex flex-col justify-center py-16 lg:py-0">
