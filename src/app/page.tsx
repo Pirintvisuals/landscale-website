@@ -133,8 +133,8 @@ export default function HomePage() {
           LANDSCALE
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 md:px-16 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[85vh]">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-24 xl:gap-32 items-center min-h-[85vh]">
 
             {/* ── LEFT: text ── */}
             <div className="flex flex-col justify-center py-16 lg:py-0">
@@ -201,7 +201,7 @@ export default function HomePage() {
             {/* ── RIGHT: AI visual ── */}
             <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5, ease: SPRING }}
               className="hidden lg:flex items-center justify-center">
-              <div className="w-full max-w-[400px] h-[560px] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
+              <div className="w-full h-[680px] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
                 <HeroVisual />
               </div>
             </motion.div>
@@ -210,6 +210,7 @@ export default function HomePage() {
 
           {/* Scroll indicator */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
+            aria-hidden="true"
             className="absolute bottom-10 right-16 hidden md:flex flex-col items-center gap-3">
             <motion.div animate={{ y: [0, 14, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               className="w-px h-20 bg-gradient-to-b from-gold/80 to-transparent" />
@@ -243,8 +244,9 @@ export default function HomePage() {
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%)" }} />
                 {/* Giant background number */}
                 <div className="absolute bottom-0 right-4 font-grotesk font-bold leading-none text-white/[0.07] group-hover:text-gold/[0.18] transition-colors duration-500 select-none pointer-events-none"
+                  aria-hidden="true"
                   style={{ fontSize: "clamp(120px,16vw,240px)" }}>
-                  <CountUp target={stat.value} suffix={stat.suffix} />
+                  {stat.value}{stat.suffix}
                 </div>
                 {/* Decorative corner accent */}
                 <motion.div className="absolute top-6 right-6 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -478,9 +480,9 @@ export default function HomePage() {
                     {/* Giant quote mark */}
                     <div className="absolute top-4 right-6 font-cormorant text-[100px] leading-none text-gold/[0.06] select-none pointer-events-none group-hover:text-gold/[0.1] transition-colors duration-500">&ldquo;</div>
                     <div className="relative z-10">
-                      <div className="flex gap-1 mb-4">
+                      <div className="flex gap-1 mb-4" role="img" aria-label={`${t.stars} out of 5 stars`}>
                         {Array.from({ length: t.stars }).map((_, i) => (
-                          <span key={i}>★</span>
+                          <span key={i} aria-hidden="true">★</span>
                         ))}
                       </div>
                       <p className="font-cormorant text-xl font-light text-cream italic leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
