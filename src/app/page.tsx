@@ -120,7 +120,7 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center pt-20">
+      <section ref={heroRef} className="relative min-h-screen flex items-start pt-24 pb-12">
         <div className="absolute inset-0 overflow-hidden bg-[#080808]">
           <HeroOrbs />
           <div className="absolute inset-0 opacity-[0.022] pointer-events-none"
@@ -133,7 +133,7 @@ export default function HomePage() {
         </div>
 
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 xl:gap-20 items-center py-4 lg:py-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 xl:gap-20 items-center">
 
             {/* ── LEFT: text ── */}
             <div className="flex flex-col justify-center py-10 lg:py-0">
