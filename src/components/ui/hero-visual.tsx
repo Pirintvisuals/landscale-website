@@ -39,7 +39,7 @@ const READ_PAUSE = 900;   // pause after AI message appears
 export function HeroVisual() {
   const [visible, setVisible] = useState<Msg[]>([]);
   const [typing,  setTyping]  = useState(false);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const chatRef   = useRef<HTMLDivElement>(null);
   const timerRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const after = (ms: number, fn: () => void) => {
@@ -88,9 +88,10 @@ export function HeroVisual() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // auto-scroll chat to bottom
+  // scroll only the chat container, never the page
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = chatRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
   }, [visible, typing]);
 
   return (
@@ -122,7 +123,7 @@ export function HeroVisual() {
       </div>
 
       {/* Chat scroll area */}
-      <div className="flex-1 overflow-y-auto flex flex-col gap-2 pr-1 min-h-0
+      <div ref={chatRef} className="flex-1 overflow-y-auto flex flex-col gap-2 pr-1 min-h-0
         [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
         {visible.map((item, i) => {
@@ -157,7 +158,6 @@ export function HeroVisual() {
           )}
         </AnimatePresence>
 
-        <div ref={bottomRef} />
       </div>
 
       {/* Input bar */}
