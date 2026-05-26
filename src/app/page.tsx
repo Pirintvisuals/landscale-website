@@ -119,45 +119,45 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative min-h-[110vh] flex items-start pt-28 pb-16">
+      <section ref={heroRef} className="relative h-screen overflow-hidden">
         <div className="absolute inset-0 overflow-hidden bg-[#080808]">
           <HeroOrbs />
           <div className="absolute inset-0 opacity-[0.022] pointer-events-none"
             style={{ backgroundImage: "linear-gradient(rgba(212,175,55,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.8) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
         </div>
 
-
         <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[20vw] leading-none text-white/[0.04] select-none pointer-events-none tracking-[-0.05em] translate-y-[15%]">
           LANDSCALE
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 xl:gap-20 items-center">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }}
+          className="relative z-10 h-full max-w-[1400px] mx-auto px-4 sm:px-8 md:px-14 w-full flex flex-col justify-center pt-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 xl:gap-16 items-center">
 
             {/* ── LEFT: text ── */}
-            <div className="flex flex-col justify-center py-6 lg:py-0">
+            <div className="flex flex-col justify-center">
 
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-6">
+              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-4">
                 <motion.span className="w-8 h-px bg-gold" animate={{ scaleX: [0, 1] }} transition={{ duration: 0.6, delay: 0.2 }} style={{ transformOrigin: "left" }} />
                 <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">AI-Powered Lead Qualification for Tradesmen</span>
               </motion.div>
 
-              <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em] mb-5">
-                <div className="overflow-hidden py-1">
+              <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em] mb-4">
+                <div className="overflow-hidden py-0.5">
                   <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }}
-                    className="text-[clamp(36px,5.2vw,80px)] text-gradient-gold">
+                    className="text-[clamp(32px,3.8vw,62px)] text-gradient-gold">
                     TRADESMEN
                   </motion.div>
                 </div>
-                <div className="overflow-hidden py-1">
+                <div className="overflow-hidden py-0.5">
                   <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }}
-                    className="text-[clamp(36px,5.2vw,80px)] text-cream">
+                    className="text-[clamp(32px,3.8vw,62px)] text-cream">
                     STOP CHASING
                   </motion.div>
                 </div>
-                <div className="overflow-hidden py-1">
+                <div className="overflow-hidden py-0.5">
                   <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
-                    className="text-[clamp(36px,5.2vw,80px)] text-cream/20"
+                    className="text-[clamp(32px,3.8vw,62px)] text-cream/20"
                     style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
                     DEAD LEADS.
                   </motion.div>
@@ -165,17 +165,17 @@ export default function HomePage() {
               </h1>
 
               <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8, ease: SPRING }}
-                className="font-cormorant text-lg md:text-xl text-cream/60 leading-relaxed font-light italic max-w-xl mb-5">
+                className="font-cormorant text-base md:text-lg text-cream/60 leading-relaxed font-light italic max-w-lg mb-4">
                 We build premium websites with AI-powered lead filtering — intelligent estimator agents that qualify leads and give instant quotes, so you only talk to serious buyers.
               </motion.p>
 
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }}
-                className="flex flex-col sm:flex-row gap-3 mb-6">
-                <Link href="/contact" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-7 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1 cursor-pointer">
+                className="flex flex-col sm:flex-row gap-3 mb-5">
+                <Link href="/contact" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1 cursor-pointer">
                   Get Your Free Audit
                   <span>→</span>
                 </Link>
-                <Link href="/case-studies" className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-sm px-7 py-4 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300 cursor-pointer">
+                <Link href="/case-studies" className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-sm px-6 py-3.5 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300 cursor-pointer">
                   See Our Work
                 </Link>
               </motion.div>
@@ -199,7 +199,7 @@ export default function HomePage() {
             {/* ── RIGHT: AI visual ── */}
             <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5, ease: SPRING }}
               className="hidden lg:flex items-center justify-center">
-              <div className="w-full h-[560px] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
+              <div className="w-full h-[min(520px,62vh)] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
                 <HeroVisual />
               </div>
             </motion.div>
