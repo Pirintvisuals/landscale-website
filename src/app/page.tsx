@@ -145,19 +145,19 @@ export default function HomePage() {
               <h1 className="font-grotesk font-bold leading-[0.88] tracking-[-0.04em] mb-4">
                 <div className="overflow-hidden py-0.5">
                   <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: SPRING }}
-                    className="text-[clamp(32px,3.8vw,62px)] text-gradient-gold">
+                    className="text-[clamp(40px,5.2vw,82px)] text-gradient-gold">
                     TRADESMEN
                   </motion.div>
                 </div>
                 <div className="overflow-hidden py-0.5">
                   <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.32, ease: SPRING }}
-                    className="text-[clamp(32px,3.8vw,62px)] text-cream">
+                    className="text-[clamp(40px,5.2vw,82px)] text-cream">
                     STOP CHASING
                   </motion.div>
                 </div>
                 <div className="overflow-hidden py-0.5">
                   <motion.div initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.44, ease: SPRING }}
-                    className="text-[clamp(32px,3.8vw,62px)] text-cream/20"
+                    className="text-[clamp(40px,5.2vw,82px)] text-cream/20"
                     style={{ WebkitTextStroke: "1px rgba(245,241,232,0.25)" }}>
                     DEAD LEADS.
                   </motion.div>
