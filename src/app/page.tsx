@@ -5,7 +5,6 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
-import { Spotlight } from "@/components/ui/spotlight";
 import { HeroVisual } from "@/components/ui/hero-visual";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
@@ -120,7 +119,7 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       {/* ── HERO ── */}
-      <section ref={heroRef} className="relative min-h-screen flex items-start pt-24 pb-12">
+      <section ref={heroRef} className="relative min-h-[110vh] flex items-start pt-28 pb-16">
         <div className="absolute inset-0 overflow-hidden bg-[#080808]">
           <HeroOrbs />
           <div className="absolute inset-0 opacity-[0.022] pointer-events-none"
@@ -136,7 +135,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 xl:gap-20 items-center">
 
             {/* ── LEFT: text ── */}
-            <div className="flex flex-col justify-center py-10 lg:py-0">
+            <div className="flex flex-col justify-center py-6 lg:py-0">
 
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-2 mb-6">
                 <motion.span className="w-8 h-px bg-gold" animate={{ scaleX: [0, 1] }} transition={{ duration: 0.6, delay: 0.2 }} style={{ transformOrigin: "left" }} />
