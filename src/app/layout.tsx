@@ -3,6 +3,8 @@ import { Space_Grotesk, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -24,9 +26,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Landscale Agency - AI Estimator & Chatbot for Tradesmen | Save 20+ Hours/Week",
+  title: "Landscale Agency — AI Estimator & Chatbot for Tradesmen",
   description:
-    "AI-powered estimator and chatbot for roofers, landscapers, hardscapers, builders, remodellers and all tradesmen. Give automatic quotes, filter out bad leads, save 20+ hours per week. Premium websites with intelligent lead qualification built in.",
+    "AI estimator & chatbot for tradesmen. Instant quotes, automatic lead filtering, 20+ hours saved weekly. Premium websites for roofers, landscapers & builders.",
   keywords:
     "AI estimator for tradesmen, roofing website design UK, AI lead generation for contractors, landscaping marketing agency UK, instant quote tool construction, AI chatbot tradesmen, hardscaping website design, remodelling business automation, home service business website UK",
   alternates: {
@@ -34,23 +36,27 @@ export const metadata: Metadata = {
     languages: {
       "en": "https://landscale.agency",
       "hu": "https://landscale.agency/hu",
+      "x-default": "https://landscale.agency",
     },
   },
   openGraph: {
-    title: "Landscale Agency - AI Estimator & Chatbot for Tradesmen",
+    title: "Landscale Agency — AI Estimator & Chatbot for Tradesmen",
     description:
-      "Give automatic quotes, filter out bad leads, save 20+ hours per week. AI-powered websites built for roofers, landscapers, hardscapers, builders, and all tradesmen.",
+      "AI estimator & chatbot for tradesmen. Instant quotes, automatic lead filtering, 20+ hours saved weekly. Premium websites for roofers, landscapers & builders.",
     type: "website",
     url: "https://landscale.agency",
     siteName: "Landscale Agency",
-    images: [{ url: "https://landscale.agency/logo-schema.png", width: 512, height: 512, alt: "Landscale Agency" }],
+    images: [{ url: "https://landscale.agency/opengraph-image", width: 1200, height: 630, alt: "Landscale Agency — AI Lead Qualification for Tradesmen" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Landscale Agency - AI Estimator & Chatbot for Tradesmen",
-    description: "Give automatic quotes, filter out bad leads, save 20+ hours per week.",
-    images: ["https://landscale.agency/logo-schema.png"],
+    title: "Landscale Agency — AI Estimator & Chatbot for Tradesmen",
+    description: "Instant quotes, automatic lead filtering, 20+ hours saved weekly.",
+    images: ["https://landscale.agency/opengraph-image"],
   },
+  authors: [{ name: "Milan Pirint", url: "https://landscale.agency/about" }],
+  creator: "Milan Pirint",
+  publisher: "Landscale Agency",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -77,7 +83,11 @@ export default function RootLayout({
     email: "landscale.agency@gmail.com",
     founder: { "@type": "Person", name: "Milan Pirint" },
     areaServed: ["GB", "HU", "Worldwide"],
-    sameAs: ["https://www.facebook.com/profile.php?id=100083279266241"],
+    sameAs: [
+      "https://www.facebook.com/profile.php?id=100083279266241",
+      "https://www.instagram.com/pirintmilan/",
+      "https://www.linkedin.com/in/mil%C3%A1n-pirint-0598413b7/",
+    ],
   };
 
   const websiteSchema = {
@@ -127,6 +137,8 @@ export default function RootLayout({
         <Navigation />
         <main>{children}</main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
