@@ -12,6 +12,23 @@ const SPRING = [0.16, 1, 0.3, 1] as const;
 
 const projects = [
   {
+    id: "nmbau",
+    name: "NM Bau",
+    tagline: "Live AI Quoting System — Trilingual Renovation Platform",
+    location: "Sopron · Burgenland",
+    tag: "AI Quoting System · Live",
+    desc: "A bathroom and full-property renovation company on the Hungary–Austria border — and the first Landscale build with a live AI quoting agent running in production. Visitors describe their renovation and receive an instant, itemised price estimate around the clock, in any of three languages. The owner publishes his own blog posts and uploads project photos himself, with zero developer involvement.",
+    what: ["Live AI quoting agent", "Trilingual — HU / EN / DE", "Self-managed blog & photo uploads", "Custom build · 100 SEO"],
+    metrics: [
+      { label: "SEO", val: "100" },
+      { label: "Accessibility", val: "100" },
+      { label: "Best Practices", val: "100" },
+    ],
+    url: "https://www.nmbau.hu/",
+    file: "nmbau",
+    index: "01",
+  },
+  {
     id: "lavothakertkft",
     name: "Lavothakertkft",
     tagline: "Hungarian Landscaping — Digital Transformation",
@@ -26,7 +43,7 @@ const projects = [
     ],
     url: "https://www.kertepites-miskolc.hu/",
     file: "lavothakertkft",
-    index: "01",
+    index: "02",
   },
   {
     id: "tiszaujvarostransz",
@@ -43,7 +60,7 @@ const projects = [
     ],
     url: "https://tiszaujvarostransz.hu/",
     file: "tiszaujvarostransz",
-    index: "02",
+    index: "03",
   },
   {
     id: "mimosa-gardens",
@@ -60,7 +77,7 @@ const projects = [
     ],
     url: "https://mimosagardens.framer.website/",
     file: "mimosa-gardens",
-    index: "03",
+    index: "04",
   },
   {
     id: "viszcad",
@@ -77,7 +94,7 @@ const projects = [
     ],
     url: "https://viszcad.vercel.app/index.html",
     file: "viszcad",
-    index: "04",
+    index: "05",
   },
   {
     id: "landscale-template",
@@ -94,7 +111,7 @@ const projects = [
     ],
     url: "https://landscaletemplate.framer.website/",
     file: "landscale-template",
-    index: "05",
+    index: "06",
   },
 ];
 
@@ -301,7 +318,7 @@ export default function CaseStudiesPage() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.55, ease: SPRING }}
             className="font-cormorant text-xl md:text-2xl text-cream/50 font-light italic leading-relaxed max-w-2xl mt-8 mb-10">
-            Four live projects you can click and explore right now. Real websites, real businesses — all built by Landscale.
+            Six live projects you can click and explore right now — including a fully live AI quoting system in production. Real websites, real businesses, all built by Landscale.
           </motion.p>
 
           {/* Project name pills */}
@@ -325,22 +342,22 @@ export default function CaseStudiesPage() {
             <div className="mb-6">
               <span className="inline-flex items-center gap-2 font-grotesk text-[10px] font-bold uppercase tracking-[0.3em] text-gold/60 mb-4 block">
                 <span className="w-6 h-px bg-gold/40 inline-block" />
-                Featured Work
+                Featured Work — Live Now
               </span>
               <h2 className="font-grotesk font-bold text-[clamp(28px,4vw,56px)] text-cream leading-[0.92] tracking-[-0.03em]">
-                The Complete<br />
-                <span className="text-gradient-gold">AI Trade Business Stack.</span>
+                A Live AI Quoting System,<br />
+                <span className="text-gradient-gold">Already In Production.</span>
               </h2>
               <p className="font-cormorant text-lg text-cream/50 font-light italic mt-3 max-w-lg mx-auto">
-                Live AI chatbot, instant estimator, and smart forms — all running on one site.
+                NM Bau&apos;s visitors describe their renovation and get an instant price estimate — 24/7, in three languages. Built, shipped, and live.
               </p>
             </div>
           }
         >
-          <a href="https://landscaletemplate.framer.website/" target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+          <a href="https://www.nmbau.hu/" target="_blank" rel="noopener noreferrer" className="block w-full h-full">
             <Image
-              src="/images/case-studies/landscale-template.png"
-              alt="Landscale AI Template — Full AI Stack Demo"
+              src="/images/case-studies/nmbau.png"
+              alt="NM Bau — Live AI Quoting System in production"
               fill
               className="object-cover object-top hover:scale-[1.02] transition-transform duration-700"
               priority

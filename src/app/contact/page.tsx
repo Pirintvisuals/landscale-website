@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Phone, Mail, Globe, Clock, ChevronDown } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
@@ -26,7 +27,7 @@ export default function ContactPage() {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ access_key: "YOUR_WEB3FORMS_KEY", ...formData, subject: `New Landscale Enquiry from ${formData.name} - ${formData.business}` }),
+        body: JSON.stringify({ access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "", ...formData, subject: `New Landscale Enquiry from ${formData.name} - ${formData.business}` }),
       });
       setStatus(res.ok ? "success" : "error");
     } catch { setStatus("error"); }
@@ -93,12 +94,12 @@ export default function ContactPage() {
                 <div className="flex gap-2 mb-8 bg-white/[0.03] p-1 rounded-full w-fit">
                   <button
                     onClick={() => setTab("calendly")}
-                    className={`font-grotesk font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-300 ${tab === "calendly" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
+                    className={`font-grotesk font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "calendly" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
                     Book a Call
                   </button>
                   <button
                     onClick={() => setTab("form")}
-                    className={`font-grotesk font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-300 ${tab === "form" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
+                    className={`font-grotesk font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "form" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
                     Send a Message
                   </button>
                 </div>
@@ -134,44 +135,49 @@ export default function ContactPage() {
                       <form onSubmit={handleSubmit} className="space-y-5">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           <div>
-                            <label className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Your Name *</label>
-                            <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={inputCls} placeholder="James Thompson" />
+                            <label htmlFor="contact-name" className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Your Name *</label>
+                            <input id="contact-name" type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={inputCls} placeholder="James Thompson" />
                           </div>
                           <div>
-                            <label className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Email *</label>
-                            <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={inputCls} placeholder="james@yourtradebusiness.co.uk" />
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                          <div>
-                            <label className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Business Name *</label>
-                            <input type="text" required value={formData.business} onChange={(e) => setFormData({ ...formData, business: e.target.value })} className={inputCls} placeholder="Thompson Landscapes Ltd" />
-                          </div>
-                          <div>
-                            <label className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Location</label>
-                            <input type="text" value={formData.location} onChange={(e) => setFormData({ ...formData, location: e.target.value })} className={inputCls} placeholder="Manchester, UK" />
+                            <label htmlFor="contact-email" className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Email *</label>
+                            <input id="contact-email" type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={inputCls} placeholder="james@yourtradebusiness.co.uk" />
                           </div>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           <div>
-                            <label className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Phone</label>
-                            <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={inputCls} placeholder="+44 7700 900000" />
+                            <label htmlFor="contact-business" className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Business Name *</label>
+                            <input id="contact-business" type="text" required value={formData.business} onChange={(e) => setFormData({ ...formData, business: e.target.value })} className={inputCls} placeholder="Thompson Landscapes Ltd" />
                           </div>
                           <div>
-                            <label className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Service Interest</label>
-                            <select value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })} className={`${inputCls} appearance-none`}>
-                              <option value="">Select a service...</option>
-                              <option value="website">Website Design</option>
-                              <option value="seo">SEO &amp; Marketing</option>
-                              <option value="ai">AI Lead Generation</option>
-                              <option value="full">Full Package</option>
-                              <option value="unsure">Not sure yet</option>
-                            </select>
+                            <label htmlFor="contact-location" className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Location</label>
+                            <input id="contact-location" type="text" value={formData.location} onChange={(e) => setFormData({ ...formData, location: e.target.value })} className={inputCls} placeholder="Manchester, UK" />
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          <div>
+                            <label htmlFor="contact-phone" className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Phone</label>
+                            <input id="contact-phone" type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className={inputCls} placeholder="+44 7700 900000" />
+                          </div>
+                          <div>
+                            <label htmlFor="contact-service" className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Service Interest</label>
+                            <div className="relative">
+                              <select id="contact-service" value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })} className={`${inputCls} appearance-none pr-10 cursor-pointer`}>
+                                <option value="">Select a service...</option>
+                                <option value="website">Website Design</option>
+                                <option value="seo">SEO &amp; Marketing</option>
+                                <option value="ai">AI Lead Generation</option>
+                                <option value="full">Full Package</option>
+                                <option value="unsure">Not sure yet</option>
+                              </select>
+                              <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                                <ChevronDown size={15} className="text-gold/40" aria-hidden="true" />
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div>
-                          <label className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Tell Us About Your Business</label>
-                          <textarea rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${inputCls} resize-none`} placeholder="What's your biggest challenge? How many leads do you get per week?" />
+                          <label htmlFor="contact-message" className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50 mb-2 block">Tell Us About Your Business</label>
+                          <textarea id="contact-message" rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${inputCls} resize-none`} placeholder="What's your biggest challenge? How many leads do you get per week?" />
                         </div>
                         <button type="submit" disabled={status === "loading"}
                           className="w-full relative bg-gold text-deep-black font-grotesk font-bold text-base py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 disabled:opacity-50 overflow-hidden group">
@@ -194,10 +200,10 @@ export default function ContactPage() {
                 </div>
 
                 {[
-                  { label: "Phone", value: "+44 7478 075473", href: "tel:+447478075473", icon: "◎" },
-                  { label: "Email", value: "landscale.agency@gmail.com", href: "mailto:landscale.agency@gmail.com", icon: "◆" },
-                  { label: "Coverage", value: "UK (primary) & Worldwide", href: null, icon: "▲" },
-                  { label: "Response Time", value: "Within 24 hours, usually same day", href: null, icon: "●" },
+                  { label: "Phone", value: "+44 7478 075473", href: "tel:+447478075473", Icon: Phone },
+                  { label: "Email", value: "landscale.agency@gmail.com", href: "mailto:landscale.agency@gmail.com", Icon: Mail },
+                  { label: "Coverage", value: "UK (primary) & Worldwide", href: null, Icon: Globe },
+                  { label: "Response Time", value: "Within 24 hours, usually same day", href: null, Icon: Clock },
                 ].map((item, i) => (
                   <motion.div key={item.label}
                     initial={{ opacity: 0, x: -10 }}
@@ -206,7 +212,7 @@ export default function ContactPage() {
                     transition={{ delay: i * 0.1, duration: 0.6, ease: SPRING }}
                     className="border-b border-white/[0.06] pb-6 group">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-gold/40 text-xs">{item.icon}</span>
+                      <item.Icon size={13} className="text-gold/40 flex-shrink-0" aria-hidden="true" />
                       <div className="font-grotesk text-xs font-semibold uppercase tracking-[0.15em] text-gold/50">{item.label}</div>
                     </div>
                     {item.href ? (

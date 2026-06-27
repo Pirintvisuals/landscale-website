@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Becslés Agent & Chatbot Magyar Vállalkozásoknak | Landscale",
   description:
-    "AI-alapú automatikus árajánlat és lead-szűrő rendszer magyar szolgáltató vállalkozásoknak. Tereprendezés, kertészet, építőipar, vízvezetékszerelés. Vége a komolytalan érdeklődőknek — 24/7 automatikus válasz.",
+    "AI árajánlat és lead-szűrő magyar vállalkozásoknak. Tereprendezés, kertészet, építőipar — vége a komolytalan érdeklődőknek. Automatikus válasz 24/7.",
   keywords:
     "AI chatbot magyar vállalkozás, automatikus árajánlat rendszer Magyarország, tereprendezés weboldal, kertészet AI lead szűrés, építőipar chatbot, vízvezetékszerelés weboldal, magyar szolgáltató automatizálás, webdesign Miskolc, webdesign Magyarország",
   alternates: {
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     languages: {
       "hu": "https://landscale.agency/hu",
       "en": "https://landscale.agency",
+      "x-default": "https://landscale.agency",
     },
   },
   openGraph: {
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     url: "https://landscale.agency/hu",
     siteName: "Landscale Agency",
     locale: "hu_HU",
-    images: [{ url: "https://landscale.agency/logo-schema.png", width: 512, height: 512, alt: "Landscale Agency" }],
+    images: [{ url: "https://landscale.agency/opengraph-image", width: 1200, height: 630, alt: "Landscale Agency" }],
   },
 };
 

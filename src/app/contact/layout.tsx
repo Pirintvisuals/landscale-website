@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://landscale.agency/contact",
     siteName: "Landscale Agency",
-    images: [{ url: "https://landscale.agency/logo-schema.png", width: 512, height: 512, alt: "Landscale Agency" }],
+    images: [{ url: "https://landscale.agency/opengraph-image", width: 1200, height: 630, alt: "Landscale Agency" }],
   },
 };
 

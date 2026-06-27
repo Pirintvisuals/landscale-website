@@ -59,6 +59,7 @@ export default function Footer() {
                 { href: "/services/ai-estimator", label: "AI Estimator Agent" },
                 { href: "/services/ai-chatbot", label: "AI Chatbot" },
                 { href: "/services/website-design", label: "Premium Website" },
+                { href: "/services/seo-marketing", label: "Local SEO" },
                 { href: "/services", label: "All Services" },
               ].map((link) => (
                 <li key={link.label}>
@@ -72,6 +73,7 @@ export default function Footer() {
           <div>
             <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">Connect</h4>
             <ul className="space-y-3">
+              <li><a href="tel:+447478075473" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">+44 7478 075473</a></li>
               <li><a href="mailto:landscale.agency@gmail.com" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">landscale.agency@gmail.com</a></li>
               <li>
                 <a href="https://www.instagram.com/pirintmilan/" target="_blank" rel="noopener noreferrer"

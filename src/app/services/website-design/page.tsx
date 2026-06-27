@@ -39,6 +39,20 @@ export default function WebsiteDesignPage() {
         </div>
       </section>
 
+      {/* GEO — Definition */}
+      <section className="py-16 bg-[#080808] border-t border-white/[0.04]">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+          <Reveal>
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6">
+              <span className="w-8 h-px bg-gold" />What Landscale Builds
+            </span>
+            <p className="font-inter text-cream/65 text-base md:text-lg leading-relaxed max-w-3xl">
+              Landscale builds bespoke, conversion-focused websites for trade businesses — roofers, landscapers, hardscapers, builders, construction firms, and home service contractors. Every site is custom-designed to position the client as the premium choice in their local market. Performance benchmarks are non-negotiable: sub-1-second load times, 95–100 Google PageSpeed scores, and 100/100 SEO scores on every project. Local SEO is integrated from day one — including keyword research, on-page optimisation, and Google Business Profile setup — so the site starts generating organic enquiries immediately. AI lead qualification tools (estimator agent or chatbot) are available to integrate directly, turning the website into a 24/7 lead filtering system.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Included */}
       <section className="py-24 bg-[#0D0D0D]">
         <div className="max-w-[1400px] mx-auto px-8 md:px-16">

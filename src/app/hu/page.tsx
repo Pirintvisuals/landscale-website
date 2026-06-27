@@ -82,6 +82,19 @@ const testimonials = [
 
 const industries = [
   {
+    icon: Hammer,
+    label: "Építőipar & Felújítás",
+    desc: "Fürdőszoba- és teljes ingatlanfelújítás — és az első élő AI árajánló rendszerünk, ami éles üzemben fut. Az érdeklődő leírja a projektet, az AI azonnal előzetes árbecslést ad, három nyelven (HU / EN / DE).",
+    project: {
+      name: "NM Bau",
+      tagline: "Élő AI árajánló · Sopron · Burgenland",
+      metrics: ["Élő AI árajánló", "100 SEO", "HU · EN · DE"],
+      image: "/images/case-studies/nmbau.png",
+      logo: "/images/nmbau-logo.png",
+      url: "https://www.nmbau.hu/",
+    },
+  },
+  {
     icon: Leaf,
     label: "Tereprendezés & Kertészet",
     desc: "Szezonális roham, felesleges árajánlat-kérők, véget nem érő egyeztetések. Az AI szűri, mi éri meg az idődet — a komoly megrendelők jutnak csak el hozzád.",
@@ -92,19 +105,6 @@ const industries = [
       image: "/images/case-studies/lavothakertkft.png",
       logo: "/images/lavotha-logo.jpg",
       url: "https://www.kertepites-miskolc.hu/",
-    },
-  },
-  {
-    icon: Hammer,
-    label: "Építőipar & Felújítás",
-    desc: "Nagy projektek, komoly büdzsék — de rengeteg nem komoly érdeklődő. Az AI csak a valódi megrendelőket engedi át, te pedig az építéssel foglalkozol.",
-    project: {
-      name: "Tiszaújváros Transz Kft.",
-      tagline: "Webdesign · Kazincbarcika",
-      metrics: ["95 Teljesítmény", "100 SEO"],
-      image: "/images/case-studies/tiszaujvarostransz.png",
-      logo: null,
-      url: "https://tiszaujvarostransz.hu/",
     },
   },
   {
@@ -331,9 +331,9 @@ export default function HuPage() {
                 desc: "Amíg te alszol, az AI szűri az érdeklődőket, válaszol a kérdésekre és időpontot foglal.",
               },
               {
-                num: 4, suffix: "+",
+                num: 6, suffix: "+",
                 label: "Élő projekt fut most is",
-                desc: "Valódi vállalkozások, valódi eredmények. Minden projekt éles, és igazolt a piacon.",
+                desc: "Valódi vállalkozások, valódi eredmények — köztük egy éles AI árajánló rendszer. Minden projekt igazolt a piacon.",
               },
             ].map((stat, i) => (
               <Reveal key={stat.label} delay={i * 0.1}>

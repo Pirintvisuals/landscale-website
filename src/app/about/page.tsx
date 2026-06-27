@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { Shield, BarChart3, Hammer, TrendingUp } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
@@ -28,7 +29,7 @@ function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ delay: i * 0.05, duration: 0.6, ease: SPRING }}>
-      <button onClick={() => setOpen(!open)} className="w-full flex items-start justify-between gap-6 py-7 text-left relative">
+      <button onClick={() => setOpen(!open)} aria-expanded={open} className="w-full flex items-start justify-between gap-6 py-7 text-left relative">
         <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gold/0 group-hover:bg-gold/40 transition-all duration-300" />
         <span className="font-grotesk font-bold text-base md:text-lg text-cream group-hover:text-gold transition-colors duration-300 pl-4">{q}</span>
         <motion.span
@@ -248,10 +249,10 @@ export default function AboutPage() {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04]">
             {[
-              { title: "Honesty First", desc: "I tell you what you need to hear, not what you want to hear. If something won't work, I'll say so.", icon: "◎" },
-              { title: "No Vanity Metrics", desc: "I don't celebrate page views or follower counts. I celebrate leads generated and revenue grown.", icon: "◆" },
-              { title: "Trades-Only Focus", desc: "I only work with tradesmen and contractors — roofers, landscapers, builders, remodellers and the rest. This focus lets me be genuinely excellent at one thing.", icon: "▲" },
-              { title: "Long-Term Thinking", desc: "I build strategies for sustainable growth, not quick wins that collapse in 6 months.", icon: "●" },
+              { title: "Honesty First", desc: "I tell you what you need to hear, not what you want to hear. If something won't work, I'll say so.", Icon: Shield },
+              { title: "No Vanity Metrics", desc: "I don't celebrate page views or follower counts. I celebrate leads generated and revenue grown.", Icon: BarChart3 },
+              { title: "Trades-Only Focus", desc: "I only work with tradesmen and contractors — roofers, landscapers, builders, remodellers and the rest. This focus lets me be genuinely excellent at one thing.", Icon: Hammer },
+              { title: "Long-Term Thinking", desc: "I build strategies for sustainable growth, not quick wins that collapse in 6 months.", Icon: TrendingUp },
             ].map((value, i) => (
               <motion.div key={value.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -263,8 +264,8 @@ export default function AboutPage() {
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{ background: "radial-gradient(ellipse at 20% 30%, rgba(212,175,55,0.05) 0%, transparent 60%)" }} />
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold text-sm mb-6 group-hover:bg-gold/20 group-hover:border-gold/40 group-hover:scale-110 transition-all duration-300">
-                    {value.icon}
+                  <div className="w-10 h-10 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-6 group-hover:bg-gold/20 group-hover:border-gold/40 group-hover:scale-110 transition-all duration-300">
+                    <value.Icon size={18} aria-hidden="true" />
                   </div>
                   <h3 className="font-grotesk font-bold text-xl text-cream mb-3 group-hover:text-gold transition-colors duration-300">{value.title}</h3>
                   <p className="font-inter text-text-muted text-base leading-relaxed">{value.desc}</p>
@@ -298,8 +299,11 @@ export default function AboutPage() {
 
       {/* ── CTA ── */}
       <section className="relative py-24 md:py-48 lg:py-64 bg-[#060606] overflow-hidden text-center">
-
-
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute rounded-full orb-1" style={{ width: 700, height: 700, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 65%)", filter: "blur(90px)" }} />
+          <div className="absolute rounded-full orb-2" style={{ width: 400, height: 400, top: "10%", right: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 70%)", filter: "blur(70px)" }} />
+          <div className="absolute rounded-full orb-3" style={{ width: 300, height: 300, bottom: "15%", left: "8%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%)", filter: "blur(60px)" }} />
+        </div>
 
         <div className="relative z-10 max-w-2xl mx-auto px-5 sm:px-8">
           <div className="overflow-hidden mb-4">

@@ -1,0 +1,72 @@
+# Landscale Agency
+
+> Landscale Agency is an AI-powered marketing agency that builds premium websites with integrated AI lead qualification tools — exclusively for trade businesses. Services are used by roofers, landscapers, hardscapers, builders, construction firms, plumbers, and home service contractors in the United Kingdom and internationally. The agency's AI tools save tradesmen 15–20 hours per week by filtering unqualified enquiries automatically, 24/7.
+
+Founder: Milan Pirint. Contact: landscale.agency@gmail.com | +44 7478 075473. Website: https://landscale.agency
+
+---
+
+## Services
+
+- [AI Estimator Agent](https://landscale.agency/services/ai-estimator): A conversational chat widget that integrates into a tradesman's website and delivers instant, structured price estimates 24/7 — without a phone call. The agent asks project-specific questions covering scope, area size, materials, postcode, and site access requirements, then produces a line-item estimate in under two seconds. Contact details are collected only after the estimate is displayed, ensuring every enquiry comes from a price-aware, serious buyer. Saves 15–20 hours per week on preliminary quote calls.
+- [AI Chatbot](https://landscale.agency/services/ai-chatbot): A 24/7 lead qualification chatbot that evaluates every site visitor on four dimensions: budget, project type, location, and timeline. Visitors outside the tradesman's service area or below their minimum job size are declined automatically with a polite message. Qualifying visitors receive immediate acknowledgement; their full brief — name, contact details, project description, budget, and location — is forwarded to the tradesman's inbox instantly. Typically increases the ratio of qualified to unqualified enquiries by 300%.
+- [Website Design](https://landscale.agency/services/website-design): Bespoke, conversion-focused websites built specifically for trade businesses. Every site achieves sub-1-second load times, 100/100 Google SEO scores, and 95–100 PageSpeed scores. Local SEO is built in from day one, including Google Business Profile setup and keyword optimisation for local search.
+- [Local SEO](https://landscale.agency/services/seo-marketing): Local search optimisation to help tradesmen rank first when customers in their area search for their trade. Includes on-page keyword strategy, Google Business Profile management, local citation building, and technical SEO.
+
+---
+
+## Case Studies
+
+Real results across landscaping, construction, and home service businesses in the UK and Hungary.
+
+- [All Case Studies](https://landscale.agency/case-studies)
+- Lavotha Kert Kft (Hungary, landscaping): 96/100 PageSpeed, 100/100 SEO, sub-1s load time
+- Tiszaújváros Transz Kft (Hungary, construction): 95/100 PageSpeed, 100/100 SEO, sub-1s load time
+- Mimosa Gardens (UK, premium landscaping): 96/100 PageSpeed, 100/100 SEO, sub-0.8s load time
+- ViszCAD (Hungary): 100/100 SEO, fast load time
+
+---
+
+## About
+
+Milan Pirint founded Landscale Agency in 2025 after recognising that tradespeople — despite delivering exceptional work — were being held back by poor digital infrastructure and a flood of unqualified enquiries. Growing up around tradespeople, he understood the industry at a level a generalist agency could not. Landscale focuses exclusively on trade businesses, giving it deep domain knowledge in the workflows, pricing structures, and client types specific to roofing, landscaping, hardscaping, construction, and home services.
+
+Full about page: https://landscale.agency/about
+
+---
+
+## Contact & Booking
+
+- Book a free 30-minute audit (no obligation): https://landscale.agency/contact
+- Email: landscale.agency@gmail.com
+- Phone: +44 7478 075473
+- Coverage: United Kingdom (primary) and worldwide
+- Hungarian language service: https://landscale.agency/hu
+
+---
+
+## Frequently Asked Questions
+
+**What is an AI Estimator Agent for tradesmen?**
+An AI Estimator Agent is a chat widget installed on a tradesman's website that guides visitors through a short series of project-specific questions — covering scope, area, materials, postcode, and access requirements — and delivers an accurate, itemised price estimate immediately, before the visitor provides any contact details. Because the lead already knows the approximate cost, only serious, price-aware buyers proceed to enquire. The agent operates 24 hours a day, 7 days a week, and typically saves tradesmen 15–20 hours per week that would otherwise be spent on preliminary quote calls and back-and-forth email exchanges.
+
+**How does the AI chatbot qualify leads?**
+The chatbot opens a conversation with every visitor to the tradesman's website and asks four qualifying questions: (1) What type of project is this? (2) What is your approximate budget? (3) What is your postcode or location? (4) What is your intended start date? Based on the answers, the chatbot makes an automatic decision. Visitors outside the service area, below the minimum job size, or not ready to proceed within the tradesman's preferred timeline are declined politely and automatically — the tradesman never sees these enquiries. Visitors who pass all criteria receive a warm acknowledgement, and their full brief is forwarded to the tradesman's inbox within seconds.
+
+**What types of trade businesses does Landscale work with?**
+Landscale works with all trade and home service businesses, including landscaping companies, garden design and maintenance firms, roofing contractors, hardscaping specialists, general builders, construction firms, plumbers, electricians, painters and decorators, cleaning companies, remodellers, and any other business where the owner does skilled manual work and needs a system to qualify inbound enquiries automatically. The agency primarily serves businesses in the United Kingdom but takes international clients, with a dedicated Hungarian-language service for contractors in Hungary.
+
+**Do I need an existing website to use Landscale's AI tools?**
+No. Landscale builds the website and integrates the AI tools as part of a single project. If you already have a website, the AI Estimator Agent or AI Chatbot can be integrated directly into your existing site without rebuilding it.
+
+**How long does it take to build a trade business website?**
+A template-based Framer website is typically completed in 1–2 weeks from the initial discovery call. A fully custom site built on Next.js — which delivers superior performance and advanced features — takes 3–6 weeks depending on scope. Every project receives a clear written timeline before work begins.
+
+**How much does a website or AI tool from Landscale cost?**
+Pricing is project-specific because every business has different requirements. Landscale does not publish fixed prices to avoid quoting for a scope that does not match the client's actual needs. A free 30-minute audit at https://landscale.agency/contact results in a written proposal with transparent, line-item pricing based on what the client actually needs.
+
+**What results can I expect?**
+Landscale-built websites consistently achieve 95–100 Google PageSpeed scores, 100/100 SEO scores, and sub-1-second load times. Businesses that add the AI Estimator or AI Chatbot report a 300% average increase in qualified lead enquiries and a reduction of 15–20 hours per week in time spent on unqualified prospects.
+
+**Is Landscale right for a solo tradesman or only for larger companies?**
+Landscale works with solo tradesmen and larger operations alike. The AI tools are particularly valuable for sole traders who cannot answer the phone while on a job — the AI qualifies and captures leads 24/7 so no opportunity is missed regardless of company size.

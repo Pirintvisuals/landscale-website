@@ -37,6 +37,20 @@ export default function AiChatbotPage() {
         </div>
       </section>
 
+      {/* GEO — Definition */}
+      <section className="py-16 bg-[#080808] border-t border-white/[0.04]">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+          <Reveal>
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6">
+              <span className="w-8 h-px bg-gold" />What Is an AI Lead Qualification Chatbot?
+            </span>
+            <p className="font-inter text-cream/65 text-base md:text-lg leading-relaxed max-w-3xl">
+              An AI lead qualification chatbot is a 24/7 automated system that evaluates every visitor to a tradesman&apos;s website before they can make contact. The chatbot conducts a structured conversation covering budget, project type, location, and intended start date. Visitors outside the tradesman&apos;s service area, below minimum job size, or not ready to proceed are declined automatically with a polite message — the tradesman never sees these enquiries. Qualifying visitors have their full brief forwarded to the tradesman&apos;s inbox instantly: name, phone number, email, project description, budget, and postcode. The tool operates around the clock and typically increases the proportion of qualified to unqualified enquiries by 300%.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* How It Works */}
       <section className="py-24 bg-[#0D0D0D]">
         <div className="max-w-[1400px] mx-auto px-8 md:px-16">

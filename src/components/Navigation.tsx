@@ -2,14 +2,16 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe } from "lucide-react";
+import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe, TrendingUp } from "lucide-react";
 
 const services = [
   { href: "/services/ai-estimator", label: "AI Estimator Agent", desc: "Instant project quotes on your site — no call needed", Icon: Zap, tag: "Core" },
   { href: "/services/ai-chatbot", label: "AI Chatbot", desc: "Qualifies leads 24/7, filters out time-wasters", Icon: MessageCircle, tag: null },
   { href: "/services/website-design", label: "Website Design", desc: "Luxury sites with local SEO built in", Icon: Globe, tag: null },
+  { href: "/services/seo-marketing", label: "Local SEO", desc: "Rank #1 when local clients search for your trade", Icon: TrendingUp, tag: null },
 ];
 
 const navLinks = [
@@ -75,16 +77,16 @@ export default function Navigation() {
 
           {/* ── Logo ── */}
           <Link href="/" className="flex items-center flex-shrink-0 z-10">
-            <div
-              className="w-[180px] h-[60px] rounded-xl"
-              style={{
-                backgroundImage: "url('/landscape_1.png')",
-                backgroundSize: "180px 180px",
-                backgroundPosition: "center 38%",
-                backgroundRepeat: "no-repeat",
-              }}
-              aria-label="Landscale Agency"
-            />
+            <div className="relative w-[180px] h-[60px] overflow-hidden rounded-xl">
+              <Image
+                src="/landscape_1.png"
+                alt="Landscale Agency"
+                fill
+                style={{ objectFit: "cover", objectPosition: "center 38%" }}
+                priority
+                sizes="180px"
+              />
+            </div>
           </Link>
 
           {/* ── Desktop Nav ── */}
@@ -202,7 +204,8 @@ export default function Navigation() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-xl border border-white/[0.08] hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 z-10"
-            aria-label="Toggle menu">
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}>
             <AnimatePresence mode="wait">
               {menuOpen
                 ? <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}><X size={18} className="text-gold" /></motion.span>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
@@ -34,6 +35,72 @@ export default function AiEstimatorPage() {
               See It In Action
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* GEO — Definition */}
+      <section className="py-16 bg-[#080808] border-t border-white/[0.04]">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-16">
+          <Reveal>
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6">
+              <span className="w-8 h-px bg-gold" />What Is an AI Estimator Agent?
+            </span>
+            <p className="font-inter text-cream/65 text-base md:text-lg leading-relaxed max-w-3xl">
+              An AI Estimator Agent is a chat widget that integrates into a tradesman&apos;s website and delivers instant, accurate price estimates without a phone call. When a visitor requests a quote, the agent asks project-specific questions — covering scope, area size, materials, postcode, and access requirements — then produces a structured, line-item estimate in under two seconds. Contact details are only collected after the estimate is displayed, so every enquiry comes from a price-aware, serious buyer. The result: tradesmen save 15–20 hours per week on preliminary quote calls and receive fewer, better-quality enquiries.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Live Proof — NM Bau */}
+      <section className="py-24 bg-[#0A0A0A] border-t border-white/[0.04] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 30%, #D4AF37 0%, transparent 55%)" }} />
+        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <Reveal>
+              <span className="inline-flex items-center gap-2 font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold mb-6">
+                <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+                Live In Production
+              </span>
+              <h2 className="font-grotesk font-bold text-[clamp(30px,4vw,52px)] text-cream tracking-[-0.02em] leading-[0.95] mb-5">
+                Not a concept.<br /><span className="text-gradient-gold">It&apos;s already live.</span>
+              </h2>
+              <p className="font-inter text-cream/65 text-base md:text-lg leading-relaxed mb-6 max-w-xl">
+                <strong className="text-cream">NM Bau</strong>, a renovation company on the Hungary–Austria border, runs a Landscale AI estimator right now. Visitors describe their bathroom or full-property renovation, and the agent returns an instant preliminary estimate — 24/7, in <strong className="text-cream">three languages (HU / EN / DE)</strong>. Go and try it yourself.
+              </p>
+              <div className="flex flex-wrap gap-3 mb-8">
+                {["Live AI quoting agent", "Trilingual HU / EN / DE", "100/100 SEO", "Self-managed blog"].map((t) => (
+                  <span key={t} className="font-inter text-xs text-cream/60 border border-white/[0.08] hover:border-gold/30 hover:text-gold/80 px-3 py-1.5 rounded-full transition-all duration-200">
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <a href="https://www.nmbau.hu/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+                  Try It Live on nmbau.hu →
+                </a>
+                <Link href="/case-studies" className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 rounded-full hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300">
+                  Full Case Study
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <a href="https://www.nmbau.hu/" target="_blank" rel="noopener noreferrer" className="block relative group">
+                <div className="absolute -inset-px rounded-2xl pointer-events-none z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-400" style={{ background: "linear-gradient(135deg, rgba(212,175,55,0.4), transparent 60%)", borderRadius: "inherit" }} />
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#111] rounded-2xl border border-white/[0.06] shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+                  <Image src="/images/case-studies/nmbau.png" alt="NM Bau — live AI quoting system in production" fill className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm border border-gold/20 text-gold/80">Sopron · Burgenland</span>
+                  </div>
+                  <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between z-10">
+                    <span className="font-grotesk font-bold text-cream text-sm">NM Bau</span>
+                    <span className="font-grotesk text-[10px] font-semibold uppercase tracking-[0.15em] text-gold/60">AI Quoting System · Live</span>
+                  </div>
+                </div>
+              </a>
+            </Reveal>
+          </div>
         </div>
       </section>
 

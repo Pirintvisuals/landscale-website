@@ -1,23 +1,49 @@
 import type { Metadata } from "next";
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://landscale.agency" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://landscale.agency/services" },
+    { "@type": "ListItem", position: 3, name: "AI Chatbot", item: "https://landscale.agency/services/ai-chatbot" },
+  ],
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "AI Chatbot for Tradesmen",
+  description: "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. Built for landscaping, construction, and home service businesses.",
+  provider: { "@type": "Organization", name: "Landscale Agency", url: "https://landscale.agency" },
+  url: "https://landscale.agency/services/ai-chatbot",
+  areaServed: ["GB", "Worldwide"],
+};
+
 export const metadata: Metadata = {
-  title: "AI Chatbot for Home Service Businesses — Stop Wasting Time on Unqualified Leads | Landscale",
+  title: "AI Chatbot for Tradesmen — Filter Bad Leads 24/7 | Landscale",
   description:
-    "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. Built for landscaping, construction, and home service businesses.",
+    "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. For landscapers, roofers & home service businesses.",
   keywords:
     "AI chatbot landscaping business, lead qualification chatbot, landscaping lead filter, home service AI chatbot UK, chatbot for landscapers, automatic lead scoring",
   alternates: { canonical: "https://landscale.agency/services/ai-chatbot" },
   openGraph: {
-    title: "AI Chatbot — Stop Wasting Time on Unqualified Leads | Landscale",
+    title: "AI Chatbot for Tradesmen — Filter Bad Leads 24/7 | Landscale",
     description:
-      "Your AI chatbot qualifies every visitor 24/7 — filtering out bad leads so you only deal with serious, ready-to-book clients.",
+      "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. For landscapers, roofers & home service businesses.",
     type: "website",
     url: "https://landscale.agency/services/ai-chatbot",
     siteName: "Landscale Agency",
-    images: [{ url: "https://landscale.agency/logo-schema.png", width: 512, height: 512, alt: "Landscale Agency" }],
+    images: [{ url: "https://landscale.agency/opengraph-image", width: 1200, height: 630, alt: "Landscale Agency" }],
   },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      {children}
+    </>
+  );
 }

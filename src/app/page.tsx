@@ -49,27 +49,42 @@ const faqSchema = {
     {
       "@type": "Question",
       name: "What is an AI Estimator for tradesmen and contractors?",
-      acceptedAnswer: { "@type": "Answer", text: "An AI Estimator is a chat widget on your website that asks visitors about their project (scope, area, budget, postcode) and delivers an instant price estimate 24/7 — before they even give their contact details. This filters out unserious inquiries and saves you 15–20 hours per week." },
+      acceptedAnswer: { "@type": "Answer", text: "An AI Estimator is a chat widget installed on a tradesman's website that guides visitors through a short series of project-specific questions — covering scope, area size, materials, postcode, and site access — and delivers an accurate, itemised price estimate immediately, before the visitor provides any contact details. Because the lead already knows the approximate cost, only serious, price-aware buyers proceed to enquire. The agent operates 24 hours a day, 7 days a week, and typically saves tradesmen 15–20 hours per week that would otherwise be spent on preliminary quote calls." },
     },
     {
       "@type": "Question",
-      name: "How does the AI chatbot qualify leads?",
-      acceptedAnswer: { "@type": "Answer", text: "The chatbot asks qualifying questions about budget, location, project type, and timeline. Leads outside your service area or below your minimum job size are politely declined automatically. Serious buyers are forwarded to you with their full brief attached." },
+      name: "How does the AI chatbot qualify leads for a trade business?",
+      acceptedAnswer: { "@type": "Answer", text: "The chatbot opens a natural conversation with every visitor to the tradesman's website and asks four qualifying questions: what type of project it is, what the approximate budget is, what the postcode or location is, and when they want to start. Based on the answers, the chatbot makes an automatic decision. Visitors outside the service area, below minimum job size, or not ready within the tradesman's preferred timeline are declined automatically — the tradesman never sees these enquiries. Qualifying visitors have their full brief (name, contact details, project description, budget, and location) forwarded to the tradesman's inbox within seconds." },
     },
     {
       "@type": "Question",
-      name: "How long does it take to build a trade or contractor website?",
-      acceptedAnswer: { "@type": "Answer", text: "Most projects are completed in 2–4 weeks from the discovery call. The site includes local SEO, sub-1-second load times, and AI lead qualification built in from day one." },
+      name: "How long does it take to build a website for a trade business?",
+      acceptedAnswer: { "@type": "Answer", text: "A template-based Framer website is typically completed in 1–2 weeks from the initial discovery call. A fully custom Next.js site takes 3–6 weeks depending on complexity. Every Landscale-built site achieves sub-1-second load times, 100/100 SEO scores, and 95–100 PageSpeed scores. Local SEO is built in from day one, including Google Business Profile setup and keyword optimisation." },
     },
     {
       "@type": "Question",
-      name: "Do I need a website already to use the AI tools?",
-      acceptedAnswer: { "@type": "Answer", text: "No. If you don't have a website, Landscale builds one for you. If you already have a site, the AI estimator and chatbot can be integrated directly into it." },
+      name: "Do I need an existing website to use Landscale's AI tools?",
+      acceptedAnswer: { "@type": "Answer", text: "No. Landscale builds the website and integrates the AI tools as part of a single project. If you already have a website, the AI Estimator Agent or AI Chatbot can be integrated directly into your existing site without a full rebuild." },
     },
     {
       "@type": "Question",
       name: "What types of businesses does Landscale work with?",
-      acceptedAnswer: { "@type": "Answer", text: "Landscale works with landscaping, gardening, construction, plumbing, cleaning, electrical, and other home service businesses in the UK and Hungary." },
+      acceptedAnswer: { "@type": "Answer", text: "Landscale works with all trade and home service businesses: landscaping companies, garden design and maintenance firms, roofing contractors, hardscaping specialists, general builders, construction firms, plumbers, electricians, painters and decorators, cleaning companies, remodellers, and any contractor who needs to qualify inbound enquiries automatically. The agency primarily serves businesses in the United Kingdom but takes international clients, with a dedicated Hungarian-language service for contractors in Hungary." },
+    },
+    {
+      "@type": "Question",
+      name: "How much does an AI chatbot or AI estimator for a trade website cost?",
+      acceptedAnswer: { "@type": "Answer", text: "Pricing is project-specific because every business has different requirements. Landscale does not publish fixed prices to avoid quoting for a scope that does not match the client's actual needs. A free 30-minute audit results in a written proposal with transparent, line-item pricing. You can book a free audit at https://landscale.agency/contact." },
+    },
+    {
+      "@type": "Question",
+      name: "What results can I expect from Landscale's AI lead qualification tools?",
+      acceptedAnswer: { "@type": "Answer", text: "Businesses using Landscale's AI tools report an average 300% increase in qualified lead enquiries — meaning more serious buyers, not just more volume — and a reduction of 15–20 hours per week in time spent on unqualified prospects. Landscale-built websites consistently achieve 95–100 Google PageSpeed scores, 100/100 SEO scores, and sub-1-second load times." },
+    },
+    {
+      "@type": "Question",
+      name: "Is Landscale suitable for a solo tradesman or only for larger companies?",
+      acceptedAnswer: { "@type": "Answer", text: "Landscale works with solo tradesmen and larger operations alike. The AI tools are particularly valuable for sole traders who cannot answer the phone while on a job — the AI qualifies and captures leads 24/7 so no opportunity is missed regardless of company size." },
     },
   ],
 };
@@ -84,7 +99,7 @@ const reviewSchema = {
     ratingValue: "5",
     reviewCount: "3",
     bestRating: "5",
-    worstRating: "5",
+    worstRating: "1",
   },
   review: [
     {
@@ -183,9 +198,14 @@ export default function HomePage() {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
                 className="flex items-center gap-4">
                 <div className="flex -space-x-2">
-                  {["/images/lavotha-logo.jpg", "/images/mimosa-logo.jpg", "/images/viszcad-logo.png"].map((src, i) => (
+                  {[
+                    { src: "/images/nmbau-logo.png", alt: "NM Bau" },
+                    { src: "/images/lavotha-logo.jpg", alt: "Lavotha Kert Kft" },
+                    { src: "/images/mimosa-logo.jpg", alt: "Mimosa Gardens" },
+                    { src: "/images/viszcad-logo.png", alt: "ViszCAD" },
+                  ].map(({ src, alt }, i) => (
                     <div key={i} className="w-8 h-8 rounded-full bg-white border-2 border-[#111] overflow-hidden flex-shrink-0">
-                      <Image src={src} alt="" width={32} height={32} className="object-contain w-full h-full" priority />
+                      <Image src={src} alt={alt} width={32} height={32} className="object-contain w-full h-full" priority />
                     </div>
                   ))}
                 </div>
@@ -234,7 +254,7 @@ export default function HomePage() {
             { value: 85, suffix: "%", label: "Time Saved on Lead Qualifying", desc: "Stop wasting hours on tyre-kickers. Our AI filters them before they reach you.", accent: "top-left" },
             { value: 300, suffix: "%", label: "Average Increase in Qualified Leads", desc: "Not just more leads — better ones. Higher budgets, clearer briefs, faster decisions.", accent: "top-right" },
             { value: 24, suffix: "/7", label: "Hours Your AI Works For You", desc: "While you sleep, your AI is qualifying leads, answering questions, booking calls.", accent: "bottom-left" },
-            { value: 4, suffix: "+", label: "Live Projects Running Right Now", desc: "Real businesses, real results. Every project is live and proven in the market.", accent: "bottom-right" },
+            { value: 6, suffix: "+", label: "Live Projects Running Right Now", desc: "Real businesses, real results — including a live AI quoting system in production. Every project is proven in the market.", accent: "bottom-right" },
           ].map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.08}>
               <div className={`relative overflow-hidden p-7 md:p-12 xl:p-20 border-b border-r border-white/[0.04] group hover:bg-[#0D0D0D] transition-colors duration-500 flex flex-col items-center justify-center min-h-[280px] ${i % 2 === 1 ? "border-r-0" : ""} ${i >= 2 ? "border-b-0" : ""}`}>
@@ -520,7 +540,7 @@ export default function HomePage() {
             {[
               { value: "100/100", label: "Google PageSpeed Score", desc: "Perfect performance on every build" },
               { value: "<0.8s", label: "Average Load Time", desc: "Faster than 99% of competitor sites" },
-              { value: "4", label: "Trade Businesses Live", desc: "Real results across roofing, landscaping, construction & more" },
+              { value: "5", label: "Trade Businesses Live", desc: "Real results across renovation, landscaping, construction & more" },
               { value: "UK + INT", label: "Coverage", desc: "Serving clients across UK & internationally" },
             ].map((item, i) => (
               <Reveal key={item.label} delay={i * 0.08}>
