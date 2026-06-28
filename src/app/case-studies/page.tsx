@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -96,23 +95,6 @@ const projects = [
     file: "viszcad",
     index: "05",
   },
-  {
-    id: "landscale-template",
-    name: "Landscale Template",
-    tagline: "Full AI Stack — The Complete Landscaping Website",
-    location: "Worldwide",
-    tag: "AI Chatbot + Estimator + Smart Forms",
-    desc: "A full demonstration of everything Landscale can build — live AI chatbot for lead qualification, an instant estimator agent, and smart form automation. This is the gold standard for landscaping websites.",
-    what: ["Live AI chatbot", "Instant estimator agent", "Smart form automation", "Full Framer build"],
-    metrics: [
-      { label: "Performance", val: "96" },
-      { label: "SEO", val: "100" },
-      { label: "Availability", val: "100" },
-    ],
-    url: "https://landscaletemplate.framer.website/",
-    file: "landscale-template",
-    index: "06",
-  },
 ];
 
 function ProjectCard({ project, i }: { project: typeof projects[0]; i: number }) {
@@ -144,11 +126,9 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
             filter: "blur(90px)",
           }}
           animate={hovered
-            ? { scale: 1.4, opacity: 1 }
-            : { scale: [1, 1.08, 1], opacity: 0.5 }}
-          transition={hovered
-            ? { duration: 0.6, ease: "easeOut" }
-            : { duration: 12 + i * 3, repeat: Infinity, ease: "easeInOut" }} />
+            ? { scale: 1.15, opacity: 0.8 }
+            : { scale: 1, opacity: 0.45 }}
+          transition={{ duration: 0.6, ease: "easeOut" }} />
 
         {/* Hover background wash */}
         <div className={`absolute inset-0 bg-gradient-to-br from-gold/[0.03] via-transparent to-transparent transition-opacity duration-700 ${hovered ? "opacity-100" : "opacity-0"}`} />
@@ -318,7 +298,7 @@ export default function CaseStudiesPage() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.55, ease: SPRING }}
             className="font-cormorant text-xl md:text-2xl text-cream/50 font-light italic leading-relaxed max-w-2xl mt-8 mb-10">
-            Six live projects you can click and explore right now — including a fully live AI quoting system in production. Real websites, real businesses, all built by Landscale.
+            Five live projects you can click and explore right now — including a fully live AI quoting system in production. Real websites, real businesses, all built by Landscale.
           </motion.p>
 
           {/* Project name pills */}
@@ -333,37 +313,6 @@ export default function CaseStudiesPage() {
             ))}
           </motion.div>
         </motion.div>
-      </section>
-
-      {/* ── SCROLL SHOWCASE ── */}
-      <section className="bg-[#080808] overflow-hidden">
-        <ContainerScroll
-          titleComponent={
-            <div className="mb-6">
-              <span className="inline-flex items-center gap-2 font-grotesk text-[10px] font-bold uppercase tracking-[0.3em] text-gold/60 mb-4 block">
-                <span className="w-6 h-px bg-gold/40 inline-block" />
-                Featured Work — Live Now
-              </span>
-              <h2 className="font-grotesk font-bold text-[clamp(28px,4vw,56px)] text-cream leading-[0.92] tracking-[-0.03em]">
-                A Live AI Quoting System,<br />
-                <span className="text-gradient-gold">Already In Production.</span>
-              </h2>
-              <p className="font-cormorant text-lg text-cream/50 font-light italic mt-3 max-w-lg mx-auto">
-                NM Bau&apos;s visitors describe their renovation and get an instant price estimate — 24/7, in three languages. Built, shipped, and live.
-              </p>
-            </div>
-          }
-        >
-          <a href="https://www.nmbau.hu/" target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-            <Image
-              src="/images/case-studies/nmbau.png"
-              alt="NM Bau — Live AI Quoting System in production"
-              fill
-              className="object-cover object-top hover:scale-[1.02] transition-transform duration-700"
-              priority
-            />
-          </a>
-        </ContainerScroll>
       </section>
 
       {/* ── PROJECTS ── */}
