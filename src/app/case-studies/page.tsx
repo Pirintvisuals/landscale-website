@@ -26,9 +26,6 @@ const projects = [
     url: "https://www.nmbau.hu/",
     file: "nmbau",
     index: "01",
-    quote: "We are very satisfied with Milán's work. We received a modern, clean, and refined website that showcases NM Bau's services and the quality of our work beautifully. The collaboration was smooth, he responded quickly to our requests, and the end result reflects exactly the professional image we wanted to present. We highly recommend him!",
-    quoteAuthor: "Nagy Máté",
-    quoteRole: "NM Bau",
   },
   {
     id: "lavothakertkft",
@@ -215,19 +212,6 @@ function ProjectCard({ project, i }: { project: typeof projects[0]; i: number })
               </div>
 
               <p className="font-inter text-text-muted text-base leading-relaxed">{project.desc}</p>
-
-              {"quote" in project && project.quote && (
-                <figure className="relative border-l-2 border-gold/40 pl-5 py-1">
-                  <span className="absolute -top-3 -left-1 font-grotesk text-5xl leading-none text-gold/20 select-none pointer-events-none">&ldquo;</span>
-                  <blockquote className="font-cormorant text-lg md:text-xl text-cream/80 italic leading-relaxed">
-                    {project.quote}
-                  </blockquote>
-                  <figcaption className="mt-3 font-grotesk text-sm">
-                    <span className="text-gold font-bold">— {project.quoteAuthor}</span>
-                    <span className="text-text-muted/70">, {project.quoteRole}</span>
-                  </figcaption>
-                </figure>
-              )}
 
               <div>
                 <h4 className="font-grotesk text-[10px] font-bold uppercase tracking-[0.25em] text-text-muted/40 mb-3">What Was Built</h4>
