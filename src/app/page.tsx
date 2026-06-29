@@ -158,14 +158,14 @@ function TestimonialCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}>
       <div className="relative overflow-hidden min-h-[340px] sm:min-h-[300px]">
-        <AnimatePresence mode="wait" custom={dir}>
+        <AnimatePresence mode="popLayout" custom={dir}>
           <motion.div
             key={index}
             custom={dir}
-            initial={{ opacity: 0, x: dir >= 0 ? 50 : -50 }}
+            initial={{ opacity: 0, x: dir >= 0 ? 32 : -32 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: dir >= 0 ? -50 : 50 }}
-            transition={{ duration: 0.45, ease: SPRING }}
+            exit={{ opacity: 0, x: dir >= 0 ? -32 : 32 }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
             className="relative bg-[#111111] border border-white/[0.06] p-8 md:p-12 rounded-3xl flex flex-col gap-6 overflow-hidden">
             <div className="absolute top-5 right-8 font-cormorant text-[120px] leading-none text-gold/[0.07] select-none pointer-events-none">&ldquo;</div>
             <div className="relative z-10">
