@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
@@ -128,6 +128,101 @@ const reviewSchema = {
     },
   ],
 };
+
+const TESTIMONIALS = [
+  { quote: "We are very satisfied with Milán's work. We received a modern, clean, and refined website that showcases NM Bau's services and the quality of our work beautifully. The collaboration was smooth, he responded quickly to our requests, and the end result reflects exactly the professional image we wanted to present. We highly recommend him!", name: "Nagy Máté", company: "NM Bau", stars: 5, logo: "/images/nmbau-logo.png" },
+  { quote: "Milan built our new website with great care and attention to every detail. His input gave the site an aesthetic and professional look that our new clients have spoken highly of. I recommend him to everyone who values a quality online presence.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5, logo: "/images/lavotha-logo.jpg" },
+  { quote: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.", name: "Basil", company: "Mimosa Gardens", stars: 5, logo: "/images/mimosa-logo.jpg" },
+  { quote: "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.", name: "Péter Mantlik", company: "ViszCAD", stars: 5, logo: "/images/viszcad-logo.png" },
+];
+
+function TestimonialCarousel() {
+  const [[index, dir], setState] = useState<[number, number]>([0, 0]);
+  const [paused, setPaused] = useState(false);
+  const count = TESTIMONIALS.length;
+
+  const paginate = (d: number) => setState(([i]) => [(i + d + count) % count, d]);
+  const goTo = (target: number) => setState(([i]) => [target, target > i ? 1 : -1]);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setState(([i]) => [(i + 1) % count, 1]), 6000);
+    return () => clearInterval(id);
+  }, [paused, count]);
+
+  const t = TESTIMONIALS[index];
+
+  return (
+    <div
+      className="relative max-w-3xl mx-auto"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}>
+      <div className="relative overflow-hidden min-h-[340px] sm:min-h-[300px]">
+        <AnimatePresence mode="wait" custom={dir}>
+          <motion.div
+            key={index}
+            custom={dir}
+            initial={{ opacity: 0, x: dir >= 0 ? 50 : -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: dir >= 0 ? -50 : 50 }}
+            transition={{ duration: 0.45, ease: SPRING }}
+            className="relative bg-[#111111] border border-white/[0.06] p-8 md:p-12 rounded-3xl flex flex-col gap-6 overflow-hidden">
+            <div className="absolute top-5 right-8 font-cormorant text-[120px] leading-none text-gold/[0.07] select-none pointer-events-none">&ldquo;</div>
+            <div className="relative z-10">
+              <div className="flex gap-1 mb-5 text-gold text-lg" role="img" aria-label={`${t.stars} out of 5 stars`}>
+                {Array.from({ length: t.stars }).map((_, i) => (
+                  <span key={i} aria-hidden="true">★</span>
+                ))}
+              </div>
+              <p className="font-cormorant text-xl md:text-2xl font-light text-cream italic leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
+            </div>
+            <div className="flex items-center gap-4 relative z-10 mt-auto">
+              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
+                {t.logo ? (
+                  <Image src={t.logo} alt={t.company} width={40} height={40} className="object-contain w-full h-full" />
+                ) : (
+                  <span className="font-grotesk font-bold text-sm text-gold">{t.name[0]}</span>
+                )}
+              </div>
+              <div>
+                <div className="font-grotesk font-semibold text-base text-cream">{t.name}</div>
+                <div className="font-inter text-xs text-text-muted">{t.company}</div>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-center gap-6 mt-8">
+        <button
+          onClick={() => paginate(-1)}
+          aria-label="Previous testimonial"
+          className="w-11 h-11 rounded-full border border-gold/25 text-gold/70 hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center">
+          ←
+        </button>
+
+        <div className="flex items-center gap-2.5">
+          {TESTIMONIALS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to testimonial ${i + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${i === index ? "w-7 bg-gold" : "w-2 bg-white/20 hover:bg-white/40"}`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={() => paginate(1)}
+          aria-label="Next testimonial"
+          className="w-11 h-11 rounded-full border border-gold/25 text-gold/70 hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center">
+          →
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   const heroRef = useRef(null);
@@ -492,43 +587,7 @@ export default function HomePage() {
               WHAT CLIENTS<br /><span className="text-gradient-gold">SAY</span>
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { quote: "We are very satisfied with Milán's work. We received a modern, clean, and refined website that showcases NM Bau's services and the quality of our work beautifully. The collaboration was smooth, he responded quickly to our requests, and the end result reflects exactly the professional image we wanted to present. We highly recommend him!", name: "Nagy Máté", company: "NM Bau", stars: 5, logo: "/images/nmbau-logo.png" },
-              { quote: "Milan built our new website with great care and attention to every detail. His input gave the site an aesthetic and professional look that our new clients have spoken highly of. I recommend him to everyone who values a quality online presence.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5, logo: "/images/lavotha-logo.jpg" },
-              { quote: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.", name: "Basil", company: "Mimosa Gardens", stars: 5, logo: "/images/mimosa-logo.jpg" },
-              { quote: "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.", name: "Péter Mantlik", company: "ViszCAD", stars: 5, logo: "/images/viszcad-logo.png" },
-            ].map((t, i) => (
-              <Reveal key={t.name} delay={i * 0.12}>
-                  <div className="relative bg-[#111111] border border-white/[0.05] hover:border-gold/45 hover:-translate-y-1.5 p-8 rounded-3xl flex flex-col gap-5 transition-all duration-300 h-full overflow-hidden group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                    {/* Giant quote mark */}
-                    <div className="absolute top-4 right-6 font-cormorant text-[100px] leading-none text-gold/[0.06] select-none pointer-events-none group-hover:text-gold/[0.1] transition-colors duration-500">&ldquo;</div>
-                    <div className="relative z-10">
-                      <div className="flex gap-1 mb-4" role="img" aria-label={`${t.stars} out of 5 stars`}>
-                        {Array.from({ length: t.stars }).map((_, i) => (
-                          <span key={i} aria-hidden="true">★</span>
-                        ))}
-                      </div>
-                      <p className="font-cormorant text-xl font-light text-cream italic leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
-                    </div>
-                    <div className="flex items-center gap-4 relative z-10">
-                      <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
-                        {t.logo ? (
-                          <Image src={t.logo} alt={t.company} width={36} height={36} className="object-contain w-full h-full" />
-                        ) : (
-                          <span className="font-grotesk font-bold text-xs text-gold">{t.name[0]}</span>
-                        )}
-                      </div>
-                      <div>
-                        <div className="font-grotesk font-semibold text-sm text-cream">{t.name}</div>
-                        <div className="font-inter text-xs text-text-muted">{t.company}</div>
-                      </div>
-                    </div>
-                  </div>
-              </Reveal>
-            ))}
-          </div>
+          <TestimonialCarousel />
         </div>
       </section>
 
