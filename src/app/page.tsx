@@ -97,11 +97,17 @@ const reviewSchema = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "5",
-    reviewCount: "3",
+    reviewCount: "4",
     bestRating: "5",
     worstRating: "1",
   },
   review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Nagy Máté" },
+      reviewRating: { "@type": "Rating", ratingValue: "5" },
+      reviewBody: "We are very satisfied with Milán's work. We received a modern, clean, and refined website that showcases NM Bau's services and the quality of our work beautifully. The collaboration was smooth, he responded quickly to our requests, and the end result reflects exactly the professional image we wanted to present. We highly recommend him!",
+    },
     {
       "@type": "Review",
       author: { "@type": "Person", name: "Balázs Lavotha" },
@@ -488,6 +494,7 @@ export default function HomePage() {
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
+              { quote: "We are very satisfied with Milán's work. We received a modern, clean, and refined website that showcases NM Bau's services and the quality of our work beautifully. The collaboration was smooth, he responded quickly to our requests, and the end result reflects exactly the professional image we wanted to present. We highly recommend him!", name: "Nagy Máté", company: "NM Bau", stars: 5, logo: "/images/nmbau-logo.png" },
               { quote: "Milan built our new website with great care and attention to every detail. His input gave the site an aesthetic and professional look that our new clients have spoken highly of. I recommend him to everyone who values a quality online presence.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5, logo: "/images/lavotha-logo.jpg" },
               { quote: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.", name: "Basil", company: "Mimosa Gardens", stars: 5, logo: "/images/mimosa-logo.jpg" },
               { quote: "Milan delivered exactly what we needed in record time. The site is fast, professional, and has helped us attract better clients. Working with him was smooth from start to finish — highly recommend.", name: "Péter Mantlik", company: "ViszCAD", stars: 5, logo: "/images/viszcad-logo.png" },
