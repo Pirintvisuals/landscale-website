@@ -428,6 +428,23 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── TESTIMONIALS ── */}
+      <section className="py-32 bg-[#0D0D0D] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
+          <div className="absolute rounded-full orb-1" style={{ width: 700, height: 700, top: "20%", left: "50%", transform: "translateX(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 60%)", filter: "blur(90px)" }} />
+          <div className="absolute rounded-full orb-3" style={{ width: 300, height: 300, top: "5%", right: "10%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)", filter: "blur(50px)" }} />
+        </div>
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
+          <Reveal className="mb-16">
+            <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
+              WHAT CLIENTS<br /><span className="text-gradient-gold">SAY</span>
+            </h2>
+          </Reveal>
+          <TestimonialCarousel />
+        </div>
+      </section>
+
       {/* ── SERVICES ── */}
       <section className="py-16 md:py-32 lg:py-44 bg-[#0D0D0D] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -573,24 +590,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ── TESTIMONIALS ── */}
-      <section className="py-32 bg-[#0D0D0D] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent" />
-          <div className="absolute rounded-full orb-1" style={{ width: 700, height: 700, top: "20%", left: "50%", transform: "translateX(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 60%)", filter: "blur(90px)" }} />
-          <div className="absolute rounded-full orb-3" style={{ width: 300, height: 300, top: "5%", right: "10%", background: "radial-gradient(circle, rgba(212,175,55,0.09) 0%, transparent 70%)", filter: "blur(50px)" }} />
-        </div>
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16">
-          <Reveal className="mb-16">
-            <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
-              WHAT CLIENTS<br /><span className="text-gradient-gold">SAY</span>
-            </h2>
-          </Reveal>
-          <TestimonialCarousel />
-        </div>
-      </section>
-
 
       {/* ── TRUST METRICS ── */}
       <section className="py-16 md:py-24 bg-[#080808] relative overflow-hidden">
