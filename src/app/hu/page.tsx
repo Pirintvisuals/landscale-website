@@ -49,6 +49,16 @@ function CountUp({ target, suffix = "", duration = 2.2 }: { target: number; suff
 ───────────────────────────────────────────── */
 const testimonials = [
   {
+    name: "Polyák Zoltán",
+    business: "Kazán Szerviz Kecskemét",
+    quote:
+      "Milánnal nagyon elégedett voltam. Szerintem szakmailag fényévekkel a többi webfejlesztő előtt jár. Teljes szívemből ajánlom mindenkinek. Egyedi árkalkulátort épített az oldalamra, amivel sokkal könnyebb lett kiválogatni a befutó, minőségi munkákat. Rengeteg időt, energiát és pénzt spórolt nekünk.",
+    initials: "PZ",
+    logo: "",
+    rating: 5,
+    placeholder: false,
+  },
+  {
     name: "Balázs Lavotha",
     business: "Lavotha Kert Kft",
     quote:

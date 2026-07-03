@@ -28,6 +28,23 @@ const projects = [
     index: "01",
   },
   {
+    id: "kazan-szerviz",
+    name: "Kazán Szerviz Kecskemét",
+    tagline: "Boiler & Gas Service — AI Quoting Calculator",
+    location: "Kecskemét · Hungary",
+    tag: "AI Quoting Calculator · Live",
+    desc: "A boiler and gas service (Polyák Zoltán) whose competitors offer nothing more than a digital brochure. This site quotes the job for you: a visitor answers a few quick questions about their boiler or heating problem and gets a price estimate in minutes, at any hour — no callback, no leads lost overnight. It works both ways too, pre-qualifying every enquiry so the owner spends his time on the jobs worth doing instead of chasing dead ends.",
+    what: ["Custom AI quoting calculator", "Instant price estimates 24/7", "Enquiry pre-qualification", "Built to rank · 91 / 100 Lighthouse"],
+    metrics: [
+      { label: "Performance", val: "91" },
+      { label: "SEO", val: "100" },
+      { label: "Instant quotes", val: "24/7" },
+    ],
+    url: "https://gazszerelokecskemet.hu/",
+    file: "kazan-szerviz",
+    index: "02",
+  },
+  {
     id: "lavothakertkft",
     name: "Lavothakertkft",
     tagline: "Hungarian Landscaping — Digital Transformation",
@@ -42,7 +59,7 @@ const projects = [
     ],
     url: "https://www.kertepites-miskolc.hu/",
     file: "lavothakertkft",
-    index: "02",
+    index: "03",
   },
   {
     id: "tiszaujvarostransz",
@@ -59,7 +76,7 @@ const projects = [
     ],
     url: "https://tiszaujvarostransz.hu/",
     file: "tiszaujvarostransz",
-    index: "03",
+    index: "04",
   },
   {
     id: "mimosa-gardens",
@@ -76,7 +93,7 @@ const projects = [
     ],
     url: "https://mimosagardens.framer.website/",
     file: "mimosa-gardens",
-    index: "04",
+    index: "05",
   },
   {
     id: "viszcad",
@@ -93,7 +110,7 @@ const projects = [
     ],
     url: "https://viszcad.vercel.app/index.html",
     file: "viszcad",
-    index: "05",
+    index: "06",
   },
 ];
 
@@ -298,7 +315,7 @@ export default function CaseStudiesPage() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.55, ease: SPRING }}
             className="font-cormorant text-xl md:text-2xl text-cream/50 font-light italic leading-relaxed max-w-2xl mt-8 mb-10">
-            Five live projects you can click and explore right now — including a fully live AI quoting system in production. Real websites, real businesses, all built by Landscale.
+            Six live projects you can click and explore right now — including live AI quoting systems in production. Real websites, real businesses, all built by Landscale.
           </motion.p>
 
           {/* Project name pills */}
