@@ -110,7 +110,7 @@ export default function ContactPage() {
                     <p className="font-inter text-text-muted text-sm mb-6">Pick a time that works for you — 30 minutes, no pressure.</p>
                     <div className="rounded-xl overflow-hidden border border-white/[0.06]">
                       <iframe
-                        src="https://calendly.com/pirint-milan/weboldal"
+                        src="https://calendly.com/pirint-milan/quoting-agent-sample"
                         width="100%"
                         height="680"
                         style={{ minWidth: "320px", border: "none" }}
