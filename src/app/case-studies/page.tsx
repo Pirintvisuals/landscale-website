@@ -41,7 +41,7 @@ const projects = [
       { label: "Instant quotes", val: "24/7" },
     ],
     url: "https://gazszerelokecskemet.hu/",
-    file: "kazan-szerviz",
+    file: "gazszerelokecskemet",
     index: "02",
   },
   {
