@@ -17,6 +17,7 @@ import {
   Hammer,
   Droplets,
   Leaf,
+  Flame,
   Sparkles,
   CalendarDays,
   ExternalLink,
@@ -48,6 +49,16 @@ function CountUp({ target, suffix = "", duration = 2.2 }: { target: number; suff
    testimonials. Set placeholder: false when live.
 ───────────────────────────────────────────── */
 const testimonials = [
+  {
+    name: "Nagy Máté",
+    business: "NM Bau",
+    quote:
+      "Nagyon elégedettek vagyunk Milán munkájával. Modern, letisztult és igényes weboldalt kaptunk, amely gyönyörűen bemutatja az NM Bau szolgáltatásait és a munkánk minőségét. Az együttműködés gördülékeny volt, gyorsan reagált a kéréseinkre, és a végeredmény pontosan azt a professzionális képet tükrözi, amit közvetíteni szerettünk volna. Mindenkinek csak ajánlani tudjuk!",
+    initials: "NM",
+    logo: "/images/nmbau-logo.png",
+    rating: 5,
+    placeholder: false,
+  },
   {
     name: "Polyák Zoltán",
     business: "Kazán Szerviz Kecskemét",
@@ -105,6 +116,19 @@ const industries = [
     },
   },
   {
+    icon: Flame,
+    label: "Kazán & Gázszerviz",
+    desc: "Kazán- és gázszerviz, ahol a versenytársak legfeljebb egy digitális névjegyet kínálnak. Ez az oldal árajánlatot is ad: az érdeklődő pár kérdésre válaszol a kazánjáról vagy a fűtési gondjáról, és percek alatt előzetes árbecslést kap — bármelyik órában, elveszett éjszakai hívások nélkül.",
+    project: {
+      name: "Kazán Szerviz Kecskemét",
+      tagline: "Élő AI árkalkulátor · Kecskemét",
+      metrics: ["Élő AI árkalkulátor", "91 Teljesítmény", "100 SEO"],
+      image: "/images/case-studies/gazszerelokecskemet.png",
+      logo: "",
+      url: "https://gazszerelokecskemet.hu/",
+    },
+  },
+  {
     icon: Leaf,
     label: "Tereprendezés & Kertészet",
     desc: "Szezonális roham, felesleges árajánlat-kérők, véget nem érő egyeztetések. Az AI szűri, mi éri meg az idődet — a komoly megrendelők jutnak csak el hozzád.",
@@ -115,6 +139,32 @@ const industries = [
       image: "/images/case-studies/lavothakertkft.png",
       logo: "/images/lavotha-logo.jpg",
       url: "https://www.kertepites-miskolc.hu/",
+    },
+  },
+  {
+    icon: Wrench,
+    label: "Magasépítés & Kivitelezés",
+    desc: "A régió egyik vezető építőipari cége, 25+ év tapasztalattal, mély- és magasépítési, valamint infrastrukturális projektekkel. Olyan weboldalra volt szükségük, amely a méretüket és a hírnevüket tükrözi — professzionális, gyors, és vállalati szerződések megnyerésére építve.",
+    project: {
+      name: "Tiszaújváros Transz",
+      tagline: "Webdesign · Magyarország",
+      metrics: ["95 Teljesítmény", "100 SEO", "<1s betöltés"],
+      image: "/images/case-studies/tiszaujvarostransz.png",
+      logo: "",
+      url: "https://tiszaujvarostransz.hu/",
+    },
+  },
+  {
+    icon: Sparkles,
+    label: "Prémium Kertészet",
+    desc: "Prémium lakossági kerttervező és -kivitelező vállalkozás, exkluzív ügyfélkörrel. A cél: olyan luxus megjelenés, amilyenek a kertjeik, amiket építenek. Elegáns dizájn, végig konverzióra optimalizált érdeklődő-gyűjtéssel.",
+    project: {
+      name: "Mimosa Gardens",
+      tagline: "Webdesign · Egyesült Királyság",
+      metrics: ["96 Teljesítmény", "100 SEO", "<0.8s betöltés"],
+      image: "/images/case-studies/mimosa-gardens.png",
+      logo: "/images/mimosa-logo.jpg",
+      url: "https://mimosagardens.framer.website/",
     },
   },
   {
