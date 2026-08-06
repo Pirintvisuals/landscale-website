@@ -26,7 +26,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Landscale Agency — AI Estimator & Chatbot for Tradesmen",
+  title: "Landscale Agency, AI Estimator & Chatbot for Tradesmen",
   description:
     "AI estimator & chatbot for tradesmen. Instant quotes, automatic lead filtering, 20+ hours saved weekly. Premium websites for roofers, landscapers & builders.",
   keywords:
@@ -40,17 +40,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Landscale Agency — AI Estimator & Chatbot for Tradesmen",
+    title: "Landscale Agency, AI Estimator & Chatbot for Tradesmen",
     description:
       "AI estimator & chatbot for tradesmen. Instant quotes, automatic lead filtering, 20+ hours saved weekly. Premium websites for roofers, landscapers & builders.",
     type: "website",
     url: "https://landscale.agency",
     siteName: "Landscale Agency",
-    images: [{ url: "https://landscale.agency/opengraph-image", width: 1200, height: 630, alt: "Landscale Agency — AI Lead Qualification for Tradesmen" }],
+    images: [{ url: "https://landscale.agency/opengraph-image", width: 1200, height: 630, alt: "Landscale Agency, AI Lead Qualification for Tradesmen" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Landscale Agency — AI Estimator & Chatbot for Tradesmen",
+    title: "Landscale Agency, AI Estimator & Chatbot for Tradesmen",
     description: "Instant quotes, automatic lead filtering, 20+ hours saved weekly.",
     images: ["https://landscale.agency/opengraph-image"],
   },
@@ -80,7 +80,7 @@ export default function RootLayout({
     url: "https://landscale.agency",
     logo: "https://landscale.agency/logo-schema.png",
     description: "AI-powered estimator, chatbot, and website builder for roofers, landscapers, hardscapers, builders, remodellers, and all tradesmen.",
-    email: "landscale.agency@gmail.com",
+    email: "milan@landscale.net",
     founder: { "@type": "Person", name: "Milan Pirint" },
     areaServed: ["GB", "HU", "Worldwide"],
     sameAs: [

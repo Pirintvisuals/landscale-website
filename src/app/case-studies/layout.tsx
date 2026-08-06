@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Case Studies — Real Results for Home Service Businesses | Landscale",
+  title: "Case Studies, Real Results for Home Service Businesses | Landscale",
   description:
     "Real results, including a live AI quoting system in production. 100/100 SEO, sub-1s loads. Landscale-built sites that generate and qualify leads for tradesmen & contractors.",
   keywords:
     "trade business website case study, AI estimator results, contractor website examples, tradesmen lead generation results UK, landscaping website case study",
   alternates: { canonical: "https://landscale.agency/case-studies" },
   openGraph: {
-    title: "Case Studies — Real Results for Home Service Businesses | Landscale",
+    title: "Case Studies, Real Results for Home Service Businesses | Landscale",
     description:
       "Real results, including a live AI quoting system in production. 100/100 SEO, sub-1s loads. Landscale-built sites that generate and qualify leads for tradesmen & contractors.",
     type: "website",

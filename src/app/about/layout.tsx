@@ -11,7 +11,7 @@ const personSchema = {
     url: "https://landscale.agency",
   },
   url: "https://landscale.agency/about",
-  email: "landscale.agency@gmail.com",
+  email: "milan@landscale.net",
   sameAs: [
     "https://www.instagram.com/pirintmilan/",
     "https://www.linkedin.com/in/mil%C3%A1n-pirint-0598413b7/",
@@ -28,16 +28,16 @@ const personSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "About Landscale — AI & Web Design for Tradesmen",
+  title: "About Landscale, AI & Web Design for Tradesmen",
   description:
-    "Milan Pirint, founder of Landscale — building AI-powered websites & lead qualification for roofers, landscapers, builders and tradesmen. Based in UK & Hungary.",
+    "Milan Pirint, founder of Landscale, building AI-powered websites & lead qualification for roofers, landscapers, builders and tradesmen. Based in UK & Hungary.",
   keywords:
     "Landscale Agency about, Milan Pirint web designer, AI website tradesmen UK, roofing website design, hardscaping website, contractor web design UK",
   alternates: { canonical: "https://landscale.agency/about" },
   openGraph: {
-    title: "About Landscale — AI & Web Design for Tradesmen",
+    title: "About Landscale, AI & Web Design for Tradesmen",
     description:
-      "Milan Pirint, founder of Landscale — building AI-powered websites & lead qualification for roofers, landscapers, builders and tradesmen. Based in UK & Hungary.",
+      "Milan Pirint, founder of Landscale, building AI-powered websites & lead qualification for roofers, landscapers, builders and tradesmen. Based in UK & Hungary.",
     type: "website",
     url: "https://landscale.agency/about",
     siteName: "Landscale Agency",

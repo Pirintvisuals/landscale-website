@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Becslés Agent & Chatbot Magyar Vállalkozásoknak | Landscale",
   description:
-    "AI árajánlat és lead-szűrő magyar vállalkozásoknak. Tereprendezés, kertészet, építőipar — vége a komolytalan érdeklődőknek. Automatikus válasz 24/7.",
+    "AI árajánlat és lead-szűrő magyar vállalkozásoknak. Tereprendezés, kertészet, építőipar, vége a komolytalan érdeklődőknek. Automatikus válasz 24/7.",
   keywords:
     "AI chatbot magyar vállalkozás, automatikus árajánlat rendszer Magyarország, tereprendezés weboldal, kertészet AI lead szűrés, építőipar chatbot, vízvezetékszerelés weboldal, magyar szolgáltató automatizálás, webdesign Miskolc, webdesign Magyarország",
   alternates: {

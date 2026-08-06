@@ -2,7 +2,7 @@
 
 > Landscale Agency is an AI-powered marketing agency that builds premium websites with integrated AI lead qualification tools — exclusively for trade businesses. Services are used by roofers, landscapers, hardscapers, builders, construction firms, plumbers, and home service contractors in the United Kingdom and internationally. The agency's AI tools save tradesmen 15–20 hours per week by filtering unqualified enquiries automatically, 24/7.
 
-Founder: Milan Pirint. Contact: landscale.agency@gmail.com | +44 7478 075473. Website: https://landscale.agency
+Founder: Milan Pirint. Contact: milan@landscale.net | +44 7478 075473. Website: https://landscale.agency
 
 ---
 
@@ -38,7 +38,7 @@ Full about page: https://landscale.agency/about
 ## Contact & Booking
 
 - Book a free 30-minute audit (no obligation): https://landscale.agency/contact
-- Email: landscale.agency@gmail.com
+- Email: milan@landscale.net
 - Phone: +44 7478 075473
 - Coverage: United Kingdom (primary) and worldwide
 - Hungarian language service: https://landscale.agency/hu

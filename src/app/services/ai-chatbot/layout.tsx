@@ -21,14 +21,14 @@ const serviceSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "AI Chatbot for Tradesmen — Filter Bad Leads 24/7 | Landscale",
+  title: "AI Chatbot for Tradesmen, Filter Bad Leads 24/7 | Landscale",
   description:
     "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. For landscapers, roofers & home service businesses.",
   keywords:
     "AI chatbot landscaping business, lead qualification chatbot, landscaping lead filter, home service AI chatbot UK, chatbot for landscapers, automatic lead scoring",
   alternates: { canonical: "https://landscale.agency/services/ai-chatbot" },
   openGraph: {
-    title: "AI Chatbot for Tradesmen — Filter Bad Leads 24/7 | Landscale",
+    title: "AI Chatbot for Tradesmen, Filter Bad Leads 24/7 | Landscale",
     description:
       "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. For landscapers, roofers & home service businesses.",
     type: "website",

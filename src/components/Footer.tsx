@@ -3,11 +3,18 @@
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import { Instagram, Linkedin } from "lucide-react";
+import { localeFromPathname, localize } from "@/lib/i18n";
+import { FOOTER, PHONE, EMAIL } from "@/content/ui";
 
 export default function Footer() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.2 });
+  const pathname = usePathname();
+  const lang = localeFromPathname(pathname);
+  const t = FOOTER[lang];
+  const phone = PHONE[lang];
 
   return (
     <footer ref={ref} className="bg-[#080808] border-t border-white/[0.04] pt-24 pb-10 relative overflow-hidden">
@@ -17,13 +24,13 @@ export default function Footer() {
         {/* CTA */}
         <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="mb-20 max-w-2xl">
           <p className="font-grotesk font-bold text-3xl md:text-4xl text-cream leading-tight mb-3">
-            Ready to dominate your{" "}<span className="text-gradient-gold">local market?</span>
+            {t.ctaHeadA}<span className="text-gradient-gold">{t.ctaHeadB}</span>
           </p>
           <p className="font-cormorant text-lg text-cream/45 font-light italic leading-relaxed mb-7">
-            Book a free 30-minute audit. I&apos;ll show you exactly where you&apos;re losing leads and how to fix it — no obligation.
+            {t.ctaSub}
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
-            Book Your Free Audit <span className="text-lg">→</span>
+          <Link href={localize("/contact", lang)} className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+            {t.ctaButton} <span className="text-lg">→</span>
           </Link>
         </motion.div>
 
@@ -35,17 +42,17 @@ export default function Footer() {
               <span className="font-grotesk font-bold text-2xl tracking-[0.05em] text-gold">LANDSCALE</span>
               <div className="font-grotesk font-medium text-[10px] tracking-[0.25em] uppercase text-[#666666] mt-0.5">Agency</div>
             </div>
-            <p className="font-inter text-text-muted text-sm leading-relaxed mb-4">Premium websites &amp; AI automation for landscaping businesses.</p>
-            <a href="mailto:landscale.agency@gmail.com" className="font-inter text-gold text-sm hover:text-bright-gold transition-colors">landscale.agency@gmail.com</a>
+            <p className="font-inter text-text-muted text-sm leading-relaxed mb-4">{t.brandTagline}</p>
+            <a href={`mailto:${EMAIL}`} className="font-inter text-gold text-sm hover:text-bright-gold transition-colors">{EMAIL}</a>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">Quick Links</h4>
+            <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">{t.quickLinksTitle}</h4>
             <ul className="space-y-3">
-              {[{ href: "/", label: "Home" }, { href: "/services", label: "Services" }, { href: "/case-studies", label: "Case Studies" }, { href: "/about", label: "About" }, { href: "/contact", label: "Contact" }].map((link) => (
+              {t.quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="font-inter text-text-muted text-sm hover:text-gold transition-colors inline-block">{link.label}</Link>
+                  <Link href={localize(link.href, lang)} className="font-inter text-text-muted text-sm hover:text-gold transition-colors inline-block">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -53,17 +60,11 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">Services</h4>
+            <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">{t.servicesTitle}</h4>
             <ul className="space-y-3">
-              {[
-                { href: "/services/ai-estimator", label: "AI Estimator Agent" },
-                { href: "/services/ai-chatbot", label: "AI Chatbot" },
-                { href: "/services/website-design", label: "Premium Website" },
-                { href: "/services/seo-marketing", label: "Local SEO" },
-                { href: "/services", label: "All Services" },
-              ].map((link) => (
+              {t.services.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="font-inter text-text-muted text-sm hover:text-gold transition-colors inline-block">{link.label}</Link>
+                  <Link href={localize(link.href, lang)} className="font-inter text-text-muted text-sm hover:text-gold transition-colors inline-block">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -71,10 +72,10 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">Connect</h4>
+            <h4 className="font-grotesk font-semibold text-cream text-sm uppercase tracking-[0.12em] mb-5">{t.connectTitle}</h4>
             <ul className="space-y-3">
-              <li><a href="tel:+447478075473" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">+44 7478 075473</a></li>
-              <li><a href="mailto:landscale.agency@gmail.com" className="font-inter text-text-muted text-sm hover:text-gold transition-colors">landscale.agency@gmail.com</a></li>
+              <li><a href={phone.href} className="font-inter text-text-muted text-sm hover:text-gold transition-colors">{phone.display}</a></li>
+              <li><a href={`mailto:${EMAIL}`} className="font-inter text-text-muted text-sm hover:text-gold transition-colors">{EMAIL}</a></li>
               <li>
                 <a href="https://www.instagram.com/pirintmilan/" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 font-inter text-text-muted text-sm hover:text-gold transition-colors">
@@ -93,8 +94,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/[0.04] pt-8 flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="font-inter text-text-muted/50 text-xs">© {new Date().getFullYear()} Landscale Agency. Built with care.</p>
-          <p className="font-inter text-text-muted/50 text-xs">UK &amp; Worldwide</p>
+          <p className="font-inter text-text-muted/50 text-xs">© {new Date().getFullYear()} Landscale Agency. {t.builtWith}</p>
+          <p className="font-inter text-text-muted/50 text-xs">{t.coverage}</p>
         </div>
       </div>
     </footer>

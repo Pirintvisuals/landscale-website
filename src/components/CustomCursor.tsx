@@ -25,7 +25,7 @@ export default function CustomCursor() {
     document.documentElement.style.cursor = "none";
 
     const tick = () => {
-      // Snap main cursor — lerp 0.72 = near-instant, no lag
+      // Snap main cursor, lerp 0.72 = near-instant, no lag
       pos.current.x += (target.current.x - pos.current.x) * 0.72;
       pos.current.y += (target.current.y - pos.current.y) * 0.72;
 

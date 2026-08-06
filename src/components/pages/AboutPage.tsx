@@ -1,0 +1,435 @@
+"use client";
+
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { Shield, BarChart3, Hammer, TrendingUp } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import type { Locale } from "@/lib/i18n";
+import { localize } from "@/lib/i18n";
+import { EMAIL } from "@/content/ui";
+
+const SPRING = [0.16, 1, 0.3, 1] as const;
+
+const valueIcons = [Shield, BarChart3, Hammer, TrendingUp];
+
+const content = {
+  en: {
+    eyebrow: "About Landscale",
+    h1: ["NOT YOUR TYPICAL", "MARKETING AGENCY."],
+    heroSub: "Built for tradespeople, roofers, landscapers, hardscapers, builders, remodellers and everyone in between.",
+    storyEyebrow: "Founder's Story",
+    storyTitleA: "WHY I SPECIALISE",
+    storyTitleB: "THE TRADES",
+    storyTitleMid: "IN ",
+    storyQuote: "“I'm Milan. I grew up in Hungary in a family of landscapers, I saw the industry from the inside, and the gap in the market was obvious.”",
+    storyP1: "I'm Milan, I grew up in Hungary in a family of landscapers. I saw firsthand how hard they work, early mornings, physical labour, dealing with demanding clients.",
+    storyP2: "But I also saw them struggle with marketing. Outdated websites. Missed leads. Hours wasted on quotes for tyre-kickers. No system to filter serious buyers from window shoppers.",
+    storyP3: "The marketing agencies they hired didn't understand the industry, they treated every client the same. Generic strategies, vanity metrics, and no accountability.",
+    storyP4: "That's when I realised: tradespeople don't need another generic marketing agency. They need someone who understands their business AND knows how to build tech that actually solves their problems.",
+    storyP5: "So I learned web development, studied AI automation, and built solutions for roofers, landscapers, hardscapers, builders, remodellers and every trade in between. Not one-size-fits-all templates, real tools that save time and make money.",
+    storyP6: "I built the AI Estimator because I watched my family waste countless hours giving quotes to people who never hired them. The Estimator Agent solves this, it qualifies leads automatically and gives instant estimates, so tradesmen only ever talk to serious buyers. It's the core of every project I build.",
+    procEyebrow: "How I Work",
+    procTitleA: "MY ",
+    procTitleB: "PROCESS",
+    process: [
+      { step: "01", title: "Discovery Call (Free Audit)", desc: "We talk about your business, goals, and challenges. I analyse your current website and marketing, then show you exactly where you're losing leads and money, no charge, no pressure." },
+      { step: "02", title: "Custom Proposal", desc: "Based on your needs and budget, I recommend Framer or custom Next.js, with a clear timeline and deliverables. You decide what makes sense. No surprises." },
+      { step: "03", title: "Build & Collaborate", desc: "I build your website or AI automation with regular check-ins and previews. Your feedback shapes the final product, full transparency throughout." },
+      { step: "04", title: "Launch & Support", desc: "I handle the technical launch, train you on how to use your site, and stay available for ongoing support. You focus on running your business." },
+    ],
+    diffEyebrow: "Why Different",
+    diffTitleA: "WHAT MAKES",
+    diffTitleB: "DIFFERENT",
+    diffTitleMid: "US ",
+    diffSub: "Industry knowledge you can't fake, tech you can't ignore, results you can measure.",
+    pillars: [
+      { num: "01", title: "Deep Industry Knowledge", desc: "My family are in the trades. I've grown up seeing the industry from the inside. I understand work cycles, client psychology, project types, and margins. You won't need to explain your business to me.", detail: "Every strategy I build is grounded in trade industry reality, not generic marketing theory." },
+      { num: "02", title: "Tech-Forward Approach", desc: "I use the latest AI and automation tools, not because it's trendy, but because it genuinely solves real problems. Lead qualification, automated estimates, 24/7 chatbots.", detail: "I stay ahead so you don't have to. You get the tools, without the headache." },
+      { num: "03", title: "Results-Driven, Always", desc: "I don't measure success by impressions or clicks. Qualified leads and revenue generated. Every strategy has a clear ROI goal, I hold myself accountable.", detail: "If something isn't working, I change it. I'm invested in your growth." },
+    ],
+    valEyebrow: "Core Principles",
+    valTitleA: "OUR ",
+    valTitleB: "VALUES",
+    values: [
+      { title: "Honesty First", desc: "I tell you what you need to hear, not what you want to hear. If something won't work, I'll say so." },
+      { title: "No Vanity Metrics", desc: "I don't celebrate page views or follower counts. I celebrate leads generated and revenue grown." },
+      { title: "Trades-Only Focus", desc: "I only work with tradespeople and contractors, roofers, landscapers, builders, remodellers and the rest. This focus lets me be genuinely excellent at one thing." },
+      { title: "Long-Term Thinking", desc: "I build strategies for sustainable growth, not quick wins that collapse in 6 months." },
+    ],
+    faqEyebrow: "FAQ",
+    faqTitleA: "FREQUENTLY ASKED",
+    faqTitleB: "QUESTIONS",
+    faqs: [
+      { q: "How long does it take to build a website?", a: "Depends on the project. A Framer template customisation can be done in 1–2 weeks. A fully custom Next.js site takes 3–6 weeks. I'll give you a clear timeline during the free audit." },
+      { q: "What types of tradespeople do you work with?", a: "Roofers, landscapers, hardscapers, builders, remodellers, plumbers, construction firms, any trade business that wants to stop chasing bad leads and start attracting serious buyers. Book an audit and we'll see if I'm the right fit." },
+      { q: "What do you use to build websites, Framer or code?", a: "Depends on your needs and budget. Framer is great if you want to edit content yourself and need something fast. Custom Next.js is better for complex sites with advanced features. I'll recommend what makes sense during the audit." },
+      { q: "What AI services do you offer?", a: "I build AI review agents (qualify leads), AI receptionists (book appointments), AI estimators (instant quotes), custom chatbots, and smart form automation. The exact solution depends on your business needs." },
+      { q: "How much does a project cost?", a: "It depends on scope. I can't give a price upfront because every project is different. During the free audit, I'll give you a custom proposal with clear pricing based on what you actually need." },
+      { q: "Can I edit the website myself after you build it?", a: "If you choose Framer, yes, it's designed for non-technical editing. For custom sites, I'll train you on the CMS or provide ongoing support for updates." },
+      { q: "Do you offer payment plans?", a: "Yes, for larger projects. We'll discuss payment terms during the proposal phase. I'm flexible and want to make it work for your budget." },
+      { q: "What happens after the website launches?", a: "I provide training on how to use your site and I'm available for ongoing support. Many clients keep me on retainer for updates, SEO, or adding new features. It's entirely up to you." },
+    ],
+    ctaTitleA: "READY TO WORK",
+    ctaTitleB: "TOGETHER?",
+    ctaSub: "I'm selective, I'm genuinely invested in every client's success. Let's see if we're a fit.",
+    ctaBtn: "Book a Discovery Call",
+    ctaEmail: "or email ",
+  },
+  hu: {
+    eyebrow: "A Landscale-ről",
+    h1: ["NEM A SZOKÁSOS", "MARKETINGÜGYNÖKSÉG."],
+    heroSub: "Vállalkozóknak építve, tetőfedőknek, tereprendezőknek, térkövezőknek, generálkivitelezőknek, felújítóknak és mindenkinek a kettő között.",
+    storyEyebrow: "Az alapító története",
+    storyTitleA: "MIÉRT AZ IPAROSOKRA",
+    storyTitleB: "SZAKOSODTAM",
+    storyTitleMid: "",
+    storyQuote: "„Milán vagyok. Magyarországon nőttem fel, egy tereprendező családban, belülről láttam a szakmát, és a piaci rés kézenfekvő volt.”",
+    storyP1: "Milán vagyok, Magyarországon nőttem fel, egy tereprendező családban. Első kézből láttam, milyen keményen dolgoznak: korai kelés, fizikai munka, követelőző ügyfelek.",
+    storyP2: "De azt is láttam, mennyire küzdenek a marketinggel. Elavult weboldalak. Elszalasztott érdeklődők. Órák, amiket komolytalan érdeklődőknek adott árajánlatokra pazaroltak. Semmi rendszer, ami elválasztaná a komoly megrendelőket a nézelődőktől.",
+    storyP3: "A marketingügynökségek, akiket felfogadtak, nem értették a szakmát, minden ügyfelet ugyanúgy kezeltek. Általános stratégiák, hiú mutatók, és semmi felelősségvállalás.",
+    storyP4: "Akkor jöttem rá: az iparosoknak nem egy újabb általános marketingügynökség kell. Olyasvalaki kell nekik, aki érti a vállalkozásukat, ÉS tudja, hogyan építsen olyan technológiát, ami tényleg megoldja a problémáikat.",
+    storyP5: "Így megtanultam a webfejlesztést, elmélyültem az AI-automatizálásban, és megoldásokat építettem tetőfedőknek, tereprendezőknek, térkövezőknek, generálkivitelezőknek, felújítóknak és minden szakmának a kettő között. Nem sablonok mindenkire, valódi eszközök, amelyek időt spórolnak és pénzt hoznak.",
+    storyP6: "Az AI Árajánlót azért építettem, mert végignéztem, ahogy a családom számtalan órát pazarol olyan emberek árajánlataira, akik soha nem rendelték meg őket. Az Árajánló Ügynök ezt oldja meg, automatikusan minősíti az érdeklődőket és azonnali becslést ad, így a vállalkozó már csak a komoly megrendelőkkel beszél. Ez a magja minden projektnek, amit építek.",
+    procEyebrow: "Hogyan dolgozom",
+    procTitleA: "A ",
+    procTitleB: "FOLYAMATOM",
+    process: [
+      { step: "01", title: "Ismerkedő beszélgetés (ingyenes igényfelmérés)", desc: "Beszélünk a vállalkozásodról, a céljaidról és a kihívásaidról. Átnézem a jelenlegi weboldaladat és marketingedet, majd pontosan megmutatom, hol veszítesz érdeklődőket és pénzt, díjmentesen, nyomás nélkül." },
+      { step: "02", title: "Egyedi ajánlat", desc: "Az igényeid és a büdzséd alapján Framert vagy egyedi Next.js-t ajánlok, világos ütemtervvel és leszállítandókkal. Te döntöd el, mi éri meg. Nincs meglepetés." },
+      { step: "03", title: "Építés és együttműködés", desc: "Megépítem a weboldaladat vagy az AI-automatizálásodat, rendszeres egyeztetésekkel és előnézetekkel. A visszajelzésed alakítja a végterméket, végig teljes átláthatóság." },
+      { step: "04", title: "Indítás és támogatás", desc: "Elintézem a technikai indítást, betanítalak az oldal használatára, és utána is elérhető maradok a folyamatos támogatáshoz. Te a vállalkozásod vezetésére figyelsz." },
+    ],
+    diffEyebrow: "Miért más",
+    diffTitleA: "MIBEN VAGYUNK",
+    diffTitleB: "MÁSOK",
+    diffTitleMid: "",
+    diffSub: "Szakmai tudás, amit nem lehet megjátszani, technológia, amit nem lehet figyelmen kívül hagyni, eredmények, amiket mérni lehet.",
+    pillars: [
+      { num: "01", title: "Mélyreható szakmai ismeret", desc: "A családom a szakmában van. Belülről látva nőttem fel az iparágban. Értem a munka ritmusát, az ügyfél-pszichológiát, a projekttípusokat és az árréseket. Nem kell elmagyaráznod a vállalkozásodat.", detail: "Minden stratégiám a szakma valóságában gyökerezik, nem általános marketingelméletben." },
+      { num: "02", title: "Technológia-központú szemlélet", desc: "A legújabb AI- és automatizálási eszközöket használom, nem azért, mert trendi, hanem mert valóban megold valós problémákat. Érdeklődő-minősítés, automatikus árajánlatok, 0–24 chatbotok.", detail: "Én tartom a lépést, hogy neked ne kelljen. Megkapod az eszközöket, a fejfájás nélkül." },
+      { num: "03", title: "Mindig az eredmény számít", desc: "A sikert nem megjelenésben vagy kattintásban mérem. Minőségi érdeklődőkben és generált bevételben. Minden stratégiának világos megtérülési célja van, vállalom érte a felelősséget.", detail: "Ha valami nem működik, megváltoztatom. Érdekelt vagyok a növekedésedben." },
+    ],
+    valEyebrow: "Alapelvek",
+    valTitleA: "AZ ",
+    valTitleB: "ÉRTÉKEINK",
+    values: [
+      { title: "Először az őszinteség", desc: "Azt mondom, amit hallanod kell, nem azt, amit hallani szeretnél. Ha valami nem fog működni, kimondom." },
+      { title: "Nincsenek hiú mutatók", desc: "Nem ünneplem az oldalletöltéseket vagy a követőszámot. A generált érdeklődőt és a növekvő bevételt ünneplem." },
+      { title: "Csak a szakmákra fókuszálok", desc: "Kizárólag iparosokkal és kivitelezőkkel dolgozom, tetőfedőkkel, tereprendezőkkel, kivitelezőkkel, felújítókkal és a többiekkel. Ez a fókusz teszi lehetővé, hogy egy dologban valóban kiváló legyek." },
+      { title: "Hosszú távú gondolkodás", desc: "Fenntartható növekedésre építek stratégiát, nem gyors sikerekre, amelyek 6 hónap alatt összeomlanak." },
+    ],
+    faqEyebrow: "GYIK",
+    faqTitleA: "GYAKORI",
+    faqTitleB: "KÉRDÉSEK",
+    faqs: [
+      { q: "Mennyi idő alatt készül el egy weboldal?", a: "A projekttől függ. Egy Framer-sablon testreszabása 1–2 hét alatt megvan. Egy teljesen egyedi Next.js oldal 3–6 hét. Az ingyenes igényfelmérés során világos ütemtervet adok." },
+      { q: "Milyen szakmákkal dolgozol?", a: "Tetőfedőkkel, tereprendezőkkel, térkövezőkkel, kivitelezőkkel, felújítókkal, vízvezeték-szerelőkkel, építőipari cégekkel, minden olyan vállalkozással, amelyik abba akarja hagyni a rossz érdeklődők hajkurászását, és komoly megrendelőket akar vonzani. Foglalj egy igényfelmérést, és kiderül, passzolunk-e." },
+      { q: "Mivel építed a weboldalakat, Framer vagy kód?", a: "Az igényeidtől és a büdzsédtől függ. A Framer remek, ha magad akarod szerkeszteni a tartalmat és gyorsan kell valami. Az egyedi Next.js jobb az összetett, fejlett funkciós oldalakhoz. Az igényfelmérés során azt ajánlom, ami neked megéri." },
+      { q: "Milyen AI-szolgáltatásokat kínálsz?", a: "Építek AI vélemény-ügynököt (érdeklődő-minősítés), AI recepcióst (időpontfoglalás), AI árajánlót (azonnali becslés), egyedi chatbotokat és okos űrlap-automatizálást. A pontos megoldás a vállalkozásod igényeitől függ." },
+      { q: "Mennyibe kerül egy projekt?", a: "A terjedelemtől függ. Előre nem tudok árat mondani, mert minden projekt más. Az ingyenes igényfelmérés során egyedi ajánlatot adok, világos árazással, arra szabva, amire tényleg szükséged van." },
+      { q: "Szerkeszthetem magam a weboldalt, miután megépítetted?", a: "Ha a Framert választod, igen, kifejezetten nem technikai felhasználóknak való szerkesztésre készült. Egyedi oldalaknál betanítalak a CMS használatára, vagy folyamatos támogatást nyújtok a frissítésekhez." },
+      { q: "Van részletfizetési lehetőség?", a: "Igen, nagyobb projekteknél. A fizetési feltételeket az ajánlati szakaszban beszéljük meg. Rugalmas vagyok, és azt akarom, hogy a büdzsédhez illeszkedjen." },
+      { q: "Mi történik a weboldal indítása után?", a: "Betanítalak az oldal használatára, és elérhető vagyok a folyamatos támogatáshoz. Sok ügyfél megtart havidíjas alapon frissítésekhez, SEO-hoz vagy új funkciók hozzáadásához. Teljesen rajtad múlik." },
+    ],
+    ctaTitleA: "KÉSZEN ÁLLSZ, HOGY",
+    ctaTitleB: "EGYÜTT DOLGOZZUNK?",
+    ctaSub: "Válogatós vagyok, őszintén érdekelt vagyok minden ügyfél sikerében. Nézzük meg, passzolunk-e.",
+    ctaBtn: "Foglalj egy ismerkedő hívást",
+    ctaEmail: "vagy írj a ",
+  },
+} as const;
+
+function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <motion.div
+      className="border-b border-white/[0.06] group"
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.05, duration: 0.6, ease: SPRING }}>
+      <button onClick={() => setOpen(!open)} aria-expanded={open} className="w-full flex items-start justify-between gap-6 py-7 text-left relative">
+        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gold/0 group-hover:bg-gold/40 transition-all duration-300" />
+        <span className="font-grotesk font-bold text-base md:text-lg text-cream group-hover:text-gold transition-colors duration-300 pl-4">{q}</span>
+        <motion.span
+          animate={{ rotate: open ? 45 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="font-grotesk font-bold text-xl text-gold flex-shrink-0 mt-0.5">+</motion.span>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }} className="overflow-hidden">
+            <p className="font-inter text-text-muted text-sm leading-relaxed pb-7 pl-4">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+export default function AboutPage({ lang }: { lang: Locale }) {
+  const c = content[lang];
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const values = c.values.map((v, i) => ({ ...v, Icon: valueIcons[i] }));
+
+  return (
+    <>
+      {/* ── HERO ── */}
+      <section ref={heroRef} className="relative pt-28 md:pt-40 pb-16 md:pb-28 bg-[#080808] overflow-hidden min-h-[70vh] flex items-end">
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 800, height: 800, top: "-25%", left: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.26) 0%, transparent 60%)", filter: "blur(90px)" }} />
+        <div className="absolute rounded-full pointer-events-none orb-2"
+          style={{ width: 600, height: 600, bottom: "-10%", right: "-5%", background: "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 60%)", filter: "blur(80px)" }} />
+        <div className="absolute rounded-full pointer-events-none orb-3"
+          style={{ width: 350, height: 350, top: "30%", right: "20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 65%)", filter: "blur(60px)" }} />
+        <div className="absolute inset-0 opacity-[0.018]"
+          style={{ backgroundImage: "linear-gradient(rgba(212,175,55,1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,1) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
+
+        <div className="absolute bottom-0 right-0 font-grotesk font-bold text-[14vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em] translate-y-[25%]">
+          STORY
+        </div>
+
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 w-full pb-4">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-3 mb-8">
+            <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ transformOrigin: "left" }} />
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">{c.eyebrow}</span>
+          </motion.div>
+
+          {c.h1.map((line, i) => (
+            <div key={line} className="overflow-hidden">
+              <motion.h1 initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.9, delay: 0.2 + i * 0.12, ease: SPRING }}
+                className={`font-grotesk font-bold text-[clamp(42px,7.5vw,110px)] leading-[0.92] tracking-[-0.04em] ${i === 1 ? "text-gradient-gold" : "text-cream"}`}>
+                {line}
+              </motion.h1>
+            </div>
+          ))}
+
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.55, ease: SPRING }}
+            className="font-cormorant text-xl md:text-2xl text-cream/50 font-light italic leading-relaxed max-w-2xl mt-8">
+            {c.heroSub}
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* ── STORY ── */}
+      <section className="py-16 md:py-32 lg:py-44 bg-[#0D0D0D] relative overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        <div className="absolute top-0 right-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em]">WHY</div>
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 700, height: 700, top: "-10%", right: "-20%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }} />
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 pt-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-28 items-start">
+            <Reveal>
+              <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6">
+                <motion.span className="w-8 h-px bg-gold block" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ transformOrigin: "left" }} />
+                {c.storyEyebrow}
+              </span>
+              <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em] mb-6">
+                {c.storyTitleA}<br />{c.storyTitleMid}<span className="text-gradient-gold">{c.storyTitleB}</span>
+              </h2>
+              <p className="font-cormorant text-xl text-cream/40 font-light italic leading-relaxed">
+                {c.storyQuote}
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="space-y-6 font-inter text-text-muted leading-relaxed text-base">
+                <motion.p className="text-cream/70 border-l-2 border-gold/30 pl-5 italic font-cormorant text-lg"
+                  initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+                  {c.storyP1}
+                </motion.p>
+                <p>{c.storyP2}</p>
+                <p>{c.storyP3}</p>
+                <p>{c.storyP4}</p>
+                <p>{c.storyP5}</p>
+                <motion.p className="text-cream/70 border-l-2 border-gold/30 pl-5 italic font-cormorant text-lg"
+                  initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
+                  {c.storyP6}
+                </motion.p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PROCESS ── */}
+      <section className="bg-[#080808] relative overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        <div className="absolute rounded-full pointer-events-none orb-2"
+          style={{ width: 800, height: 800, bottom: "-20%", left: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(100px)" }} />
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 py-16 md:py-32 lg:py-44">
+          <Reveal className="mb-20">
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5">
+              <span className="w-8 h-px bg-gold" />{c.procEyebrow}
+            </span>
+            <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,80px)] text-cream leading-[0.92] tracking-[-0.03em]">
+              {c.procTitleA}<span className="text-gradient-gold">{c.procTitleB}</span>
+            </h2>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04]">
+            {c.process.map((item, i) => (
+              <motion.div key={item.step}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.8, ease: SPRING }}
+                className="relative bg-[#080808] p-6 md:p-10 xl:p-14 group hover:bg-[#0D0D0D] transition-colors duration-500 overflow-hidden cursor-default">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: "radial-gradient(ellipse at 30% 30%, rgba(212,175,55,0.06) 0%, transparent 65%)" }} />
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/30 transition-all duration-500" />
+                <div className="absolute bottom-2 right-4 font-grotesk font-bold leading-none text-white/[0.065] group-hover:text-gold/[0.20] transition-colors duration-500 select-none pointer-events-none"
+                  style={{ fontSize: "clamp(90px,12vw,160px)" }}>{item.step}</div>
+                <div className="relative z-10">
+                  <div className="font-grotesk font-bold text-[10px] uppercase tracking-[0.3em] text-gold/40 mb-4">{item.step}</div>
+                  <h3 className="font-grotesk font-bold text-xl md:text-2xl text-cream mb-4 tracking-tight group-hover:text-gold transition-colors duration-300">{item.title}</h3>
+                  <p className="font-inter text-text-muted text-base leading-relaxed max-w-sm">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      </section>
+
+      {/* ── WHAT MAKES US DIFFERENT ── */}
+      <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
+        <div className="absolute left-0 top-0 font-grotesk font-bold text-[16vw] leading-none text-white/[0.09] select-none pointer-events-none tracking-[-0.05em]">EDGE</div>
+        <div className="absolute rounded-full pointer-events-none orb-3"
+          style={{ width: 700, height: 700, top: "20%", right: "-15%", background: "radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 60%)", filter: "blur(90px)" }} />
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start">
+            <div className="md:sticky md:top-32">
+              <Reveal>
+                <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6"><span className="w-8 h-px bg-gold" />{c.diffEyebrow}</span>
+                <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,80px)] text-cream leading-[0.92] tracking-[-0.03em] mb-8">
+                  {c.diffTitleA}<br />{c.diffTitleMid}<span className="text-gradient-gold">{c.diffTitleB}</span>
+                </h2>
+                <p className="font-cormorant text-xl text-cream/40 font-light italic leading-relaxed max-w-sm">
+                  {c.diffSub}
+                </p>
+              </Reveal>
+            </div>
+            <div className="space-y-0">
+              {c.pillars.map((pillar, i) => (
+                <Reveal key={pillar.num} delay={i * 0.15}>
+                  <motion.div className="border-b border-white/[0.05] py-10 group relative overflow-hidden cursor-default"
+                    whileHover={{ x: 6 }} transition={{ duration: 0.3, ease: "easeOut" }}>
+                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gold/0 group-hover:bg-gold transition-all duration-300" />
+                    <div className="flex items-start gap-6 pl-4">
+                      <span className="font-grotesk font-bold text-[36px] text-white/[0.09] group-hover:text-gold/20 transition-colors duration-500 mt-1 flex-shrink-0 leading-none">{pillar.num}</span>
+                      <div>
+                        <h3 className="font-grotesk font-bold text-xl md:text-2xl text-cream mb-3 tracking-tight group-hover:text-gold transition-colors duration-300">{pillar.title}</h3>
+                        <p className="font-inter text-text-muted text-base leading-relaxed mb-3">{pillar.desc}</p>
+                        <p className="font-cormorant text-base text-gold/60 italic">{pillar.detail}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── VALUES ── */}
+      <section className="bg-[#0D0D0D] relative overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        <div className="absolute rounded-full pointer-events-none orb-1"
+          style={{ width: 600, height: 600, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 60%)", filter: "blur(80px)" }} />
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10 py-16 md:py-32 lg:py-40">
+          <Reveal className="mb-20">
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5"><span className="w-8 h-px bg-gold" />{c.valEyebrow}</span>
+            <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,80px)] text-cream leading-[0.92] tracking-[-0.03em]">
+              {c.valTitleA}<span className="text-gradient-gold">{c.valTitleB}</span>
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04]">
+            {values.map((value, i) => (
+              <motion.div key={value.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.7, ease: SPRING }}
+                className="bg-[#0D0D0D] p-6 md:p-10 xl:p-14 group hover:bg-[#111111] transition-colors duration-500 relative overflow-hidden cursor-default">
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/25 transition-all duration-500" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: "radial-gradient(ellipse at 20% 30%, rgba(212,175,55,0.05) 0%, transparent 60%)" }} />
+                <div className="relative z-10">
+                  <div className="w-10 h-10 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-6 group-hover:bg-gold/20 group-hover:border-gold/40 group-hover:scale-110 transition-all duration-300">
+                    <value.Icon size={18} aria-hidden="true" />
+                  </div>
+                  <h3 className="font-grotesk font-bold text-xl text-cream mb-3 group-hover:text-gold transition-colors duration-300">{value.title}</h3>
+                  <p className="font-inter text-text-muted text-base leading-relaxed">{value.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="py-16 md:py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden">
+        <div className="absolute rounded-full pointer-events-none orb-2"
+          style={{ width: 600, height: 600, bottom: "-10%", right: "-10%", background: "radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 60%)", filter: "blur(80px)" }} />
+
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
+          <Reveal className="mb-16">
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-5"><span className="w-8 h-px bg-gold" />{c.faqEyebrow}</span>
+            <h2 className="font-grotesk font-bold text-[clamp(36px,5vw,72px)] text-cream leading-[0.92] tracking-[-0.03em]">
+              {c.faqTitleA}<br /><span className="text-gradient-gold">{c.faqTitleB}</span>
+            </h2>
+          </Reveal>
+          <div className="max-w-3xl">
+            {c.faqs.map((faq, i) => (
+              <FaqItem key={i} q={faq.q} a={faq.a} i={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="relative py-24 md:py-48 lg:py-64 bg-[#060606] overflow-hidden text-center">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute rounded-full orb-1" style={{ width: 700, height: 700, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 65%)", filter: "blur(90px)" }} />
+          <div className="absolute rounded-full orb-2" style={{ width: 400, height: 400, top: "10%", right: "5%", background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 70%)", filter: "blur(70px)" }} />
+          <div className="absolute rounded-full orb-3" style={{ width: 300, height: 300, bottom: "15%", left: "8%", background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%)", filter: "blur(60px)" }} />
+        </div>
+
+        <div className="relative z-10 max-w-2xl mx-auto px-5 sm:px-8">
+          <div className="overflow-hidden mb-4">
+            <motion.h2 initial={{ y: "60%", opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 1, ease: SPRING }}
+              className="font-grotesk font-bold text-[clamp(48px,8vw,112px)] text-cream leading-[0.88] tracking-[-0.04em]">
+              {c.ctaTitleA}<br /><span className="text-gradient-gold">{c.ctaTitleB}</span>
+            </motion.h2>
+          </div>
+          <Reveal delay={0.2} className="mb-12">
+            <p className="font-cormorant text-xl md:text-2xl text-cream/40 font-light italic leading-relaxed max-w-lg mx-auto">
+              {c.ctaSub}
+            </p>
+          </Reveal>
+          <Reveal delay={0.35}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href={localize("/contact", lang)}
+                className="group inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-lg px-12 py-6 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] hover:-translate-y-1.5">
+                {c.ctaBtn}
+                <span>→</span>
+              </Link>
+              <a href={`mailto:${EMAIL}`} className="font-inter text-text-muted/60 text-sm hover:text-gold transition-colors">
+                {c.ctaEmail}{EMAIL}
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}

@@ -21,16 +21,16 @@ const serviceSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "AI Estimator Agent — Instant Quotes, No Call Needed | Landscale",
+  title: "AI Estimator Agent, Instant Quotes, No Call Needed | Landscale",
   description:
-    "Add an AI estimator to your trade website — instant, accurate quotes 24/7, automatic lead filtering, and 15–20 hours saved per week. No phone call needed.",
+    "Add an AI estimator to your trade website, instant, accurate quotes 24/7, automatic lead filtering, and 15–20 hours saved per week. No phone call needed.",
   keywords:
     "AI estimator landscaping, instant quote tool landscaping website, automatic quote generator landscapers, landscaping lead qualification tool, AI estimator home services UK",
   alternates: { canonical: "https://landscale.agency/services/ai-estimator" },
   openGraph: {
-    title: "AI Estimator Agent — Instant Quotes, No Call Needed | Landscale",
+    title: "AI Estimator Agent, Instant Quotes, No Call Needed | Landscale",
     description:
-      "Add an AI estimator to your trade website — instant, accurate quotes 24/7, automatic lead filtering, and 15–20 hours saved per week. No phone call needed.",
+      "Add an AI estimator to your trade website, instant, accurate quotes 24/7, automatic lead filtering, and 15–20 hours saved per week. No phone call needed.",
     type: "website",
     url: "https://landscale.agency/services/ai-estimator",
     siteName: "Landscale Agency",
