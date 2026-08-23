@@ -26,6 +26,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://landscale.agency"),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   title: "Landscale Agency, AI Estimator & Chatbot for Tradesmen",
   description:
     "AI estimator & chatbot for tradesmen. Instant quotes, automatic lead filtering, 20+ hours saved weekly. Premium websites for roofers, landscapers & builders.",
