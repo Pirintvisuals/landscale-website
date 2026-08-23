@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://landscale.agency/hu/about",
     siteName: "Landscale Agency",
     locale: "hu_HU",
-    images: [{ url: "https://landscale.agency/opengraph-image", width: 1200, height: 630, alt: "Landscale Agency" }],
+    images: [{ url: "https://landscale.agency/og.png", width: 1200, height: 630, alt: "Landscale Agency" }],
   },
 };
 

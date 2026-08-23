@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://landscale.agency/services/seo-marketing",
     siteName: "Landscale Agency",
-    images: [{ url: "https://landscale.agency/opengraph-image", width: 1200, height: 630, alt: "Landscale Agency" }],
+    images: [{ url: "https://landscale.agency/og.png", width: 1200, height: 630, alt: "Landscale Agency" }],
   },
 };
 
