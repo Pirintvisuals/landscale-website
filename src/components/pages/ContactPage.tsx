@@ -2,10 +2,10 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Phone, Mail, Globe, Clock, ChevronDown } from "lucide-react";
+import { Phone, Mail, Globe, Clock, ChevronDown, MessageCircle } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
-import { PHONE, EMAIL } from "@/content/ui";
+import { PHONE, EMAIL, MESSENGER_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -15,10 +15,14 @@ const content = {
   en: {
     eyebrow: "Get in Touch",
     h1: ["LET'S GROW YOUR", "TRADE BUSINESS."],
-    heroSub: "Book a free 30-minute audit. We'll review your situation, identify the gaps, and show you how to fix them.",
-    tabCall: "Book a Call",
+    heroSub: "The fastest way to reach me is Facebook Messenger. Tell me your trade and what you need, I usually reply the same day.",
+    tabMessenger: "Messenger",
     tabMessage: "Send a Message",
-    callTitle: "Book Your Free Audit Call",
+    messengerTitle: "Message Me on Facebook",
+    messengerSub: "Opens a chat with me (Milán Pirint) on Facebook. No forms, no call to book.",
+    messengerBtn: "Open Messenger →",
+    tabCall: "Book a Call",
+    callTitle: "Book a Call With Me",
     callSub: "Pick a time that works for you, 30 minutes, no pressure.",
     formTitle: "Send Us a Message",
     sentTitle: "Message Sent!",
@@ -39,31 +43,35 @@ const content = {
     ],
     lblMessage: "Tell Us About Your Business",
     phMessage: "What's your biggest challenge? How many leads do you get per week?",
-    sending: "Sending...", submit: "Book Free Audit Call →",
+    sending: "Sending...", submit: "Send Message →",
     errorMsg: "Something went wrong. Please email us directly.",
     infoTitle: "Contact Info",
-    infoSub: "Book directly or fill in the form, we'll reach out within 24 hours.",
+    infoSub: "Message me on Facebook or fill in the form, I'll get back to you within 24 hours.",
     lblCoverage: "Coverage", valCoverage: "UK (primary) & Worldwide",
     lblResponse: "Response Time", valResponse: "Within 24 hours, usually same day",
     lblPhoneInfo: "Phone", lblEmailInfo: "Email",
-    expectTitle: "What to Expect on the Call",
+    expectTitle: "What Happens Next",
     expect: [
-      "Review of your current online presence",
-      "Competitor analysis for your area",
-      "Your biggest growth opportunities",
-      "Clear, honest recommendations",
+      "I reply, usually the same day",
+      "A few quick questions about your trade",
+      "A clear price for what you need",
+      "A demo built for your business, if you want one",
       "No hard sell, just straight talk",
     ],
-    statMin: "minute audit call",
-    statFree: "Free. No strings attached.",
+    statLabel: "hour reply time",
+    statNote: "Usually the same day.",
   },
   hu: {
     eyebrow: "Lépj kapcsolatba",
     h1: ["NÖVELJÜK MEG A", "VÁLLALKOZÁSODAT."],
-    heroSub: "Foglalj egy ingyenes, 30 perces igényfelmérést. Átnézzük a helyzetedet, megkeressük a hiányosságokat, és megmutatjuk, hogyan javítsd őket.",
-    tabCall: "Foglalj hívást",
+    heroSub: "A leggyorsabban Facebook Messengeren érsz el. Írd meg, mivel foglalkozol és mire van szükséged, általában még aznap válaszolok.",
+    tabMessenger: "Messenger",
     tabMessage: "Írj üzenetet",
-    callTitle: "Foglald az ingyenes igényfelmérő hívásodat",
+    messengerTitle: "Írj nekem Messengeren",
+    messengerSub: "Megnyit egy csevegést velem (Pirint Milán) a Facebookon. Nincs űrlap, nincs időpontfoglalás.",
+    messengerBtn: "Messenger megnyitása →",
+    tabCall: "Foglalj hívást",
+    callTitle: "Foglalj egy hívást velem",
     callSub: "Válassz egy időpontot, ami neked megfelel, 30 perc, nyomás nélkül.",
     formTitle: "Írj nekünk üzenetet",
     sentTitle: "Üzenet elküldve!",
@@ -84,23 +92,23 @@ const content = {
     ],
     lblMessage: "Mesélj a vállalkozásodról",
     phMessage: "Mi a legnagyobb kihívásod? Hetente hány érdeklődőd van?",
-    sending: "Küldés...", submit: "Foglald az ingyenes igényfelmérést →",
+    sending: "Küldés...", submit: "Üzenet küldése →",
     errorMsg: "Valami hiba történt. Kérlek, írj nekünk közvetlenül e-mailben.",
     infoTitle: "Elérhetőség",
-    infoSub: "Foglalj közvetlenül, vagy töltsd ki az űrlapot, 24 órán belül jelentkezünk.",
+    infoSub: "Írj Messengeren, vagy töltsd ki az űrlapot, 24 órán belül jelentkezem.",
     lblCoverage: "Lefedettség", valCoverage: "Magyarország és világszerte",
     lblResponse: "Válaszidő", valResponse: "24 órán belül, általában még aznap",
     lblPhoneInfo: "Telefon", lblEmailInfo: "E-mail",
-    expectTitle: "Mire számíthatsz a híváson",
+    expectTitle: "Mi történik ezután",
     expect: [
-      "A jelenlegi online jelenléted áttekintése",
-      "Versenytárs-elemzés a környékedre",
-      "A legnagyobb növekedési lehetőségeid",
-      "Világos, őszinte javaslatok",
+      "Válaszolok, általában még aznap",
+      "Pár gyors kérdés a szakmádról",
+      "Világos ár arra, amire szükséged van",
+      "Ha kéred, egy a vállalkozásodra szabott demó",
       "Semmi nyomulós értékesítés, csak egyenes beszéd",
     ],
-    statMin: "perces igényfelmérő hívás",
-    statFree: "Ingyenes. Semmi kötelezettség.",
+    statLabel: "órán belüli válasz",
+    statNote: "Általában még aznap.",
   },
 } as const;
 
@@ -109,7 +117,7 @@ export default function ContactPage({ lang }: { lang: Locale }) {
   const phone = PHONE[lang];
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", business: "", location: "", message: "", service: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [tab, setTab] = useState<"calendly" | "form">("calendly");
+  const [tab, setTab] = useState<"messenger" | "calendly" | "form">("messenger");
 
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -190,18 +198,33 @@ export default function ContactPage({ lang }: { lang: Locale }) {
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
                 <div className="flex gap-2 mb-8 bg-white/[0.03] p-1 rounded-full w-fit">
                   <button
+                    onClick={() => setTab("messenger")}
+                    className={`font-grotesk font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "messenger" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
+                    {c.tabMessenger}
+                  </button>
+                  <button
                     onClick={() => setTab("calendly")}
-                    className={`font-grotesk font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "calendly" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
+                    className={`font-grotesk font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "calendly" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
                     {c.tabCall}
                   </button>
                   <button
                     onClick={() => setTab("form")}
-                    className={`font-grotesk font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "form" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
+                    className={`font-grotesk font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "form" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
                     {c.tabMessage}
                   </button>
                 </div>
 
-                {tab === "calendly" ? (
+                {tab === "messenger" ? (
+                  <div>
+                    <h2 className="font-grotesk font-bold text-2xl md:text-3xl text-cream mb-2 tracking-tight">{c.messengerTitle}</h2>
+                    <p className="font-inter text-text-muted text-sm mb-8">{c.messengerSub}</p>
+                    <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
+                      <MessageCircle size={18} aria-hidden="true" />
+                      {c.messengerBtn}
+                    </a>
+                  </div>
+                ) : tab === "calendly" ? (
                   <div>
                     <h2 className="font-grotesk font-bold text-2xl md:text-3xl text-cream mb-2 tracking-tight">{c.callTitle}</h2>
                     <p className="font-inter text-text-muted text-sm mb-6">{c.callSub}</p>
@@ -338,9 +361,9 @@ export default function ContactPage({ lang }: { lang: Locale }) {
                   whileHover={{ borderColor: "rgba(212,175,55,0.4)", y: -2 }}
                   transition={{ duration: 0.3 }}>
                   <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(212,175,55,0.08) 0%, transparent 65%)" }} />
-                  <div className="font-grotesk font-bold text-[56px] text-gradient-gold leading-none tracking-[-0.04em] mb-1">30</div>
-                  <div className="font-grotesk font-semibold text-sm text-cream mb-1">{c.statMin}</div>
-                  <div className="font-inter text-xs text-text-muted">{c.statFree}</div>
+                  <div className="font-grotesk font-bold text-[56px] text-gradient-gold leading-none tracking-[-0.04em] mb-1">24</div>
+                  <div className="font-grotesk font-semibold text-sm text-cream mb-1">{c.statLabel}</div>
+                  <div className="font-inter text-xs text-text-muted">{c.statNote}</div>
                 </motion.div>
               </div>
             </Reveal>

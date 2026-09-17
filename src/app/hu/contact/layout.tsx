@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kapcsolat, ingyenes igényfelmérés | Landscale",
+  title: "Kapcsolat | Landscale",
   description:
-    "Foglalj egy ingyenes, 30 perces igényfelmérést. Átnézzük a helyzetedet, megkeressük a hiányosságokat, és megmutatjuk, hogyan javítsd őket, kötelezettség nélkül.",
+    "Írj nekem Facebook Messengeren, vagy küldj üzenetet. Általában még aznap válaszolok.",
   alternates: {
     canonical: "https://landscale.agency/hu/contact",
     languages: {
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Kapcsolat, ingyenes igényfelmérés | Landscale",
-    description: "Foglalj egy ingyenes, 30 perces igényfelmérést, kötelezettség nélkül.",
+    title: "Kapcsolat | Landscale",
+    description: "Írj nekem Facebook Messengeren, általában még aznap válaszolok.",
     type: "website",
     url: "https://landscale.agency/hu/contact",
     siteName: "Landscale Agency",

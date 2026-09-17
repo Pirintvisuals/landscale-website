@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
+import { MESSENGER_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -14,7 +15,7 @@ const content = {
     h1a: "STOP WASTING TIME ON ",
     h1b: "UNQUALIFIED LEADS.",
     sub: "Your AI chatbot qualifies every visitor 24/7, only the right clients ever reach you.",
-    ctaDemo: "Get Free Demo →",
+    ctaDemo: "Ask for a Free Demo →",
     ctaAction: "See It In Action",
     defTitle: "What Is an AI Lead Qualification Chatbot?",
     def: "An AI lead qualification chatbot is a 24/7 automated system that evaluates every visitor to a tradesman's website before they can make contact. The chatbot conducts a structured conversation covering budget, project type, location, and intended start date. Visitors outside the tradesman's service area, below minimum job size, or not ready to proceed are declined automatically with a polite message, the tradesman never sees these enquiries. Qualifying visitors have their full brief forwarded to the tradesman's inbox instantly: name, phone number, email, project description, budget, and postcode. The tool operates around the clock and typically increases the proportion of qualified to unqualified enquiries by 300%.",
@@ -38,8 +39,8 @@ const content = {
     ],
     ctaTitleA: "SEE THE CHATBOT",
     ctaTitleB: "IN ACTION",
-    ctaSub: "Book a free demo and we'll show you exactly how the AI chatbot would work for your business.",
-    ctaBtn: "Book Free Demo →",
+    ctaSub: "Message me on Facebook and I'll show you exactly how the AI chatbot would work for your business.",
+    ctaBtn: "Ask for a Free Demo →",
   },
   hu: {
     eyebrow: "AI Chatbot",
@@ -70,8 +71,8 @@ const content = {
     ],
     ctaTitleA: "NÉZD MEG A CHATBOTOT",
     ctaTitleB: "MŰKÖDÉS KÖZBEN",
-    ctaSub: "Foglalj egy ingyenes demót, és pontosan megmutatjuk, hogyan működne az AI chatbot a te vállalkozásodnál.",
-    ctaBtn: "Foglalj ingyenes demót →",
+    ctaSub: "Írj nekem Facebookon, és pontosan megmutatom, hogyan működne az AI chatbot a te vállalkozásodnál.",
+    ctaBtn: "Kérj ingyenes demót →",
   },
 } as const;
 
@@ -97,9 +98,9 @@ export default function AiChatbotPage({ lang }: { lang: Locale }) {
             {c.sub}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.65, ease: SPRING }} className="flex flex-wrap gap-4">
-            <Link href={localize("/contact", lang)} className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
               {c.ctaDemo}
-            </Link>
+            </a>
             <Link href={localize("/case-studies", lang)} className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 rounded-full hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300">
               {c.ctaAction}
             </Link>
@@ -188,9 +189,9 @@ export default function AiChatbotPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <Link href={localize("/contact", lang)} className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
               {c.ctaBtn}
-            </Link>
+            </a>
           </Reveal>
         </div>
       </section>

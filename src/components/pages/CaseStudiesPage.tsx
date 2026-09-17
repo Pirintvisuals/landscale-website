@@ -2,12 +2,10 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
-import { localize } from "@/lib/i18n";
-import { EMAIL } from "@/content/ui";
+import { EMAIL, MESSENGER_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -30,8 +28,8 @@ const content = {
     ctaEyebrow: "Your Project Next",
     ctaTitleA: "WANT RESULTS",
     ctaTitleB: "LIKE THESE?",
-    ctaSub: "Book a free audit, we'll analyse your current online presence and show you exactly what's possible for yours.",
-    ctaBtn: "Book Free Audit →",
+    ctaSub: "Send me a message on Facebook and I'll show you what's possible for your business.",
+    ctaBtn: "Message Me on Facebook →",
     projects: [
       { id: "nmbau", name: "NM Bau", tagline: "Live AI Quoting System, Trilingual Renovation Platform", location: "Sopron · Burgenland", tag: "AI Quoting System · Live", desc: "A bathroom and full-property renovation company on the Hungary–Austria border, and the first Landscale build with a live AI quoting agent running in production. Visitors describe their renovation and receive an instant, itemised price estimate around the clock, in any of three languages. The owner publishes his own blog posts and uploads project photos himself, with zero developer involvement.", what: ["Live AI quoting agent", "Trilingual, HU / EN / DE", "Self-managed blog & photo uploads", "Custom build · 100 SEO"], metrics: [{ label: "SEO", val: "100" }, { label: "Accessibility", val: "100" }, { label: "Best Practices", val: "100" }], url: "https://www.nmbau.hu/", file: "nmbau", index: "01" },
       { id: "kazan-szerviz", name: "Kazán Szerviz Kecskemét", tagline: "Boiler & Gas Service, AI Quoting Calculator", location: "Kecskemét · Hungary", tag: "AI Quoting Calculator · Live", desc: "A boiler and gas service (Polyák Zoltán) whose competitors offer nothing more than a digital brochure. This site quotes the job for you: a visitor answers a few quick questions about their boiler or heating problem and gets a price estimate in minutes, at any hour, no callback, no leads lost overnight. It works both ways too, pre-qualifying every enquiry so the owner spends his time on the jobs worth doing instead of chasing dead ends.", what: ["Custom AI quoting calculator", "Instant price estimates 24/7", "Enquiry pre-qualification", "Built to rank · 91 / 100 Lighthouse"], metrics: [{ label: "Performance", val: "91" }, { label: "SEO", val: "100" }, { label: "Instant quotes", val: "24/7" }], url: "https://gazszerelokecskemet.hu/", file: "gazszerelokecskemet", index: "02" },
@@ -54,8 +52,8 @@ const content = {
     ctaEyebrow: "A következő a te projekted",
     ctaTitleA: "TE IS ILYEN",
     ctaTitleB: "EREDMÉNYT AKARSZ?",
-    ctaSub: "Foglalj egy ingyenes igényfelmérést, átnézzük a jelenlegi online jelenlétedet, és pontosan megmutatjuk, mi lehetséges a tiéddel.",
-    ctaBtn: "Foglalj ingyenes igényfelmérést →",
+    ctaSub: "Írj nekem Facebookon, és megmutatom, mi lehetséges a te vállalkozásodnál.",
+    ctaBtn: "Írj nekem Messengeren →",
     projects: [
       { id: "nmbau", name: "NM Bau", tagline: "Éles AI árajánló rendszer, háromnyelvű felújítási platform", location: "Sopron · Burgenland", tag: "AI árajánló rendszer · Élesben", desc: "Fürdőszoba- és teljes ingatlanfelújító cég a magyar–osztrák határon, és az első Landscale-projekt, amelyben éles, működő AI árajánló ügynök fut. A látogatók leírják a felújításukat, és azonnal, tételes árbecslést kapnak a nap 24 órájában, három nyelv bármelyikén. A tulajdonos maga írja a blogbejegyzéseit és tölti fel a projektfotókat, fejlesztő nélkül.", what: ["Éles AI árajánló ügynök", "Háromnyelvű, HU / EN / DE", "Önállóan kezelt blog és fotófeltöltés", "Egyedi fejlesztés · 100 SEO"], metrics: [{ label: "SEO", val: "100" }, { label: "Akadálymentesség", val: "100" }, { label: "Legjobb gyakorlatok", val: "100" }], url: "https://www.nmbau.hu/", file: "nmbau", index: "01" },
       { id: "kazan-szerviz", name: "Kazán Szerviz Kecskemét", tagline: "Kazán- és gázszerviz, AI árajánló kalkulátor", location: "Kecskemét · Magyarország", tag: "AI árajánló kalkulátor · Élesben", desc: "Kazán- és gázszerviz (Polyák Zoltán), amelynek a versenytársai legfeljebb egy digitális szórólapot kínálnak. Ez az oldal árazza helyetted a munkát: a látogató válaszol néhány gyors kérdésre a kazánjáról vagy a fűtési problémájáról, és perceken belül árbecslést kap, bármelyik órában, nincs visszahívás, nincs éjszaka elveszett érdeklődő. Visszafelé is működik: előre megszűr minden megkeresést, így a tulajdonos a megérő munkákra fordítja az idejét, nem a zsákutcák hajkurászására.", what: ["Egyedi AI árajánló kalkulátor", "Azonnali árbecslés 0–24", "Megkeresések előszűrése", "Rangsorolásra építve · 91 / 100 Lighthouse"], metrics: [{ label: "Teljesítmény", val: "91" }, { label: "SEO", val: "100" }, { label: "Azonnali árajánlat", val: "0–24" }], url: "https://gazszerelokecskemet.hu/", file: "gazszerelokecskemet", index: "02" },
@@ -306,10 +304,10 @@ export default function CaseStudiesPage({ lang }: { lang: Locale }) {
               {c.ctaSub}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href={localize("/contact", lang)}
+              <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-1">
                 {c.ctaBtn}
-              </Link>
+              </a>
               <a href={`mailto:${EMAIL}`} className="font-inter text-text-muted/60 text-sm hover:text-gold transition-colors">
                 {EMAIL}
               </a>

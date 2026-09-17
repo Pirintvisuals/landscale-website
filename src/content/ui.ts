@@ -8,6 +8,9 @@ export const PHONE: Record<Locale, { display: string; href: string }> = {
 
 export const EMAIL = "milan@landscale.net";
 
+/** Facebook Messenger chat with Milán, the main call to action across the site. */
+export const MESSENGER_URL = "https://m.me/100083279266241";
+
 type ServiceItem = { href: string; label: string; desc: string; tag: string | null };
 
 type NavDict = {
@@ -15,8 +18,8 @@ type NavDict = {
   serviceTag: string; // "Core"
   links: { href: string; label: string }[];
   viewAll: string;
-  freeAudit: string;
-  bookFreeAudit: string;
+  messageMe: string; // short nav button
+  messageMeLong: string; // mobile menu button
   switchLabel: string; // label of the toggle target language
   otherSiteLabel: string; // mobile: "Magyar oldal" / "English site"
   otherSiteFlag: string;
@@ -53,8 +56,8 @@ export const NAV: Record<Locale, NavDict> = {
       { href: "/contact", label: "Contact" },
     ],
     viewAll: "View all services",
-    freeAudit: "Free Audit",
-    bookFreeAudit: "Book Free Audit",
+    messageMe: "Message Me",
+    messageMeLong: "Message Me on Facebook",
     switchLabel: "HU",
     otherSiteLabel: "Magyar oldal",
     otherSiteFlag: "🇭🇺",
@@ -74,8 +77,8 @@ export const NAV: Record<Locale, NavDict> = {
       { href: "/contact", label: "Kapcsolat" },
     ],
     viewAll: "Összes szolgáltatás",
-    freeAudit: "Igényfelmérés",
-    bookFreeAudit: "Ingyenes igényfelmérés",
+    messageMe: "Írj nekem",
+    messageMeLong: "Írj nekem Messengeren",
     switchLabel: "EN",
     otherSiteLabel: "English site",
     otherSiteFlag: "🇬🇧",
@@ -86,8 +89,8 @@ export const FOOTER: Record<Locale, FooterDict> = {
   en: {
     ctaHeadA: "Ready to dominate your ",
     ctaHeadB: "local market?",
-    ctaSub: "Book a free 30-minute audit. I'll show you exactly where you're losing leads and how to fix it, no obligation.",
-    ctaButton: "Book Your Free Audit",
+    ctaSub: "Send me a message on Facebook. Tell me your trade and I'll show you how it would work for your business, usually the same day.",
+    ctaButton: "Message Me on Facebook",
     brandTagline: "Premium websites & AI automation for trade businesses.",
     quickLinksTitle: "Quick Links",
     quickLinks: [
@@ -112,8 +115,8 @@ export const FOOTER: Record<Locale, FooterDict> = {
   hu: {
     ctaHeadA: "Készen állsz uralni a ",
     ctaHeadB: "helyi piacodat?",
-    ctaSub: "Foglalj egy ingyenes, 30 perces igényfelmérést. Pontosan megmutatom, hol veszíted el a megrendeléseket, és hogyan hozd helyre, kötelezettség nélkül.",
-    ctaButton: "Foglald az ingyenes igényfelmérést",
+    ctaSub: "Írj nekem Facebookon. Mondd el, mivel foglalkozol, és megmutatom, hogyan működne nálad, általában még aznap.",
+    ctaButton: "Írj nekem Messengeren",
     brandTagline: "Prémium weboldalak és AI-automatizálás vállalkozóknak.",
     quickLinksTitle: "Gyors linkek",
     quickLinks: [

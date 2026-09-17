@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe, TrendingUp } from "lucide-react";
 import { localeFromPathname, localize, switchLocaleHref, toEnglishPath } from "@/lib/i18n";
-import { NAV, PHONE } from "@/content/ui";
+import { MESSENGER_URL, NAV, PHONE } from "@/content/ui";
 
 const serviceIcons = [Zap, MessageCircle, Globe, TrendingUp];
 
@@ -189,11 +189,11 @@ export default function Navigation() {
               <span>{t.switchLabel}</span>
             </Link>
             <div className="w-px h-5 bg-white/[0.10]" />
-            <Link href={localize("/contact", lang)}
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] hover:-translate-y-0.5">
-              {t.freeAudit}
+              {t.messageMe}
               <ArrowRight size={14} />
-            </Link>
+            </a>
           </div>
 
           {/* ── Mobile toggle ── */}
@@ -294,11 +294,11 @@ export default function Navigation() {
 
               {/* CTA */}
               <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.48, ease: SPRING }} className="mt-8 space-y-4">
-                <Link href={localize("/contact", lang)}
+                <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300">
-                  {t.bookFreeAudit}
+                  {t.messageMeLong}
                   <ArrowRight size={16} />
-                </Link>
+                </a>
                 <div className="text-center space-y-1">
                   <a href={phone.href} className="block font-grotesk font-semibold text-sm text-gold/70 hover:text-gold transition-colors">{phone.display}</a>
                   <p className="font-inter text-text-muted text-xs">milan@landscale.net</p>

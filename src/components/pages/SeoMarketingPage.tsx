@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
+import { MESSENGER_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -14,7 +15,7 @@ const content = {
     h1a: "DOMINATE LOCAL SEARCH. ",
     h1b: "ATTRACT PREMIUM CLIENTS.",
     sub: "When someone in your area searches for your trade, you should be first. We make that happen.",
-    ctaAudit: "Get Free SEO Audit →",
+    ctaAudit: "Message Me on Facebook →",
     ctaResults: "See Our Results",
     stratTitleA: "Our ",
     stratTitleB: "SEO Strategy",
@@ -38,14 +39,14 @@ const content = {
     ctaTitleA: "READY TO RANK #1",
     ctaTitleB: "IN YOUR AREA?",
     ctaSub: "We'll show you where you rank now, what competitors are doing, and exactly how to beat them.",
-    ctaBtn: "Book Free SEO Audit →",
+    ctaBtn: "Message Me on Facebook →",
   },
   hu: {
     eyebrow: "SEO és marketing",
     h1a: "URALD A HELYI KERESÉST. ",
     h1b: "VONZZ PRÉMIUM ÜGYFELEKET.",
     sub: "Amikor valaki a környékeden a szakmádra keres, neked kell elsőként megjelenned. Mi ezt hozzuk el.",
-    ctaAudit: "Kérj ingyenes SEO-elemzést →",
+    ctaAudit: "Írj nekem Messengeren →",
     ctaResults: "Nézd meg az eredményeinket",
     stratTitleA: "A mi ",
     stratTitleB: "SEO-stratégiánk",
@@ -69,7 +70,7 @@ const content = {
     ctaTitleA: "KÉSZEN ÁLLSZ, HOGY ELSŐ LEGYÉL",
     ctaTitleB: "A KÖRNYÉKEDEN?",
     ctaSub: "Megmutatjuk, hol állsz most, mit csinálnak a versenytársaid, és pontosan hogyan előzd meg őket.",
-    ctaBtn: "Foglalj ingyenes SEO-elemzést →",
+    ctaBtn: "Írj nekem Messengeren →",
   },
 } as const;
 
@@ -95,9 +96,9 @@ export default function SeoMarketingPage({ lang }: { lang: Locale }) {
             {c.sub}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.65, ease: SPRING }} className="flex flex-wrap gap-4">
-            <Link href={localize("/contact", lang)} className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
               {c.ctaAudit}
-            </Link>
+            </a>
             <Link href={localize("/case-studies", lang)} className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 hover:border-gold hover:text-gold transition-all duration-300">
               {c.ctaResults}
             </Link>
@@ -170,9 +171,9 @@ export default function SeoMarketingPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <Link href={localize("/contact", lang)} className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
               {c.ctaBtn}
-            </Link>
+            </a>
           </Reveal>
         </div>
       </section>

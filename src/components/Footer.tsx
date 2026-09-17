@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Instagram, Linkedin } from "lucide-react";
 import { localeFromPathname, localize } from "@/lib/i18n";
-import { FOOTER, PHONE, EMAIL } from "@/content/ui";
+import { EMAIL, FOOTER, MESSENGER_URL, PHONE } from "@/content/ui";
 
 export default function Footer() {
   const ref = useRef(null);
@@ -29,9 +29,9 @@ export default function Footer() {
           <p className="font-cormorant text-lg text-cream/45 font-light italic leading-relaxed mb-7">
             {t.ctaSub}
           </p>
-          <Link href={localize("/contact", lang)} className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+          <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
             {t.ctaButton} <span className="text-lg">→</span>
-          </Link>
+          </a>
         </motion.div>
 
         {/* 4-column grid */}

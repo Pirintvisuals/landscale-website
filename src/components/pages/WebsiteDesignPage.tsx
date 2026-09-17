@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
+import { MESSENGER_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -14,7 +15,7 @@ const content = {
     h1a: "WEBSITES THAT CONVERT VISITORS INTO ",
     h1b: "HIGH-VALUE CLIENTS",
     sub: "Your website is your most powerful sales tool, or it should be. We build luxury, conversion-focused websites that make you look premium.",
-    ctaAudit: "Get Free Website Audit →",
+    ctaAudit: "Message Me on Facebook →",
     ctaWork: "See Our Work",
     defTitle: "What Landscale Builds",
     def: "Landscale builds bespoke, conversion-focused websites for trade businesses, roofers, landscapers, hardscapers, builders, construction firms, and home service contractors. Every site is custom-designed to position the client as the premium choice in their local market. Performance benchmarks are non-negotiable: sub-1-second load times, 95–100 Google PageSpeed scores, and 100/100 SEO scores on every project. Local SEO is integrated from day one, including keyword research, on-page optimisation, and Google Business Profile setup, so the site starts generating organic enquiries immediately. AI lead qualification tools (estimator agent or chatbot) are available to integrate directly, turning the website into a 24/7 lead filtering system.",
@@ -39,14 +40,14 @@ const content = {
     ctaTitleA: "READY FOR A WEBSITE",
     ctaTitleB: "THAT ACTUALLY WORKS?",
     ctaSub: "We'll show you exactly what's costing you leads and how to fix it.",
-    ctaBtn: "Book Free Audit →",
+    ctaBtn: "Message Me on Facebook →",
   },
   hu: {
     eyebrow: "Weboldal Készítés",
     h1a: "WEBOLDALAK, AMELYEK LÁTOGATÓKBÓL ",
     h1b: "ÉRTÉKES ÜGYFELEKET CSINÁLNAK",
     sub: "A weboldalad a legerősebb értékesítési eszközöd, vagy annak kellene lennie. Igényes, konverzióra épített weboldalakat készítünk, amelyektől prémiumnak látszol.",
-    ctaAudit: "Kérj ingyenes weboldal-elemzést →",
+    ctaAudit: "Írj nekem Messengeren →",
     ctaWork: "Nézd meg a munkáinkat",
     defTitle: "Mit épít a Landscale",
     def: "A Landscale egyedi, konverzióra épített weboldalakat készít vállalkozásoknak, tetőfedőknek, tereprendezőknek, térkövezőknek, generálkivitelezőknek, építőipari cégeknek és otthon-szolgáltatóknak. Minden oldal egyedi tervezésű, hogy az ügyfelet a helyi piac prémium választásaként pozicionálja. A teljesítménymutatók nem képezik alku tárgyát: 1 másodperc alatti betöltés, 95–100-as Google PageSpeed és 100/100-as SEO pontszám minden projekten. A helyi SEO az első naptól be van építve, kulcsszókutatással, on-page optimalizálással és Google Cégprofil beállítással együtt, így az oldal azonnal organikus érdeklődéseket kezd hozni. Az AI érdeklődő-minősítő eszközök (árajánló ügynök vagy chatbot) közvetlenül integrálhatók, így a weboldal 0–24 működő érdeklődő-szűrő rendszerré válik.",
@@ -71,7 +72,7 @@ const content = {
     ctaTitleA: "KÉSZEN ÁLLSZ EGY",
     ctaTitleB: "OLDALRA, AMI TÉNYLEG MŰKÖDIK?",
     ctaSub: "Pontosan megmutatjuk, mi kerül neked érdeklődőkbe, és hogyan javítsd.",
-    ctaBtn: "Foglalj ingyenes igényfelmérést →",
+    ctaBtn: "Írj nekem Messengeren →",
   },
 } as const;
 
@@ -97,9 +98,9 @@ export default function WebsiteDesignPage({ lang }: { lang: Locale }) {
             {c.sub}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.65, ease: SPRING }} className="flex flex-wrap gap-4">
-            <Link href={localize("/contact", lang)} className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
               {c.ctaAudit}
-            </Link>
+            </a>
             <Link href={localize("/case-studies", lang)} className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 hover:border-gold hover:text-gold transition-all duration-300">
               {c.ctaWork}
             </Link>
@@ -188,9 +189,9 @@ export default function WebsiteDesignPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <Link href={localize("/contact", lang)} className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
               {c.ctaBtn}
-            </Link>
+            </a>
           </Reveal>
         </div>
       </section>

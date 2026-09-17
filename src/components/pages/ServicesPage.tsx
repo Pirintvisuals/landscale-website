@@ -7,7 +7,7 @@ import { Star, Phone, Search, LayoutDashboard } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
-import { PHONE } from "@/content/ui";
+import { MESSENGER_URL, PHONE } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -59,17 +59,52 @@ const content = {
     diffTitle: "Have a different idea in mind?",
     diffDesc: "If you need something that's not listed here, get in touch, if it helps tradespeople win better clients, we can probably build it.",
     bookCall: "Book a Call →",
-    callNote: "Call for a ballpark number, no pressure",
+    callNote: "Prefer to talk?",
     pricingEyebrow: "Pricing",
-    pricingTitleA: "Every Project",
-    pricingTitleB: "Different",
-    pricingTitlePre: "Is ",
-    pricingDesc: "There's no one-size-fits-all price. The scope, complexity, and goals of each project are unique. Want a ballpark number? Just call, we'll give you an honest answer in 5 minutes.",
-    pricingCta: "Book Free Audit →",
+    pricingTitleA: "Simple Packages.",
+    pricingTitleB: "Clear Starting Prices.",
+    pricingDesc: "So you know where you stand before we ever talk. Your final price depends on your trade and what you need, and you get it in writing before anything starts.",
+    plans: [
+      {
+        name: "Quoting Assistant", desc: "Your 24/7 sales team, added to the website you already have.",
+        price: "£295", priceNote: "one-off setup", monthly: "+ £99/month",
+        features: [
+          "AI chatbot that gives instant estimates from your own prices",
+          "Qualifies every lead: job, budget, postcode, timeline",
+          "Politely filters out time-wasters before they reach you",
+          "Automatic follow-up so warm leads don't go cold",
+          "Connects to your CRM, every lead logged automatically",
+          "Instant lead alerts by email or SMS",
+          "Works in multiple languages",
+          "Setup, updates and support included",
+        ],
+      },
+      {
+        name: "Website + Assistant", desc: "A premium website built to win jobs, with the assistant already inside.",
+        price: "from £1,195", priceNote: "one-off", monthly: "+ from £79/month",
+        features: [
+          "Custom design that makes you the premium choice locally",
+          "Lightning-fast and mobile-first",
+          "Local SEO built in from day one",
+          "Google Business Profile setup",
+          "Enquiry forms connected to your CRM",
+          "Easy blog and photo updates you can do yourself",
+          "Analytics and conversion tracking",
+          "Everything in Quoting Assistant, built in",
+        ],
+      },
+      {
+        name: "Custom", desc: "Anything else you need built.",
+        price: "Custom quote", priceNote: "", monthly: "Priced to what you need",
+        features: ["AI Receptionist", "AI Review Agent", "Operations Dashboard", "Local SEO & Google Business"],
+      },
+    ],
+    foundingOffer: "Founding UK offer: the first 5 UK businesses pay no setup fee, in return for a short case study once it's live.",
+    pricingCta: "Message Me on Facebook →",
     ctaTitleA: "NOT SURE WHICH",
     ctaTitleB: "SERVICE YOU NEED?",
-    ctaSub: "Book a free audit, we'll analyse your business and tell you exactly what will move the needle.",
-    ctaBtn: "Get Free Audit →",
+    ctaSub: "Send me a message on Facebook, tell me what you do, and I'll tell you honestly which one will make the difference.",
+    ctaBtn: "Message Me on Facebook →",
   },
   hu: {
     eyebrow: "Amit csinálunk",
@@ -116,17 +151,52 @@ const content = {
     diffTitle: "Más ötlet jár a fejedben?",
     diffDesc: "Ha olyasmire van szükséged, ami itt nincs felsorolva, keress meg, ha segít a szakembereknek jobb ügyfeleket szerezni, valószínűleg meg tudjuk építeni.",
     bookCall: "Foglalj hívást →",
-    callNote: "Hívj egy nagyságrendi árért, nyomás nélkül",
+    callNote: "Inkább beszélnél?",
     pricingEyebrow: "Árazás",
-    pricingTitleA: "Minden projekt",
-    pricingTitleB: "más",
-    pricingTitlePre: "",
-    pricingDesc: "Nincs mindenkire illő egységár. Minden projekt terjedelme, összetettsége és célja egyedi. Kell egy nagyságrendi szám? Csak hívj, 5 percen belül őszinte választ adunk.",
-    pricingCta: "Foglalj ingyenes igényfelmérést →",
+    pricingTitleA: "Egyszerű csomagok.",
+    pricingTitleB: "Világos induló árak.",
+    pricingDesc: "Hogy már az első beszélgetés előtt tudd, mire számíts. A végső ár a szakmádtól és az igényeidtől függ, és írásban megkapod, mielőtt bármi elindulna.",
+    plans: [
+      {
+        name: "Árajánló-asszisztens", desc: "0–24-es értékesítő a meglévő weboldaladon.",
+        price: "50 000 Ft", priceNote: "egyszeri beállítás", monthly: "+ 50 000 Ft/hó",
+        features: [
+          "AI chatbot, ami a saját áraid alapján azonnal becslést ad",
+          "Minősít minden érdeklődőt: munka, büdzsé, helyszín, határidő",
+          "Udvariasan kiszűri a komolytalanokat, mielőtt hozzád érnének",
+          "Automatikus utánkövetés, hogy ne hűljön ki az érdeklődő",
+          "CRM-hez kötve, minden érdeklődő automatikusan rögzítve",
+          "Azonnali értesítés e-mailben vagy SMS-ben",
+          "Több nyelven is működik",
+          "Beállítás, frissítések és támogatás benne van",
+        ],
+      },
+      {
+        name: "Weboldal + asszisztens", desc: "Prémium weboldal, ami munkát hoz, beépített asszisztenssel.",
+        price: "250 000 Ft-tól", priceNote: "egyszeri", monthly: "+ 30 000 Ft/hó-tól",
+        features: [
+          "Egyedi dizájn, amivel te leszel a prémium választás a környéken",
+          "Villámgyors és mobilra optimalizált",
+          "Beépített helyi SEO az első naptól",
+          "Google Cégprofil beállítás",
+          "CRM-hez kötött ajánlatkérő űrlapok",
+          "Blogot és fotókat te magad is egyszerűen frissíthetsz",
+          "Analitika és konverziómérés",
+          "Minden, ami az Árajánló-asszisztensben, beépítve",
+        ],
+      },
+      {
+        name: "Egyedi", desc: "Bármi más, amit meg kell építeni.",
+        price: "Egyedi ajánlat", priceNote: "", monthly: "Az igényeidhez árazva",
+        features: ["AI Recepciós", "AI Vélemény-ügynök", "Működési vezérlőpult", "SEO és Google Cégprofil"],
+      },
+    ],
+    foundingOffer: "",
+    pricingCta: "Írj nekem Messengeren →",
     ctaTitleA: "NEM VAGY BIZTOS BENNE,",
     ctaTitleB: "MELYIK KELL NEKED?",
-    ctaSub: "Foglalj egy ingyenes igényfelmérést, átvizsgáljuk a vállalkozásodat, és megmondjuk pontosan, mi mozdítja előre.",
-    ctaBtn: "Kérj ingyenes igényfelmérést →",
+    ctaSub: "Írj nekem Facebookon, mondd el, mivel foglalkozol, és őszintén megmondom, melyik hozza a legtöbbet.",
+    ctaBtn: "Írj nekem Messengeren →",
   },
 } as const;
 
@@ -320,37 +390,53 @@ export default function ServicesPage({ lang }: { lang: Locale }) {
         <div className="absolute rounded-full orb-2 pointer-events-none" style={{ width: 700, height: 700, top: "50%", right: "-15%", transform: "translateY(-50%)", background: "radial-gradient(circle, rgba(212,175,55,0.11) 0%, transparent 60%)", filter: "blur(90px)" }} />
 
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-16 relative z-10">
-          <Reveal>
-            <div className="relative bg-[#111111] border border-gold/15 rounded-3xl p-7 md:p-12 lg:p-20 overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent" />
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 40%, rgba(212,175,55,0.07) 0%, transparent 60%)" }} />
-              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div>
-                  <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6"><span className="w-8 h-px bg-gold" />{c.pricingEyebrow}</span>
-                  <h2 className="font-grotesk font-bold text-[clamp(32px,4vw,60px)] text-cream leading-[0.92] tracking-[-0.03em] mb-5">
-                    {c.pricingTitleA}<br />{c.pricingTitlePre}<span className="text-gradient-gold">{c.pricingTitleB}</span>
-                  </h2>
-                  <p className="font-inter text-text-muted text-base leading-relaxed max-w-md">
-                    {c.pricingDesc}
-                  </p>
+          <Reveal className="mb-10 md:mb-14 max-w-2xl">
+            <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold flex items-center gap-3 mb-6"><span className="w-8 h-px bg-gold" />{c.pricingEyebrow}</span>
+            <h2 className="font-grotesk font-bold text-[clamp(32px,4vw,60px)] text-cream leading-[0.92] tracking-[-0.03em] mb-5">
+              {c.pricingTitleA}<br /><span className="text-gradient-gold">{c.pricingTitleB}</span>
+            </h2>
+            <p className="font-inter text-text-muted text-base leading-relaxed">{c.pricingDesc}</p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {c.plans.map((plan, i) => (
+              <Reveal key={plan.name} delay={i * 0.07} className="h-full">
+                <div className="relative bg-[#111111] border border-gold/15 hover:border-gold/40 rounded-3xl p-7 md:p-8 h-full flex flex-col overflow-hidden transition-colors duration-300">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent" />
+                  <h3 className="font-grotesk font-bold text-xl text-cream mb-1">{plan.name}</h3>
+                  <p className="font-inter text-sm text-text-muted mb-6">{plan.desc}</p>
+                  <div className="font-grotesk font-bold text-[clamp(28px,3vw,40px)] text-gradient-gold leading-none tracking-[-0.03em]">{plan.price}</div>
+                  <div className="font-inter text-xs text-text-muted mt-2 min-h-[1rem]">{plan.priceNote}</div>
+                  <div className="font-grotesk font-semibold text-sm text-cream mt-3 mb-6">{plan.monthly}</div>
+                  <ul className="space-y-2.5 border-t border-white/[0.06] pt-6">
+                    {plan.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2.5 font-inter text-sm text-text-muted">
+                        <span className="w-1 h-1 rounded-full bg-gold/60 flex-shrink-0 mt-2" />{f}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="flex flex-col gap-4">
-                  <a href={phone.href}
-                    className="group flex items-center gap-5 bg-[#0A0A0A] border border-white/[0.07] hover:border-gold/30 rounded-2xl px-8 py-6 transition-all duration-300 hover:bg-[#111111]">
-                    <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 group-hover:border-gold/40 transition-all duration-300">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 5.61 5.61l1.66-1.66a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    </div>
-                    <div>
-                      <div className="font-grotesk font-bold text-lg text-cream group-hover:text-gold transition-colors duration-200">{phone.display}</div>
-                      <div className="font-inter text-xs text-text-muted mt-0.5">{c.callNote}</div>
-                    </div>
-                  </a>
-                  <Link href={localize("/contact", lang)}
-                    className="flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
-                    {c.pricingCta}
-                  </Link>
-                </div>
-              </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {c.foundingOffer && (
+            <Reveal className="mt-5">
+              <div className="bg-gold/[0.06] border border-gold/30 rounded-2xl px-6 py-4 font-inter text-sm text-cream">{c.foundingOffer}</div>
+            </Reveal>
+          )}
+
+          <Reveal className="mt-8">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
+                {c.pricingCta}
+              </a>
+              <a href={phone.href}
+                className="flex items-center justify-center gap-3 border border-white/[0.1] hover:border-gold/40 text-cream hover:text-gold font-grotesk font-medium text-sm px-8 py-4 transition-all duration-300">
+                <Phone size={16} className="text-gold" aria-hidden="true" />
+                {c.callNote} {phone.display}
+              </a>
             </div>
           </Reveal>
         </div>
@@ -383,9 +469,9 @@ export default function ServicesPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <Link href={localize("/contact", lang)} className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-1">
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-1">
               {c.ctaBtn}
-            </Link>
+            </a>
           </Reveal>
         </div>
       </section>

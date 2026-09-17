@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Book a Free Audit, Landscale Agency",
+  title: "Contact, Landscale Agency",
   description:
-    "Book a free 30-minute audit with Landscale. We'll show you exactly where your business is losing leads and how AI automation can fix it. No pressure, no hidden fees.",
+    "Message Landscale on Facebook or send an enquiry. Starting prices are published, and replies usually come the same day.",
   keywords:
-    "book free audit tradesmen website, AI lead generation consultation, contractor website quote, free website audit UK, roofer website free audit",
+    "contact Landscale Agency, AI quoting assistant for tradesmen, contractor website quote, trade business website UK",
   openGraph: {
-    title: "Book a Free Audit, Landscale Agency",
+    title: "Contact, Landscale Agency",
     description:
-      "30-minute free consultation. We'll show you exactly where you're losing leads and how to fix it with AI automation.",
+      "Message me on Facebook, replies usually the same day.",
     type: "website",
     url: "https://landscale.agency/contact",
     siteName: "Landscale Agency",

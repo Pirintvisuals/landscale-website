@@ -10,6 +10,7 @@ import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
 import { homeContent, TESTIMONIALS } from "@/content/home";
 import { faqSchema, reviewSchema } from "@/content/home-schema";
+import { MESSENGER_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -196,10 +197,10 @@ export default function HomePage({ lang }: { lang: Locale }) {
 
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }}
                 className="flex flex-col sm:flex-row gap-3 mb-5">
-                <Link href={localize("/contact", lang)} className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1 cursor-pointer">
+                <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1 cursor-pointer">
                   {c.hero.ctaPrimary}
                   <span>→</span>
-                </Link>
+                </a>
                 <Link href={localize("/case-studies", lang)} className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-sm px-6 py-3.5 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300 cursor-pointer">
                   {c.hero.ctaSecondary}
                 </Link>
@@ -493,7 +494,7 @@ export default function HomePage({ lang }: { lang: Locale }) {
       </section>
 
       {/* ── CHATBOT ── */}
-      <Link href={localize("/contact", lang)}>
+      <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer">
         <motion.div className="fixed bottom-6 right-6 z-[200]" whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.94 }}>
           <div className="relative w-14 h-14 rounded-full bg-[#111111] border border-gold/30 flex items-center justify-center shadow-[0_4px_30px_rgba(0,0,0,0.6)] cursor-pointer hover:border-gold/70 hover:bg-[#1a1a1a] transition-all duration-300">
             <div className="absolute inset-0 rounded-full border border-gold/20 animate-ping opacity-50" />
@@ -502,7 +503,7 @@ export default function HomePage({ lang }: { lang: Locale }) {
             </svg>
           </div>
         </motion.div>
-      </Link>
+      </a>
     </>
   );
 }

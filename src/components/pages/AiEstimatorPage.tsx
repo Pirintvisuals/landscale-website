@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
+import { MESSENGER_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -15,7 +16,7 @@ const content = {
     h1a: "INSTANT QUOTES. ",
     h1b: "NO PHONE CALL NEEDED.",
     sub: "A visitor asks for a quote. The AI asks the right questions and gives an accurate estimate, immediately, 24/7.",
-    ctaDemo: "Get Free Demo →",
+    ctaDemo: "Ask for a Free Demo →",
     ctaAction: "See It In Action",
     defTitle: "What Is an AI Estimator Agent?",
     def: "An AI Estimator Agent is a chat widget that integrates into a tradesman's website and delivers instant, accurate price estimates without a phone call. When a visitor requests a quote, the agent asks project-specific questions, covering scope, area size, materials, postcode, and access requirements, then produces a structured, line-item estimate in under two seconds. Contact details are only collected after the estimate is displayed, so every enquiry comes from a price-aware, serious buyer. The result: tradesmen save 15–20 hours per week on preliminary quote calls and receive fewer, better-quality enquiries.",
@@ -50,8 +51,8 @@ const content = {
     ],
     ctaTitleA: "SEE THE ESTIMATOR",
     ctaTitleB: "IN ACTION",
-    ctaSub: "Book a free demo and we'll show you exactly how the AI estimator would work on your site.",
-    ctaBtn: "Book Free Demo →",
+    ctaSub: "Message me on Facebook and I'll show you exactly how the AI estimator would work on your site.",
+    ctaBtn: "Ask for a Free Demo →",
   },
   hu: {
     eyebrow: "AI Árajánló Ügynök",
@@ -93,8 +94,8 @@ const content = {
     ],
     ctaTitleA: "NÉZD MEG AZ ÁRAJÁNLÓT",
     ctaTitleB: "MŰKÖDÉS KÖZBEN",
-    ctaSub: "Foglalj egy ingyenes demót, és pontosan megmutatjuk, hogyan működne az AI árajánló a te oldaladon.",
-    ctaBtn: "Foglalj ingyenes demót →",
+    ctaSub: "Írj nekem Facebookon, és pontosan megmutatom, hogyan működne az AI árajánló a te oldaladon.",
+    ctaBtn: "Kérj ingyenes demót →",
   },
 } as const;
 
@@ -120,9 +121,9 @@ export default function AiEstimatorPage({ lang }: { lang: Locale }) {
             {c.sub}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.65, ease: SPRING }} className="flex flex-wrap gap-4">
-            <Link href={localize("/contact", lang)} className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
               {c.ctaDemo}
-            </Link>
+            </a>
             <Link href={localize("/case-studies", lang)} className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 rounded-full hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300">
               {c.ctaAction}
             </Link>
@@ -263,9 +264,9 @@ export default function AiEstimatorPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <Link href={localize("/contact", lang)} className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
+            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
               {c.ctaBtn}
-            </Link>
+            </a>
           </Reveal>
         </div>
       </section>

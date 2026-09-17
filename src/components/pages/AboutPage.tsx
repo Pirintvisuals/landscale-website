@@ -2,12 +2,10 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import { Shield, BarChart3, Hammer, TrendingUp } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
-import { localize } from "@/lib/i18n";
-import { EMAIL } from "@/content/ui";
+import { EMAIL, MESSENGER_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -33,7 +31,7 @@ const content = {
     procTitleA: "MY ",
     procTitleB: "PROCESS",
     process: [
-      { step: "01", title: "Discovery Call (Free Audit)", desc: "We talk about your business, goals, and challenges. I analyse your current website and marketing, then show you exactly where you're losing leads and money, no charge, no pressure." },
+      { step: "01", title: "Discovery Chat", desc: "We talk about your business, goals, and challenges. I analyse your current website and marketing, then show you exactly where you're losing leads and money, no charge, no pressure." },
       { step: "02", title: "Custom Proposal", desc: "Based on your needs and budget, I recommend Framer or custom Next.js, with a clear timeline and deliverables. You decide what makes sense. No surprises." },
       { step: "03", title: "Build & Collaborate", desc: "I build your website or AI automation with regular check-ins and previews. Your feedback shapes the final product, full transparency throughout." },
       { step: "04", title: "Launch & Support", desc: "I handle the technical launch, train you on how to use your site, and stay available for ongoing support. You focus on running your business." },
@@ -61,11 +59,11 @@ const content = {
     faqTitleA: "FREQUENTLY ASKED",
     faqTitleB: "QUESTIONS",
     faqs: [
-      { q: "How long does it take to build a website?", a: "Depends on the project. A Framer template customisation can be done in 1–2 weeks. A fully custom Next.js site takes 3–6 weeks. I'll give you a clear timeline during the free audit." },
+      { q: "How long does it take to build a website?", a: "Depends on the project. A Framer template customisation can be done in 1–2 weeks. A fully custom Next.js site takes 3–6 weeks. I'll give you a clear timeline when we talk." },
       { q: "What types of tradespeople do you work with?", a: "Roofers, landscapers, hardscapers, builders, remodellers, plumbers, construction firms, any trade business that wants to stop chasing bad leads and start attracting serious buyers. Book an audit and we'll see if I'm the right fit." },
       { q: "What do you use to build websites, Framer or code?", a: "Depends on your needs and budget. Framer is great if you want to edit content yourself and need something fast. Custom Next.js is better for complex sites with advanced features. I'll recommend what makes sense during the audit." },
       { q: "What AI services do you offer?", a: "I build AI review agents (qualify leads), AI receptionists (book appointments), AI estimators (instant quotes), custom chatbots, and smart form automation. The exact solution depends on your business needs." },
-      { q: "How much does a project cost?", a: "It depends on scope. I can't give a price upfront because every project is different. During the free audit, I'll give you a custom proposal with clear pricing based on what you actually need." },
+      { q: "How much does a project cost?", a: "Starting prices are on the Services page. The Quoting Assistant starts at £295 setup + £99/month, and a website with the assistant built in starts at £1,195 + £79/month. Your final price depends on what you need, and you get it in writing before anything starts." },
       { q: "Can I edit the website myself after you build it?", a: "If you choose Framer, yes, it's designed for non-technical editing. For custom sites, I'll train you on the CMS or provide ongoing support for updates." },
       { q: "Do you offer payment plans?", a: "Yes, for larger projects. We'll discuss payment terms during the proposal phase. I'm flexible and want to make it work for your budget." },
       { q: "What happens after the website launches?", a: "I provide training on how to use your site and I'm available for ongoing support. Many clients keep me on retainer for updates, SEO, or adding new features. It's entirely up to you." },
@@ -73,7 +71,7 @@ const content = {
     ctaTitleA: "READY TO WORK",
     ctaTitleB: "TOGETHER?",
     ctaSub: "I'm selective, I'm genuinely invested in every client's success. Let's see if we're a fit.",
-    ctaBtn: "Book a Discovery Call",
+    ctaBtn: "Message Me on Facebook",
     ctaEmail: "or email ",
   },
   hu: {
@@ -95,7 +93,7 @@ const content = {
     procTitleA: "A ",
     procTitleB: "FOLYAMATOM",
     process: [
-      { step: "01", title: "Ismerkedő beszélgetés (ingyenes igényfelmérés)", desc: "Beszélünk a vállalkozásodról, a céljaidról és a kihívásaidról. Átnézem a jelenlegi weboldaladat és marketingedet, majd pontosan megmutatom, hol veszítesz érdeklődőket és pénzt, díjmentesen, nyomás nélkül." },
+      { step: "01", title: "Ismerkedő beszélgetés", desc: "Beszélünk a vállalkozásodról, a céljaidról és a kihívásaidról. Átnézem a jelenlegi weboldaladat és marketingedet, majd pontosan megmutatom, hol veszítesz érdeklődőket és pénzt, díjmentesen, nyomás nélkül." },
       { step: "02", title: "Egyedi ajánlat", desc: "Az igényeid és a büdzséd alapján Framert vagy egyedi Next.js-t ajánlok, világos ütemtervvel és leszállítandókkal. Te döntöd el, mi éri meg. Nincs meglepetés." },
       { step: "03", title: "Építés és együttműködés", desc: "Megépítem a weboldaladat vagy az AI-automatizálásodat, rendszeres egyeztetésekkel és előnézetekkel. A visszajelzésed alakítja a végterméket, végig teljes átláthatóság." },
       { step: "04", title: "Indítás és támogatás", desc: "Elintézem a technikai indítást, betanítalak az oldal használatára, és utána is elérhető maradok a folyamatos támogatáshoz. Te a vállalkozásod vezetésére figyelsz." },
@@ -123,11 +121,11 @@ const content = {
     faqTitleA: "GYAKORI",
     faqTitleB: "KÉRDÉSEK",
     faqs: [
-      { q: "Mennyi idő alatt készül el egy weboldal?", a: "A projekttől függ. Egy Framer-sablon testreszabása 1–2 hét alatt megvan. Egy teljesen egyedi Next.js oldal 3–6 hét. Az ingyenes igényfelmérés során világos ütemtervet adok." },
-      { q: "Milyen szakmákkal dolgozol?", a: "Tetőfedőkkel, tereprendezőkkel, térkövezőkkel, kivitelezőkkel, felújítókkal, vízvezeték-szerelőkkel, építőipari cégekkel, minden olyan vállalkozással, amelyik abba akarja hagyni a rossz érdeklődők hajkurászását, és komoly megrendelőket akar vonzani. Foglalj egy igényfelmérést, és kiderül, passzolunk-e." },
-      { q: "Mivel építed a weboldalakat, Framer vagy kód?", a: "Az igényeidtől és a büdzsédtől függ. A Framer remek, ha magad akarod szerkeszteni a tartalmat és gyorsan kell valami. Az egyedi Next.js jobb az összetett, fejlett funkciós oldalakhoz. Az igényfelmérés során azt ajánlom, ami neked megéri." },
+      { q: "Mennyi idő alatt készül el egy weboldal?", a: "A projekttől függ. Egy Framer-sablon testreszabása 1–2 hét alatt megvan. Egy teljesen egyedi Next.js oldal 3–6 hét. Amikor beszélünk, világos ütemtervet adok." },
+      { q: "Milyen szakmákkal dolgozol?", a: "Tetőfedőkkel, tereprendezőkkel, térkövezőkkel, kivitelezőkkel, felújítókkal, vízvezeték-szerelőkkel, építőipari cégekkel, minden olyan vállalkozással, amelyik abba akarja hagyni a rossz érdeklődők hajkurászását, és komoly megrendelőket akar vonzani. Írj nekem, és kiderül, passzolunk-e." },
+      { q: "Mivel építed a weboldalakat, Framer vagy kód?", a: "Az igényeidtől és a büdzsédtől függ. A Framer remek, ha magad akarod szerkeszteni a tartalmat és gyorsan kell valami. Az egyedi Next.js jobb az összetett, fejlett funkciós oldalakhoz. Amikor beszélünk, azt ajánlom, ami neked megéri." },
       { q: "Milyen AI-szolgáltatásokat kínálsz?", a: "Építek AI vélemény-ügynököt (érdeklődő-minősítés), AI recepcióst (időpontfoglalás), AI árajánlót (azonnali becslés), egyedi chatbotokat és okos űrlap-automatizálást. A pontos megoldás a vállalkozásod igényeitől függ." },
-      { q: "Mennyibe kerül egy projekt?", a: "A terjedelemtől függ. Előre nem tudok árat mondani, mert minden projekt más. Az ingyenes igényfelmérés során egyedi ajánlatot adok, világos árazással, arra szabva, amire tényleg szükséged van." },
+      { q: "Mennyibe kerül egy projekt?", a: "Az induló árak a Szolgáltatások oldalon vannak. Az Árajánló-asszisztens 50 000 Ft beállítás + 50 000 Ft/hó, egy weboldal beépített asszisztenssel pedig 250 000 Ft-tól + 30 000 Ft/hó-tól indul. A végső ár attól függ, mire van szükséged, és írásban megkapod, mielőtt bármi elindulna." },
       { q: "Szerkeszthetem magam a weboldalt, miután megépítetted?", a: "Ha a Framert választod, igen, kifejezetten nem technikai felhasználóknak való szerkesztésre készült. Egyedi oldalaknál betanítalak a CMS használatára, vagy folyamatos támogatást nyújtok a frissítésekhez." },
       { q: "Van részletfizetési lehetőség?", a: "Igen, nagyobb projekteknél. A fizetési feltételeket az ajánlati szakaszban beszéljük meg. Rugalmas vagyok, és azt akarom, hogy a büdzsédhez illeszkedjen." },
       { q: "Mi történik a weboldal indítása után?", a: "Betanítalak az oldal használatára, és elérhető vagyok a folyamatos támogatáshoz. Sok ügyfél megtart havidíjas alapon frissítésekhez, SEO-hoz vagy új funkciók hozzáadásához. Teljesen rajtad múlik." },
@@ -135,7 +133,7 @@ const content = {
     ctaTitleA: "KÉSZEN ÁLLSZ, HOGY",
     ctaTitleB: "EGYÜTT DOLGOZZUNK?",
     ctaSub: "Válogatós vagyok, őszintén érdekelt vagyok minden ügyfél sikerében. Nézzük meg, passzolunk-e.",
-    ctaBtn: "Foglalj egy ismerkedő hívást",
+    ctaBtn: "Írj nekem Messengeren",
     ctaEmail: "vagy írj a ",
   },
 } as const;
@@ -418,11 +416,11 @@ export default function AboutPage({ lang }: { lang: Locale }) {
           </Reveal>
           <Reveal delay={0.35}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href={localize("/contact", lang)}
+              <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-lg px-12 py-6 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] hover:-translate-y-1.5">
                 {c.ctaBtn}
                 <span>→</span>
-              </Link>
+              </a>
               <a href={`mailto:${EMAIL}`} className="font-inter text-text-muted/60 text-sm hover:text-gold transition-colors">
                 {c.ctaEmail}{EMAIL}
               </a>
