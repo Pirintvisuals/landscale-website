@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Space_Grotesk, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
@@ -151,6 +152,8 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <SpeedInsights />
+        {/* Website analytics (PostHog): page views, contact clicks, forms. Stores nothing in the browser. */}
+        <Script src="/site-analytics.js" data-site="landscale" strategy="afterInteractive" />
       </body>
     </html>
   );
