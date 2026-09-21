@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Chatbot, érdeklődő-minősítés 0–24 | Landscale",
   description:
-    "AI chatbot, ami 0–24 minősíti a weboldalad látogatóit: ellenőrzi a büdzsét, a helyszínt és a határidőt, kiszűri a komolytalanokat, a komoly érdeklődőket egyből hozzád küldi.",
+    "AI chatbot, ami 0–24 minősíti a weboldalad látogatóit: ellenőrzi a keretet, a helyszínt és a határidőt, kiszűri a komolytalanokat, a komoly érdeklődőket egyből hozzád küldi.",
   alternates: {
     canonical: "https://landscale.agency/hu/services/ai-chatbot",
     languages: {
