@@ -150,7 +150,7 @@ export const homeContent: Record<Locale, HomeDict> = {
         features: ["VIN-based vehicle lookup", "Exact parts by part number", "Labour at your hourly rate", "Itemised, ready-to-accept quote"],
         demoLabel: "Try the demo →",
         demoNote: "The demo runs on sample prices. VIN lookup comes with the full build.",
-        cta: "Talk to me about it",
+        cta: "See how it works →",
       },
     },
     why: {
@@ -251,7 +251,7 @@ export const homeContent: Record<Locale, HomeDict> = {
         features: ["Jármű-azonosítás alvázszámból", "Pontos alkatrész cikkszám alapján", "Munkadíj a saját óradíjaddal", "Tételes, elfogadható árajánlat"],
         demoLabel: "Próbáld ki a demót →",
         demoNote: "A demó mintaárakkal számol. Az alvázszám-keresés a teljes verzió része.",
-        cta: "Beszéljünk róla",
+        cta: "Nézd meg, hogy működik →",
       },
     },
     why: {

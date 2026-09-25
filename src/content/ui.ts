@@ -47,6 +47,7 @@ export const NAV: Record<Locale, NavDict> = {
       { href: "/services/ai-chatbot", label: "AI Chatbot", desc: "Qualifies leads 24/7, filters out time-wasters", tag: null },
       { href: "/services/website-design", label: "Website Design", desc: "Luxury sites with local SEO built in", tag: null },
       { href: "/services/seo-marketing", label: "Local SEO", desc: "Rank #1 when local clients search for your trade", tag: null },
+      { href: "/services/mechanic-quoting", label: "Quoting Agent for Garages", desc: "Real priced quotes from the VIN and part numbers", tag: null },
     ],
     serviceTag: "Core",
     links: [
@@ -68,6 +69,7 @@ export const NAV: Record<Locale, NavDict> = {
       { href: "/services/ai-chatbot", label: "AI Chatbot", desc: "0–24 szűri az érdeklődőket, kiszórja a komolytalanokat", tag: null },
       { href: "/services/website-design", label: "Weboldal Készítés", desc: "Igényes oldalak beépített helyi SEO-val", tag: null },
       { href: "/services/seo-marketing", label: "Helyi SEO", desc: "Legyél első, amikor a helyi ügyfelek a szakmádra keresnek", tag: null },
+      { href: "/services/mechanic-quoting", label: "Árajánló Autószervizeknek", desc: "Valódi árajánlat alvázszám és cikkszám alapján", tag: null },
     ],
     serviceTag: "Fő",
     links: [
@@ -106,6 +108,7 @@ export const FOOTER: Record<Locale, FooterDict> = {
       { href: "/services/ai-chatbot", label: "AI Chatbot" },
       { href: "/services/website-design", label: "Premium Website" },
       { href: "/services/seo-marketing", label: "Local SEO" },
+      { href: "/services/mechanic-quoting", label: "Quoting Agent for Garages" },
       { href: "/services", label: "All Services" },
     ],
     connectTitle: "Connect",
@@ -132,6 +135,7 @@ export const FOOTER: Record<Locale, FooterDict> = {
       { href: "/services/ai-chatbot", label: "AI Chatbot" },
       { href: "/services/website-design", label: "Prémium Weboldal" },
       { href: "/services/seo-marketing", label: "Helyi SEO" },
+      { href: "/services/mechanic-quoting", label: "Árajánló Autószervizeknek" },
       { href: "/services", label: "Összes szolgáltatás" },
     ],
     connectTitle: "Elérhetőség",

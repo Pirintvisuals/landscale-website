@@ -11,9 +11,9 @@ import { localize } from "@/lib/i18n";
 import { homeContent, TESTIMONIALS } from "@/content/home";
 import { faqSchema, reviewSchema } from "@/content/home-schema";
 import { MESSENGER_URL } from "@/content/ui";
+import { MECHANIC_DEMO_URL } from "@/components/pages/MechanicQuotingPage";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
-const MECHANIC_DEMO_URL = "https://autoszerviz-mukodo-demo.vercel.app/";
 
 function CountUp({ target, suffix = "", duration = 2.5 }: { target: number; suffix?: string; duration?: number }) {
   const ref = useRef(null);
@@ -442,10 +442,10 @@ export default function HomePage({ lang }: { lang: Locale }) {
                       className="inline-flex items-center justify-center bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3 rounded-full hover:bg-bright-gold transition-all duration-300">
                       {c.services.featured.demoLabel}
                     </a>
-                    <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
+                    <Link href={localize("/services/mechanic-quoting", lang)}
                       className="inline-flex items-center justify-center border border-gold/30 text-gold font-grotesk font-semibold text-sm px-6 py-3 rounded-full hover:bg-gold/10 hover:border-gold/60 transition-all duration-300">
                       {c.services.featured.cta}
-                    </a>
+                    </Link>
                   </div>
                   <p className="font-inter text-[11px] text-text-muted">{c.services.featured.demoNote}</p>
                 </div>

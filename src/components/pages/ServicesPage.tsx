@@ -16,8 +16,8 @@ const extraIcons = [Star, Phone, Search, LayoutDashboard];
 const content = {
   en: {
     eyebrow: "What We Do",
-    h1: ["THREE CORE SERVICES.", "ONE GOAL."],
-    heroSub: "Everything built specifically for trade businesses. We understand your industry, your clients, and what it takes to grow.",
+    h1: ["FOUR CORE SERVICES.", "ONE GOAL."],
+    heroSub: "Everything built specifically for trade businesses and garages. We understand your industry, your clients, and what it takes to grow.",
     ticker: ["Premium Websites", "• AI Lead Filtering", "Local SEO", "• 24/7 AI Estimator", "Instant Quotes", "• Lead Qualification", "Smart Automation"],
     coreServices: [
       {
@@ -46,6 +46,15 @@ const content = {
         features: ["Bespoke luxury design", "Mobile-first & under 2s load", "Lead capture & contact forms", "Local SEO built in from day one", "Google Business Profile setup", "Analytics & conversion tracking"],
         stats: [{ label: "PageSpeed Score", val: "100/100" }, { label: "Load time", val: "<0.8s" }, { label: "SEO Score", val: "100/100" }],
         href: "/services/website-design", cta: "Learn More",
+      },
+      {
+        num: "04", tag: "New · Mechanics & Garages", tagPulse: true,
+        title: "Full Quoting\nAgent", titleGold: "Quotes from a VIN",
+        subtitle: "Real priced quotes from the VIN and part numbers, not ballpark figures.",
+        desc: "The customer enters their VIN and describes the job. The agent identifies the exact vehicle, finds the right parts by part number, adds labour at your own rates and hands back an itemised quote they can accept.",
+        features: ["VIN-based vehicle lookup", "Exact parts by part number", "Labour at your hourly rate", "Itemised, ready-to-accept quote", "Cars, vans, motorbikes & commercial", "Works 24/7 on your website"],
+        stats: [{ label: "Quote based on", val: "VIN + part no." }, { label: "Vehicles", val: "All types" }, { label: "Availability", val: "24/7" }],
+        href: "/services/mechanic-quoting", cta: "See How It Works",
       },
     ],
     extraServices: [
@@ -108,8 +117,8 @@ const content = {
   },
   hu: {
     eyebrow: "Amit csinálunk",
-    h1: ["HÁROM FŐ SZOLGÁLTATÁS.", "EGY CÉL."],
-    heroSub: "Minden kifejezetten vállalkozásoknak építve. Értjük a szakmádat, az ügyfeleidet, és azt, mi kell a növekedéshez.",
+    h1: ["NÉGY FŐ SZOLGÁLTATÁS.", "EGY CÉL."],
+    heroSub: "Minden kifejezetten vállalkozásoknak és autószervizeknek építve. Értjük a szakmádat, az ügyfeleidet, és azt, mi kell a növekedéshez.",
     ticker: ["Prémium weboldalak", "• AI érdeklődő-szűrés", "Helyi SEO", "• 0–24 AI árajánló", "Azonnali árajánlat", "• Érdeklődő-minősítés", "Okos automatizálás"],
     coreServices: [
       {
@@ -139,6 +148,15 @@ const content = {
         stats: [{ label: "PageSpeed pont", val: "100/100" }, { label: "Betöltés", val: "<0,8 mp" }, { label: "SEO pont", val: "100/100" }],
         href: "/services/website-design", cta: "Tudj meg többet",
       },
+      {
+        num: "04", tag: "Új · Autószervizeknek", tagPulse: true,
+        title: "Teljes Árajánló\nÜgynök", titleGold: "Alvázszám alapján",
+        subtitle: "Valódi, tételes árajánlat alvázszám és cikkszám alapján, nem hasraütéses becslés.",
+        desc: "Az ügyfél megadja az alvázszámot és leírja a hibát. Az ügynök beazonosítja a pontos járművet, cikkszám alapján kikeresi a megfelelő alkatrészeket, hozzáadja a munkadíjat a te óradíjaddal, és tételes árajánlatot ad, amit el is tud fogadni.",
+        features: ["Jármű-azonosítás alvázszámból", "Pontos alkatrész cikkszám alapján", "Munkadíj a saját óradíjaddal", "Tételes, elfogadható árajánlat", "Autó, kisbusz, motor, haszonjármű", "0–24 a weboldaladon"],
+        stats: [{ label: "Az ajánlat alapja", val: "Alvázszám + cikkszám" }, { label: "Járművek", val: "Minden típus" }, { label: "Elérhetőség", val: "0–24" }],
+        href: "/services/mechanic-quoting", cta: "Nézd meg, hogy működik",
+      },
     ],
     extraServices: [
       { title: "AI Vélemény-ügynök", desc: "A munka elvégzése után az AI automatikusan ír az ügyfélnek, és megkéri, hogy 1–10-ig értékelje az élményt. 7 vagy afölött? Közvetlen linket kap egy Google-értékeléshez. 7 alatt? Az AI rákérdez, mi ment félre, hogy javíthasd, mielőtt nyilvános panasz lenne belőle." },
@@ -154,12 +172,12 @@ const content = {
     callNote: "Inkább beszélnél?",
     pricingEyebrow: "Árazás",
     pricingTitleA: "Egyszerű csomagok.",
-    pricingTitleB: "Világos induló árak.",
-    pricingDesc: "Hogy már az első beszélgetés előtt tudd, mire számíts. A végső ár a szakmádtól és az igényeidtől függ, és írásban megkapod, mielőtt bármi elindulna.",
+    pricingTitleB: "Rád szabott ár.",
+    pricingDesc: "Az ár a szakmádtól és az igényeidtől függ. Egy rövid beszélgetés után írásban megkapod, mielőtt bármi elindulna.",
     plans: [
       {
         name: "Árajánló-asszisztens", desc: "0–24-es értékesítő a meglévő weboldaladon.",
-        price: "50 000 Ft", priceNote: "egyszeri beállítás", monthly: "+ 50 000 Ft/hó",
+        price: "Egyedi ár", priceNote: "beállítás + havi díj", monthly: "Írásban, mielőtt bármi elindul",
         features: [
           "AI chatbot, ami a saját áraid alapján azonnal becslést ad",
           "Minősít minden érdeklődőt: munka, keret, helyszín, határidő",
@@ -173,7 +191,7 @@ const content = {
       },
       {
         name: "Weboldal + asszisztens", desc: "Prémium weboldal, ami munkát hoz, beépített asszisztenssel.",
-        price: "250 000 Ft-tól", priceNote: "egyszeri", monthly: "+ 30 000 Ft/hó-tól",
+        price: "Egyedi ár", priceNote: "egyszeri + havi díj", monthly: "Írásban, mielőtt bármi elindul",
         features: [
           "Egyedi dizájn, amivel te leszel a prémium választás a környéken",
           "Villámgyors és mobilra optimalizált",
