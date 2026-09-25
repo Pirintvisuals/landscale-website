@@ -5,11 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe, TrendingUp } from "lucide-react";
+import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe, TrendingUp, Car } from "lucide-react";
 import { localeFromPathname, localize, switchLocaleHref, toEnglishPath } from "@/lib/i18n";
 import { MESSENGER_URL, NAV, PHONE } from "@/content/ui";
 
-const serviceIcons = [Zap, MessageCircle, Globe, TrendingUp];
+const serviceIcons = [Zap, MessageCircle, Globe, TrendingUp, Car];
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
