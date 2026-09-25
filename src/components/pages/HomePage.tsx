@@ -13,6 +13,7 @@ import { faqSchema, reviewSchema } from "@/content/home-schema";
 import { MESSENGER_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
+const MECHANIC_DEMO_URL = "https://autoszerviz-mukodo-demo.vercel.app/";
 
 function CountUp({ target, suffix = "", duration = 2.5 }: { target: number; suffix?: string; duration?: number }) {
   const ref = useRef(null);
@@ -408,6 +409,49 @@ export default function HomePage({ lang }: { lang: Locale }) {
               </Reveal>
             ))}
           </div>
+
+          {/* New: full quoting agent for mechanics */}
+          <Reveal className="mt-5">
+            <div className="relative bg-[#111111] border border-gold/35 hover:border-gold/60 p-7 md:p-10 rounded-3xl overflow-hidden transition-colors duration-300">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+              <div className="absolute inset-0 pointer-events-none"
+                style={{ background: "radial-gradient(ellipse at 20% 0%, rgba(212,175,55,0.08) 0%, transparent 60%)" }} />
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-12 items-center">
+                <div>
+                  <div className="flex flex-wrap items-center gap-3 mb-5">
+                    <span className="bg-gold text-deep-black font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">{c.services.featured.badge}</span>
+                    <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/25 px-3 py-1.5 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                      <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{c.services.featured.tag}</span>
+                    </div>
+                  </div>
+                  <h3 className="font-grotesk font-bold text-2xl md:text-3xl text-cream mb-2 tracking-tight">{c.services.featured.title}</h3>
+                  <p className="font-cormorant text-base text-gold/60 italic mb-4 leading-relaxed">{c.services.featured.italic}</p>
+                  <p className="font-inter text-text-muted text-sm leading-relaxed">{c.services.featured.desc}</p>
+                </div>
+                <div>
+                  <ul className="space-y-2.5 mb-7">
+                    {c.services.featured.features.map((f) => (
+                      <li key={f} className="flex items-center gap-3 font-inter text-sm text-cream/70">
+                        <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />{f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-col sm:flex-row gap-3 mb-3">
+                    <a href={MECHANIC_DEMO_URL} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3 rounded-full hover:bg-bright-gold transition-all duration-300">
+                      {c.services.featured.demoLabel}
+                    </a>
+                    <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center border border-gold/30 text-gold font-grotesk font-semibold text-sm px-6 py-3 rounded-full hover:bg-gold/10 hover:border-gold/60 transition-all duration-300">
+                      {c.services.featured.cta}
+                    </a>
+                  </div>
+                  <p className="font-inter text-[11px] text-text-muted">{c.services.featured.demoNote}</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
 
           {/* See all services CTA */}
           <Reveal className="mt-10 text-center">

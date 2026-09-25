@@ -34,6 +34,11 @@ export type HomeDict = {
       features: string[];
       stats: { val: string; label: string }[];
     }[];
+    featured: {
+      badge: string; tag: string; title: string; italic: string; desc: string;
+      features: string[];
+      demoLabel: string; demoNote: string; cta: string;
+    };
   };
   why: {
     eyebrow: string;
@@ -74,14 +79,14 @@ export const TESTIMONIALS: Record<Locale, { quote: string; name: string; company
 export const homeContent: Record<Locale, HomeDict> = {
   en: {
     hero: {
-      eyebrow: "AI-Powered Lead Qualification for Tradesmen",
-      line1: "TRADESMEN",
-      line2: "STOP CHASING",
-      line3: "DEAD LEADS.",
-      sub: "We build premium websites with AI-powered lead filtering, intelligent estimator agents that qualify leads and give instant quotes, so you only talk to serious buyers.",
+      eyebrow: "AI Quoting for Trades & Mechanics",
+      line1: "TRADES &",
+      line2: "MECHANICS:",
+      line3: "NO DEAD LEADS.",
+      sub: "We build premium websites and AI quoting assistants. Trades get instant estimates, garages get real priced quotes from the VIN and part numbers, so you only talk to serious buyers.",
       ctaPrimary: "Message Me on Facebook",
       ctaSecondary: "See Our Work",
-      trust: "Trusted by trade businesses",
+      trust: "Trusted by trades & service businesses",
       scroll: "Scroll",
     },
     stats: [
@@ -136,11 +141,22 @@ export const homeContent: Record<Locale, HomeDict> = {
           stats: [{ val: "100", label: "PageSpeed" }, { val: "<0.8s", label: "Load time" }, { val: "100", label: "SEO Score" }],
         },
       ],
+      featured: {
+        badge: "New",
+        tag: "For Mechanics & Garages",
+        title: "Full Quoting Agent",
+        italic: "Real priced quotes from the VIN and part numbers, not ballpark figures.",
+        desc: "The customer enters their VIN and describes the job. The agent identifies the exact vehicle, finds the right parts by part number, adds labour at your own rates and hands back an itemised quote they can accept. Works for cars, vans, motorbikes and commercial vehicles.",
+        features: ["VIN-based vehicle lookup", "Exact parts by part number", "Labour at your hourly rate", "Itemised, ready-to-accept quote"],
+        demoLabel: "Try the demo →",
+        demoNote: "The demo runs on sample prices. VIN lookup comes with the full build.",
+        cta: "Talk to me about it",
+      },
     },
     why: {
       eyebrow: "Why Me",
-      line1: "WHY ELITE",
-      line2: "TRADESMEN",
+      line1: "WHY TRADES &",
+      line2: "MECHANICS",
       line3: "CHOOSE ME",
       italic: "I grew up around tradespeople. I understand your industry at a level a generalist agency never could.",
       story: "My story →",
@@ -152,7 +168,7 @@ export const homeContent: Record<Locale, HomeDict> = {
     },
     trust: {
       eyebrow: "By The Numbers",
-      headA: "Why Tradesmen",
+      headA: "Why Trades & Mechanics",
       headB: "Trust Landscale",
       items: [
         { value: "100/100", label: "Google PageSpeed Score", desc: "Perfect performance on every build" },
@@ -164,14 +180,14 @@ export const homeContent: Record<Locale, HomeDict> = {
   },
   hu: {
     hero: {
-      eyebrow: "AI-alapú érdeklődő-szűrés vállalkozóknak",
+      eyebrow: "AI árajánlás vállalkozóknak és autószervizeknek",
       line1: "VÉGE A",
       line2: "KOMOLYTALAN",
       line3: "ÉRDEKLŐDŐKNEK.",
-      sub: "Prémium weboldalakat építünk beépített AI-szűréssel és okos árajánló ügynökökkel, amelyek megszűrik az érdeklődőket és azonnal árat adnak, így már csak a komoly megrendelőkkel kell foglalkoznod.",
+      sub: "Prémium weboldalakat és AI árajánló ügynököket építünk. Vállalkozóknak azonnali árbecslés, autószervizeknek valódi, tételes árajánlat alvázszám és cikkszám alapján, így már csak a komoly megrendelőkkel kell foglalkoznod.",
       ctaPrimary: "Írj nekem Messengeren",
       ctaSecondary: "Nézd meg a munkáinkat",
-      trust: "Vállalkozók bíznak bennünk",
+      trust: "Vállalkozók és szervizek bíznak bennünk",
       scroll: "Görgess",
     },
     stats: [
@@ -226,6 +242,17 @@ export const homeContent: Record<Locale, HomeDict> = {
           stats: [{ val: "100", label: "PageSpeed" }, { val: "<0,8 mp", label: "Betöltés" }, { val: "100", label: "SEO pont" }],
         },
       ],
+      featured: {
+        badge: "Új",
+        tag: "Autószerelőknek és szervizeknek",
+        title: "Teljes Árajánló Ügynök",
+        italic: "Valódi, tételes árajánlat alvázszám és cikkszám alapján, nem hasraütéses becslés.",
+        desc: "Az ügyfél megadja az alvázszámot és leírja a hibát. Az ügynök beazonosítja a pontos járművet, cikkszám alapján kikeresi a megfelelő alkatrészeket, hozzáadja a munkadíjat a te óradíjaddal, és tételes árajánlatot ad, amit el is tud fogadni. Autóra, kisbuszra, motorra és haszonjárműre is.",
+        features: ["Jármű-azonosítás alvázszámból", "Pontos alkatrész cikkszám alapján", "Munkadíj a saját óradíjaddal", "Tételes, elfogadható árajánlat"],
+        demoLabel: "Próbáld ki a demót →",
+        demoNote: "A demó mintaárakkal számol. Az alvázszám-keresés a teljes verzió része.",
+        cta: "Beszéljünk róla",
+      },
     },
     why: {
       eyebrow: "Miért én",
@@ -242,7 +269,7 @@ export const homeContent: Record<Locale, HomeDict> = {
     },
     trust: {
       eyebrow: "Számokban",
-      headA: "Miért bíznak a vállalkozók",
+      headA: "Miért bíznak a vállalkozók és szervizek",
       headB: "a Landscale-ben",
       items: [
         { value: "100/100", label: "Google PageSpeed pontszám", desc: "Tökéletes teljesítmény minden elkészült oldalon" },
