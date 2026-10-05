@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { MESSENGER_URL } from "@/content/ui";
+import { GarageVisual } from "@/components/ui/garage-visual";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -11,69 +12,69 @@ export const MECHANIC_DEMO_URL = "https://autoszerviz-mukodo-demo.vercel.app/";
 
 const content = {
   en: {
-    eyebrow: "Full Quoting Agent · For Mechanics & Garages",
-    h1a: "REAL PRICED QUOTES ",
-    h1b: "FROM A VIN.",
-    sub: "The customer enters their VIN, your agent finds the exact parts and adds your labour. They get an itemised quote, you get a booking.",
+    eyebrow: "Quote Builder · For Mechanics & Garages",
+    h1a: "ITEMISED QUOTES ",
+    h1b: "IN MINUTES.",
+    sub: "You enter the VIN and pick the job. It finds the exact parts, asks what it needs to know, adds your labour and hands you a PDF quote, priced the way your workshop prices.",
     ctaDemo: "Try the Demo →",
     ctaAction: "Talk to Me About It",
-    demoNote: "The demo runs on sample prices. VIN lookup comes with the full build.",
-    defTitle: "What Is a Full Quoting Agent for Garages?",
-    def: "A full quoting agent is an AI assistant on a garage's website that produces a real, itemised repair or service quote instead of a ballpark estimate. The customer enters their vehicle identification number (VIN) and describes the problem or the service they need. The agent decodes the VIN to identify the exact make, model, engine and year, looks up the correct parts by part number, adds labour using the garage's own hourly rate and job times, and returns an itemised quote the customer can accept. It works for cars, vans, motorbikes and commercial vehicles, and runs 24/7, so the garage stops spending time on the phone pricing jobs by hand.",
+    demoNote: "The demo runs on sample prices, without VIN lookup. During a 30-day pilot we set it up with your own data.",
+    defTitle: "What Is a Quote Builder for Garages?",
+    def: "A quote builder is a tool your mechanics or service desk use to price a repair or service job. You enter the vehicle identification number (VIN) and pick the job, for example brake pads and discs. The tool identifies the exact make, model and engine, lists the parts that job needs on that vehicle, and recommends one from the brands you use. Where the vehicle data alone can't decide, such as the disc diameter, it asks instead of guessing. It adds the extras the job usually needs, your parts prices, your hourly rate and VAT, and produces an itemised quote you can print or send as a PDF. When you correct a price, it remembers it for next time. Every setup is built around one garage: its brands, its prices, its labour rate and the jobs it quotes every week.",
     howTitleA: "How the ",
-    howTitleB: "Quoting Agent Works",
+    howTitleB: "Quote Builder Works",
     steps: [
-      { step: "01", title: "Customer Enters the VIN", desc: "Along with a short description of the fault or the service they want, on your website, any time of day." },
-      { step: "02", title: "The Exact Vehicle Is Identified", desc: "The VIN tells the agent the precise make, model, engine and year, so there's no guessing which parts fit." },
-      { step: "03", title: "Parts and Labour Are Priced", desc: "The right parts are found by part number, and labour is added at your hourly rate and your job times." },
-      { step: "04", title: "An Itemised Quote, Ready to Accept", desc: "The customer sees every line of the quote and can accept it. You get their details and the job, already priced." },
+      { step: "01", title: "Enter the VIN", desc: "The exact make, model and engine come from the VIN, so there's no guessing which parts fit." },
+      { step: "02", title: "Pick the Job", desc: "Oil change, service, timing belt, brakes, clutch. The jobs you price every week, set up as one-click tiles." },
+      { step: "03", title: "Check the Parts", desc: "It recommends a part from your brands and shows every other option if you want them. If something can't be decided from the VIN, like the disc size, it asks." },
+      { step: "04", title: "Send the Quote", desc: "Parts, extras, labour at your rate and VAT, totalled. Add the customer's name and reg, then print it or send it as a PDF." },
     ],
     featTitleA: "Everything ",
     featTitleB: "Included",
     features: [
-      { num: "01", title: "VIN-Based Vehicle Lookup", desc: "The exact vehicle from the VIN, not from whatever the customer thinks they drive." },
-      { num: "02", title: "Exact Parts by Part Number", desc: "Parts matched to that specific vehicle, so the quote reflects what the job really needs." },
-      { num: "03", title: "Your Labour Rates", desc: "Your hourly rate and your job times, not a generic national average." },
-      { num: "04", title: "Itemised, Accept-Ready Quotes", desc: "Every part and every hour on the page. No vague ranges, no 'it depends'." },
-      { num: "05", title: "All Vehicle Types", desc: "Cars, vans, motorbikes and commercial vehicles." },
-      { num: "06", title: "Works 24/7", desc: "Customers get their quote in the evening or at the weekend, while you're under a car or off the clock." },
+      { num: "01", title: "VIN-Based Vehicle Lookup", desc: "The exact vehicle from the VIN, not the closest match." },
+      { num: "02", title: "Recommends Your Brands", desc: "Your preferred brands first, with every other matching part one click away." },
+      { num: "03", title: "Asks Instead of Guessing", desc: "When the vehicle data can't decide, it asks, so the quote doesn't miss anything." },
+      { num: "04", title: "Your Prices, Your Labour Rate", desc: "Your parts prices, your markup and your hourly rate. Nothing generic." },
+      { num: "05", title: "Remembers Your Corrections", desc: "Change a price once and it uses your price for that part next time." },
+      { num: "06", title: "Itemised PDF Quote", desc: "Every part and every hour on the page, ready to print or send to the customer." },
     ],
     ctaTitleA: "STOP PRICING JOBS",
-    ctaTitleB: "ON THE PHONE",
-    ctaSub: "Message me on Facebook and I'll show you how the quoting agent would work for your garage.",
+    ctaTitleB: "BY HAND",
+    ctaSub: "Message me on Facebook and I'll show you how the quote builder would work with your brands and your prices.",
     ctaBtn: "Message Me on Facebook →",
   },
   hu: {
-    eyebrow: "Teljes Árajánló Ügynök · Autószerelőknek és szervizeknek",
-    h1a: "VALÓDI ÁRAJÁNLAT ",
-    h1b: "ALVÁZSZÁMBÓL.",
-    sub: "Az ügyfél megadja az alvázszámot, az ügynök kikeresi a pontos alkatrészeket és hozzáadja a munkadíjat. Ő tételes árajánlatot kap, te pedig egy munkát.",
+    eyebrow: "Árajánlat-készítő · Autószerelőknek és szervizeknek",
+    h1a: "TÉTELES ÁRAJÁNLAT ",
+    h1b: "PERCEK ALATT.",
+    sub: "Beírod az alvázszámot és kiválasztod a munkát. Megkeresi a pontos alkatrészeket, rákérdez, amire kell, hozzáadja a munkadíjat, és kész PDF-árajánlatot ad, úgy beárazva, ahogy a te műhelyed áraz.",
     ctaDemo: "Próbáld ki a demót →",
     ctaAction: "Beszéljünk róla",
-    demoNote: "A demó mintaárakkal számol. Az alvázszám-keresés a teljes verzió része.",
-    defTitle: "Mi az a teljes árajánló ügynök autószervizeknek?",
-    def: "A teljes árajánló ügynök egy AI-asszisztens a szerviz weboldalán, ami hasraütéses becslés helyett valódi, tételes javítási vagy szervizárajánlatot ad. Az ügyfél megadja a jármű alvázszámát, és leírja a hibát vagy a kért szervizt. Az ügynök az alvázszámból beazonosítja a pontos gyártmányt, típust, motort és évjáratot, cikkszám alapján kikeresi a megfelelő alkatrészeket, hozzáadja a munkadíjat a szerviz saját óradíjával és normaidejével, majd tételes árajánlatot ad, amit az ügyfél el is tud fogadni. Autóra, kisbuszra, motorra és haszonjárműre is működik, a nap 24 órájában, így a szerviznek nem kell telefonon, kézzel áraznia a munkákat.",
+    demoNote: "A demó mintaárakkal, alvázszám-keresés nélkül működik. A 30 napos próbaidőszakban a saját adataiddal állítjuk be.",
+    defTitle: "Mi az az árajánlat-készítő autószervizeknek?",
+    def: "Az árajánlat-készítő egy eszköz, amivel a szerelők vagy a szervizpult beárazzák a javítási és szervizmunkákat. Beírod a jármű alvázszámát, és kiválasztod a munkát, például a fékbetét- és féktárcsacserét. Az eszköz beazonosítja a pontos gyártmányt, típust és motort, kilistázza az adott munkához szükséges, erre az autóra illő alkatrészeket, és a te márkáidból ajánl egyet. Ahol a jármű adataiból valami nem dönthető el, például a tárcsa átmérője, ott rákérdez ahelyett, hogy találgatna. Hozzáadja a munkához szokásos tételeket, a te alkatrészáraidat, az óradíjadat és az ÁFA-t, majd tételes árajánlatot készít, amit kinyomtathatsz vagy PDF-ben elküldhetsz. Ha kijavítasz egy árat, legközelebb már azzal számol. Minden rendszert egy szervizre szabunk: a márkáira, az áraira, az óradíjára és azokra a munkákra, amiket hetente áraz.",
     howTitleA: "Hogyan működik ",
-    howTitleB: "az árajánló ügynök",
+    howTitleB: "az árajánlat-készítő",
     steps: [
-      { step: "01", title: "Az ügyfél megadja az alvázszámot", desc: "Mellé röviden leírja a hibát vagy a kért szervizt, a weboldaladon, bármikor." },
-      { step: "02", title: "Beazonosítja a pontos járművet", desc: "Az alvázszámból kiderül a pontos gyártmány, típus, motor és évjárat, így nincs találgatás, melyik alkatrész passzol." },
-      { step: "03", title: "Beárazza az alkatrészt és a munkát", desc: "Cikkszám alapján megtalálja a megfelelő alkatrészeket, a munkadíjat pedig a te óradíjaddal és normaidőddel számolja." },
-      { step: "04", title: "Tételes, elfogadható árajánlat", desc: "Az ügyfél minden tételt lát, és el tudja fogadni. Te megkapod az adatait és a már beárazott munkát." },
+      { step: "01", title: "Beírod az alvázszámot", desc: "Az alvázszámból kiderül a pontos gyártmány, típus és motor, így nincs találgatás, melyik alkatrész passzol." },
+      { step: "02", title: "Kiválasztod a munkát", desc: "Olajcsere, szerviz, vezérműszíj, fék, kuplung. A munkák, amiket hetente árazol, egy kattintásra." },
+      { step: "03", title: "Átnézed az alkatrészeket", desc: "A te márkáidból ajánl egyet, de ha kell, minden más opciót is megmutat. Ha valami nem dönthető el az alvázszámból, például a tárcsaméret, rákérdez." },
+      { step: "04", title: "Elküldöd az ajánlatot", desc: "Alkatrész, mellé járó tételek, munkadíj a te óradíjaddal és ÁFA, összesítve. Beírod az ügyfél nevét és a rendszámot, aztán kinyomtatod vagy PDF-ben elküldöd." },
     ],
     featTitleA: "Minden ",
     featTitleB: "benne van",
     features: [
-      { num: "01", title: "Jármű-azonosítás alvázszámból", desc: "A pontos jármű az alvázszámból, nem abból, amit az ügyfél gondol, hogy vezet." },
-      { num: "02", title: "Pontos alkatrész cikkszám alapján", desc: "Az adott járműhöz illő alkatrészek, így az ajánlat azt tükrözi, amit a munka tényleg igényel." },
-      { num: "03", title: "A saját óradíjad", desc: "A te óradíjad és normaidőd, nem valami országos átlag." },
-      { num: "04", title: "Tételes, elfogadható ajánlat", desc: "Minden alkatrész és minden munkaóra látszik. Nincs homályos sáv, nincs „attól függ”." },
-      { num: "05", title: "Minden járműtípus", desc: "Autó, kisbusz, motor és haszonjármű." },
-      { num: "06", title: "0–24 működik", desc: "Az ügyfél este vagy hétvégén is megkapja az árajánlatot, miközben te épp egy autó alatt fekszel vagy pihensz." },
+      { num: "01", title: "Jármű-azonosítás alvázszámból", desc: "A pontos jármű az alvázszámból, nem a legközelebbi találat." },
+      { num: "02", title: "A te márkáidat ajánlja", desc: "Elöl a kedvenc márkáid, minden más illő alkatrész egy kattintásra." },
+      { num: "03", title: "Rákérdez, nem találgat", desc: "Ha a jármű adataiból valami nem dönthető el, megkérdezi, így semmi nem marad ki az ajánlatból." },
+      { num: "04", title: "A te áraid, a te óradíjad", desc: "A te alkatrészáraid, a te árrésed és a te óradíjad. Semmi általános." },
+      { num: "05", title: "Megjegyzi a javításaidat", desc: "Ha egyszer átírsz egy árat, legközelebb azzal számol az adott alkatrésznél." },
+      { num: "06", title: "Tételes PDF-árajánlat", desc: "Minden alkatrész és minden munkaóra látszik, nyomtatásra vagy az ügyfélnek küldésre készen." },
     ],
-    ctaTitleA: "NE TELEFONON",
+    ctaTitleA: "NE KÉZZEL",
     ctaTitleB: "ÁRAZD A MUNKÁKAT",
-    ctaSub: "Írj nekem Facebookon, és megmutatom, hogyan működne az árajánló ügynök a te szervizedben.",
+    ctaSub: "Írj nekem Facebookon, és megmutatom, hogyan működne az árajánlat-készítő a te márkáiddal és a te áraiddal.",
     ctaBtn: "Írj nekem Messengeren →",
   },
 } as const;
@@ -85,7 +86,8 @@ export default function MechanicQuotingPage({ lang }: { lang: Locale }) {
       {/* Hero */}
       <section className="relative pt-36 pb-24 bg-[#0A0A0A] overflow-hidden">
         <div className="absolute inset-0 opacity-[0.06]" style={{ background: "radial-gradient(ellipse at 30% 60%, #D4AF37 0%, transparent 55%)" }} />
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
+          <div>
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center gap-3 mb-8">
             <span className="w-8 h-px bg-gold" />
             <span className="font-grotesk text-xs font-medium uppercase tracking-[0.2em] text-gold">{c.eyebrow}</span>
@@ -108,6 +110,11 @@ export default function MechanicQuotingPage({ lang }: { lang: Locale }) {
             </a>
           </motion.div>
           <p className="font-inter text-xs text-text-muted mt-4">{c.demoNote}</p>
+          </div>
+          <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5, ease: SPRING }}
+            className="w-full h-[520px] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
+            <GarageVisual lang={lang} />
+          </motion.div>
         </div>
       </section>
 

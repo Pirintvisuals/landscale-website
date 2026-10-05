@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI árajánló autószervizeknek, alvázszám alapján | Landscale",
+  title: "Árajánlat-készítő autószervizeknek, alvázszámból | Landscale",
   description:
-    "AI árajánló ügynök autószerelőknek és szervizeknek: valódi, tételes árajánlat alvázszám és cikkszám alapján, a saját óradíjaddal. Autó, kisbusz, motor, haszonjármű.",
+    "Árajánlat-készítő autószerelőknek és szervizeknek: beírod az alvázszámot, kiválasztod a munkát, és tételes PDF-árajánlatot kapsz a te márkáiddal, áraiddal és óradíjaddal.",
   alternates: {
     canonical: "https://landscale.agency/hu/services/mechanic-quoting",
     languages: {
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "AI árajánló autószervizeknek, alvázszám alapján | Landscale",
-    description: "Valódi, tételes árajánlat alvázszám és cikkszám alapján, a saját óradíjaddal.",
+    title: "Árajánlat-készítő autószervizeknek, alvázszámból | Landscale",
+    description: "Tételes PDF-árajánlat alvázszámból, percek alatt, a te márkáiddal, áraiddal és óradíjaddal.",
     type: "website",
     url: "https://landscale.agency/hu/services/mechanic-quoting",
     siteName: "Landscale Agency",

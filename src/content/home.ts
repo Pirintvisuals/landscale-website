@@ -11,6 +11,7 @@ export type HomeDict = {
     ctaSecondary: string;
     trust: string;
     scroll: string;
+    demoToggle: { trades: string; garage: string };
   };
   stats: { value: number; suffix: string; label: string; desc: string }[];
   problems: {
@@ -83,11 +84,12 @@ export const homeContent: Record<Locale, HomeDict> = {
       line1: "TRADES &",
       line2: "MECHANICS:",
       line3: "NO DEAD LEADS.",
-      sub: "We build premium websites and AI quoting assistants. Trades get instant estimates, garages get real priced quotes from the VIN and part numbers, so you only talk to serious buyers.",
+      sub: "We build premium websites and AI quoting assistants. Trades get instant estimates for their customers. Garages get a quote builder that turns a VIN into an itemised quote in minutes.",
       ctaPrimary: "Message Me on Facebook",
       ctaSecondary: "See Our Work",
       trust: "Trusted by trades & service businesses",
       scroll: "Scroll",
+      demoToggle: { trades: "Tradespeople", garage: "Garages" },
     },
     stats: [
       { value: 85, suffix: "%", label: "Time Saved on Lead Qualifying", desc: "Stop wasting hours on tyre-kickers. Our AI filters them before they reach you." },
@@ -146,7 +148,7 @@ export const homeContent: Record<Locale, HomeDict> = {
         tag: "For Mechanics & Garages",
         title: "Quote Builder",
         italic: "Quote a job in minutes, without ringing round for parts prices.",
-        desc: "Your service advisor enters the reg (or VIN) and the job. You get an itemised quote with your brands, your parts prices and your labour rate, ready to send as a PDF.",
+        desc: "You enter the VIN and pick the job. You get an itemised quote with your brands, your parts prices and your labour rate, ready to send as a PDF.",
         features: ["Built around the jobs you quote every week", "Your brands, your prices, your markup, every time", "No ringing round for parts prices mid-quote", "A professional itemised PDF the customer can say yes to"],
         demoLabel: "Try the demo →",
         demoNote: "The demo runs on sample prices. During a 30-day pilot we set it up with your own.",
@@ -184,11 +186,12 @@ export const homeContent: Record<Locale, HomeDict> = {
       line1: "VÉGE A",
       line2: "KOMOLYTALAN",
       line3: "ÉRDEKLŐDŐKNEK.",
-      sub: "Prémium weboldalakat és AI árajánló ügynököket építünk. Vállalkozóknak azonnali árbecslés, autószervizeknek valódi, tételes árajánlat alvázszám és cikkszám alapján, így már csak a komoly megrendelőkkel kell foglalkoznod.",
+      sub: "Prémium weboldalakat és AI árajánló ügynököket építünk. Vállalkozóknak azonnali árbecslés az ügyfeleiknek. Autószervizeknek árajánlat-készítő, ami az alvázszámból percek alatt tételes ajánlatot csinál.",
       ctaPrimary: "Írj nekem Messengeren",
       ctaSecondary: "Nézd meg a munkáinkat",
       trust: "Vállalkozók és szervizek bíznak bennünk",
       scroll: "Görgess",
+      demoToggle: { trades: "Vállalkozók", garage: "Autószervizek" },
     },
     stats: [
       { value: 85, suffix: "%", label: "Megspórolt idő az érdeklődők szűrésén", desc: "Ne pazarold az órákat a nézelődőkre. Az AI kiszűri őket, mielőtt egyáltalán hozzád érnének." },
@@ -247,7 +250,7 @@ export const homeContent: Record<Locale, HomeDict> = {
         tag: "Autószerelőknek és szervizeknek",
         title: "Árajánlat-készítő",
         italic: "Árajánlat percek alatt, alkatrészár-telefonálgatás nélkül.",
-        desc: "A szervizes kolléga beírja a rendszámot (vagy alvázszámot) és a munkát. Tételes árajánlatot kapsz a te márkáiddal, a te alkatrészáraiddal és a te óradíjaddal, PDF-ben küldésre készen.",
+        desc: "Beírod az alvázszámot és kiválasztod a munkát. Tételes árajánlatot kapsz a te márkáiddal, a te alkatrészáraiddal és a te óradíjaddal, PDF-ben küldésre készen.",
         features: ["A hetente árazott munkáidra szabva", "A te márkáid, áraid és árrésed, minden alkalommal", "Nem kell alkatrészárakért telefonálgatni", "Igényes, tételes PDF, amire az ügyfél rábólint"],
         demoLabel: "Próbáld ki a demót →",
         demoNote: "A demó mintaárakkal számol. A 30 napos próbaidőszakban a saját adataiddal állítjuk be.",

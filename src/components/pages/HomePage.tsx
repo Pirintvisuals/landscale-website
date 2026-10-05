@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { HeroVisual } from "@/components/ui/hero-visual";
+import { GarageVisual } from "@/components/ui/garage-visual";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
 import { homeContent, TESTIMONIALS } from "@/content/home";
@@ -140,6 +141,12 @@ export default function HomePage({ lang }: { lang: Locale }) {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const [demo, setDemo] = useState<"trades" | "garage">("trades");
+
+  // ?for=garage opens the hero on the garage demo (for links sent to garages)
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("for") === "garage") setDemo("garage");
+  }, []);
 
   return (
     <>
@@ -230,9 +237,17 @@ export default function HomePage({ lang }: { lang: Locale }) {
 
             {/* ── RIGHT: AI visual ── */}
             <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5, ease: SPRING }}
-              className="hidden lg:flex items-center justify-center">
+              className="hidden lg:flex flex-col items-center justify-center gap-3">
+              <div role="tablist" className="self-start inline-flex p-1 rounded-full bg-white/[0.03] border border-white/[0.07]">
+                {(["trades", "garage"] as const).map((k) => (
+                  <button key={k} type="button" role="tab" aria-selected={demo === k} onClick={() => setDemo(k)}
+                    className={`font-grotesk text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-300 ${demo === k ? "bg-gold text-deep-black" : "text-cream/50 hover:text-gold"}`}>
+                    {c.hero.demoToggle[k]}
+                  </button>
+                ))}
+              </div>
               <div className="w-full h-[min(520px,62vh)] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
-                <HeroVisual lang={lang} />
+                {demo === "garage" ? <GarageVisual key="garage" lang={lang} /> : <HeroVisual key="trades" lang={lang} />}
               </div>
             </motion.div>
 
