@@ -12,6 +12,7 @@ export type HomeDict = {
     trust: string;
     scroll: string;
     demoToggle: { trades: string; garage: string };
+    garage: { eyebrow: string; line1: string; line2: string; line3: string; sub: string; ctaSecondary: string };
   };
   stats: { value: number; suffix: string; label: string; desc: string }[];
   problems: {
@@ -80,16 +81,24 @@ export const TESTIMONIALS: Record<Locale, { quote: string; name: string; company
 export const homeContent: Record<Locale, HomeDict> = {
   en: {
     hero: {
-      eyebrow: "AI Quoting for Trades & Mechanics",
-      line1: "TRADES &",
-      line2: "MECHANICS:",
-      line3: "NO DEAD LEADS.",
-      sub: "We build premium websites and AI quoting assistants. Trades get instant estimates for their customers. Garages get a quote builder that turns a VIN into an itemised quote in minutes.",
+      eyebrow: "AI Quoting for Trades",
+      line1: "TRADES:",
+      line2: "NO MORE",
+      line3: "DEAD LEADS.",
+      sub: "We build premium websites and AI quoting assistants. Your customers get an instant estimate on your website, and you only talk to serious buyers.",
       ctaPrimary: "Message Me on Facebook",
       ctaSecondary: "See Our Work",
       trust: "Trusted by trades & service businesses",
       scroll: "Scroll",
       demoToggle: { trades: "Tradespeople", garage: "Garages" },
+      garage: {
+        eyebrow: "Quote Builder for Garages",
+        line1: "ITEMISED",
+        line2: "QUOTES",
+        line3: "IN MINUTES.",
+        sub: "Enter the VIN, pick the job, and the itemised quote is ready with your brands, your prices and your labour rate. No more ringing round for parts prices.",
+        ctaSecondary: "See How It Works",
+      },
     },
     stats: [
       { value: 85, suffix: "%", label: "Time Saved on Lead Qualifying", desc: "Stop wasting hours on tyre-kickers. Our AI filters them before they reach you." },
@@ -182,16 +191,24 @@ export const homeContent: Record<Locale, HomeDict> = {
   },
   hu: {
     hero: {
-      eyebrow: "AI árajánlás vállalkozóknak és autószervizeknek",
+      eyebrow: "AI árajánlás vállalkozóknak",
       line1: "VÉGE A",
       line2: "KOMOLYTALAN",
       line3: "ÉRDEKLŐDŐKNEK.",
-      sub: "Prémium weboldalakat és AI árajánló ügynököket építünk. Vállalkozóknak azonnali árbecslés az ügyfeleiknek. Autószervizeknek árajánlat-készítő, ami az alvázszámból percek alatt tételes ajánlatot csinál.",
+      sub: "Prémium weboldalakat és AI árajánló ügynököket építünk. Az ügyfeleid azonnali árbecslést kapnak a weboldaladon, te pedig már csak a komoly megrendelőkkel beszélsz.",
       ctaPrimary: "Írj nekem Messengeren",
       ctaSecondary: "Nézd meg a munkáinkat",
       trust: "Vállalkozók és szervizek bíznak bennünk",
       scroll: "Görgess",
       demoToggle: { trades: "Vállalkozók", garage: "Autószervizek" },
+      garage: {
+        eyebrow: "Árajánlat-készítő autószervizeknek",
+        line1: "TÉTELES",
+        line2: "ÁRAJÁNLAT",
+        line3: "PERCEK ALATT.",
+        sub: "Beírod az alvázszámot, kiválasztod a munkát, és kész a tételes ajánlat a te márkáiddal, áraiddal és óradíjaddal. Nem kell alkatrészárakért telefonálgatni.",
+        ctaSecondary: "Nézd meg, hogy működik",
+      },
     },
     stats: [
       { value: 85, suffix: "%", label: "Megspórolt idő az érdeklődők szűrésén", desc: "Ne pazarold az órákat a nézelődőkre. Az AI kiszűri őket, mielőtt egyáltalán hozzád érnének." },

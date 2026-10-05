@@ -21,7 +21,16 @@ const content = {
     ticker: ["Premium Websites", "• AI Lead Filtering", "Local SEO", "• 24/7 AI Estimator", "Instant Quotes", "• Lead Qualification", "Smart Automation"],
     coreServices: [
       {
-        num: "01", tag: "AI Estimator", tagPulse: true,
+        num: "01", tag: "New · Mechanics & Garages", tagPulse: true,
+        title: "Quote\nBuilder", titleGold: "Itemised in Minutes",
+        subtitle: "For your workshop: an itemised quote from a VIN in minutes, not a phone round for prices.",
+        desc: "You enter the VIN and pick the job. It identifies the exact vehicle, recommends parts from your brands, asks when something can't be decided from the VIN, adds your labour rate and VAT, and gives you a PDF quote to send.",
+        features: ["VIN-based vehicle lookup", "Recommends your brands", "Asks instead of guessing", "Your prices & labour rate", "Remembers your price corrections", "Itemised PDF quote"],
+        stats: [{ label: "Quote from", val: "VIN" }, { label: "Built around", val: "Your garage" }, { label: "Output", val: "PDF" }],
+        href: "/services/mechanic-quoting", cta: "See How It Works",
+      },
+      {
+        num: "02", tag: "AI Estimator", tagPulse: true,
         title: "AI Estimator\nAgent", titleGold: "Instant Quotes",
         subtitle: "Project estimates delivered on your site, no phone call needed.",
         desc: "A visitor asks for a quote. The AI asks specific questions about scope, area, materials, entrance, postcode and timeline, then gives an accurate estimate immediately, 24/7. You only hear from leads who already know the price and still want to book.",
@@ -30,7 +39,7 @@ const content = {
         href: "/services/ai-estimator", cta: "See How It Works",
       },
       {
-        num: "02", tag: "AI Chatbot", tagPulse: true,
+        num: "03", tag: "AI Chatbot", tagPulse: true,
         title: "AI Chatbot\n& Qualifier", titleGold: "24/7 on Your Site",
         subtitle: "Engages every visitor, filters out time-wasters, passes the rest straight to you.",
         desc: "The chatbot greets every visitor, asks about budget, location and timeline, and makes a decision. Wrong area, wrong budget, not the right fit? It declines politely, you never hear about it. Serious lead? Their full details land in your inbox.",
@@ -39,22 +48,13 @@ const content = {
         href: "/services/ai-chatbot", cta: "See How It Works",
       },
       {
-        num: "03", tag: "Website", tagPulse: false,
+        num: "04", tag: "Website", tagPulse: false,
         title: "Premium\nWebsite", titleGold: "Built to Convert",
         subtitle: "Luxury websites for trade businesses, with local SEO built in.",
         desc: "A bespoke, fast-loading website that positions you as the premium choice in your area. Built on Next.js or Framer, designed to convert visitors into enquiries, and optimised for local Google search and Google Business Profile from day one.",
         features: ["Bespoke luxury design", "Mobile-first & under 2s load", "Lead capture & contact forms", "Local SEO built in from day one", "Google Business Profile setup", "Analytics & conversion tracking"],
         stats: [{ label: "PageSpeed Score", val: "100/100" }, { label: "Load time", val: "<0.8s" }, { label: "SEO Score", val: "100/100" }],
         href: "/services/website-design", cta: "Learn More",
-      },
-      {
-        num: "04", tag: "New · Mechanics & Garages", tagPulse: true,
-        title: "Quote\nBuilder", titleGold: "Itemised in Minutes",
-        subtitle: "For your workshop: an itemised quote from a VIN in minutes, not a phone round for prices.",
-        desc: "You enter the VIN and pick the job. It identifies the exact vehicle, recommends parts from your brands, asks when something can't be decided from the VIN, adds your labour rate and VAT, and gives you a PDF quote to send.",
-        features: ["VIN-based vehicle lookup", "Recommends your brands", "Asks instead of guessing", "Your prices & labour rate", "Remembers your price corrections", "Itemised PDF quote"],
-        stats: [{ label: "Quote from", val: "VIN" }, { label: "Built around", val: "Your garage" }, { label: "Output", val: "PDF" }],
-        href: "/services/mechanic-quoting", cta: "See How It Works",
       },
     ],
     extraServices: [
@@ -122,7 +122,16 @@ const content = {
     ticker: ["Prémium weboldalak", "• AI érdeklődő-szűrés", "Helyi SEO", "• 0–24 AI árajánló", "Azonnali árajánlat", "• Érdeklődő-minősítés", "Okos automatizálás"],
     coreServices: [
       {
-        num: "01", tag: "AI Árajánló", tagPulse: true,
+        num: "01", tag: "Új · Autószervizeknek", tagPulse: true,
+        title: "Árajánlat-\nkészítő", titleGold: "Tételesen, percek alatt",
+        subtitle: "A műhelyednek: tételes árajánlat alvázszámból, percek alatt, árakért telefonálgatás nélkül.",
+        desc: "Beírod az alvázszámot és kiválasztod a munkát. Beazonosítja a pontos járművet, a te márkáidból ajánl alkatrészt, rákérdez, ha valami nem dönthető el az alvázszámból, hozzáadja az óradíjadat és az ÁFA-t, és kész PDF-árajánlatot ad.",
+        features: ["Jármű-azonosítás alvázszámból", "A te márkáidat ajánlja", "Rákérdez, nem találgat", "A te áraid és óradíjad", "Megjegyzi az árjavításaidat", "Tételes PDF-árajánlat"],
+        stats: [{ label: "Az ajánlat alapja", val: "Alvázszám" }, { label: "Testre szabva", val: "A szervizedre" }, { label: "Eredmény", val: "PDF" }],
+        href: "/services/mechanic-quoting", cta: "Nézd meg, hogy működik",
+      },
+      {
+        num: "02", tag: "AI Árajánló", tagPulse: true,
         title: "AI Árajánló\nÜgynök", titleGold: "Azonnali árajánlat",
         subtitle: "Projektbecslés a weboldaladon, telefonhívás nélkül.",
         desc: "A látogató árajánlatot kér. Az AI konkrét kérdéseket tesz fel a munka jellegéről, a területről, az anyagokról, a bejáratról, az irányítószámról és a határidőről, majd azonnal pontos becslést ad, a nap 24 órájában. Csak azok az érdeklődők keresnek meg, akik már ismerik az árat és még mindig foglalni akarnak.",
@@ -131,7 +140,7 @@ const content = {
         href: "/services/ai-estimator", cta: "Nézd meg, hogy működik",
       },
       {
-        num: "02", tag: "AI Chatbot", tagPulse: true,
+        num: "03", tag: "AI Chatbot", tagPulse: true,
         title: "AI Chatbot\nés minősítő", titleGold: "0–24 az oldaladon",
         subtitle: "Foglalkozik minden látogatóval, kiszűri a komolytalanokat, a többit egyből hozzád küldi.",
         desc: "A chatbot minden látogatót köszönt, rákérdez a keretre, a helyszínre és a határidőre, majd dönt. Rossz terület, nem stimmel a keret, nem passzol? Udvariasan elutasítja, te nem is hallasz róla. Komoly érdeklődő? A teljes adatai a postaládádba kerülnek.",
@@ -140,22 +149,13 @@ const content = {
         href: "/services/ai-chatbot", cta: "Nézd meg, hogy működik",
       },
       {
-        num: "03", tag: "Weboldal", tagPulse: false,
+        num: "04", tag: "Weboldal", tagPulse: false,
         title: "Prémium\nWeboldal", titleGold: "Konverzióra építve",
         subtitle: "Igényes weboldalak vállalkozásoknak, beépített helyi SEO-val.",
         desc: "Egyedi, villámgyors weboldal, ami a környékeden a prémium választásként pozicionál. Next.js vagy Framer alapon, arra tervezve, hogy a látogatókból érdeklődő legyen, és az első naptól optimalizálva a helyi Google-keresésre és a Google Cégprofilra.",
         features: ["Egyedi, igényes dizájn", "Mobilra optimalizált, 2 mp alatti betöltés", "Érdeklődő-gyűjtés és kapcsolati űrlapok", "Beépített helyi SEO az első naptól", "Google Cégprofil beállítás", "Analitika és konverziómérés"],
         stats: [{ label: "PageSpeed pont", val: "100/100" }, { label: "Betöltés", val: "<0,8 mp" }, { label: "SEO pont", val: "100/100" }],
         href: "/services/website-design", cta: "Tudj meg többet",
-      },
-      {
-        num: "04", tag: "Új · Autószervizeknek", tagPulse: true,
-        title: "Árajánlat-\nkészítő", titleGold: "Tételesen, percek alatt",
-        subtitle: "A műhelyednek: tételes árajánlat alvázszámból, percek alatt, árakért telefonálgatás nélkül.",
-        desc: "Beírod az alvázszámot és kiválasztod a munkát. Beazonosítja a pontos járművet, a te márkáidból ajánl alkatrészt, rákérdez, ha valami nem dönthető el az alvázszámból, hozzáadja az óradíjadat és az ÁFA-t, és kész PDF-árajánlatot ad.",
-        features: ["Jármű-azonosítás alvázszámból", "A te márkáidat ajánlja", "Rákérdez, nem találgat", "A te áraid és óradíjad", "Megjegyzi az árjavításaidat", "Tételes PDF-árajánlat"],
-        stats: [{ label: "Az ajánlat alapja", val: "Alvázszám" }, { label: "Testre szabva", val: "A szervizedre" }, { label: "Eredmény", val: "PDF" }],
-        href: "/services/mechanic-quoting", cta: "Nézd meg, hogy működik",
       },
     ],
     extraServices: [

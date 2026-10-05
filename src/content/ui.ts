@@ -43,11 +43,11 @@ type FooterDict = {
 export const NAV: Record<Locale, NavDict> = {
   en: {
     services: [
+      { href: "/services/mechanic-quoting", label: "Quote Builder for Garages", desc: "Itemised quotes from a VIN in minutes", tag: "New" },
       { href: "/services/ai-estimator", label: "AI Estimator Agent", desc: "Instant project quotes on your site, no call needed", tag: "Core" },
       { href: "/services/ai-chatbot", label: "AI Chatbot", desc: "Qualifies leads 24/7, filters out time-wasters", tag: null },
       { href: "/services/website-design", label: "Website Design", desc: "Luxury sites with local SEO built in", tag: null },
       { href: "/services/seo-marketing", label: "Local SEO", desc: "Rank #1 when local clients search for your trade", tag: null },
-      { href: "/services/mechanic-quoting", label: "Quote Builder for Garages", desc: "Itemised quotes from a VIN in minutes", tag: null },
     ],
     serviceTag: "Core",
     links: [
@@ -65,11 +65,11 @@ export const NAV: Record<Locale, NavDict> = {
   },
   hu: {
     services: [
+      { href: "/services/mechanic-quoting", label: "Árajánlat-készítő Szervizeknek", desc: "Tételes árajánlat alvázszámból, percek alatt", tag: "Új" },
       { href: "/services/ai-estimator", label: "AI Árajánló Ügynök", desc: "Azonnali árajánlat a weboldaladon, hívás nélkül", tag: "Fő" },
       { href: "/services/ai-chatbot", label: "AI Chatbot", desc: "0–24 szűri az érdeklődőket, kiszórja a komolytalanokat", tag: null },
       { href: "/services/website-design", label: "Weboldal Készítés", desc: "Igényes oldalak beépített helyi SEO-val", tag: null },
       { href: "/services/seo-marketing", label: "Helyi SEO", desc: "Legyél első, amikor a helyi ügyfelek a szakmádra keresnek", tag: null },
-      { href: "/services/mechanic-quoting", label: "Árajánlat-készítő Szervizeknek", desc: "Tételes árajánlat alvázszámból, percek alatt", tag: null },
     ],
     serviceTag: "Fő",
     links: [
@@ -93,7 +93,7 @@ export const FOOTER: Record<Locale, FooterDict> = {
     ctaHeadB: "local market?",
     ctaSub: "Send me a message on Facebook. Tell me your trade and I'll show you how it would work for your business, usually the same day.",
     ctaButton: "Message Me on Facebook",
-    brandTagline: "Premium websites & AI automation for trade businesses.",
+    brandTagline: "Premium websites & AI quoting for trade businesses and garages.",
     quickLinksTitle: "Quick Links",
     quickLinks: [
       { href: "/", label: "Home" },
@@ -104,11 +104,11 @@ export const FOOTER: Record<Locale, FooterDict> = {
     ],
     servicesTitle: "Services",
     services: [
+      { href: "/services/mechanic-quoting", label: "Quote Builder for Garages" },
       { href: "/services/ai-estimator", label: "AI Estimator Agent" },
       { href: "/services/ai-chatbot", label: "AI Chatbot" },
       { href: "/services/website-design", label: "Premium Website" },
       { href: "/services/seo-marketing", label: "Local SEO" },
-      { href: "/services/mechanic-quoting", label: "Quote Builder for Garages" },
       { href: "/services", label: "All Services" },
     ],
     connectTitle: "Connect",
@@ -120,7 +120,7 @@ export const FOOTER: Record<Locale, FooterDict> = {
     ctaHeadB: "helyi piacodat?",
     ctaSub: "Írj nekem Facebookon. Mondd el, mivel foglalkozol, és megmutatom, hogyan működne nálad, általában még aznap.",
     ctaButton: "Írj nekem Messengeren",
-    brandTagline: "Prémium weboldalak és AI-automatizálás vállalkozóknak.",
+    brandTagline: "Prémium weboldalak és AI árajánlás vállalkozóknak és autószervizeknek.",
     quickLinksTitle: "Gyors linkek",
     quickLinks: [
       { href: "/", label: "Főoldal" },
@@ -131,11 +131,11 @@ export const FOOTER: Record<Locale, FooterDict> = {
     ],
     servicesTitle: "Szolgáltatások",
     services: [
+      { href: "/services/mechanic-quoting", label: "Árajánlat-készítő Szervizeknek" },
       { href: "/services/ai-estimator", label: "AI Árajánló Ügynök" },
       { href: "/services/ai-chatbot", label: "AI Chatbot" },
       { href: "/services/website-design", label: "Prémium Weboldal" },
       { href: "/services/seo-marketing", label: "Helyi SEO" },
-      { href: "/services/mechanic-quoting", label: "Árajánlat-készítő Szervizeknek" },
       { href: "/services", label: "Összes szolgáltatás" },
     ],
     connectTitle: "Elérhetőség",
