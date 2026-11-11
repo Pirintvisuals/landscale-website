@@ -6,7 +6,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe, TrendingUp, Car } from "lucide-react";
-import { localeFromPathname, localize, switchLocaleHref, toEnglishPath } from "@/lib/i18n";
+import { localeFromPathname, localize, toEnglishPath } from "@/lib/i18n";
+import LanguageSwitch from "./LanguageSwitch";
 import { MESSENGER_URL, NAV, PHONE } from "@/content/ui";
 
 const serviceIcons = [Zap, MessageCircle, Globe, TrendingUp, Car];
@@ -71,11 +72,11 @@ export default function Navigation() {
             : "bg-[#0D0D0D]/75 backdrop-blur-md border-b border-white/[0.04]"
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-[68px] flex items-center justify-between gap-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 h-[68px] flex items-center justify-between gap-3 sm:gap-8">
 
           {/* ── Logo ── */}
           <Link href={homeHref} className="flex items-center flex-shrink-0 z-10">
-            <div className="relative w-[180px] h-[60px] overflow-hidden rounded-xl">
+            <div className="relative w-[140px] h-[47px] sm:w-[180px] sm:h-[60px] overflow-hidden rounded-xl">
               <Image
                 src="/landscape_1.png"
                 alt="Landscale Agency"
@@ -88,7 +89,7 @@ export default function Navigation() {
           </Link>
 
           {/* ── Desktop Nav ── */}
-          <nav className="hidden lg:flex items-center gap-1.5 absolute left-1/2 -translate-x-1/2">
+          <nav className="hidden xl:flex items-center gap-1.5 absolute left-1/2 -translate-x-1/2">
 
             {/* Home */}
             <Link href={homeHref}
@@ -181,14 +182,8 @@ export default function Navigation() {
           </nav>
 
           {/* ── Right side: language toggle + CTA ── */}
-          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-            <Link href={switchLocaleHref(pathname, lang === "en" ? "hu" : "en")}
-              aria-label={lang === "en" ? "Switch to Hungarian" : "Switch to English"}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-grotesk text-xs font-bold tracking-wide transition-all duration-200 text-cream/35 border border-white/[0.07] hover:text-cream/70 hover:border-white/[0.14] hover:bg-white/[0.04]">
-              <Globe size={12} className="opacity-70" />
-              <span>{t.switchLabel}</span>
-            </Link>
-            <div className="w-px h-5 bg-white/[0.10]" />
+          <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
+            <LanguageSwitch pathname={pathname} lang={lang} />
             <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] hover:-translate-y-0.5">
               {t.messageMe}
@@ -196,10 +191,12 @@ export default function Navigation() {
             </a>
           </div>
 
-          {/* ── Mobile toggle ── */}
+          {/* ── Mobile: language switch + menu toggle ── */}
+          <div className="xl:hidden flex items-center gap-2 sm:gap-2.5 z-10">
+          <LanguageSwitch pathname={pathname} lang={lang} size="sm" />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-xl border border-white/[0.08] hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 z-10"
+            className="relative w-9 h-9 flex items-center justify-center rounded-xl border border-white/[0.08] hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 z-10"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}>
             <AnimatePresence mode="wait">
@@ -209,6 +206,7 @@ export default function Navigation() {
               }
             </AnimatePresence>
           </button>
+          </div>
         </div>
       </header>
 
@@ -303,11 +301,7 @@ export default function Navigation() {
                   <a href={phone.href} className="block font-grotesk font-semibold text-sm text-gold/70 hover:text-gold transition-colors">{phone.display}</a>
                   <p className="font-inter text-text-muted text-xs">milan@landscale.net</p>
                 </div>
-                <Link href={switchLocaleHref(pathname, lang === "en" ? "hu" : "en")} onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 border border-white/[0.08] rounded-full py-3 font-grotesk text-sm font-semibold text-cream/40 hover:border-gold/40 hover:text-gold hover:bg-gold/5 transition-all duration-200">
-                  <span className="text-base leading-none">{t.otherSiteFlag}</span>
-                  {t.otherSiteLabel}
-                </Link>
+                <LanguageSwitch pathname={pathname} lang={lang} size="lg" onNavigate={() => setMenuOpen(false)} />
               </motion.div>
             </div>
           </motion.div>
