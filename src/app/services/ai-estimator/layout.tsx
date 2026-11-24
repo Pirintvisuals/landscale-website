@@ -6,14 +6,14 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://landscale.agency" },
     { "@type": "ListItem", position: 2, name: "Services", item: "https://landscale.agency/services" },
-    { "@type": "ListItem", position: 3, name: "AI Estimator Agent", item: "https://landscale.agency/services/ai-estimator" },
+    { "@type": "ListItem", position: 3, name: "AI Quoting Assistant", item: "https://landscale.agency/services/ai-estimator" },
   ],
 };
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "AI Estimator Agent",
+  name: "AI Quoting Assistant",
   description: "AI-powered estimator that delivers instant, accurate quotes 24/7 on your trade website. Filters unqualified leads and saves 15–20 hours per week.",
   provider: { "@type": "Organization", name: "Landscale Agency", url: "https://landscale.agency" },
   url: "https://landscale.agency/services/ai-estimator",
@@ -21,14 +21,14 @@ const serviceSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "AI Estimator Agent, Instant Quotes, No Call Needed | Landscale",
+  title: "AI Quoting Assistant, Instant Quotes, No Call Needed | Landscale",
   description:
     "Add an AI estimator to your trade website, instant, accurate quotes 24/7, automatic lead filtering, and 15–20 hours saved per week. No phone call needed.",
   keywords:
-    "AI estimator landscaping, instant quote tool landscaping website, automatic quote generator landscapers, landscaping lead qualification tool, AI estimator home services UK",
+    "AI quoting assistant, AI estimator for tradesmen, instant quote tool for trade websites, automatic quote generator, lead qualification tool, AI estimator home services",
   alternates: { canonical: "https://landscale.agency/services/ai-estimator" },
   openGraph: {
-    title: "AI Estimator Agent, Instant Quotes, No Call Needed | Landscale",
+    title: "AI Quoting Assistant, Instant Quotes, No Call Needed | Landscale",
     description:
       "Add an AI estimator to your trade website, instant, accurate quotes 24/7, automatic lead filtering, and 15–20 hours saved per week. No phone call needed.",
     type: "website",

@@ -3,49 +3,49 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { Star, Phone, Search, LayoutDashboard } from "lucide-react";
+import { Star, MessageCircle, Search, LayoutDashboard, Phone } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
-import { MESSENGER_URL, PHONE } from "@/content/ui";
+import { CALENDLY_URL, PHONE } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
-const extraIcons = [Star, Phone, Search, LayoutDashboard];
+const extraIcons = [Star, MessageCircle, Search, LayoutDashboard];
 
 const content = {
   en: {
-    eyebrow: "What We Do",
-    h1: ["FOUR CORE SERVICES.", "ONE GOAL."],
-    heroSub: "Everything built specifically for trade businesses and garages. We understand your industry, your clients, and what it takes to grow.",
-    ticker: ["Premium Websites", "• AI Lead Filtering", "Local SEO", "• 24/7 AI Estimator", "Instant Quotes", "• Lead Qualification", "Smart Automation"],
+    eyebrow: "Services",
+    h1: ["FIVE CORE SERVICES.", "ONE GOAL."],
+    heroSub: "Built for trade, construction and service businesses: less time on quoting, calls and admin, more time on the work that pays.",
+    ticker: ["AI Quoting Assistants", "• Plan & Tender Review", "AI Receptionists", "• Premium Websites", "Instant Estimates", "• CRM Integration", "Local SEO"],
     coreServices: [
       {
-        num: "01", tag: "New · Mechanics & Garages", tagPulse: true,
-        title: "Quote\nBuilder", titleGold: "Itemised in Minutes",
-        subtitle: "For your workshop: an itemised quote from a VIN in minutes, not a phone round for prices.",
-        desc: "You enter the VIN and pick the job. It identifies the exact vehicle, recommends parts from your brands, asks when something can't be decided from the VIN, adds your labour rate and VAT, and gives you a PDF quote to send.",
-        features: ["VIN-based vehicle lookup", "Recommends your brands", "Asks instead of guessing", "Your prices & labour rate", "Remembers your price corrections", "Itemised PDF quote"],
-        stats: [{ label: "Quote from", val: "VIN" }, { label: "Built around", val: "Your garage" }, { label: "Output", val: "PDF" }],
-        href: "/services/mechanic-quoting", cta: "See How It Works",
-      },
-      {
-        num: "02", tag: "AI Estimator", tagPulse: true,
-        title: "AI Estimator\nAgent", titleGold: "Instant Quotes",
-        subtitle: "Project estimates delivered on your site, no phone call needed.",
-        desc: "A visitor asks for a quote. The AI asks specific questions about scope, area, materials, entrance, postcode and timeline, then gives an accurate estimate immediately, 24/7. You only hear from leads who already know the price and still want to book.",
-        features: ["Patio, lawn, landscaping & more", "Project-specific questions", "Instant line-item breakdown", "Postcode & site-access checks", "Contact details collected after quote", "Saves 15–20 hrs/week on quoting"],
-        stats: [{ label: "Availability", val: "24/7" }, { label: "Response time", val: "<2s" }, { label: "Conversations", val: "Unlimited" }],
+        num: "01", tag: "Core · Quoting Assistant", tagPulse: true,
+        title: "AI Quoting\nAssistant", titleGold: "Instant Estimates",
+        subtitle: "Estimates on your website, no phone call needed.",
+        desc: "A visitor asks for a price. The assistant asks the questions you would ask, scope, size, materials, location and timeline, then gives an itemised estimate on the spot, 24/7. You only hear from people who already know the price and still want to go ahead.",
+        features: ["Questions tailored to your jobs", "Built on your own prices", "Instant itemised estimate", "Location & site-access checks", "Contact details after the estimate", "Saves 15–20 hrs/week on quoting"],
+        stats: [{ label: "Availability", val: "24/7" }, { label: "Live on", val: "4 sites" }, { label: "Conversations", val: "Unlimited" }],
         href: "/services/ai-estimator", cta: "See How It Works",
       },
       {
-        num: "03", tag: "AI Chatbot", tagPulse: true,
-        title: "AI Chatbot\n& Qualifier", titleGold: "24/7 on Your Site",
-        subtitle: "Engages every visitor, filters out time-wasters, passes the rest straight to you.",
-        desc: "The chatbot greets every visitor, asks about budget, location and timeline, and makes a decision. Wrong area, wrong budget, not the right fit? It declines politely, you never hear about it. Serious lead? Their full details land in your inbox.",
-        features: ["Budget, location & timeline check", "Automatic lead scoring", "Declines unfit leads politely", "Owner never bothered by junk", "Instant contact via SMS or email", "24/7 with no extra effort from you"],
-        stats: [{ label: "Qualified leads", val: "+300%" }, { label: "Response time", val: "<2s" }, { label: "Junk leads reaching you", val: "0" }],
-        href: "/services/ai-chatbot", cta: "See How It Works",
+        num: "02", tag: "New · Contractors & Manufacturers", tagPulse: true,
+        title: "Plan & Tender\nReview", titleGold: "Nothing Left Out",
+        subtitle: "Drawings and tender packages checked before you price.",
+        desc: "Two tools in one way of working. Plan Reader measures quantities from the drawings and compares them with the bill of quantities. Tender Prep checks a request for quotation for conflicts and gaps, drafts the clarifying questions and splits the items by workshop. Your estimator reviews and approves.",
+        features: ["Quantities from architectural, structural & MEP drawings", "Line-by-line check against the BoQ", "Source and confidence next to every number", "Errors and gaps ranked by probability", "Clarifying questions drafted", "Excel output in your usual format"],
+        stats: [{ label: "Input", val: "Full package" }, { label: "Every number", val: "Sourced" }, { label: "Output", val: "Excel" }],
+        href: "/services/tender-review", cta: "See How It Works",
+      },
+      {
+        num: "03", tag: "New · AI Receptionist", tagPulse: true,
+        title: "AI\nReceptionist", titleGold: "Connected to Your CRM",
+        subtitle: "Answers every call, and writes every call back into your CRM.",
+        desc: "It picks up your phone, checks your CRM to tell customers where their order stands, answers the questions you get every day, takes new enquiries and hands over to a person when needed. After each call it logs what the caller wanted, automatically.",
+        features: ["Answers every call, day or night", "Order status straight from the CRM", "Every call logged automatically", "Handles routine questions", "Takes down new enquiries", "Hands over to a person when needed"],
+        stats: [{ label: "Answers", val: "24/7" }, { label: "CRM", val: "Read & write" }, { label: "Missed calls", val: "0" }],
+        href: "/services/ai-receptionist", cta: "See How It Works",
       },
       {
         num: "04", tag: "Website", tagPulse: false,
@@ -56,10 +56,19 @@ const content = {
         stats: [{ label: "PageSpeed Score", val: "100/100" }, { label: "Load time", val: "<0.8s" }, { label: "SEO Score", val: "100/100" }],
         href: "/services/website-design", cta: "Learn More",
       },
+      {
+        num: "05", tag: "Mechanics & Garages", tagPulse: true,
+        title: "Quote\nBuilder", titleGold: "Itemised in Minutes",
+        subtitle: "For your workshop: an itemised quote from a VIN in minutes, not a phone round for prices.",
+        desc: "You enter the VIN and pick the job. It identifies the exact vehicle, recommends parts from your brands, asks when something can't be decided from the VIN, adds your labour rate and VAT, and gives you a PDF quote to send.",
+        features: ["VIN-based vehicle lookup", "Recommends your brands", "Asks instead of guessing", "Your prices & labour rate", "Remembers your price corrections", "Itemised PDF quote"],
+        stats: [{ label: "Quote from", val: "VIN" }, { label: "Built around", val: "Your garage" }, { label: "Output", val: "PDF" }],
+        href: "/services/mechanic-quoting", cta: "See How It Works",
+      },
     ],
     extraServices: [
       { title: "AI Review Agent", desc: "After a job is done, the AI automatically messages the client asking them to rate their experience from 1–10. Score 7 or above? They get a direct link to leave a Google review. Below 7? The AI asks what went wrong, so you can fix it before it becomes a public complaint." },
-      { title: "AI Receptionist", desc: "An AI that answers calls exactly like a real receptionist, takes down the caller's name, number and reason for calling, and sends you a summary. Can run 24/7 or only kick in out of hours / when you don't pick up. Never miss a lead because you were on a job." },
+      { title: "AI Chatbot", desc: "A chatbot on your website that greets every visitor, checks budget, location and timeline, politely declines the wrong fits and sends the serious enquiries straight to your inbox, 24/7." },
       { title: "SEO & Google Business", desc: "Already have a website? We handle your local SEO and Google Business Profile setup separately, keyword strategy, content, local citations, and monthly reporting so you climb the rankings in your area." },
       { title: "Operations Dashboard", desc: "A bespoke dashboard that keeps your jobs perfectly sorted. It automatically logs what work was done, when it happened, the final cost, and the client's review. A crystal-clear picture of your daily operations, helping you spot your most profitable jobs and keeping admin strictly to a minimum." },
     ],
@@ -105,70 +114,79 @@ const content = {
       {
         name: "Custom", desc: "Anything else you need built.",
         price: "Custom quote", priceNote: "", monthly: "Priced to what you need",
-        features: ["AI Receptionist", "AI Review Agent", "Operations Dashboard", "Local SEO & Google Business"],
+        features: ["AI Receptionist", "Plan & Tender Review", "AI Review Agent", "Operations Dashboard"],
       },
     ],
     foundingOffer: "Founding UK offer: the first 5 UK businesses pay no setup fee, in return for a short case study once it's live.",
-    pricingCta: "Message Me on Facebook →",
+    pricingCta: "Book a Free Call →",
     ctaTitleA: "NOT SURE WHICH",
     ctaTitleB: "SERVICE YOU NEED?",
-    ctaSub: "Send me a message on Facebook, tell me what you do, and I'll tell you honestly which one will make the difference.",
-    ctaBtn: "Message Me on Facebook →",
+    ctaSub: "Book a short call, tell me what you do, and I'll tell you honestly which one will make the difference.",
+    ctaBtn: "Book a Free Call →",
   },
   hu: {
-    eyebrow: "Amit csinálunk",
-    h1: ["NÉGY FŐ SZOLGÁLTATÁS.", "EGY CÉL."],
-    heroSub: "Minden kifejezetten vállalkozásoknak és autószervizeknek építve. Értjük a szakmádat, az ügyfeleidet, és azt, mi kell a növekedéshez.",
-    ticker: ["Prémium weboldalak", "• AI érdeklődő-szűrés", "Helyi SEO", "• 0–24 AI árajánló", "Azonnali árajánlat", "• Érdeklődő-minősítés", "Okos automatizálás"],
+    eyebrow: "Szolgáltatások",
+    h1: ["ÖT FŐ SZOLGÁLTATÁS.", "EGY CÉL."],
+    heroSub: "Szakipari, építőipari és szolgáltató cégeknek: kevesebb idő megy el árazásra, telefonra és adminisztrációra, több marad a munkára, ami pénzt hoz.",
+    ticker: ["AI árajánló asszisztensek", "• Terv- és kiírás-ellenőrzés", "AI recepciósok", "• Prémium weboldalak", "Azonnali árbecslés", "• CRM-integráció", "Helyi SEO"],
     coreServices: [
       {
-        num: "01", tag: "Új · Autószervizeknek", tagPulse: true,
+        num: "01", tag: "Fő · Árajánló asszisztens", tagPulse: true,
+        title: "AI árajánló\nasszisztens", titleGold: "Azonnali árbecslés",
+        subtitle: "Árbecslés a weboldaladon, telefonhívás nélkül.",
+        desc: "A látogató árat kér. Az asszisztens felteszi azokat a kérdéseket, amiket te is feltennél (a munka jellege, méret, anyag, helyszín, határidő), majd azonnal tételes árbecslést ad, a nap 24 órájában. Csak azok keresnek meg, akik már ismerik az árat, és továbbra is szeretnék, hogy elvégezd a munkát.",
+        features: ["A te munkáidra szabott kérdések", "A saját áraid alapján", "Azonnali, tételes árbecslés", "Helyszín- és megközelíthetőség-ellenőrzés", "Elérhetőséget csak a becslés után kér", "Heti 15–20 óra megtakarítás az árazáson"],
+        stats: [{ label: "Elérhetőség", val: "0–24" }, { label: "Élesben", val: "4 oldalon" }, { label: "Beszélgetés", val: "Korlátlan" }],
+        href: "/services/ai-estimator", cta: "Nézd meg, hogyan működik",
+      },
+      {
+        num: "02", tag: "Új · Kivitelezőknek és gyártóknak", tagPulse: true,
+        title: "Terv- és kiírás-\nellenőrzés", titleGold: "Egy tétel sem marad ki",
+        subtitle: "Tervrajzok és ajánlatkérések átnézve, még árazás előtt.",
+        desc: "Két eszköz, egy logika. A Tervolvasó kiméri a mennyiségeket a tervrajzokból, és összeveti őket a költségvetéssel. Az Ajánlat-előkészítő átnézi az ajánlatkérést, kigyűjti az ellentmondásokat és a hiányokat, megírja a tisztázó kérdéseket, és üzemenként szétosztja a tételeket. A kollégád átnézi és jóváhagyja.",
+        features: ["Mennyiségek építészeti, statikai és gépészeti tervekből", "Soronkénti összevetés a költségvetéssel", "Minden szám mellett a forrás és a biztonság", "Hibák és hiányok valószínűség szerint", "Megírt tisztázó kérdések", "Excel a megszokott formában"],
+        stats: [{ label: "Bemenet", val: "Teljes csomag" }, { label: "Minden szám", val: "Forrással" }, { label: "Eredmény", val: "Excel" }],
+        href: "/services/tender-review", cta: "Nézd meg, hogyan működik",
+      },
+      {
+        num: "03", tag: "Új · AI recepciós", tagPulse: true,
+        title: "AI\nrecepciós", titleGold: "CRM-mel összekötve",
+        subtitle: "Minden hívást felvesz, és minden hívást visszaír a CRM-be.",
+        desc: "Felveszi a telefont, a CRM-ből megmondja az ügyfélnek, hol tart a rendelése, megválaszolja a mindennap visszatérő kérdéseket, felveszi az új megkereséseket, és ha kell, átadja a hívást egy kollégának. Minden hívás után automatikusan rögzíti, mit szeretett volna a hívó.",
+        features: ["Éjjel-nappal felveszi a hívásokat", "Rendelés állapota a CRM-ből", "Minden hívás automatikusan rögzítve", "Megválaszolja a visszatérő kérdéseket", "Felveszi az új megkereséseket", "Ha kell, kollégának adja át"],
+        stats: [{ label: "Válaszol", val: "0–24" }, { label: "CRM", val: "Olvas és ír" }, { label: "Elmaradt hívás", val: "0" }],
+        href: "/services/ai-receptionist", cta: "Nézd meg, hogyan működik",
+      },
+      {
+        num: "04", tag: "Weboldal", tagPulse: false,
+        title: "Prémium\nweboldal", titleGold: "Konverzióra építve",
+        subtitle: "Igényes weboldalak vállalkozásoknak, beépített helyi SEO-val.",
+        desc: "Egyedi, villámgyors weboldal, amin első ránézésre látszik, hogy a környéken te vagy a minőségi választás. Next.js vagy Framer alapon, arra tervezve, hogy a látogatókból ajánlatkérés legyen, és az első naptól optimalizálva a helyi Google-keresésre és a Google Cégprofilra.",
+        features: ["Egyedi, igényes dizájn", "Mobilra optimalizált, 2 mp alatti betöltés", "Érdeklődő-gyűjtés és kapcsolati űrlapok", "Beépített helyi SEO az első naptól", "Google Cégprofil beállítás", "Analitika és konverziómérés"],
+        stats: [{ label: "PageSpeed pont", val: "100/100" }, { label: "Betöltés", val: "<0,8 mp" }, { label: "SEO pont", val: "100/100" }],
+        href: "/services/website-design", cta: "Részletek",
+      },
+      {
+        num: "05", tag: "Autószervizeknek", tagPulse: true,
         title: "Árajánlat-\nkészítő", titleGold: "Tételesen, percek alatt",
         subtitle: "A műhelyednek: tételes árajánlat alvázszámból, percek alatt, árakért telefonálgatás nélkül.",
         desc: "Beírod az alvázszámot és kiválasztod a munkát. Beazonosítja a pontos járművet, a te márkáidból ajánl alkatrészt, rákérdez, ha valami nem dönthető el az alvázszámból, hozzáadja az óradíjadat és az ÁFA-t, és kész PDF-árajánlatot ad.",
         features: ["Jármű-azonosítás alvázszámból", "A te márkáidat ajánlja", "Rákérdez, nem találgat", "A te áraid és óradíjad", "Megjegyzi az árjavításaidat", "Tételes PDF-árajánlat"],
         stats: [{ label: "Az ajánlat alapja", val: "Alvázszám" }, { label: "Testre szabva", val: "A szervizedre" }, { label: "Eredmény", val: "PDF" }],
-        href: "/services/mechanic-quoting", cta: "Nézd meg, hogy működik",
-      },
-      {
-        num: "02", tag: "AI Árajánló", tagPulse: true,
-        title: "AI Árajánló\nÜgynök", titleGold: "Azonnali árajánlat",
-        subtitle: "Projektbecslés a weboldaladon, telefonhívás nélkül.",
-        desc: "A látogató árajánlatot kér. Az AI konkrét kérdéseket tesz fel a munka jellegéről, a területről, az anyagokról, a bejáratról, az irányítószámról és a határidőről, majd azonnal pontos becslést ad, a nap 24 órájában. Csak azok az érdeklődők keresnek meg, akik már ismerik az árat és még mindig foglalni akarnak.",
-        features: ["Terasz, gyep, tereprendezés és még sok más", "Projektre szabott kérdések", "Azonnali, tételes bontás", "Irányítószám- és helyszín-ellenőrzés", "Elérhetőség az árajánlat után", "Heti 15–20 óra megtakarítás az árajánlatokon"],
-        stats: [{ label: "Elérhetőség", val: "0–24" }, { label: "Válaszidő", val: "<2 mp" }, { label: "Beszélgetés", val: "Korlátlan" }],
-        href: "/services/ai-estimator", cta: "Nézd meg, hogy működik",
-      },
-      {
-        num: "03", tag: "AI Chatbot", tagPulse: true,
-        title: "AI Chatbot\nés minősítő", titleGold: "0–24 az oldaladon",
-        subtitle: "Foglalkozik minden látogatóval, kiszűri a komolytalanokat, a többit egyből hozzád küldi.",
-        desc: "A chatbot minden látogatót köszönt, rákérdez a keretre, a helyszínre és a határidőre, majd dönt. Rossz terület, nem stimmel a keret, nem passzol? Udvariasan elutasítja, te nem is hallasz róla. Komoly érdeklődő? A teljes adatai a postaládádba kerülnek.",
-        features: ["Büdzsé-, helyszín- és határidő-ellenőrzés", "Automatikus lead-pontozás", "Udvariasan elutasít, ha nem passzol", "A tulajdonost nem zavarják a felesleges megkeresések", "Azonnali értesítés SMS-ben vagy e-mailben", "0–24, plusz erőfeszítés nélkül"],
-        stats: [{ label: "Minőségi érdeklődő", val: "+300%" }, { label: "Válaszidő", val: "<2 mp" }, { label: "Felesleges érdeklődő", val: "0" }],
-        href: "/services/ai-chatbot", cta: "Nézd meg, hogy működik",
-      },
-      {
-        num: "04", tag: "Weboldal", tagPulse: false,
-        title: "Prémium\nWeboldal", titleGold: "Konverzióra építve",
-        subtitle: "Igényes weboldalak vállalkozásoknak, beépített helyi SEO-val.",
-        desc: "Egyedi, villámgyors weboldal, ami a környékeden a prémium választásként pozicionál. Next.js vagy Framer alapon, arra tervezve, hogy a látogatókból érdeklődő legyen, és az első naptól optimalizálva a helyi Google-keresésre és a Google Cégprofilra.",
-        features: ["Egyedi, igényes dizájn", "Mobilra optimalizált, 2 mp alatti betöltés", "Érdeklődő-gyűjtés és kapcsolati űrlapok", "Beépített helyi SEO az első naptól", "Google Cégprofil beállítás", "Analitika és konverziómérés"],
-        stats: [{ label: "PageSpeed pont", val: "100/100" }, { label: "Betöltés", val: "<0,8 mp" }, { label: "SEO pont", val: "100/100" }],
-        href: "/services/website-design", cta: "Tudj meg többet",
+        href: "/services/mechanic-quoting", cta: "Nézd meg, hogyan működik",
       },
     ],
     extraServices: [
-      { title: "AI Vélemény-ügynök", desc: "A munka elvégzése után az AI automatikusan ír az ügyfélnek, és megkéri, hogy 1–10-ig értékelje az élményt. 7 vagy afölött? Közvetlen linket kap egy Google-értékeléshez. 7 alatt? Az AI rákérdez, mi ment félre, hogy javíthasd, mielőtt nyilvános panasz lenne belőle." },
-      { title: "AI Recepciós", desc: "Egy AI, ami pontosan úgy veszi fel a hívásokat, mint egy valódi recepciós, felírja a hívó nevét, számát és a hívás okát, majd összefoglalót küld neked. Futhat 0–24-ben, vagy csak munkaidőn kívül / amikor nem veszed fel. Soha ne szalassz el érdeklődőt azért, mert épp dolgoztál." },
+      { title: "AI véleménygyűjtő", desc: "A munka után az AI automatikusan ír az ügyfélnek, és megkéri, hogy 1-től 10-ig értékelje a munkát. 7 vagy több? Kap egy linket, ahol Google-értékelést írhat. 7 alatt? Az AI rákérdez, mi nem tetszett, így még azelőtt rendezheted, hogy nyilvános panasz lenne belőle." },
+      { title: "AI chatbot", desc: "Chatbot a weboldaladon, amely minden látogatót fogad, rákérdez a keretre, a helyszínre és a határidőre, udvariasan elutasítja, aki nem illik hozzád, a komoly megkereséseket pedig egyből a postaládádba küldi, éjjel-nappal." },
       { title: "SEO és Google Cégprofil", desc: "Már van weboldalad? A helyi SEO-t és a Google Cégprofil beállítását külön is elvállaljuk, kulcsszó-stratégia, tartalom, helyi említések és havi riportok, hogy feljebb kerülj a környékeden." },
-      { title: "Működési vezérlőpult", desc: "Egyedi vezérlőpult, ami tökéletes rendben tartja a munkáidat. Automatikusan rögzíti, milyen munka készült el, mikor, mennyi lett a végösszeg, és mit értékelt az ügyfél. Kristálytiszta kép a napi működésedről, segít kiszúrni a legjövedelmezőbb munkákat, és a papírmunkát a minimumon tartja." },
+      { title: "Egyedi kimutatás", desc: "Egyedi felület, ahol minden munkád rendben, egy helyen látszik. Automatikusan rögzíti, mi készült el, mikor, mennyi lett a végösszeg, és hogyan értékelte az ügyfél. Tiszta képet ad a napi működésről, megmutatja, melyik munka hozza a legtöbbet, és minimálisra csökkenti a papírmunkát." },
     ],
     alsoEyebrow: "Szintén elérhető",
-    alsoTitle: "További eszközök, amiket építünk",
+    alsoTitle: "Ezeket is elkészítem",
     diffTitle: "Más ötlet jár a fejedben?",
-    diffDesc: "Ha olyasmire van szükséged, ami itt nincs felsorolva, keress meg, ha segít a szakembereknek jobb ügyfeleket szerezni, valószínűleg meg tudjuk építeni.",
-    bookCall: "Foglalj hívást →",
+    diffDesc: "Ha olyasmire van szükséged, ami itt nem szerepel, keress meg nyugodtan. Ha időt spórol a cégednek, jó eséllyel meg tudom építeni.",
+    bookCall: "Foglalj időpontot →",
     callNote: "Inkább beszélnél?",
     pricingEyebrow: "Árazás",
     pricingTitleA: "Egyszerű csomagok.",
@@ -176,12 +194,12 @@ const content = {
     pricingDesc: "Az ár a szakmádtól és az igényeidtől függ. Egy rövid beszélgetés után írásban megkapod, mielőtt bármi elindulna.",
     plans: [
       {
-        name: "Árajánló-asszisztens", desc: "0–24-es értékesítő a meglévő weboldaladon.",
+        name: "Árajánló asszisztens", desc: "Éjjel-nappal dolgozó értékesítő a meglévő weboldaladon.",
         price: "Egyedi ár", priceNote: "beállítás + havi díj", monthly: "Írásban, mielőtt bármi elindul",
         features: [
           "AI chatbot, ami a saját áraid alapján azonnal becslést ad",
-          "Minősít minden érdeklődőt: munka, keret, helyszín, határidő",
-          "Udvariasan kiszűri a komolytalanokat, mielőtt hozzád érnének",
+          "Minden érdeklődőnél rákérdez a munkára, a keretre, a helyszínre és a határidőre",
+          "Udvariasan kiszűri a komolytalanokat, mielőtt hozzád jutnának",
           "Automatikus utánkövetés, hogy ne hűljön ki az érdeklődő",
           "CRM-hez kötve, minden érdeklődő automatikusan rögzítve",
           "Azonnali értesítés e-mailben vagy SMS-ben",
@@ -200,21 +218,21 @@ const content = {
           "CRM-hez kötött ajánlatkérő űrlapok",
           "Blogot és fotókat te magad is egyszerűen frissíthetsz",
           "Analitika és konverziómérés",
-          "Minden, ami az Árajánló-asszisztensben, beépítve",
+          "Az árajánló asszisztens minden funkciója, beépítve",
         ],
       },
       {
         name: "Egyedi", desc: "Bármi más, amit meg kell építeni.",
         price: "Egyedi ajánlat", priceNote: "", monthly: "Az igényeidhez árazva",
-        features: ["AI Recepciós", "AI Vélemény-ügynök", "Működési vezérlőpult", "SEO és Google Cégprofil"],
+        features: ["AI recepciós", "Terv- és kiírás-ellenőrzés", "AI véleménygyűjtő", "Egyedi kimutatás"],
       },
     ],
     foundingOffer: "",
-    pricingCta: "Írj nekem Messengeren →",
+    pricingCta: "Foglalj időpontot →",
     ctaTitleA: "NEM VAGY BIZTOS BENNE,",
     ctaTitleB: "MELYIK KELL NEKED?",
-    ctaSub: "Írj nekem Facebookon, mondd el, mivel foglalkozol, és őszintén megmondom, melyik hozza a legtöbbet.",
-    ctaBtn: "Írj nekem Messengeren →",
+    ctaSub: "Foglalj egy rövid hívást, mondd el, mivel foglalkozol, és őszintén megmondom, melyik hozza a legtöbbet.",
+    ctaBtn: "Foglalj időpontot →",
   },
 } as const;
 
@@ -446,7 +464,7 @@ export default function ServicesPage({ lang }: { lang: Locale }) {
 
           <Reveal className="mt-8">
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
                 {c.pricingCta}
               </a>
@@ -487,7 +505,7 @@ export default function ServicesPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-1">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-1">
               {c.ctaBtn}
             </a>
           </Reveal>

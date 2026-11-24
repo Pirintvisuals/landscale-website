@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Becslés Agent & Chatbot Magyar Vállalkozásoknak | Landscale",
+  title: "AI árajánló asszisztens és AI recepciós cégeknek | Landscale",
   description:
-    "AI árajánlat és lead-szűrő magyar vállalkozásoknak. Tereprendezés, kertészet, építőipar, vége a komolytalan érdeklődőknek. Automatikus válasz 24/7.",
+    "AI árajánló asszisztens, AI recepciós és terv- és kiírás-ellenőrzés szakipari és építőipari cégeknek. Azonnali árbecslés, minden hívás felvéve, egy tétel sem marad ki.",
   keywords:
-    "AI chatbot magyar vállalkozás, automatikus árajánlat rendszer Magyarország, tereprendezés weboldal, kertészet AI lead szűrés, építőipar chatbot, vízvezetékszerelés weboldal, magyar szolgáltató automatizálás, webdesign Miskolc, webdesign Magyarország",
+    "AI árajánló, automatikus árajánlat rendszer, AI recepciós, tervolvasó, mennyiségkimutatás AI, költségvetés ellenőrzés, ajánlat-előkészítés, közbeszerzés ajánlat, építőipar weboldal, webdesign Magyarország",
   alternates: {
     canonical: "https://landscale.agency/hu",
     languages: {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "AI Becslés Agent & Chatbot Magyar Vállalkozásoknak | Landscale",
+    title: "AI árajánló asszisztens és AI recepciós cégeknek | Landscale",
     description:
       "Vége a komolytalan érdeklődőknek. AI-alapú rendszer, ami 24/7 szűri a leadeket, azonnali árajánlatot ad, és csak a komoly megrendelőket engedi át hozzád.",
     type: "website",

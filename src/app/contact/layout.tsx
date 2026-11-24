@@ -3,13 +3,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact, Landscale Agency",
   description:
-    "Message Landscale on Facebook or send an enquiry. Starting prices are published, and replies usually come the same day.",
+    "Book a free call with Landscale, send a message or ring +36 70 250 1739. Replies usually come the same day.",
   keywords:
     "contact Landscale Agency, AI quoting assistant for tradesmen, contractor website quote, trade business website UK",
   openGraph: {
     title: "Contact, Landscale Agency",
     description:
-      "Message me on Facebook, replies usually the same day.",
+      "Book a free call or send a message, replies usually the same day.",
     type: "website",
     url: "https://landscale.agency/contact",
     siteName: "Landscale Agency",

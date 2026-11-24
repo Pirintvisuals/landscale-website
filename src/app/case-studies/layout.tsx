@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Real results, including a live AI quoting system in production. 100/100 SEO, sub-1s loads. Landscale-built sites that generate and qualify leads for tradesmen & contractors.",
   keywords:
-    "trade business website case study, AI estimator results, contractor website examples, tradesmen lead generation results UK, landscaping website case study",
+    "trade business website case study, AI estimator results, contractor website examples, tradesmen lead generation results UK",
   alternates: { canonical: "https://landscale.agency/case-studies" },
   openGraph: {
     title: "Case Studies, Real Results for Home Service Businesses | Landscale",

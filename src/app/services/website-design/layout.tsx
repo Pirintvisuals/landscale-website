@@ -14,7 +14,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Website Design for Tradesmen",
-  description: "Premium, conversion-focused websites for roofers, landscapers, builders and all tradesmen. Bespoke design, sub-1s load times, local SEO and AI lead qualification built in.",
+  description: "Premium, conversion-focused websites for trade and construction businesses. Bespoke design, sub-1s load times, local SEO and AI lead qualification built in.",
   provider: { "@type": "Organization", name: "Landscale Agency", url: "https://landscale.agency" },
   url: "https://landscale.agency/services/website-design",
   areaServed: ["GB", "Worldwide"],
@@ -23,14 +23,14 @@ const serviceSchema = {
 export const metadata: Metadata = {
   title: "Website Design for Tradesmen & Contractors | Landscale",
   description:
-    "Premium websites for roofers, landscapers & all tradesmen. Bespoke design, sub-1s loads, local SEO and AI lead qualification built in from day one.",
+    "Premium websites for trade and construction businesses. Bespoke design, sub-1s loads, local SEO and AI lead qualification built in from day one.",
   keywords:
-    "roofing website design UK, contractor website design, hardscaping website designer, construction company website UK, tradesmen web design, local SEO contractor website",
+    "roofing website design UK, contractor website design, construction company website UK, tradesmen web design, local SEO contractor website",
   alternates: { canonical: "https://landscale.agency/services/website-design" },
   openGraph: {
     title: "Website Design for Tradesmen & Contractors | Landscale",
     description:
-      "Premium websites for roofers, landscapers & all tradesmen. Bespoke design, sub-1s loads, local SEO and AI lead qualification built in from day one.",
+      "Premium websites for trade and construction businesses. Bespoke design, sub-1s loads, local SEO and AI lead qualification built in from day one.",
     type: "website",
     url: "https://landscale.agency/services/website-design",
     siteName: "Landscale Agency",

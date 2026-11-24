@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
-import { MESSENGER_URL } from "@/content/ui";
+import { CALENDLY_URL } from "@/content/ui";
 import { GarageVisual } from "@/components/ui/garage-visual";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
@@ -41,8 +41,8 @@ const content = {
     ],
     ctaTitleA: "STOP PRICING JOBS",
     ctaTitleB: "BY HAND",
-    ctaSub: "Message me on Facebook and I'll show you how the quote builder would work with your brands and your prices.",
-    ctaBtn: "Message Me on Facebook →",
+    ctaSub: "Book a short call and I'll show you how the quote builder would work with your brands and your prices.",
+    ctaBtn: "Book a Free Call →",
   },
   hu: {
     eyebrow: "Árajánlat-készítő · Autószerelőknek és szervizeknek",
@@ -74,8 +74,8 @@ const content = {
     ],
     ctaTitleA: "NE KÉZZEL",
     ctaTitleB: "ÁRAZD A MUNKÁKAT",
-    ctaSub: "Írj nekem Facebookon, és megmutatom, hogyan működne az árajánlat-készítő a te márkáiddal és a te áraiddal.",
-    ctaBtn: "Írj nekem Messengeren →",
+    ctaSub: "Foglalj egy rövid hívást, és megmutatom, hogyan működne az árajánlat-készítő a te márkáiddal és a te áraiddal.",
+    ctaBtn: "Foglalj időpontot →",
   },
 } as const;
 
@@ -105,7 +105,7 @@ export default function MechanicQuotingPage({ lang }: { lang: Locale }) {
             <a href={MECHANIC_DEMO_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
               {c.ctaDemo}
             </a>
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 rounded-full hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 rounded-full hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300">
               {c.ctaAction}
             </a>
           </motion.div>
@@ -199,7 +199,7 @@ export default function MechanicQuotingPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
               {c.ctaBtn}
             </a>
           </Reveal>

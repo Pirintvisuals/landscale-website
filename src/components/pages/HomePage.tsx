@@ -7,14 +7,19 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { HeroVisual } from "@/components/ui/hero-visual";
 import { GarageVisual } from "@/components/ui/garage-visual";
+import { TenderVisual } from "@/components/ui/tender-visual";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
 import { homeContent, TESTIMONIALS } from "@/content/home";
 import { faqSchema, reviewSchema } from "@/content/home-schema";
-import { MESSENGER_URL } from "@/content/ui";
+import { CALENDLY_URL } from "@/content/ui";
 import { MECHANIC_DEMO_URL } from "@/components/pages/MechanicQuotingPage";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
+
+type Demo = "trades" | "contractors" | "garage";
+const DEMOS: Demo[] = ["trades", "contractors", "garage"];
+const DEMO_LINK: Record<Demo, string> = { trades: "/case-studies", contractors: "/services/tender-review", garage: "/services/mechanic-quoting" };
 
 function CountUp({ target, suffix = "", duration = 2.5 }: { target: number; suffix?: string; duration?: number }) {
   const ref = useRef(null);
@@ -141,16 +146,17 @@ export default function HomePage({ lang }: { lang: Locale }) {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const [demo, setDemo] = useState<"trades" | "garage">("trades");
+  const [demo, setDemo] = useState<Demo>("trades");
   const [switched, setSwitched] = useState(false);
-  const h = demo === "garage" ? { ...c.hero, ...c.hero.garage } : c.hero;
+  const h = demo === "garage" ? { ...c.hero, ...c.hero.garage } : demo === "contractors" ? { ...c.hero, ...c.hero.contractors } : c.hero;
   // first load plays the full staggered intro; switching audience replays it faster
   const d = (t: number) => (switched ? t * 0.35 : t);
-  const pickDemo = (k: "trades" | "garage") => { setSwitched(true); setDemo(k); };
+  const pickDemo = (k: Demo) => { setSwitched(true); setDemo(k); };
 
-  // ?for=garage opens the hero on the garage demo (for links sent to garages)
+  // ?for=garage / ?for=contractors opens the hero on that demo (for links sent to prospects)
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).get("for") === "garage") setDemo("garage");
+    const f = new URLSearchParams(window.location.search).get("for");
+    if (f === "garage" || f === "contractors") setDemo(f);
   }, []);
 
   return (
@@ -178,9 +184,9 @@ export default function HomePage({ lang }: { lang: Locale }) {
 
               <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
                 role="tablist" className="self-start inline-flex p-1 mb-6 rounded-full bg-white/[0.03] border border-gold/25">
-                {(["trades", "garage"] as const).map((k) => (
+                {DEMOS.map((k) => (
                   <button key={k} type="button" role="tab" aria-selected={demo === k} onClick={() => pickDemo(k)}
-                    className={`font-grotesk text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-300 ${demo === k ? "bg-gold text-deep-black" : "text-cream/60 hover:text-gold"}`}>
+                    className={`font-grotesk text-xs font-semibold px-3 sm:px-4 py-1.5 rounded-full transition-all duration-300 ${demo === k ? "bg-gold text-deep-black" : "text-cream/60 hover:text-gold"}`}>
                     {c.hero.demoToggle[k]}
                   </button>
                 ))}
@@ -220,11 +226,11 @@ export default function HomePage({ lang }: { lang: Locale }) {
 
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.95, ease: SPRING }}
                 className="flex flex-col sm:flex-row gap-3 mb-5">
-                <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1 cursor-pointer">
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:-translate-y-1 cursor-pointer">
                   {c.hero.ctaPrimary}
                   <span>→</span>
                 </a>
-                <Link href={localize(demo === "garage" ? "/services/mechanic-quoting" : "/case-studies", lang)} className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-sm px-6 py-3.5 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300 cursor-pointer">
+                <Link href={localize(DEMO_LINK[demo], lang)} className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/15 text-cream/70 font-grotesk font-medium text-sm px-6 py-3.5 hover:border-gold/60 hover:text-gold hover:bg-gold/5 transition-all duration-300 cursor-pointer">
                   {h.ctaSecondary}
                 </Link>
               </motion.div>
@@ -254,7 +260,7 @@ export default function HomePage({ lang }: { lang: Locale }) {
             <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5, ease: SPRING }}
               className="hidden lg:flex items-center justify-center">
               <div className="w-full h-[min(520px,62vh)] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
-                {demo === "garage" ? <GarageVisual key="garage" lang={lang} /> : <HeroVisual key="trades" lang={lang} />}
+                {demo === "garage" ? <GarageVisual key="garage" lang={lang} /> : demo === "contractors" ? <TenderVisual key="contractors" lang={lang} /> : <HeroVisual key="trades" lang={lang} />}
               </div>
             </motion.div>
 
@@ -386,49 +392,6 @@ export default function HomePage({ lang }: { lang: Locale }) {
               {c.services.headA}<br /><span className="text-gradient-gold">{c.services.headB}</span>
             </h2>
           </Reveal>
-          {/* Garage quote builder, shown first */}
-          <Reveal className="mb-5">
-            <div className="relative bg-[#111111] border border-gold/35 hover:border-gold/60 p-7 md:p-10 rounded-3xl overflow-hidden transition-colors duration-300">
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
-              <div className="absolute inset-0 pointer-events-none"
-                style={{ background: "radial-gradient(ellipse at 20% 0%, rgba(212,175,55,0.08) 0%, transparent 60%)" }} />
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-12 items-center">
-                <div>
-                  <div className="flex flex-wrap items-center gap-3 mb-5">
-                    <span className="bg-gold text-deep-black font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">{c.services.featured.badge}</span>
-                    <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/25 px-3 py-1.5 rounded-full">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-                      <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{c.services.featured.tag}</span>
-                    </div>
-                  </div>
-                  <h3 className="font-grotesk font-bold text-2xl md:text-3xl text-cream mb-2 tracking-tight">{c.services.featured.title}</h3>
-                  <p className="font-cormorant text-base text-gold/60 italic mb-4 leading-relaxed">{c.services.featured.italic}</p>
-                  <p className="font-inter text-text-muted text-sm leading-relaxed">{c.services.featured.desc}</p>
-                </div>
-                <div>
-                  <ul className="space-y-2.5 mb-7">
-                    {c.services.featured.features.map((f) => (
-                      <li key={f} className="flex items-center gap-3 font-inter text-sm text-cream/70">
-                        <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />{f}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex flex-col sm:flex-row gap-3 mb-3">
-                    <a href={MECHANIC_DEMO_URL} target="_blank" rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3 rounded-full hover:bg-bright-gold transition-all duration-300">
-                      {c.services.featured.demoLabel}
-                    </a>
-                    <Link href={localize("/services/mechanic-quoting", lang)}
-                      className="inline-flex items-center justify-center border border-gold/30 text-gold font-grotesk font-semibold text-sm px-6 py-3 rounded-full hover:bg-gold/10 hover:border-gold/60 transition-all duration-300">
-                      {c.services.featured.cta}
-                    </Link>
-                  </div>
-                  <p className="font-inter text-[11px] text-text-muted">{c.services.featured.demoNote}</p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
           {/* Three core services */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {c.services.cards.map((card, i) => (
@@ -475,6 +438,70 @@ export default function HomePage({ lang }: { lang: Locale }) {
             ))}
           </div>
 
+
+          {/* Contractor & manufacturer tools (new) */}
+          <Reveal className="mt-5">
+            <div className="relative bg-[#111111] border border-gold/35 p-7 md:p-10 rounded-3xl overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+              <div className="absolute inset-0 pointer-events-none"
+                style={{ background: "radial-gradient(ellipse at 20% 0%, rgba(212,175,55,0.08) 0%, transparent 60%)" }} />
+              <div className="relative z-10">
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  <span className="bg-gold text-deep-black font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">{c.services.tender.badge}</span>
+                  <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/25 px-3 py-1.5 rounded-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                    <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{c.services.tender.tag}</span>
+                  </div>
+                </div>
+                <h3 className="font-grotesk font-bold text-2xl md:text-3xl text-cream mb-3 tracking-tight">{c.services.tender.head}</h3>
+                <p className="font-inter text-text-muted text-sm leading-relaxed max-w-3xl mb-8">{c.services.tender.intro}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-7">
+                  {c.services.tender.cards.map((card) => (
+                    <div key={card.name} className="bg-[#0A0A0A] border border-white/[0.07] hover:border-gold/40 rounded-2xl p-6 transition-colors duration-300">
+                      <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{card.name}</span>
+                      <h4 className="font-grotesk font-bold text-lg text-cream mt-2 mb-2 tracking-tight">{card.title}</h4>
+                      <p className="font-inter text-text-muted text-sm leading-relaxed mb-4">{card.desc}</p>
+                      <ul className="space-y-2">
+                        {card.features.map((f) => (
+                          <li key={f} className="flex items-center gap-3 font-inter text-xs text-cream/65">
+                            <span className="w-1 h-1 rounded-full bg-gold flex-shrink-0" />{f}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <p className="font-cormorant text-base text-gold/60 italic leading-relaxed max-w-2xl">{c.services.tender.note}</p>
+                  <Link href={localize("/services/tender-review", lang)}
+                    className="inline-flex items-center justify-center flex-shrink-0 bg-gold text-deep-black font-grotesk font-bold text-sm px-6 py-3 rounded-full hover:bg-bright-gold transition-all duration-300">
+                    {c.services.tender.cta}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Garage quote builder, compact */}
+          <Reveal className="mt-5">
+            <div className="relative bg-[#111111] border border-white/[0.07] hover:border-gold/40 px-7 py-6 md:px-10 rounded-3xl transition-colors duration-300 flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-10">
+              <div className="flex-1">
+                <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-gold/80">{c.services.featured.badge}</span>
+                <h3 className="font-grotesk font-bold text-xl text-cream mt-1.5 mb-1 tracking-tight">{c.services.featured.title}</h3>
+                <p className="font-inter text-text-muted text-sm leading-relaxed">{c.services.featured.italic}</p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+                <a href={MECHANIC_DEMO_URL} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center border border-gold/30 text-gold font-grotesk font-semibold text-sm px-6 py-3 rounded-full hover:bg-gold/10 hover:border-gold/60 transition-all duration-300">
+                  {c.services.featured.demoLabel}
+                </a>
+                <Link href={localize("/services/mechanic-quoting", lang)}
+                  className="inline-flex items-center justify-center text-cream/70 font-grotesk font-semibold text-sm px-4 py-3 hover:text-gold transition-colors duration-300">
+                  {c.services.featured.cta}
+                </Link>
+              </div>
+            </div>
+          </Reveal>
 
           {/* See all services CTA */}
           <Reveal className="mt-10 text-center">
@@ -561,7 +588,7 @@ export default function HomePage({ lang }: { lang: Locale }) {
       </section>
 
       {/* ── CHATBOT ── */}
-      <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer">
+      <Link href={localize("/contact", lang)} aria-label={lang === "hu" ? "Kapcsolat" : "Contact"}>
         <motion.div className="fixed bottom-6 right-6 z-[200]" whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.94 }}>
           <div className="relative w-14 h-14 rounded-full bg-[#111111] border border-gold/30 flex items-center justify-center shadow-[0_4px_30px_rgba(0,0,0,0.6)] cursor-pointer hover:border-gold/70 hover:bg-[#1a1a1a] transition-all duration-300">
             <div className="absolute inset-0 rounded-full border border-gold/20 animate-ping opacity-50" />
@@ -570,7 +597,7 @@ export default function HomePage({ lang }: { lang: Locale }) {
             </svg>
           </div>
         </motion.div>
-      </a>
+      </Link>
     </>
   );
 }

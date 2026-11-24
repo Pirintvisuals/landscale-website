@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Árajánló Ügynök, azonnali árajánlat a weboldaladon | Landscale",
+  title: "AI árajánló asszisztens, azonnali árbecslés a weboldaladon | Landscale",
   description:
-    "AI árajánló ügynök vállalkozásoknak: a látogató árat kér, az AI projektspecifikus kérdéseket tesz fel, és azonnal pontos becslést ad, 0–24, telefonhívás nélkül.",
+    "AI árajánló asszisztens vállalkozásoknak: a látogató árat kér, az AI a munkára szabott kérdéseket tesz fel, és azonnal pontos becslést ad, 0–24, telefonhívás nélkül.",
   alternates: {
     canonical: "https://landscale.agency/hu/services/ai-estimator",
     languages: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "AI Árajánló Ügynök, azonnali árajánlat a weboldaladon | Landscale",
+    title: "AI árajánló asszisztens, azonnali árbecslés a weboldaladon | Landscale",
     description: "A látogató árat kér, az AI azonnal pontos becslést ad, 0–24, telefonhívás nélkül.",
     type: "website",
     url: "https://landscale.agency/hu/services/ai-estimator",

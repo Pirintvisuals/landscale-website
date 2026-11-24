@@ -14,7 +14,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "AI Chatbot for Tradesmen",
-  description: "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. Built for landscaping, construction, and home service businesses.",
+  description: "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. Built for trade, construction and home service businesses.",
   provider: { "@type": "Organization", name: "Landscale Agency", url: "https://landscale.agency" },
   url: "https://landscale.agency/services/ai-chatbot",
   areaServed: ["GB", "Worldwide"],
@@ -23,14 +23,14 @@ const serviceSchema = {
 export const metadata: Metadata = {
   title: "AI Chatbot for Tradesmen, Filter Bad Leads 24/7 | Landscale",
   description:
-    "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. For landscapers, roofers & home service businesses.",
+    "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. For trade and home service businesses.",
   keywords:
-    "AI chatbot landscaping business, lead qualification chatbot, landscaping lead filter, home service AI chatbot UK, chatbot for landscapers, automatic lead scoring",
+    "AI chatbot for trade businesses, lead qualification chatbot, home service AI chatbot, automatic lead scoring",
   alternates: { canonical: "https://landscale.agency/services/ai-chatbot" },
   openGraph: {
     title: "AI Chatbot for Tradesmen, Filter Bad Leads 24/7 | Landscale",
     description:
-      "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. For landscapers, roofers & home service businesses.",
+      "AI chatbot that qualifies leads 24/7, filters out time-wasters, and sends only serious buyers to your inbox. For trade and home service businesses.",
     type: "website",
     url: "https://landscale.agency/services/ai-chatbot",
     siteName: "Landscale Agency",

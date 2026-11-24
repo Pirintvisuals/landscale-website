@@ -6,20 +6,20 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
-import { MESSENGER_URL } from "@/content/ui";
+import { CALENDLY_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
 const content = {
   en: {
-    eyebrow: "AI Estimator Agent",
+    eyebrow: "AI Quoting Assistant",
     h1a: "INSTANT QUOTES. ",
     h1b: "NO PHONE CALL NEEDED.",
     sub: "A visitor asks for a quote. The AI asks the right questions and gives an accurate estimate, immediately, 24/7.",
     ctaDemo: "Ask for a Free Demo →",
     ctaAction: "See It In Action",
-    defTitle: "What Is an AI Estimator Agent?",
-    def: "An AI Estimator Agent is a chat widget that integrates into a tradesman's website and delivers instant, accurate price estimates without a phone call. When a visitor requests a quote, the agent asks project-specific questions, covering scope, area size, materials, postcode, and access requirements, then produces a structured, line-item estimate in under two seconds. Contact details are only collected after the estimate is displayed, so every enquiry comes from a price-aware, serious buyer. The result: tradesmen save 15–20 hours per week on preliminary quote calls and receive fewer, better-quality enquiries.",
+    defTitle: "What Is an AI Quoting Assistant?",
+    def: "An AI Quoting Assistant is a chat widget that integrates into a tradesman's website and delivers instant, accurate price estimates without a phone call. When a visitor requests a quote, the agent asks project-specific questions, covering scope, area size, materials, postcode, and access requirements, then produces a structured, line-item estimate in under two seconds. Contact details are only collected after the estimate is displayed, so every enquiry comes from a price-aware, serious buyer. The result: tradesmen save 15–20 hours per week on preliminary quote calls and receive fewer, better-quality enquiries.",
     liveEyebrow: "Live In Production",
     liveTitleA: "Not a concept.",
     liveTitleB: "It's already live.",
@@ -43,7 +43,7 @@ const content = {
     featTitleB: "Included",
     features: [
       { num: "01", title: "24/7 Availability", desc: "The estimator works around the clock. Visitors get instant quotes whether you're on a job or asleep." },
-      { num: "02", title: "Project-Specific Questions", desc: "Patio, lawn, landscaping, fencing, different questions for different jobs so the estimate is accurate." },
+      { num: "02", title: "Project-Specific Questions", desc: "Boiler swap, bathroom, air-con, renovation: different questions for different jobs, so the estimate is accurate." },
       { num: "03", title: "Instant Line-Item Breakdown", desc: "Not a vague range, a structured estimate with clear line items, delivered in under 2 seconds." },
       { num: "04", title: "Postcode & Site Checks", desc: "Checks coverage area and site access before investing time in a full quote." },
       { num: "05", title: "Contact Collected After Quote", desc: "Visitors provide details after seeing the estimate, pre-filtering out anyone not serious." },
@@ -51,25 +51,25 @@ const content = {
     ],
     ctaTitleA: "SEE THE ESTIMATOR",
     ctaTitleB: "IN ACTION",
-    ctaSub: "Message me on Facebook and I'll show you exactly how the AI estimator would work on your site.",
+    ctaSub: "Book a short call and I'll show you exactly how the AI estimator would work on your site.",
     ctaBtn: "Ask for a Free Demo →",
   },
   hu: {
-    eyebrow: "AI Árajánló Ügynök",
+    eyebrow: "AI árajánló asszisztens",
     h1a: "AZONNALI ÁRAJÁNLAT. ",
     h1b: "TELEFONHÍVÁS NÉLKÜL.",
     sub: "A látogató árajánlatot kér. Az AI felteszi a megfelelő kérdéseket, és pontos becslést ad, azonnal, a nap 24 órájában.",
     ctaDemo: "Kérj ingyenes demót →",
     ctaAction: "Nézd meg működés közben",
-    defTitle: "Mi az az AI Árajánló Ügynök?",
-    def: "Az AI Árajánló Ügynök egy csevegő widget, ami beépül a vállalkozó weboldalába, és telefonhívás nélkül ad azonnali, pontos árbecslést. Amikor a látogató árajánlatot kér, az ügynök projektspecifikus kérdéseket tesz fel, a munka jellege, a terület mérete, az anyagok, az irányítószám és a helyszín megközelíthetősége alapján, majd két másodpercen belül strukturált, tételes becslést készít. Az elérhetőséget csak azután kéri be, hogy a becslés már megjelent, így minden megkeresés árérzékeny, komoly megrendelőtől érkezik. Az eredmény: a vállalkozó heti 15–20 órát spórol az előzetes árajánló hívásokon, és kevesebb, de jobb minőségű érdeklődést kap.",
+    defTitle: "Mi az az AI árajánló asszisztens?",
+    def: "Az AI árajánló asszisztens egy csevegőablak, amely beépül a vállalkozó weboldalába, és telefonhívás nélkül ad azonnali, pontos árbecslést. Amikor a látogató árat kér, az asszisztens a munkára szabott kérdéseket tesz fel a munka jellegéről, a méretekről, az anyagokról, a helyszínről és a megközelíthetőségről, majd néhány másodperc alatt áttekinthető, tételes becslést készít. Az elérhetőséget csak azután kéri be, hogy a becslés már megjelent, így a megkeresések olyanoktól érkeznek, akik már ismerik az árat. Az eredmény: a vállalkozó heti 15–20 órát spórol az előzetes, árazós telefonokon, és kevesebb, de komolyabb megkeresést kap.",
     liveEyebrow: "Élesben működik",
     liveTitleA: "Nem elmélet.",
     liveTitleB: "Már élesben fut.",
-    liveBody: "Az NM Bau, egy magyar–osztrák határ menti felújító cég, épp most használ egy Landscale AI árajánlót. A látogatók leírják a fürdőszoba- vagy teljes ingatlanfelújításukat, az ügynök pedig azonnali előzetes becslést ad, a nap 24 órájában, három nyelven (HU / EN / DE). Nézd meg te is.",
+    liveBody: "Az NM Bau, egy osztrák határ melletti felújító cég, most is egy Landscale AI árajánlót használ. A látogatók leírják a fürdőszoba- vagy teljes ingatlanfelújításukat, az ügynök pedig azonnali előzetes becslést ad, a nap 24 órájában, három nyelven (HU / EN / DE). Nézd meg te is.",
     liveBodyStrong1: "NM Bau",
     liveBodyStrong2: "három nyelven (HU / EN / DE)",
-    liveTags: ["Éles AI árajánló ügynök", "Háromnyelvű: HU / EN / DE", "100/100 SEO", "Önállóan kezelt blog"],
+    liveTags: ["Éles AI árajánló", "Háromnyelvű: HU / EN / DE", "100/100 SEO", "Önállóan kezelt blog"],
     liveTryBtn: "Próbáld ki élesben: nmbau.hu →",
     liveCaseBtn: "Teljes esettanulmány",
     liveImgAlt: "NM Bau, éles, működő AI árajánló rendszer",
@@ -78,23 +78,23 @@ const content = {
     howTitleB: "az árajánló",
     steps: [
       { step: "01", title: "A látogató árajánlatot kér", desc: "Valaki az oldaladra érkezik és árat kér. Az AI azonnal foglalkozni kezd vele, akár hajnali 2-kor is." },
-      { step: "02", title: "Okos, projektre szabott kérdések", desc: "Rákérdez a munka jellegére, a terület méretére, az anyagokra, az irányítószámra és a helyszín megközelíthetőségére, a munkatípusra szabva." },
-      { step: "03", title: "Azonnali, tételes becslés", desc: "A részletes becslés a helyszínen elkészül, még mielőtt megadták volna az elérhetőségüket." },
+      { step: "02", title: "Okos, a munkára szabott kérdések", desc: "Rákérdez a munka jellegére, a méretekre, az anyagokra, a helyszínre és a megközelíthetőségre, mindig az adott munkához igazítva." },
+      { step: "03", title: "Azonnali, tételes becslés", desc: "A részletes becslés ott helyben elkészül, még mielőtt megadnák az elérhetőségüket." },
       { step: "04", title: "Elérhetőség bekérése", desc: "Csak a becslés megtekintése után adják meg az adataikat, így már csak a komoly megrendelők keresnek meg." },
     ],
     featTitleA: "Minden ",
     featTitleB: "benne van",
     features: [
       { num: "01", title: "0–24 elérhetőség", desc: "Az árajánló éjjel-nappal dolgozik. A látogatók azonnal kapnak árat, akár munkában vagy, akár alszol." },
-      { num: "02", title: "Projektre szabott kérdések", desc: "Terasz, gyep, tereprendezés, kerítés, más munkához más kérdések, hogy a becslés pontos legyen." },
-      { num: "03", title: "Azonnali, tételes bontás", desc: "Nem homályos ártartomány, strukturált becslés világos tételekkel, 2 másodpercen belül." },
-      { num: "04", title: "Irányítószám- és helyszín-ellenőrzés", desc: "Ellenőrzi a lefedettségi területet és a helyszín megközelíthetőségét, mielőtt teljes árajánlatra fordítana időt." },
+      { num: "02", title: "A munkára szabott kérdések", desc: "Kazáncsere, fürdőszoba, klíma, felújítás: más munkához más kérdések, hogy a becslés pontos legyen." },
+      { num: "03", title: "Azonnali, tételes bontás", desc: "Nem homályos ársáv, hanem áttekinthető, tételes becslés, pár másodperc alatt." },
+      { num: "04", title: "Helyszín-ellenőrzés", desc: "Ellenőrzi, hogy a munka a területedre esik-e, és megközelíthető-e a helyszín, mielőtt időt szánnál rá." },
       { num: "05", title: "Elérhetőség az árajánlat után", desc: "A látogatók a becslés megtekintése után adják meg az adataikat, előre kiszűrve azokat, akik nem komolyak." },
-      { num: "06", title: "Heti 15–20 óra megtakarítás", desc: "Nincs többé oda-vissza árajánló hívás. Az érdeklődők már foglalásra készen érkeznek." },
+      { num: "06", title: "Heti 15–20 óra megtakarítás", desc: "Nincs több oda-vissza telefonálgatás az árak miatt. Az érdeklődők már döntésre készen keresnek meg." },
     ],
     ctaTitleA: "NÉZD MEG AZ ÁRAJÁNLÓT",
     ctaTitleB: "MŰKÖDÉS KÖZBEN",
-    ctaSub: "Írj nekem Facebookon, és pontosan megmutatom, hogyan működne az AI árajánló a te oldaladon.",
+    ctaSub: "Foglalj egy rövid hívást, és pontosan megmutatom, hogyan működne az AI árajánló a te oldaladon.",
     ctaBtn: "Kérj ingyenes demót →",
   },
 } as const;
@@ -121,7 +121,7 @@ export default function AiEstimatorPage({ lang }: { lang: Locale }) {
             {c.sub}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.65, ease: SPRING }} className="flex flex-wrap gap-4">
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
               {c.ctaDemo}
             </a>
             <Link href={localize("/case-studies", lang)} className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 rounded-full hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300">
@@ -264,7 +264,7 @@ export default function AiEstimatorPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
               {c.ctaBtn}
             </a>
           </Reveal>

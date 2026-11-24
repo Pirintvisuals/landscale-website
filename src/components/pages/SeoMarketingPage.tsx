@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
-import { MESSENGER_URL } from "@/content/ui";
+import { CALENDLY_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -15,7 +15,7 @@ const content = {
     h1a: "DOMINATE LOCAL SEARCH. ",
     h1b: "ATTRACT PREMIUM CLIENTS.",
     sub: "When someone in your area searches for your trade, you should be first. We make that happen.",
-    ctaAudit: "Message Me on Facebook →",
+    ctaAudit: "Book a Free Call →",
     ctaResults: "See Our Results",
     stratTitleA: "Our ",
     stratTitleB: "SEO Strategy",
@@ -39,38 +39,38 @@ const content = {
     ctaTitleA: "READY TO RANK #1",
     ctaTitleB: "IN YOUR AREA?",
     ctaSub: "We'll show you where you rank now, what competitors are doing, and exactly how to beat them.",
-    ctaBtn: "Message Me on Facebook →",
+    ctaBtn: "Book a Free Call →",
   },
   hu: {
     eyebrow: "SEO és marketing",
-    h1a: "URALD A HELYI KERESÉST. ",
-    h1b: "VONZZ PRÉMIUM ÜGYFELEKET.",
-    sub: "Amikor valaki a környékeden a szakmádra keres, neked kell elsőként megjelenned. Mi ezt hozzuk el.",
-    ctaAudit: "Írj nekem Messengeren →",
-    ctaResults: "Nézd meg az eredményeinket",
+    h1a: "LEGYÉL ELÖL A HELYI KERESÉSEKBEN. ",
+    h1b: "SZEREZZ JOBB ÜGYFELEKET.",
+    sub: "Amikor valaki a környékeden a szakmádra keres, neked kell elsőként megjelenned. Ebben segítünk.",
+    ctaAudit: "Foglalj időpontot →",
+    ctaResults: "Nézd meg a referenciákat",
     stratTitleA: "A mi ",
     stratTitleB: "SEO-stratégiánk",
     strategy: [
-      { num: "01", title: "Helyi SEO fölény", desc: "A teljes online jelenlétedet a környékedre optimalizáljuk, hogy akkor tűnj fel, amikor a legfontosabb." },
-      { num: "02", title: "Google Cégprofil", desc: "Teljesen optimalizált Google-cégprofil, ami bejuttat a helyi találati csomagba, a 3 találat közé, ami minden más felett van." },
+      { num: "01", title: "Helyi SEO", desc: "A teljes online jelenlétedet a környékedre szabjuk, hogy akkor jelenj meg, amikor a legtöbbet számít." },
+      { num: "02", title: "Google Cégprofil", desc: "Teljesen kitöltött, optimalizált Google Cégprofil, amivel bekerülhetsz a térképes találatok közé, abba a 3 találatba, ami minden más előtt látszik." },
       { num: "03", title: "Kulcsszó-stratégia", desc: "Kutatással alátámasztott célzás azokra a kulcsszavakra, amelyekre az ideális ügyfeleid tényleg rákeresnek, nem csak általános kifejezésekre." },
-      { num: "04", title: "Tartalommarketing", desc: "Értékes tartalom, ami tekintélyt épít, linkeket vonz, és fenntartja a relevanciádat a Google szemében." },
-      { num: "05", title: "Linképítés", desc: "Minőségi hivatkozások releváns oldalakról, amelyek azt jelzik a Google-nek, hogy komolyan veendő vagy." },
-      { num: "06", title: "Havi riportok", desc: "Világos, szakzsargon nélküli jelentések a helyezésekről, a forgalomról és, ami a legfontosabb, a generált érdeklődőkről." },
+      { num: "04", title: "Tartalommarketing", desc: "Hasznos tartalom, ami szakértőként mutat be, hivatkozásokat szerez, és a Google szemében is naprakészen tart." },
+      { num: "05", title: "Linképítés", desc: "Minőségi hivatkozások releváns oldalakról, amelyek jelzik a Google-nek, hogy megbízható cég vagy." },
+      { num: "06", title: "Havi riportok", desc: "Érthető, szakzsargon nélküli jelentések a helyezésekről, a forgalomról és ami a legfontosabb: a beérkező megkeresésekről." },
     ],
-    numTitleA: "Hogy néznek ki a valódi ",
+    numTitleA: "Milyenek a valódi ",
     numTitleB: "SEO-eredmények",
     numTitleC: "",
-    numSub: "Nem megjelenések. Nem kattintások. Érdeklődők és bevétel.",
+    numSub: "Nem a megjelenések, nem a kattintások. A megkeresések és a bevétel számít.",
     numbers: [
       { metric: "3–6 hó", label: "Amíg érdemi helyezésjavulás látszik" },
-      { metric: "Top 3", label: "Helyi találati csomag, amit elsőként célzunk" },
-      { metric: "0 Ft/katt", label: "A Google Ads-szel ellentétben az organikus ingyenes" },
+      { metric: "Top 3", label: "A térképes találatok, amiket elsőként célzunk" },
+      { metric: "0 Ft/katt", label: "A Google Ads-szel ellentétben az organikus találat ingyenes" },
     ],
-    ctaTitleA: "KÉSZEN ÁLLSZ, HOGY ELSŐ LEGYÉL",
+    ctaTitleA: "SZERETNÉL ELSŐ LENNI",
     ctaTitleB: "A KÖRNYÉKEDEN?",
-    ctaSub: "Megmutatjuk, hol állsz most, mit csinálnak a versenytársaid, és pontosan hogyan előzd meg őket.",
-    ctaBtn: "Írj nekem Messengeren →",
+    ctaSub: "Megmutatom, hol állsz most, mit csinálnak a versenytársaid, és hogyan előzheted meg őket.",
+    ctaBtn: "Foglalj időpontot →",
   },
 } as const;
 
@@ -96,7 +96,7 @@ export default function SeoMarketingPage({ lang }: { lang: Locale }) {
             {c.sub}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.65, ease: SPRING }} className="flex flex-wrap gap-4">
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
               {c.ctaAudit}
             </a>
             <Link href={localize("/case-studies", lang)} className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 hover:border-gold hover:text-gold transition-all duration-300">
@@ -171,7 +171,7 @@ export default function SeoMarketingPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
               {c.ctaBtn}
             </a>
           </Reveal>

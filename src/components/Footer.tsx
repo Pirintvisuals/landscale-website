@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Instagram, Linkedin } from "lucide-react";
 import { localeFromPathname, localize } from "@/lib/i18n";
-import { EMAIL, FOOTER, MESSENGER_URL, PHONE } from "@/content/ui";
+import { BUSINESS, EMAIL, FOOTER, CALENDLY_URL, PHONE } from "@/content/ui";
 
 export default function Footer() {
   const ref = useRef(null);
@@ -29,7 +29,7 @@ export default function Footer() {
           <p className="font-cormorant text-lg text-cream/45 font-light italic leading-relaxed mb-7">
             {t.ctaSub}
           </p>
-          <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+          <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
             {t.ctaButton} <span className="text-lg">→</span>
           </a>
         </motion.div>
@@ -97,6 +97,9 @@ export default function Footer() {
           <p className="font-inter text-text-muted/50 text-xs">© {new Date().getFullYear()} Landscale Agency. {t.builtWith}</p>
           <p className="font-inter text-text-muted/50 text-xs">{t.coverage}</p>
         </div>
+        <p className="mt-4 font-inter text-text-muted/40 text-[11px] text-center md:text-left">
+          {BUSINESS.name} · {lang === "hu" ? "Adószám" : "Tax no."}: {BUSINESS.taxId} · {lang === "hu" ? "Nyilvántartási szám" : "Sole-trader reg. no."}: {BUSINESS.regNo} · {BUSINESS.town[lang]}
+        </p>
       </div>
     </footer>
   );

@@ -5,12 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe, TrendingUp, Car } from "lucide-react";
+import { ChevronDown, ArrowRight, X, Menu, Zap, MessageCircle, Globe, TrendingUp, Car, FileSearch, PhoneCall } from "lucide-react";
 import { localeFromPathname, localize, toEnglishPath } from "@/lib/i18n";
 import LanguageSwitch from "./LanguageSwitch";
-import { MESSENGER_URL, NAV, PHONE } from "@/content/ui";
+import { CALENDLY_URL, NAV, PHONE } from "@/content/ui";
 
-const serviceIcons = [Zap, MessageCircle, Globe, TrendingUp, Car];
+const serviceIcons = [Zap, FileSearch, PhoneCall, Car, MessageCircle, Globe, TrendingUp];
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -184,7 +184,7 @@ export default function Navigation() {
           {/* ── Right side: language toggle + CTA ── */}
           <div className="hidden xl:flex items-center gap-3 flex-shrink-0">
             <LanguageSwitch pathname={pathname} lang={lang} />
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-5 py-2.5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] hover:-translate-y-0.5">
               {t.messageMe}
               <ArrowRight size={14} />
@@ -292,7 +292,7 @@ export default function Navigation() {
 
               {/* CTA */}
               <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.48, ease: SPRING }} className="mt-8 space-y-4">
-                <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300">
                   {t.messageMeLong}
                   <ArrowRight size={16} />

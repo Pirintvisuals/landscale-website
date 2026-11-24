@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Rólam, a Landscale története | Landscale",
   description:
-    "Milán vagyok, egy tereprendező családban nőttem fel Magyarországon. Nem a szokásos marketingügynökség, weboldalakat és AI-automatizálást építek vállalkozásoknak.",
+    "Pirint Milán, a Landscale alapítója. AI árajánló asszisztenseket, AI recepciósokat és tervellenőrző eszközöket építek szakipari és építőipari cégeknek.",
   alternates: {
     canonical: "https://landscale.agency/hu/about",
     languages: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Rólam, a Landscale története | Landscale",
-    description: "Nem a szokásos marketingügynökség, weboldalak és AI-automatizálás vállalkozásoknak.",
+    description: "Pirint Milán, a Landscale alapítója: AI árajánló asszisztensek, AI recepciósok és tervellenőrzés cégeknek.",
     type: "website",
     url: "https://landscale.agency/hu/about",
     siteName: "Landscale Agency",

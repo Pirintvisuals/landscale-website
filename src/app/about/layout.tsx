@@ -22,22 +22,21 @@ const personSchema = {
     "Local SEO for contractors",
     "AI chatbot development",
     "Next.js web development",
-    "Landscaping industry marketing",
   ],
-  description: "Milan Pirint is the founder of Landscale Agency, an AI-powered marketing agency for trade businesses. He builds premium websites with integrated AI lead qualification tools for roofers, landscapers, hardscapers, builders, and contractors in the UK and internationally.",
+  description: "Milán Pirint is the founder of Landscale. He builds AI quoting assistants, AI receptionists, plan & tender review tools and websites for trade and construction businesses in Hungary, Austria and the UK.",
 };
 
 export const metadata: Metadata = {
   title: "About Landscale, AI & Web Design for Tradesmen",
   description:
-    "Milan Pirint, founder of Landscale, building AI-powered websites & lead qualification for roofers, landscapers, builders and tradesmen. Based in UK & Hungary.",
+    "Milán Pirint, founder of Landscale: AI quoting assistants, AI receptionists and plan & tender review for trade and construction businesses.",
   keywords:
-    "Landscale Agency about, Milan Pirint web designer, AI website tradesmen UK, roofing website design, hardscaping website, contractor web design UK",
+    "Landscale about, Milán Pirint, AI quoting assistant, AI receptionist, plan and tender review, contractor web design",
   alternates: { canonical: "https://landscale.agency/about" },
   openGraph: {
     title: "About Landscale, AI & Web Design for Tradesmen",
     description:
-      "Milan Pirint, founder of Landscale, building AI-powered websites & lead qualification for roofers, landscapers, builders and tradesmen. Based in UK & Hungary.",
+      "Milán Pirint, founder of Landscale: AI quoting assistants, AI receptionists and plan & tender review for trade and construction businesses.",
     type: "website",
     url: "https://landscale.agency/about",
     siteName: "Landscale Agency",

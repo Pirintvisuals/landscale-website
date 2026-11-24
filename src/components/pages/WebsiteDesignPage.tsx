@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
-import { MESSENGER_URL } from "@/content/ui";
+import { CALENDLY_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -15,10 +15,10 @@ const content = {
     h1a: "WEBSITES THAT CONVERT VISITORS INTO ",
     h1b: "HIGH-VALUE CLIENTS",
     sub: "Your website is your most powerful sales tool, or it should be. We build luxury, conversion-focused websites that make you look premium.",
-    ctaAudit: "Message Me on Facebook →",
+    ctaAudit: "Book a Free Call →",
     ctaWork: "See Our Work",
     defTitle: "What Landscale Builds",
-    def: "Landscale builds bespoke, conversion-focused websites for trade businesses, roofers, landscapers, hardscapers, builders, construction firms, and home service contractors. Every site is custom-designed to position the client as the premium choice in their local market. Performance benchmarks are non-negotiable: sub-1-second load times, 95–100 Google PageSpeed scores, and 100/100 SEO scores on every project. Local SEO is integrated from day one, including keyword research, on-page optimisation, and Google Business Profile setup, so the site starts generating organic enquiries immediately. AI lead qualification tools (estimator agent or chatbot) are available to integrate directly, turning the website into a 24/7 lead filtering system.",
+    def: "Landscale builds bespoke, conversion-focused websites for trade, construction and home service businesses. Every site is custom-designed to position the client as the premium choice in their local market. Performance benchmarks are non-negotiable: sub-1-second load times, 95–100 Google PageSpeed scores, and 100/100 SEO scores on every project. Local SEO is integrated from day one, including keyword research, on-page optimisation, and Google Business Profile setup, so the site starts generating organic enquiries immediately. AI lead qualification tools (estimator agent or chatbot) are available to integrate directly, turning the website into a 24/7 lead filtering system.",
     inclTitleA: "What's ",
     inclTitleB: "Included",
     included: [
@@ -40,39 +40,39 @@ const content = {
     ctaTitleA: "READY FOR A WEBSITE",
     ctaTitleB: "THAT ACTUALLY WORKS?",
     ctaSub: "We'll show you exactly what's costing you leads and how to fix it.",
-    ctaBtn: "Message Me on Facebook →",
+    ctaBtn: "Book a Free Call →",
   },
   hu: {
-    eyebrow: "Weboldal Készítés",
-    h1a: "WEBOLDALAK, AMELYEK LÁTOGATÓKBÓL ",
-    h1b: "ÉRTÉKES ÜGYFELEKET CSINÁLNAK",
-    sub: "A weboldalad a legerősebb értékesítési eszközöd, vagy annak kellene lennie. Igényes, konverzióra épített weboldalakat készítünk, amelyektől prémiumnak látszol.",
-    ctaAudit: "Írj nekem Messengeren →",
-    ctaWork: "Nézd meg a munkáinkat",
-    defTitle: "Mit épít a Landscale",
-    def: "A Landscale egyedi, konverzióra épített weboldalakat készít vállalkozásoknak, tetőfedőknek, tereprendezőknek, térkövezőknek, generálkivitelezőknek, építőipari cégeknek és otthoni szolgáltatásokat nyújtó vállalkozóknak. Minden oldal egyedi tervezésű, hogy az ügyfelet a helyi piac prémium választásaként pozicionálja. A teljesítménymutatók nem képezik alku tárgyát: 1 másodperc alatti betöltés, 95–100-as Google PageSpeed és 100/100-as SEO pontszám minden projekten. A helyi SEO az első naptól be van építve, kulcsszókutatással, on-page optimalizálással és Google Cégprofil beállítással együtt, így az oldal azonnal organikus érdeklődéseket kezd hozni. Az AI érdeklődő-minősítő eszközök (árajánló ügynök vagy chatbot) közvetlenül integrálhatók, így a weboldal 0–24 működő érdeklődő-szűrő rendszerré válik.",
+    eyebrow: "Weboldalkészítés",
+    h1a: "WEBOLDALAK, AMELYEK A LÁTOGATÓKBÓL ",
+    h1b: "MEGRENDELŐT CSINÁLNAK",
+    sub: "A weboldalad a legerősebb értékesítési eszközöd, vagy annak kellene lennie. Igényes, gyors weboldalakat készítünk, amelyeken első ránézésre látszik a minőség.",
+    ctaAudit: "Foglalj időpontot →",
+    ctaWork: "Nézd meg a referenciákat",
+    defTitle: "Milyen weboldalakat épít a Landscale?",
+    def: "A Landscale egyedi, ajánlatkérésre tervezett weboldalakat készít szakipari, építőipari és szolgáltató cégeknek. Minden oldal egyedi tervezésű, hogy a cég a környékén a minőségi választásnak tűnjön. A teljesítményből nem engedünk: 1 másodperc alatti betöltés, 95–100-as Google PageSpeed és 100/100-as SEO pontszám minden projekten. A helyi SEO az első naptól be van építve, kulcsszókutatással, on-page optimalizálással és Google Cégprofil beállítással együtt, így az oldal hamar elkezd megkereséseket hozni a Google-ből. Az AI árajánló asszisztens vagy a chatbot közvetlenül beépíthető, így a weboldal éjjel-nappal ad árbecslést és szűri az érdeklődőket.",
     inclTitleA: "Mi ",
     inclTitleB: "van benne",
     included: [
-      { num: "01", title: "Egyedi, igényes dizájn", desc: "A márkádra szabva építjük. Nincs sablon, nincs kompromisszum, prémium megjelenés, ami kiemel a mezőnyből." },
+      { num: "01", title: "Egyedi, igényes dizájn", desc: "A cégedre szabva készül. Nincs sablon, nincs kompromisszum: igényes megjelenés, amivel kitűnsz a versenytársak közül." },
       { num: "02", title: "Mobilra optimalizált, reszponzív", desc: "A látogatóid több mint 60%-a mobilon van. Az oldalad minden eszközön hibátlanul néz ki és működik." },
-      { num: "03", title: "Érdeklődő-gyűjtés optimalizálása", desc: "Kapcsolatfelvételi űrlapok, telefonos CTA-k és árajánlatkérő űrlapok stratégiai elhelyezése, olyanok, amiket tényleg kitöltenek." },
-      { num: "04", title: "0,8 mp alatti betöltés", desc: "A lassú oldal ügyfeleket veszít. Minden elem másodperc alatti betöltésre optimalizálva, 100/100 PageSpeed." },
-      { num: "05", title: "SEO-kész alap", desc: "Rendezett szerkezet, meta-címkék, séma-jelölés és technikai SEO az első naptól beépítve." },
+      { num: "03", title: "Egyszerű ajánlatkérés", desc: "Kapcsolatfelvételi és ajánlatkérő űrlapok, hívásgombok jól átgondolt helyen, és olyan formában, amit tényleg ki is töltenek." },
+      { num: "04", title: "0,8 mp alatti betöltés", desc: "A lassú oldal ügyfeleket veszít. Minden elem villámgyors betöltésre optimalizálva, 100/100 PageSpeed." },
+      { num: "05", title: "SEO-kész alap", desc: "Rendezett szerkezet, metaadatok, strukturált adatok és technikai SEO, már az első naptól." },
       { num: "06", title: "Analitika és mérés", desc: "Google Analytics 4 beállítás, hogy pontosan tudd, honnan érkeznek az érdeklődőid." },
     ],
     procTitleA: "A ",
     procTitleB: "folyamatunk",
     process: [
-      { step: "01", title: "Ismerkedő beszélgetés", desc: "Megismerjük a vállalkozásodat, az ideális ügyfeleidet és a céljaidat. 30 perc, ami mindent meghatároz." },
-      { step: "02", title: "Stratégia és vázlatok", desc: "Felvázoljuk az oldal szerkezetét, a tartalomstratégiát és a konverziós útvonalakat, mielőtt egyetlen sor kódot is írnánk." },
-      { step: "03", title: "Tervezés és építés", desc: "Igényes megjelenés és konverzióra épített szerkezet. Minden lépést átnézel, nincs meglepetés." },
+      { step: "01", title: "Ismerkedő beszélgetés", desc: "Megismerjük a cégedet, az ideális ügyfeleidet és a céljaidat. Egy rövid beszélgetés, ami mindent meghatároz." },
+      { step: "02", title: "Stratégia és vázlatok", desc: "Megtervezzük az oldal szerkezetét, a tartalmat és azt, hogyan jut el a látogató az ajánlatkérésig, mielőtt egyetlen sor kód születne." },
+      { step: "03", title: "Tervezés és építés", desc: "Igényes megjelenés, átgondolt szerkezet. Minden lépést átnézhetsz, nincs meglepetés." },
       { step: "04", title: "Indítás és optimalizálás", desc: "Elindítjuk az oldalt, beállítjuk az analitikát, és figyeljük a teljesítményt. Valós adatok alapján finomítunk." },
     ],
-    ctaTitleA: "KÉSZEN ÁLLSZ EGY",
-    ctaTitleB: "OLDALRA, AMI TÉNYLEG MŰKÖDIK?",
-    ctaSub: "Pontosan megmutatjuk, mi kerül neked érdeklődőkbe, és hogyan javítsd.",
-    ctaBtn: "Írj nekem Messengeren →",
+    ctaTitleA: "JÖHET EGY OLDAL,",
+    ctaTitleB: "AMI TÉNYLEG HOZ MUNKÁT?",
+    ctaSub: "Megmutatom, hol veszítesz most megkereséseket, és hogyan lehetne ezen javítani.",
+    ctaBtn: "Foglalj időpontot →",
   },
 } as const;
 
@@ -98,7 +98,7 @@ export default function WebsiteDesignPage({ lang }: { lang: Locale }) {
             {c.sub}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.65, ease: SPRING }} className="flex flex-wrap gap-4">
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
               {c.ctaAudit}
             </a>
             <Link href={localize("/case-studies", lang)} className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 hover:border-gold hover:text-gold transition-all duration-300">
@@ -189,7 +189,7 @@ export default function WebsiteDesignPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
               {c.ctaBtn}
             </a>
           </Reveal>

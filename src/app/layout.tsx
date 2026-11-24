@@ -39,11 +39,11 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  title: "Landscale Agency, AI Estimator & Chatbot for Tradesmen",
+  title: "Landscale, AI Quoting Assistants & AI Receptionists for Trades",
   description:
-    "AI estimator & chatbot for tradesmen. Instant quotes, automatic lead filtering, 20+ hours saved weekly. Premium websites for roofers, landscapers & builders.",
+    "AI quoting assistants, AI receptionists and plan & tender review for trade and construction businesses. Instant estimates, every call answered, nothing left out of the bid.",
   keywords:
-    "AI estimator for tradesmen, roofing website design UK, AI lead generation for contractors, landscaping marketing agency UK, instant quote tool construction, AI chatbot tradesmen, hardscaping website design, remodelling business automation, home service business website UK",
+    "AI quoting assistant, AI estimator for tradesmen, AI receptionist CRM, plan and tender review, quantity takeoff AI, bill of quantities check, contractor website design, instant quote tool construction",
   alternates: {
     canonical: "https://landscale.agency",
     languages: {
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Landscale Agency, AI Estimator & Chatbot for Tradesmen",
+    title: "Landscale, AI Quoting Assistants & AI Receptionists for Trades",
     description:
-      "AI estimator & chatbot for tradesmen. Instant quotes, automatic lead filtering, 20+ hours saved weekly. Premium websites for roofers, landscapers & builders.",
+      "AI quoting assistants, AI receptionists and plan & tender review for trade and construction businesses. Instant estimates, every call answered, nothing left out of the bid.",
     type: "website",
     url: "https://landscale.agency",
     siteName: "Landscale Agency",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Landscale Agency, AI Estimator & Chatbot for Tradesmen",
+    title: "Landscale, AI Quoting Assistants & AI Receptionists for Trades",
     description: "Instant quotes, automatic lead filtering, 20+ hours saved weekly.",
     images: ["https://landscale.agency/og.png"],
   },
@@ -92,10 +92,11 @@ export default function RootLayout({
     name: "Landscale Agency",
     url: "https://landscale.agency",
     logo: "https://landscale.agency/logo-schema.png",
-    description: "AI-powered estimator, chatbot, and website builder for roofers, landscapers, hardscapers, builders, remodellers, and all tradesmen.",
+    description: "AI quoting assistants, AI receptionists, plan & tender review and websites for trade, construction and service businesses.",
     email: "milan@landscale.net",
-    founder: { "@type": "Person", name: "Milan Pirint" },
-    areaServed: ["GB", "HU", "Worldwide"],
+    founder: { "@type": "Person", name: "Milán Pirint" },
+    telephone: "+36702501739",
+    areaServed: ["HU", "AT", "GB"],
     sameAs: [
       "https://www.facebook.com/profile.php?id=100083279266241",
       "https://www.instagram.com/pirintmilan/",
@@ -120,12 +121,14 @@ export default function RootLayout({
     "@type": "Service",
     serviceType: "AI Lead Generation & Website Design",
     provider: { "@type": "Organization", name: "Landscale Agency" },
-    areaServed: ["GB", "HU"],
+    areaServed: ["HU", "AT", "GB"],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Landscale Services",
       itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Estimator Agent" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Quoting Assistant" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Plan & Tender Review" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Receptionist" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Chatbot" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Design" } },
       ],

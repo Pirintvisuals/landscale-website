@@ -2,10 +2,11 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Shield, BarChart3, Hammer, TrendingUp } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
-import { EMAIL, MESSENGER_URL } from "@/content/ui";
+import { EMAIL, CALENDLY_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -15,24 +16,26 @@ const content = {
   en: {
     eyebrow: "About Landscale",
     h1: ["NOT YOUR TYPICAL", "MARKETING AGENCY."],
-    heroSub: "Built for tradespeople, roofers, landscapers, hardscapers, builders, remodellers and everyone in between.",
-    storyEyebrow: "Founder's Story",
-    storyTitleA: "WHY I SPECIALISE",
-    storyTitleB: "THE TRADES",
-    storyTitleMid: "IN ",
-    storyQuote: "“I'm Milan. I grew up in Hungary in a family of landscapers, I saw the industry from the inside, and the gap in the market was obvious.”",
-    storyP1: "I'm Milan, I grew up in Hungary in a family of landscapers. I saw firsthand how hard they work, early mornings, physical labour, dealing with demanding clients.",
-    storyP2: "But I also saw them struggle with marketing. Outdated websites. Missed leads. Hours wasted on quotes for tyre-kickers. No system to filter serious buyers from window shoppers.",
-    storyP3: "The marketing agencies they hired didn't understand the industry, they treated every client the same. Generic strategies, vanity metrics, and no accountability.",
-    storyP4: "That's when I realised: tradespeople don't need another generic marketing agency. They need someone who understands their business AND knows how to build tech that actually solves their problems.",
-    storyP5: "So I learned web development, studied AI automation, and built solutions for roofers, landscapers, hardscapers, builders, remodellers and every trade in between. Not one-size-fits-all templates, real tools that save time and make money.",
-    storyP6: "I built the AI Estimator because I watched my family waste countless hours giving quotes to people who never hired them. The Estimator Agent solves this, it qualifies leads automatically and gives instant estimates, so tradesmen only ever talk to serious buyers. It's the core of every project I build.",
+    heroSub: "AI quoting assistants, AI receptionists and plan-checking tools for trade, construction and service businesses, built around how each business actually works.",
+    storyEyebrow: "The Founder",
+    storyTitleA: "WHY I BUILD",
+    storyTitleB: "THESE TOOLS",
+    storyTitleMid: "",
+    storyQuote: "“I'm Milán Pirint, founder of Landscale. AI has fascinated me since long before everyone started talking about it.”",
+    storyP1: "I'm Milán, the founder of Landscale. Artificial intelligence has fascinated me for as long as I can remember, and I kept asking the same question: which part of a real business's day could it actually take over?",
+    storyP2: "Again and again, the answer was quoting and admin. Tradespeople answering the same price questions every evening. Office staff picking up forty phone calls a day about order status. Estimators re-measuring a whole plan set by hand before a fixed-price bid.",
+    storyP3: "That work is slow, repetitive and easy to get wrong, and it's rarely what the business is actually good at. It's also exactly the kind of work AI does well, if it's set up around the business and not the other way round.",
+    storyP4: "So that's what Landscale builds: quoting assistants that give customers an estimate on the website, AI receptionists that answer the phone and update the CRM, and tools that read plans and tender packages and flag what doesn't add up.",
+    storyP5: "Every project starts from how you already work: your jobs, your prices, your process. The goal is never to replace your judgement. It's to give you back the hours you spend on the parts that don't need it.",
+    photoCaption: "Milán Pirint",
+    photoRole: "Founder, Landscale",
+    storyP6: "You deal with me directly, from the first call through launch and after it. If something isn't working, you know exactly who to call.",
     procEyebrow: "How I Work",
     procTitleA: "MY ",
     procTitleB: "PROCESS",
     process: [
-      { step: "01", title: "Discovery Chat", desc: "We talk about your business, goals, and challenges. I analyse your current website and marketing, then show you exactly where you're losing leads and money, no charge, no pressure." },
-      { step: "02", title: "Custom Proposal", desc: "Based on your needs and budget, I recommend Framer or custom Next.js, with a clear timeline and deliverables. You decide what makes sense. No surprises." },
+      { step: "01", title: "Discovery Call", desc: "We talk about your business, how you work today and where the time goes. Then I show you what could be automated, free and with no obligation." },
+      { step: "02", title: "Custom Proposal", desc: "Based on your needs and budget, you get in writing what I'll build, how long it takes and what it costs. You decide what makes sense. No surprises." },
       { step: "03", title: "Build & Collaborate", desc: "I build your website or AI automation with regular check-ins and previews. Your feedback shapes the final product, full transparency throughout." },
       { step: "04", title: "Launch & Support", desc: "I handle the technical launch, train you on how to use your site, and stay available for ongoing support. You focus on running your business." },
     ],
@@ -40,9 +43,9 @@ const content = {
     diffTitleA: "WHAT MAKES",
     diffTitleB: "DIFFERENT",
     diffTitleMid: "US ",
-    diffSub: "Industry knowledge you can't fake, tech you can't ignore, results you can measure.",
+    diffSub: "Built around your business, honest about what AI can and can't do, and measured on time saved.",
     pillars: [
-      { num: "01", title: "Deep Industry Knowledge", desc: "My family are in the trades. I've grown up seeing the industry from the inside. I understand work cycles, client psychology, project types, and margins. You won't need to explain your business to me.", detail: "Every strategy I build is grounded in trade industry reality, not generic marketing theory." },
+      { num: "01", title: "Built Around Your Business", desc: "Before I build anything, I learn how you actually work: the jobs you quote, the questions you get, the prices you use, the software you already have. The tool fits your process, not the other way round.", detail: "No templates. Every assistant is set up with your own jobs, prices and wording." },
       { num: "02", title: "Tech-Forward Approach", desc: "I use the latest AI and automation tools, not because it's trendy, but because it genuinely solves real problems. Lead qualification, automated estimates, 24/7 chatbots.", detail: "I stay ahead so you don't have to. You get the tools, without the headache." },
       { num: "03", title: "Results-Driven, Always", desc: "I don't measure success by impressions or clicks. Qualified leads and revenue generated. Every strategy has a clear ROI goal, I hold myself accountable.", detail: "If something isn't working, I change it. I'm invested in your growth." },
     ],
@@ -52,7 +55,7 @@ const content = {
     values: [
       { title: "Honesty First", desc: "I tell you what you need to hear, not what you want to hear. If something won't work, I'll say so." },
       { title: "No Vanity Metrics", desc: "I don't celebrate page views or follower counts. I celebrate leads generated and revenue grown." },
-      { title: "Trades-Only Focus", desc: "I only work with tradespeople and contractors, roofers, landscapers, builders, remodellers and the rest. This focus lets me be genuinely excellent at one thing." },
+      { title: "One Clear Focus", desc: "I work on one problem: the time businesses lose to quoting, calls and admin. Staying focused on that is what lets me do it properly." },
       { title: "Long-Term Thinking", desc: "I build strategies for sustainable growth, not quick wins that collapse in 6 months." },
     ],
     faqEyebrow: "FAQ",
@@ -60,9 +63,9 @@ const content = {
     faqTitleB: "QUESTIONS",
     faqs: [
       { q: "How long does it take to build a website?", a: "Depends on the project. A Framer template customisation can be done in 1–2 weeks. A fully custom Next.js site takes 3–6 weeks. I'll give you a clear timeline when we talk." },
-      { q: "What types of tradespeople do you work with?", a: "Roofers, landscapers, hardscapers, builders, remodellers, plumbers, construction firms, any trade business that wants to stop chasing bad leads and start attracting serious buyers. Book an audit and we'll see if I'm the right fit." },
+      { q: "What types of businesses do you work with?", a: "Mostly trade and construction businesses: renovation companies, gas and heating engineers, air-con installers, general contractors and manufacturers who price from drawings, plus garages and service businesses that take a lot of calls. If quoting or the phone eats your day, it's worth a short call." },
       { q: "What do you use to build websites, Framer or code?", a: "Depends on your needs and budget. Framer is great if you want to edit content yourself and need something fast. Custom Next.js is better for complex sites with advanced features. I'll recommend what makes sense during the audit." },
-      { q: "What AI services do you offer?", a: "I build AI review agents (qualify leads), AI receptionists (book appointments), AI estimators (instant quotes), custom chatbots, and smart form automation. The exact solution depends on your business needs." },
+      { q: "What AI services do you offer?", a: "AI quoting assistants (instant estimates on your website), AI receptionists connected to your CRM, plan and tender review for contractors and manufacturers, chatbots and automatic review collection. The right one depends on where your time goes." },
       { q: "How much does a project cost?", a: "Starting prices are on the Services page. The Quoting Assistant starts at £295 setup + £99/month, and a website with the assistant built in starts at £1,195 + £79/month. Your final price depends on what you need, and you get it in writing before anything starts." },
       { q: "Can I edit the website myself after you build it?", a: "If you choose Framer, yes, it's designed for non-technical editing. For custom sites, I'll train you on the CMS or provide ongoing support for updates." },
       { q: "Do you offer payment plans?", a: "Yes, for larger projects. We'll discuss payment terms during the proposal phase. I'm flexible and want to make it work for your budget." },
@@ -70,70 +73,72 @@ const content = {
     ],
     ctaTitleA: "READY TO WORK",
     ctaTitleB: "TOGETHER?",
-    ctaSub: "I'm selective, I'm genuinely invested in every client's success. Let's see if we're a fit.",
-    ctaBtn: "Message Me on Facebook",
+    ctaSub: "I take on a limited number of projects at a time, so each one gets my full attention. Book a short call and let's see if we're a fit.",
+    ctaBtn: "Book a Free Call",
     ctaEmail: "or email ",
   },
   hu: {
     eyebrow: "A Landscale-ről",
-    h1: ["NEM A SZOKÁSOS", "MARKETINGÜGYNÖKSÉG."],
-    heroSub: "Vállalkozóknak építve, tetőfedőknek, tereprendezőknek, térkövezőknek, generálkivitelezőknek, felújítóknak és mindenkinek a kettő között.",
-    storyEyebrow: "Az alapító története",
-    storyTitleA: "MIÉRT AZ IPAROSOKRA",
-    storyTitleB: "SZAKOSODTAM",
+    h1: ["NEM EGY ÚJABB", "MARKETINGÜGYNÖKSÉG."],
+    heroSub: "AI árajánló asszisztensek, AI recepciósok és tervellenőrző eszközök szakipari, építőipari és szolgáltató cégeknek, mindig az adott cég működésére szabva.",
+    storyEyebrow: "Az alapító",
+    storyTitleA: "MIÉRT ÉPPEN",
+    storyTitleB: "EZEKET ÉPÍTEM",
     storyTitleMid: "",
-    storyQuote: "„Milán vagyok. Egy tereprendező családban nőttem fel Magyarországon, belülről láttam a szakmát, és rögtön látszott, hol a rés a piacon.”",
-    storyP1: "Milán vagyok, egy tereprendező családban nőttem fel Magyarországon. Közelről láttam, milyen keményen dolgoznak: hajnali kelés, kemény fizikai meló, követelőző ügyfelek.",
-    storyP2: "De azt is láttam, mennyire szenvednek a marketinggel. Elavult weboldalak. Elszalasztott érdeklődők. Rengeteg óra, ami olyanok árajánlataira ment el, akikből aztán soha nem lett munka. És semmi, ami szétválasztaná a komoly megrendelőket a nézelődőktől.",
-    storyP3: "A marketingügynökségek, akiket felfogadtak, nem értették a szakmát, minden ügyfelet ugyanúgy kezeltek. Általános stratégiák, hiúsági mutatók, és semmi felelősségvállalás.",
-    storyP4: "Akkor jöttem rá: az iparosoknak nem egy újabb általános marketingügynökség kell. Olyasvalaki kell nekik, aki érti a vállalkozásukat, ÉS tudja, hogyan építsen olyan technológiát, ami tényleg megoldja a problémáikat.",
-    storyP5: "Így megtanultam a webfejlesztést, elmélyültem az AI-automatizálásban, és megoldásokat építettem tetőfedőknek, tereprendezőknek, térkövezőknek, generálkivitelezőknek, felújítóknak és minden szakmának a kettő között. Nem mindenkire ráhúzott sablonok, hanem valódi eszközök, amelyek időt spórolnak és pénzt hoznak.",
-    storyP6: "Az AI Árajánlót azért építettem, mert végignéztem, ahogy a családom számtalan órát tölt olyanok árajánlataival, akikből aztán soha nem lett munka. Az Árajánló Ügynök pont ezt oldja meg: automatikusan megszűri az érdeklődőket és azonnal becslést ad, így a vállalkozó már csak a komoly megrendelőkkel ül le beszélni. Ez a lelke minden projektnek, amit építek.",
+    storyQuote: "„Pirint Milán vagyok, a Landscale alapítója. A mesterséges intelligencia már jóval azelőtt lenyűgözött, hogy mindenki erről kezdett volna beszélni.”",
+    storyP1: "Milán vagyok, a Landscale alapítója. A mesterséges intelligencia mióta az eszemet tudom, foglalkoztat, és mindig ugyanaz a kérdés érdekelt: egy valódi cég napjából mit tudna ténylegesen átvenni?",
+    storyP2: "A válasz újra és újra az árazás és az adminisztráció volt. Szakemberek, akik minden este ugyanazokra az árkérdésekre válaszolnak. Irodai kollégák, akik naponta negyven hívást vesznek fel arról, hol tart egy rendelés. Költségvetés-készítők, akik egy fix áras ajánlat előtt kézzel mérik újra a teljes tervcsomagot.",
+    storyP3: "Ez a munka lassú, ismétlődő, könnyű elrontani, és ritkán ez az, amiben a cég igazán jó. Viszont pont az a fajta munka, amit az AI jól elvégez, ha a céghez igazítják, és nem fordítva.",
+    storyP4: "A Landscale ezért ezeket építi: árajánló asszisztenseket, amelyek a weboldalon adnak árbecslést, AI recepciósokat, amelyek felveszik a telefont és vezetik a CRM-et, és olyan eszközöket, amelyek átnézik a tervrajzokat és az ajánlatkéréseket, és jelzik, mi nem stimmel.",
+    storyP5: "Minden projekt abból indul, ahogy most dolgozol: a munkáidból, az áraidból, a folyamataidból. A cél soha nem az, hogy a gép döntsön helyetted, hanem hogy visszakapd azokat az órákat, amelyekhez nem kell a szakértelmed.",
+    photoCaption: "Pirint Milán",
+    photoRole: "Alapító, Landscale",
+    storyP6: "Végig közvetlenül velem tartod a kapcsolatot, az első beszélgetéstől az indulásig, és utána is. Ha valami nem működik, pontosan tudod, kit kell hívni.",
     procEyebrow: "Hogyan dolgozom",
     procTitleA: "A ",
     procTitleB: "FOLYAMATOM",
     process: [
-      { step: "01", title: "Ismerkedő beszélgetés", desc: "Beszélünk a vállalkozásodról, a céljaidról és a kihívásaidról. Átnézem a jelenlegi weboldaladat és marketingedet, majd pontosan megmutatom, hol veszítesz érdeklődőket és pénzt, díjmentesen, nyomás nélkül." },
-      { step: "02", title: "Egyedi ajánlat", desc: "Az igényeid és a kereted alapján Framert vagy egyedi Next.js-t ajánlok, világos ütemtervvel, és pontosan tudod, mit kapsz. Te döntöd el, mi éri meg. Nincs meglepetés." },
-      { step: "03", title: "Építés és együttműködés", desc: "Megépítem a weboldaladat vagy az AI-automatizálásodat, rendszeres egyeztetésekkel és előnézetekkel. A visszajelzésed alakítja a végterméket, végig teljes átláthatóság." },
-      { step: "04", title: "Indítás és támogatás", desc: "Elintézem a technikai indítást, betanítalak az oldal használatára, és utána is elérhető maradok a folyamatos támogatáshoz. Te a vállalkozásod vezetésére figyelsz." },
+      { step: "01", title: "Ismerkedő beszélgetés", desc: "Beszélünk a cégedről, arról, hogyan dolgoztok most, és hol megy el a legtöbb idő. Utána megmutatom, mit lehetne automatizálni, díjmentesen és kötelezettség nélkül." },
+      { step: "02", title: "Egyedi ajánlat", desc: "Az igényeid és a kereted alapján írásban megkapod, mit építek, mennyi idő alatt és mennyiért. Te döntöd el, mi éri meg. Nincs meglepetés." },
+      { step: "03", title: "Építés és együttműködés", desc: "Megépítem a weboldaladat vagy az AI-megoldásodat, rendszeres egyeztetésekkel és előnézetekkel. A visszajelzéseid alapján alakítjuk a végeredményt, végig átláthatóan." },
+      { step: "04", title: "Indítás és támogatás", desc: "Elintézem a technikai indítást, betanítalak az oldal használatára, és utána is elérhető maradok a folyamatos támogatáshoz. Te közben a cégedre figyelhetsz." },
     ],
     diffEyebrow: "Miért más",
-    diffTitleA: "MIBEN VAGYUNK",
+    diffTitleA: "MITŐL VAGYUNK",
     diffTitleB: "MÁSOK",
     diffTitleMid: "",
-    diffSub: "Szakmai tudás, amit nem lehet megjátszani, technológia, amit nem lehet figyelmen kívül hagyni, eredmények, amiket mérni lehet.",
+    diffSub: "A cégedre szabva, őszintén arról, mit tud és mit nem tud az AI, és az alapján mérve, mennyi időt spórol.",
     pillars: [
-      { num: "01", title: "Mélyreható szakmai ismeret", desc: "A családom a szakmában van. Az iparágat belülről ismerve nőttem fel. Értem a munka ritmusát, az ügyfél-pszichológiát, a projekttípusokat és az árréseket. Nem kell elmagyaráznod a vállalkozásodat.", detail: "Minden stratégiám a szakma valóságában gyökerezik, nem általános marketingelméletben." },
-      { num: "02", title: "Technológia-központú szemlélet", desc: "A legújabb AI- és automatizálási eszközöket használom, nem azért, mert trendi, hanem mert valóban megold valós problémákat. Érdeklődő-minősítés, automatikus árajánlatok, 0–24 chatbotok.", detail: "Én tartom a lépést, hogy neked ne kelljen. Megkapod az eszközöket, a fejfájás nélkül." },
-      { num: "03", title: "Mindig az eredmény számít", desc: "A sikert nem megjelenésben vagy kattintásban mérem. Minőségi érdeklődőkben és generált bevételben. Minden stratégiának világos megtérülési célja van, vállalom érte a felelősséget.", detail: "Ha valami nem működik, megváltoztatom. Érdekelt vagyok a növekedésedben." },
+      { num: "01", title: "A cégedre szabva", desc: "Mielőtt bármit építenék, megismerem, hogyan dolgozol valójában: milyen munkákat árazol, milyen kérdéseket kapsz, milyen árakkal számolsz, milyen programokat használsz. Az eszköz a te folyamatodhoz igazodik, nem fordítva.", detail: "Nincs sablon. Minden asszisztens a saját munkáiddal, áraiddal és szóhasználatoddal készül." },
+      { num: "02", title: "Korszerű technológia, józanul", desc: "A legújabb AI- és automatizálási eszközökkel dolgozom, de nem azért, mert divatos, hanem mert valódi problémát old meg: árbecslés, telefonok, tervellenőrzés, utánkövetés.", detail: "Én követem a fejlődést, hogy neked ne kelljen. Te csak a kész, működő eszközt kapod meg." },
+      { num: "03", title: "Az eredmény számít", desc: "Nem a kattintásokat és a megtekintéseket nézem, hanem azt, mennyi időt spórolsz, és mennyi komoly megkeresés érkezik. Minden projektnek világos célja van, és vállalom érte a felelősséget.", detail: "Ha valami nem működik, változtatok rajta. Nekem is az a jó, ha neked megéri." },
     ],
     valEyebrow: "Alapelvek",
     valTitleA: "AZ ",
     valTitleB: "ÉRTÉKEINK",
     values: [
-      { title: "Először az őszinteség", desc: "Azt mondom, amit hallanod kell, nem azt, amit hallani szeretnél. Ha valami nem fog működni, kimondom." },
-      { title: "Nincsenek hiúsági mutatók", desc: "Nem ünneplem az oldalletöltéseket vagy a követőszámot. A generált érdeklődőt és a növekvő bevételt ünneplem." },
-      { title: "Csak a szakmákra fókuszálok", desc: "Kizárólag iparosokkal és kivitelezőkkel dolgozom, tetőfedőkkel, tereprendezőkkel, kivitelezőkkel, felújítókkal és a többiekkel. Ez a fókusz teszi lehetővé, hogy egy dologban valóban kiváló legyek." },
-      { title: "Hosszú távú gondolkodás", desc: "Fenntartható növekedésre építek stratégiát, nem gyors sikerekre, amelyek 6 hónap alatt összeomlanak." },
+      { title: "Őszinteség mindenekelőtt", desc: "Azt mondom, amit tudnod kell, nem azt, amit hallani szeretnél. Ha valami nem fog működni, megmondom előre." },
+      { title: "Nem a látszatszámok számítanak", desc: "Az oldalmegtekintés és a követőszám nem fizeti a számlákat. A megspórolt idő és a komoly megkeresések igen." },
+      { title: "Egy világos fókusz", desc: "Egy problémával foglalkozom: azzal az idővel, ami a cégeknél árazásra, telefonokra és adminisztrációra megy el. Ez a fókusz teszi lehetővé, hogy ezt igazán jól csináljam." },
+      { title: "Hosszú távú gondolkodás", desc: "Olyan megoldásokat építek, amelyek évekig működnek, nem gyors trükköket, amelyek fél év múlva szétesnek." },
     ],
     faqEyebrow: "GYIK",
     faqTitleA: "GYAKORI",
     faqTitleB: "KÉRDÉSEK",
     faqs: [
       { q: "Mennyi idő alatt készül el egy weboldal?", a: "A projekttől függ. Egy Framer-sablon testreszabása 1–2 hét alatt megvan. Egy teljesen egyedi Next.js oldal 3–6 hét. Amikor beszélünk, világos ütemtervet adok." },
-      { q: "Milyen szakmákkal dolgozol?", a: "Tetőfedőkkel, tereprendezőkkel, térkövezőkkel, kivitelezőkkel, felújítókkal, vízvezeték-szerelőkkel, építőipari cégekkel, minden olyan vállalkozással, amelyik abba akarja hagyni a rossz érdeklődők hajkurászását, és komoly megrendelőket akar vonzani. Írj nekem, és kiderül, passzolunk-e." },
+      { q: "Milyen cégekkel dolgozol?", a: "Főleg szakipari és építőipari cégekkel: felújítókkal, gáz- és fűtésszerelőkkel, klímaszerelőkkel, generálkivitelezőkkel és tervrajzból árazó gyártókkal, valamint autószervizekkel és olyan szolgáltatókkal, ahová sok hívás érkezik. Ha nálad az árazás vagy a telefon viszi el a napot, érdemes egy rövid beszélgetés." },
       { q: "Mivel építed a weboldalakat, Framer vagy kód?", a: "Az igényeidtől és a keretedtől függ. A Framer remek, ha magad akarod szerkeszteni a tartalmat és gyorsan kell valami. Az egyedi Next.js jobb az összetett, fejlett funkciós oldalakhoz. Amikor beszélünk, azt ajánlom, ami neked megéri." },
-      { q: "Milyen AI-szolgáltatásokat kínálsz?", a: "Építek AI vélemény-ügynököt (érdeklődő-minősítés), AI recepcióst (időpontfoglalás), AI árajánlót (azonnali becslés), egyedi chatbotokat és okos űrlap-automatizálást. A pontos megoldás a vállalkozásod igényeitől függ." },
+      { q: "Milyen AI-megoldásokat készítesz?", a: "AI árajánló asszisztenst (azonnali árbecslés a weboldaladon), CRM-mel összekötött AI recepcióst, terv- és kiírás-ellenőrzést kivitelezőknek és gyártóknak, chatbotot és automatikus véleménygyűjtést. Hogy melyik kell, az attól függ, hol megy el a legtöbb időd." },
       { q: "Mennyibe kerül egy projekt?", a: "Attól függ, mire van szükséged. Egy rövid beszélgetés után írásban megkapod a pontos árat, mielőtt bármi elindulna." },
-      { q: "Szerkeszthetem magam a weboldalt, miután megépítetted?", a: "Ha a Framert választod, igen, kifejezetten nem technikai felhasználóknak való szerkesztésre készült. Egyedi oldalaknál betanítalak a CMS használatára, vagy folyamatos támogatást nyújtok a frissítésekhez." },
-      { q: "Van részletfizetési lehetőség?", a: "Igen, nagyobb projekteknél. A fizetési feltételeket az ajánlati szakaszban beszéljük meg. Rugalmas vagyok, és azt akarom, hogy a keretedhez illeszkedjen." },
-      { q: "Mi történik a weboldal indítása után?", a: "Betanítalak az oldal használatára, és elérhető vagyok a folyamatos támogatáshoz. Sok ügyfél megtart havidíjas alapon frissítésekhez, SEO-hoz vagy új funkciók hozzáadásához. Teljesen rajtad múlik." },
+      { q: "Szerkeszthetem magam a weboldalt, miután megépítetted?", a: "Ha Framerrel készül, igen: kifejezetten úgy tervezték, hogy programozói tudás nélkül is szerkeszthető legyen. Egyedi oldalaknál betanítalak a CMS használatára, vagy folyamatos támogatást nyújtok a frissítésekhez." },
+      { q: "Van részletfizetési lehetőség?", a: "Igen, nagyobb projekteknél. A fizetési feltételeket az ajánlatnál egyeztetjük. Rugalmas vagyok, igazodom a keretedhez." },
+      { q: "Mi történik a weboldal indítása után?", a: "Betanítalak az oldal használatára, és elérhető vagyok a folyamatos támogatáshoz. Sok ügyfél havidíjas támogatást kér frissítésekhez, SEO-hoz vagy új funkciókhoz. Teljesen rajtad múlik." },
     ],
-    ctaTitleA: "KÉSZEN ÁLLSZ, HOGY",
-    ctaTitleB: "EGYÜTT DOLGOZZUNK?",
-    ctaSub: "Válogatós vagyok, őszintén érdekelt vagyok minden ügyfél sikerében. Nézzük meg, passzolunk-e.",
-    ctaBtn: "Írj nekem Messengeren",
+    ctaTitleA: "DOLGOZZUNK",
+    ctaTitleB: "EGYÜTT?",
+    ctaSub: "Egyszerre csak korlátozott számú projektet vállalok, hogy mindegyikre teljes figyelmem jusson. Foglalj egy rövid hívást, és nézzük meg, passzolunk-e.",
+    ctaBtn: "Foglalj időpontot",
     ctaEmail: "vagy írj a ",
   },
 } as const;
@@ -233,6 +238,16 @@ export default function AboutPage({ lang }: { lang: Locale }) {
               <p className="font-cormorant text-xl text-cream/40 font-light italic leading-relaxed">
                 {c.storyQuote}
               </p>
+              <figure className="mt-10 max-w-[300px]">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-gold/25 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+                  <Image src="/images/milan-pirint.jpg" alt={c.photoCaption} fill sizes="300px" className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                </div>
+                <figcaption className="mt-4">
+                  <span className="block font-grotesk font-bold text-base text-cream">{c.photoCaption}</span>
+                  <span className="block font-inter text-xs uppercase tracking-[0.18em] text-gold/70 mt-1">{c.photoRole}</span>
+                </figcaption>
+              </figure>
             </Reveal>
             <Reveal delay={0.1}>
               <div className="space-y-6 font-inter text-text-muted leading-relaxed text-base">
@@ -416,7 +431,7 @@ export default function AboutPage({ lang }: { lang: Locale }) {
           </Reveal>
           <Reveal delay={0.35}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer"
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-lg px-12 py-6 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] hover:-translate-y-1.5">
                 {c.ctaBtn}
                 <span>→</span>

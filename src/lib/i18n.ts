@@ -17,6 +17,8 @@ export const HU_ROUTES = new Set<string>([
   "/services/website-design",
   "/services/seo-marketing",
   "/services/mechanic-quoting",
+  "/services/tender-review",
+  "/services/ai-receptionist",
   "/about",
   "/contact",
   "/case-studies",

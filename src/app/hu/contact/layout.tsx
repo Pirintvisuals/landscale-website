@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Kapcsolat | Landscale",
   description:
-    "Írj nekem Facebook Messengeren, vagy küldj üzenetet. Általában még aznap válaszolok.",
+    "Foglalj egy ingyenes hívást, írj üzenetet, vagy hívj a +36 70 250 1739-es számon. Általában még aznap válaszolok.",
   alternates: {
     canonical: "https://landscale.agency/hu/contact",
     languages: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Kapcsolat | Landscale",
-    description: "Írj nekem Facebook Messengeren, általában még aznap válaszolok.",
+    description: "Foglalj időpontot vagy írj üzenetet, általában még aznap válaszolok.",
     type: "website",
     url: "https://landscale.agency/hu/contact",
     siteName: "Landscale Agency",

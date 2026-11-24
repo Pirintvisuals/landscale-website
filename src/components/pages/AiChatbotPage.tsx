@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
-import { MESSENGER_URL } from "@/content/ui";
+import { CALENDLY_URL } from "@/content/ui";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -39,39 +39,39 @@ const content = {
     ],
     ctaTitleA: "SEE THE CHATBOT",
     ctaTitleB: "IN ACTION",
-    ctaSub: "Message me on Facebook and I'll show you exactly how the AI chatbot would work for your business.",
+    ctaSub: "Book a short call and I'll show you exactly how the AI chatbot would work for your business.",
     ctaBtn: "Ask for a Free Demo →",
   },
   hu: {
-    eyebrow: "AI Chatbot",
+    eyebrow: "AI chatbot",
     h1a: "NE PAZAROLD AZ IDŐDET ",
     h1b: "KOMOLYTALAN ÉRDEKLŐDŐKRE.",
-    sub: "Az AI chatbotod 0–24 minősít minden látogatót, így már csak a megfelelő ügyfelek jutnak el hozzád.",
+    sub: "Az AI chatbot éjjel-nappal megszűri a látogatókat, így már csak a hozzád illő ügyfelek jutnak el hozzád.",
     ctaDemo: "Kérj ingyenes demót →",
     ctaAction: "Nézd meg működés közben",
-    defTitle: "Mi az az AI érdeklődő-minősítő chatbot?",
-    def: "Az AI érdeklődő-minősítő chatbot egy 0–24 működő automata rendszer, ami a vállalkozó weboldalának minden látogatóját felméri, mielőtt kapcsolatba léphetne. A chatbot strukturált beszélgetést folytat a keretről, a projekt típusáról, a helyszínről és a tervezett kezdési időpontról. A szolgáltatási területen kívüli, a minimális munkaméret alatti vagy még nem döntésképes látogatókat automatikusan, udvarias üzenettel elutasítja, ezeket a vállalkozó soha nem is látja. A megfelelő látogatók teljes leírását azonnal a vállalkozó postaládájába továbbítja: név, telefonszám, e-mail, projektleírás, keret és irányítószám. Az eszköz éjjel-nappal működik, és jellemzően 300%-kal növeli a minőségi érdeklődések arányát a komolytalanokhoz képest.",
+    defTitle: "Mi az az érdeklődőket szűrő AI chatbot?",
+    def: "Az érdeklődőket szűrő AI chatbot egy éjjel-nappal működő rendszer, amely a vállalkozó weboldalának minden látogatójával beszélget, mielőtt az felvenné a kapcsolatot a vállalkozóval. A chatbot strukturált beszélgetést folytat a keretről, a projekt típusáról, a helyszínről és a tervezett kezdési időpontról. A szolgáltatási területen kívüli, a minimális munkaméret alatti vagy még nem döntött látogatókat automatikusan, udvarias üzenettel elutasítja, ezeket a vállalkozó soha nem is látja. A megfelelő látogatók teljes leírását azonnal a vállalkozó postaládájába továbbítja: név, telefonszám, e-mail, projektleírás, keret és irányítószám. Az eszköz éjjel-nappal működik, és jellemzően 300%-kal növeli a minőségi érdeklődések arányát a komolytalanokhoz képest.",
     howTitleA: "Hogyan működik ",
     howTitleB: "a chatbot",
     steps: [
       { step: "01", title: "A látogató az oldaladra érkezik", desc: "Az AI azonnal köszönti, és természetes beszélgetést kezd vele, akár hajnali 2-kor is, amikor épp nem érsz rá." },
-      { step: "02", title: "Az AI minősíti az érdeklődőt", desc: "Büdzsé, projekttípus, helyszín és határidő, a chatbot felteszi a megfelelő kérdéseket, és dönt." },
-      { step: "03", title: "Nem passzol? Udvarias elutasítás", desc: "Rossz terület, nem stimmel a keret, vagy csak nézelődik? Az AI elegánsan elutasítja. Te soha nem is hallasz róla." },
-      { step: "04", title: "Passzol? Egyből hozzád kerül", desc: "A komoly érdeklődők a postaládádba érkeznek, csatolva a teljes leírásukkal, keretükkel és elérhetőségükkel." },
+      { step: "02", title: "Az AI megszűri az érdeklődőt", desc: "Keret, a munka típusa, helyszín és határidő: a chatbot felteszi a megfelelő kérdéseket, és dönt." },
+      { step: "03", title: "Nem passzol? Udvarias elutasítás", desc: "Rossz terület, nem stimmel a keret, vagy csak nézelődik? Az AI udvariasan elutasítja. Te soha nem is hallasz róla." },
+      { step: "04", title: "Passzol? Egyből hozzád kerül", desc: "A komoly érdeklődők a postaládádba érkeznek, a teljes leírással, a kerettel és az elérhetőséggel együtt." },
     ],
     featTitleA: "Minden ",
     featTitleB: "benne van",
     features: [
-      { num: "01", title: "0–24 érdeklődő-minősítés", desc: "Egyetlen érdeklődő sem vész el. A chatbot mindig aktív, minősíti a látogatókat, miközben te a munkára figyelsz." },
-      { num: "02", title: "Büdzsé- és helyszín-ellenőrzés", desc: "Kiszűri a területeden kívüli vagy a minimális munkaméret alatti érdeklődőket, mielőtt elrabolnák az idődet." },
-      { num: "03", title: "Automatikus lead-pontozás", desc: "Minden érdeklődő pontszámot kap a kritériumaid alapján. A legjobbak egyből, gyorsított úton jutnak hozzád." },
-      { num: "04", title: "Udvarias elutasítás, ha nem passzol", desc: "A nem megfelelő látogatókat profin utasítja el, megvédi az idődet anélkül, hogy bárkit megbántana." },
+      { num: "01", title: "Éjjel-nappal szűr", desc: "Egyetlen érdeklődő sem vész el. A chatbot mindig dolgozik, és szűri a látogatókat, miközben te a munkára figyelsz." },
+      { num: "02", title: "Keret- és helyszín-ellenőrzés", desc: "Kiszűri a területeden kívüli vagy a minimális munkaméret alatti érdeklődőket, mielőtt elrabolnák az idődet." },
+      { num: "03", title: "Automatikus pontozás", desc: "Minden érdeklődő pontszámot kap a te szempontjaid alapján. A legjobbak elsőként jutnak el hozzád." },
+      { num: "04", title: "Udvarias elutasítás, ha nem passzol", desc: "A hozzád nem illő látogatókat udvariasan utasítja el, megvédi az idődet anélkül, hogy bárkit megbántana." },
       { num: "05", title: "Azonnali SMS- és e-mail-értesítés", desc: "Amint minőségi érdeklődő érkezik, a teljes leírás egyből a telefonodra kerül." },
       { num: "06", title: "Nulla felesleges érdeklődő", desc: "Csak előre megszűrt, komoly megkeresések jutnak el hozzád. A postaládád tiszta marad." },
     ],
     ctaTitleA: "NÉZD MEG A CHATBOTOT",
     ctaTitleB: "MŰKÖDÉS KÖZBEN",
-    ctaSub: "Írj nekem Facebookon, és pontosan megmutatom, hogyan működne az AI chatbot a te vállalkozásodnál.",
+    ctaSub: "Foglalj egy rövid hívást, és pontosan megmutatom, hogyan működne az AI chatbot a te vállalkozásodnál.",
     ctaBtn: "Kérj ingyenes demót →",
   },
 } as const;
@@ -98,7 +98,7 @@ export default function AiChatbotPage({ lang }: { lang: Locale }) {
             {c.sub}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.65, ease: SPRING }} className="flex flex-wrap gap-4">
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gold text-deep-black font-grotesk font-bold text-sm px-8 py-4 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-0.5">
               {c.ctaDemo}
             </a>
             <Link href={localize("/case-studies", lang)} className="inline-flex items-center gap-2 border border-cream/20 text-cream font-grotesk font-medium text-sm px-8 py-4 rounded-full hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300">
@@ -189,7 +189,7 @@ export default function AiChatbotPage({ lang }: { lang: Locale }) {
             <p className="font-cormorant text-xl text-cream/50 font-light italic leading-relaxed mb-10">
               {c.ctaSub}
             </p>
-            <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-gold text-deep-black font-grotesk font-bold text-base px-10 py-5 btn-shine hover:bg-bright-gold transition-all duration-300 hover:shadow-button-hover hover:-translate-y-1">
               {c.ctaBtn}
             </a>
           </Reveal>

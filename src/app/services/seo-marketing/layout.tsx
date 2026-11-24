@@ -14,7 +14,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Local SEO for Tradesmen & Contractors",
-  description: "Local SEO services for roofers, landscapers, builders and all tradesmen. Rank #1 when clients search for your trade near me. Attract premium clients from your area.",
+  description: "Local SEO services for trade and construction businesses. Rank #1 when clients search for your trade near me. Attract premium clients from your area.",
   provider: { "@type": "Organization", name: "Landscale Agency", url: "https://landscale.agency" },
   url: "https://landscale.agency/services/seo-marketing",
   areaServed: ["GB", "Worldwide"],
@@ -23,14 +23,14 @@ const serviceSchema = {
 export const metadata: Metadata = {
   title: "Local SEO for Tradesmen & Contractors | Landscale",
   description:
-    "Local SEO for roofers, landscapers, builders & all tradesmen. Rank #1 when local clients search for your trade. Attract premium clients from your area.",
+    "Local SEO for trade and construction businesses. Rank #1 when local clients search for your trade. Attract premium clients from your area.",
   keywords:
-    "local SEO tradesmen UK, roofer SEO, contractor SEO UK, rank roofers near me, construction company local SEO, hardscaping Google ranking, tradesman Google ranking",
+    "local SEO tradesmen UK, roofer SEO, contractor SEO UK, rank roofers near me, construction company local SEO, tradesman Google ranking",
   alternates: { canonical: "https://landscale.agency/services/seo-marketing" },
   openGraph: {
     title: "Local SEO for Tradesmen & Contractors | Landscale",
     description:
-      "Local SEO for roofers, landscapers, builders & all tradesmen. Rank #1 when local clients search for your trade. Attract premium clients from your area.",
+      "Local SEO for trade and construction businesses. Rank #1 when local clients search for your trade. Attract premium clients from your area.",
     type: "website",
     url: "https://landscale.agency/services/seo-marketing",
     siteName: "Landscale Agency",

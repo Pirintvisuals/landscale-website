@@ -14,46 +14,47 @@ const inputCls = "w-full bg-[#0A0A0A] border border-white/[0.08] hover:border-go
 const content = {
   en: {
     eyebrow: "Get in Touch",
-    h1: ["LET'S GROW YOUR", "TRADE BUSINESS."],
-    heroSub: "The fastest way to reach me is Facebook Messenger. Tell me your trade and what you need, I usually reply the same day.",
+    h1: ["LET'S TALK ABOUT", "YOUR BUSINESS."],
+    heroSub: "The easiest way is to book a short call. Tell me how your business works and where the time goes, and I'll show you what could be automated.",
     tabMessenger: "Messenger",
     tabMessage: "Send a Message",
-    messengerTitle: "Message Me on Facebook",
-    messengerSub: "Opens a chat with me (Milán Pirint) on Facebook. No forms, no call to book.",
+    messengerTitle: "Prefer to message?",
+    messengerSub: "Opens a chat with me (Milán Pirint) on Facebook Messenger. I usually reply the same day.",
     messengerBtn: "Open Messenger →",
     tabCall: "Book a Call",
     callTitle: "Book a Call With Me",
-    callSub: "Pick a time that works for you, 30 minutes, no pressure.",
-    formTitle: "Send Us a Message",
+    callSub: "Pick a time that works for you. Free, no obligation, and you talk to me directly.",
+    formTitle: "Send Me a Message",
     sentTitle: "Message Sent!",
-    sentSub: "We'll be in touch within 24 hours.",
+    sentSub: "I'll be in touch within 24 hours.",
     lblName: "Your Name *", phName: "James Thompson",
-    lblEmail: "Email *", phEmail: "james@yourtradebusiness.co.uk",
-    lblBusiness: "Business Name *", phBusiness: "Thompson Landscapes Ltd",
+    lblEmail: "Email *", phEmail: "james@yourbusiness.com",
+    lblBusiness: "Business Name *", phBusiness: "Thompson Building Ltd",
     lblLocation: "Location", phLocation: "Manchester, UK",
     lblPhone: "Phone", phPhone: "+44 7700 900000",
     lblService: "Service Interest",
     serviceOpts: [
       { value: "", label: "Select a service..." },
-      { value: "website", label: "Website Design" },
-      { value: "seo", label: "SEO & Marketing" },
-      { value: "ai", label: "AI Lead Generation" },
-      { value: "full", label: "Full Package" },
+      { value: "quoting", label: "AI Quoting Assistant" },
+      { value: "tender", label: "Plan & Tender Review" },
+      { value: "receptionist", label: "AI Receptionist" },
+      { value: "website", label: "Website" },
+      { value: "garage", label: "Quote Builder for Garages" },
       { value: "unsure", label: "Not sure yet" },
     ],
-    lblMessage: "Tell Us About Your Business",
-    phMessage: "What's your biggest challenge? How many leads do you get per week?",
+    lblMessage: "Tell Me About Your Business",
+    phMessage: "What takes up most of your time: quoting, calls, checking plans?",
     sending: "Sending...", submit: "Send Message →",
-    errorMsg: "Something went wrong. Please email us directly.",
+    errorMsg: "Something went wrong. Please email me directly.",
     infoTitle: "Contact Info",
-    infoSub: "Message me on Facebook or fill in the form, I'll get back to you within 24 hours.",
-    lblCoverage: "Coverage", valCoverage: "UK (primary) & Worldwide",
+    infoSub: "Book a call, send a message or just ring me. I'll get back to you within 24 hours.",
+    lblCoverage: "Based in", valCoverage: "Hungary · clients in HU, AT & UK",
     lblResponse: "Response Time", valResponse: "Within 24 hours, usually same day",
     lblPhoneInfo: "Phone", lblEmailInfo: "Email",
     expectTitle: "What Happens Next",
     expect: [
       "I reply, usually the same day",
-      "A few quick questions about your trade",
+      "A few quick questions about how you work",
       "A clear price for what you need",
       "A demo built for your business, if you want one",
       "No hard sell, just straight talk",
@@ -63,49 +64,50 @@ const content = {
   },
   hu: {
     eyebrow: "Lépj kapcsolatba",
-    h1: ["NÖVELJÜK MEG A", "VÁLLALKOZÁSODAT."],
-    heroSub: "A leggyorsabban Facebook Messengeren érsz el. Írd meg, mivel foglalkozol és mire van szükséged, általában még aznap válaszolok.",
+    h1: ["BESZÉLJÜNK", "A CÉGEDRŐL."],
+    heroSub: "A legegyszerűbb, ha foglalsz egy rövid hívást. Mondd el, hogyan működik a céged, és hol megy el a legtöbb idő, én pedig megmutatom, mit lehetne automatizálni.",
     tabMessenger: "Messenger",
     tabMessage: "Írj üzenetet",
-    messengerTitle: "Írj nekem Messengeren",
-    messengerSub: "Megnyit egy csevegést velem (Pirint Milán) a Facebookon. Nincs űrlap, nincs időpontfoglalás.",
+    messengerTitle: "Inkább írnál?",
+    messengerSub: "Megnyit egy beszélgetést velem (Pirint Milán) a Facebook Messengeren. Általában még aznap válaszolok.",
     messengerBtn: "Messenger megnyitása →",
-    tabCall: "Foglalj hívást",
-    callTitle: "Foglalj egy hívást velem",
-    callSub: "Válassz egy időpontot, ami neked megfelel, 30 perc, nyomás nélkül.",
-    formTitle: "Írj nekünk üzenetet",
+    tabCall: "Időpontfoglalás",
+    callTitle: "Foglalj egy rövid hívást",
+    callSub: "Válassz egy neked megfelelő időpontot. Ingyenes, kötelezettség nélküli, és közvetlenül velem beszélsz.",
+    formTitle: "Írj nekem üzenetet",
     sentTitle: "Üzenet elküldve!",
-    sentSub: "24 órán belül jelentkezünk.",
+    sentSub: "24 órán belül jelentkezem.",
     lblName: "Neved *", phName: "Kovács János",
     lblEmail: "E-mail *", phEmail: "janos@avallalkozasod.hu",
-    lblBusiness: "Cég neve *", phBusiness: "Kovács Kertépítő Kft.",
+    lblBusiness: "Cég neve *", phBusiness: "Kovács Építő Kft.",
     lblLocation: "Helyszín", phLocation: "Budapest",
     lblPhone: "Telefon", phPhone: "+36 30 123 4567",
-    lblService: "Melyik szolgáltatás érdekel",
+    lblService: "Mi érdekel?",
     serviceOpts: [
       { value: "", label: "Válassz szolgáltatást..." },
-      { value: "website", label: "Weboldal készítés" },
-      { value: "seo", label: "SEO és marketing" },
-      { value: "ai", label: "AI érdeklődő-szerzés" },
-      { value: "full", label: "Teljes csomag" },
+      { value: "quoting", label: "AI árajánló asszisztens" },
+      { value: "tender", label: "Terv- és kiírás-ellenőrzés" },
+      { value: "receptionist", label: "AI recepciós" },
+      { value: "website", label: "Weboldal" },
+      { value: "garage", label: "Árajánlat-készítő szervizeknek" },
       { value: "unsure", label: "Még nem tudom" },
     ],
-    lblMessage: "Mesélj a vállalkozásodról",
-    phMessage: "Mi a legnagyobb kihívásod? Hetente hány érdeklődőd van?",
+    lblMessage: "Mesélj a cégedről",
+    phMessage: "Mire megy el a legtöbb időd: árazásra, telefonokra, tervek átnézésére?",
     sending: "Küldés...", submit: "Üzenet küldése →",
-    errorMsg: "Valami hiba történt. Kérlek, írj nekünk közvetlenül e-mailben.",
+    errorMsg: "Valami hiba történt. Kérlek, írj nekem közvetlenül e-mailben.",
     infoTitle: "Elérhetőség",
-    infoSub: "Írj Messengeren, vagy töltsd ki az űrlapot, 24 órán belül jelentkezem.",
-    lblCoverage: "Lefedettség", valCoverage: "Magyarország és világszerte",
+    infoSub: "Foglalj időpontot, írj üzenetet, vagy egyszerűen hívj fel. 24 órán belül jelentkezem.",
+    lblCoverage: "Székhely", valCoverage: "Magyarország · ügyfelek itthon, Ausztriában és Angliában",
     lblResponse: "Válaszidő", valResponse: "24 órán belül, általában még aznap",
     lblPhoneInfo: "Telefon", lblEmailInfo: "E-mail",
     expectTitle: "Mi történik ezután",
     expect: [
       "Válaszolok, általában még aznap",
-      "Pár gyors kérdés a szakmádról",
+      "Pár gyors kérdés arról, hogyan dolgozol",
       "Világos ár arra, amire szükséged van",
-      "Ha kéred, egy a vállalkozásodra szabott demó",
-      "Semmi nyomulós értékesítés, csak egyenes beszéd",
+      "Ha kéred, a cégedre szabott demó",
+      "Semmi nyomulós értékesítés, csak őszinte beszélgetés",
     ],
     statLabel: "órán belüli válasz",
     statNote: "Általában még aznap.",
@@ -117,7 +119,7 @@ export default function ContactPage({ lang }: { lang: Locale }) {
   const phone = PHONE[lang];
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", business: "", location: "", message: "", service: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [tab, setTab] = useState<"messenger" | "calendly" | "form">("messenger");
+  const [tab, setTab] = useState<"messenger" | "calendly" | "form">("calendly");
 
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -198,14 +200,14 @@ export default function ContactPage({ lang }: { lang: Locale }) {
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
                 <div className="flex gap-2 mb-8 bg-white/[0.03] p-1 rounded-full w-fit">
                   <button
-                    onClick={() => setTab("messenger")}
-                    className={`font-grotesk font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "messenger" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
-                    {c.tabMessenger}
-                  </button>
-                  <button
                     onClick={() => setTab("calendly")}
                     className={`font-grotesk font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "calendly" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
                     {c.tabCall}
+                  </button>
+                  <button
+                    onClick={() => setTab("messenger")}
+                    className={`font-grotesk font-semibold text-xs sm:text-sm px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${tab === "messenger" ? "bg-gold text-deep-black shadow-[0_0_20px_rgba(212,175,55,0.3)]" : "text-text-muted hover:text-cream"}`}>
+                    {c.tabMessenger}
                   </button>
                   <button
                     onClick={() => setTab("form")}
