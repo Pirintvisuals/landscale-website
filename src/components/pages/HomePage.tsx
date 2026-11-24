@@ -1,13 +1,14 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { HeroVisual } from "@/components/ui/hero-visual";
 import { GarageVisual } from "@/components/ui/garage-visual";
 import { TenderVisual } from "@/components/ui/tender-visual";
+import { Lock } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
 import { homeContent, TESTIMONIALS } from "@/content/home";
@@ -18,7 +19,7 @@ import { MECHANIC_DEMO_URL } from "@/components/pages/MechanicQuotingPage";
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
 type Demo = "trades" | "contractors" | "garage";
-const DEMOS: Demo[] = ["trades", "contractors", "garage"];
+const DEMOS: Demo[] = ["contractors", "trades", "garage"];
 const DEMO_LINK: Record<Demo, string> = { trades: "/case-studies", contractors: "/services/tender-review", garage: "/services/mechanic-quoting" };
 
 function CountUp({ target, suffix = "", duration = 2.5 }: { target: number; suffix?: string; duration?: number }) {
@@ -51,91 +52,50 @@ function HeroOrbs() {
   );
 }
 
-function TestimonialCarousel({ lang }: { lang: Locale }) {
-  const testimonials = TESTIMONIALS[lang];
-  const [[index, dir], setState] = useState<[number, number]>([0, 0]);
-  const [paused, setPaused] = useState(false);
-  const count = testimonials.length;
-
-  const paginate = (d: number) => setState(([i]) => [(i + d + count) % count, d]);
-  const goTo = (target: number) => setState(([i]) => [target, target > i ? 1 : -1]);
-
-  useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => setState(([i]) => [(i + 1) % count, 1]), 6000);
-    return () => clearInterval(id);
-  }, [paused, count]);
-
-  const t = testimonials[index];
-
+function TestimonialCard({ t }: { t: (typeof TESTIMONIALS)[Locale][number] }) {
   return (
-    <div
-      className="relative max-w-3xl mx-auto"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}>
-      <div className="relative overflow-hidden min-h-[340px] sm:min-h-[300px]">
-        <AnimatePresence mode="popLayout" custom={dir}>
-          <motion.div
-            key={index}
-            custom={dir}
-            initial={{ opacity: 0, x: dir >= 0 ? 32 : -32 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: dir >= 0 ? -32 : 32 }}
-            transition={{ duration: 0.28, ease: "easeOut" }}
-            className="relative bg-[#111111] border border-white/[0.06] p-8 md:p-12 rounded-3xl flex flex-col gap-6 overflow-hidden">
-            <div className="absolute top-5 right-8 font-cormorant text-[120px] leading-none text-gold/[0.07] select-none pointer-events-none">&ldquo;</div>
-            <div className="relative z-10">
-              <div className="flex gap-1 mb-5 text-gold text-lg" role="img" aria-label={`${t.stars} / 5`}>
-                {Array.from({ length: t.stars }).map((_, i) => (
-                  <span key={i} aria-hidden="true">★</span>
-                ))}
-              </div>
-              <p className="font-cormorant text-xl md:text-2xl font-light text-cream italic leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
-            </div>
-            <div className="flex items-center gap-4 relative z-10 mt-auto">
-              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
-                {t.logo ? (
-                  <Image src={t.logo} alt={t.company} width={40} height={40} className="object-contain w-full h-full" />
-                ) : (
-                  <span className="font-grotesk font-bold text-sm text-gold">{t.name[0]}</span>
-                )}
-              </div>
-              <div>
-                <div className="font-grotesk font-semibold text-base text-cream">{t.name}</div>
-                <div className="font-inter text-xs text-text-muted">{t.company}</div>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+    <figure className="w-[300px] sm:w-[380px] flex-shrink-0 bg-[#111111] border border-white/[0.06] hover:border-gold/35 rounded-2xl p-6 flex flex-col gap-4 transition-colors duration-300">
+      <div className="flex gap-0.5 text-gold text-sm" role="img" aria-label={`${t.stars} / 5`}>
+        {Array.from({ length: t.stars }).map((_, i) => <span key={i} aria-hidden="true">★</span>)}
       </div>
-
-      {/* Controls */}
-      <div className="flex items-center justify-center gap-6 mt-8">
-        <button
-          onClick={() => paginate(-1)}
-          aria-label="Previous"
-          className="w-11 h-11 rounded-full border border-gold/25 text-gold/70 hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center">
-          ←
-        </button>
-
-        <div className="flex items-center gap-2.5">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              aria-label={`${i + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 ${i === index ? "w-7 bg-gold" : "w-2 bg-white/20 hover:bg-white/40"}`}
-            />
-          ))}
+      <blockquote className="font-cormorant text-lg text-cream/85 italic leading-snug line-clamp-5">&ldquo;{t.quote}&rdquo;</blockquote>
+      <figcaption className="flex items-center gap-3 mt-auto">
+        <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden p-0.5">
+          {t.logo ? (
+            <Image src={t.logo} alt={t.company} width={32} height={32} className="object-contain w-full h-full" />
+          ) : (
+            <span className="font-grotesk font-bold text-sm text-gold">{t.name[0]}</span>
+          )}
         </div>
+        <div>
+          <div className="font-grotesk font-semibold text-sm text-cream">{t.name}</div>
+          <div className="font-inter text-[11px] text-text-muted">{t.company}</div>
+        </div>
+      </figcaption>
+    </figure>
+  );
+}
 
-        <button
-          onClick={() => paginate(1)}
-          aria-label="Next"
-          className="w-11 h-11 rounded-full border border-gold/25 text-gold/70 hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300 flex items-center justify-center">
-          →
-        </button>
+/** Two endlessly drifting rows of client reviews (each row is duplicated for a seamless loop). */
+function TestimonialWall({ lang }: { lang: Locale }) {
+  const all = TESTIMONIALS[lang];
+  // second row runs in reverse order, offset by two, so the same review rarely sits above itself
+  const rowA = all;
+  const rev = [...all].reverse();
+  const rowB = [...rev.slice(2), ...rev.slice(0, 2)];
+  const row = (items: typeof all, dir: "left" | "right") => (
+    <div className="marquee-row relative overflow-hidden">
+      <div className={`flex gap-5 w-max ${dir === "left" ? "marquee-left" : "marquee-right"}`}>
+        {[...items, ...items].map((t, i) => (
+          <div key={i} aria-hidden={i >= items.length ? true : undefined}><TestimonialCard t={t} /></div>
+        ))}
       </div>
+    </div>
+  );
+  return (
+    <div className="relative flex flex-col gap-5 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      {row(rowA, "left")}
+      {row(rowB, "right")}
     </div>
   );
 }
@@ -146,17 +106,17 @@ export default function HomePage({ lang }: { lang: Locale }) {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const [demo, setDemo] = useState<Demo>("trades");
+  const [demo, setDemo] = useState<Demo>("contractors");
   const [switched, setSwitched] = useState(false);
   const h = demo === "garage" ? { ...c.hero, ...c.hero.garage } : demo === "contractors" ? { ...c.hero, ...c.hero.contractors } : c.hero;
   // first load plays the full staggered intro; switching audience replays it faster
   const d = (t: number) => (switched ? t * 0.35 : t);
   const pickDemo = (k: Demo) => { setSwitched(true); setDemo(k); };
 
-  // ?for=garage / ?for=contractors opens the hero on that demo (for links sent to prospects)
+  // ?for=trades / ?for=garage opens the hero on that demo (contractors is the default) (for links sent to prospects)
   useEffect(() => {
     const f = new URLSearchParams(window.location.search).get("for");
-    if (f === "garage" || f === "contractors") setDemo(f);
+    if (f === "garage" || f === "contractors" || f === "trades") setDemo(f);
   }, []);
 
   return (
@@ -289,8 +249,8 @@ export default function HomePage({ lang }: { lang: Locale }) {
         {/* Top accent line */}
         <div className="h-px w-full bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {c.stats.map((stat, i) => (
+        <div key={demo === "contractors" ? "stats-contractors" : "stats-default"} className="grid grid-cols-1 md:grid-cols-2">
+          {(demo === "contractors" ? c.statsContractors : c.stats).map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.08}>
               <div className={`relative overflow-hidden p-7 md:p-12 xl:p-20 border-b border-r border-white/[0.04] group hover:bg-[#0D0D0D] transition-colors duration-500 flex flex-col items-center justify-center min-h-[280px] ${i % 2 === 1 ? "border-r-0" : ""} ${i >= 2 ? "border-b-0" : ""}`}>
                 {/* Hover glow */}
@@ -373,8 +333,8 @@ export default function HomePage({ lang }: { lang: Locale }) {
               {c.testimonials.headA}<br /><span className="text-gradient-gold">{c.testimonials.headB}</span>
             </h2>
           </Reveal>
-          <TestimonialCarousel lang={lang} />
         </div>
+        <TestimonialWall lang={lang} />
       </section>
 
       {/* ── SERVICES ── */}
@@ -470,6 +430,19 @@ export default function HomePage({ lang }: { lang: Locale }) {
                       </ul>
                     </div>
                   ))}
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 rounded-2xl border border-gold/25 bg-gold/[0.05] p-5 mb-7">
+                  <div className="w-10 h-10 rounded-xl bg-gold/15 border border-gold/30 flex items-center justify-center flex-shrink-0">
+                    <Lock size={16} className="text-gold" aria-hidden="true" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-grotesk font-bold text-sm text-cream mb-1">{c.services.tender.demoNote.title}</p>
+                    <p className="font-inter text-sm text-text-muted leading-relaxed">{c.services.tender.demoNote.text}</p>
+                  </div>
+                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center flex-shrink-0 border border-gold/40 text-gold font-grotesk font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-gold/10 transition-all duration-300">
+                    {c.services.tender.demoNote.cta}
+                  </a>
                 </div>
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <p className="font-cormorant text-base text-gold/60 italic leading-relaxed max-w-2xl">{c.services.tender.note}</p>

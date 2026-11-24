@@ -131,3 +131,20 @@ input:focus, textarea:focus, select:focus {
   .nav-entrance { animation: none; }
   .animate-spotlight { animation: none; opacity: 0.6; }
 }
+
+/* Testimonial wall: two rows drifting in opposite directions, paused on hover */
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marqueeRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.marquee-left { animation: marqueeLeft 70s linear infinite; }
+.marquee-right { animation: marqueeRight 80s linear infinite; }
+.marquee-row:hover .marquee-left,
+.marquee-row:hover .marquee-right { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-left, .marquee-right { animation: none; }
+}

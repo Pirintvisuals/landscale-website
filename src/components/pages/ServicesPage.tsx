@@ -80,12 +80,12 @@ const content = {
     callNote: "Prefer to talk?",
     pricingEyebrow: "Pricing",
     pricingTitleA: "Simple Packages.",
-    pricingTitleB: "Clear Starting Prices.",
-    pricingDesc: "So you know where you stand before we ever talk. Your final price depends on your trade and what you need, and you get it in writing before anything starts.",
+    pricingTitleB: "Priced to Your Business.",
+    pricingDesc: "Every business is different, so every price is too. After a short call you get a fixed price in writing, before anything starts.",
     plans: [
       {
         name: "Quoting Assistant", desc: "Your 24/7 sales team, added to the website you already have.",
-        price: "£295", priceNote: "one-off setup", monthly: "+ £99/month",
+        price: "Custom price", priceNote: "setup + monthly fee", monthly: "In writing before anything starts",
         features: [
           "AI chatbot that gives instant estimates from your own prices",
           "Qualifies every lead: job, budget, postcode, timeline",
@@ -99,7 +99,7 @@ const content = {
       },
       {
         name: "Website + Assistant", desc: "A premium website built to win jobs, with the assistant already inside.",
-        price: "from £1,195", priceNote: "one-off", monthly: "+ from £79/month",
+        price: "Custom price", priceNote: "one-off + monthly fee", monthly: "In writing before anything starts",
         features: [
           "Custom design that makes you the premium choice locally",
           "Lightning-fast and mobile-first",
@@ -113,11 +113,11 @@ const content = {
       },
       {
         name: "Custom", desc: "Anything else you need built.",
-        price: "Custom quote", priceNote: "", monthly: "Priced to what you need",
+        price: "Custom price", priceNote: "", monthly: "Priced to what you need",
         features: ["AI Receptionist", "Plan & Tender Review", "AI Review Agent", "Operations Dashboard"],
       },
     ],
-    foundingOffer: "Founding UK offer: the first 5 UK businesses pay no setup fee, in return for a short case study once it's live.",
+    foundingOffer: "",
     pricingCta: "Book a Free Call →",
     ctaTitleA: "NOT SURE WHICH",
     ctaTitleB: "SERVICE YOU NEED?",

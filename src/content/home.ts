@@ -16,6 +16,8 @@ export type HomeDict = {
     contractors: { eyebrow: string; line1: string; line2: string; line3: string; sub: string; ctaSecondary: string };
   };
   stats: { value: number; suffix: string; label: string; desc: string }[];
+  /** Shown instead of `stats` while the contractors demo is selected. */
+  statsContractors: { value: number; suffix: string; label: string; desc: string }[];
   problems: {
     eyebrow: string;
     headA: string;
@@ -46,6 +48,7 @@ export type HomeDict = {
       badge: string; tag: string; head: string; intro: string;
       cards: { name: string; title: string; desc: string; features: string[] }[];
       note: string; cta: string;
+      demoNote: { title: string; text: string; cta: string };
     };
   };
   why: {
@@ -110,7 +113,7 @@ export const homeContent: Record<Locale, HomeDict> = {
         line1: "NOTHING",
         line2: "LEFT OUT",
         line3: "OF THE BID.",
-        sub: "It reads the drawings, the bill of quantities and the tender documents, measures the quantities, and shows what matches, what differs and what's missing. Every number traced back to its sheet.",
+        sub: "A request for quotation comes in. It reads the item list, the drawings and the contract, flags the errors, drafts your questions and splits every item by workshop. You make the decisions.",
         ctaSecondary: "See How It Works",
       },
     },
@@ -119,6 +122,12 @@ export const homeContent: Record<Locale, HomeDict> = {
       { value: 300, suffix: "%", label: "Average Increase in Qualified Leads", desc: "Not just more leads, better ones. Higher budgets, clearer briefs, faster decisions." },
       { value: 24, suffix: "/7", label: "Hours Your AI Works For You", desc: "While you sleep, your AI is qualifying leads, answering questions, booking calls." },
       { value: 9, suffix: "", label: "Live Projects Running Right Now", desc: "Real businesses, real results, including four live AI quoting assistants. Every project is proven in the market." },
+    ],
+    statsContractors: [
+      { value: 110, suffix: "s", label: "To Read a 60-Item Tender", desc: "Item list, drawings and contract, 497 paragraphs in all. By hand, that's days of work." },
+      { value: 11, suffix: "", label: "Errors Found in One Real Tender", desc: "Wrong units, contradictions, missing attachments. Plus 9 missing details, each with its source." },
+      { value: 60, suffix: "", label: "Items Sorted by Workshop", desc: "Joinery, metal shop, upholstery or bought in: every item lands where it's made." },
+      { value: 100, suffix: "%", label: "Traceable", desc: "Every flagged error and every number shows the sheet and row it came from." },
     ],
     problems: {
       eyebrow: "Sound Familiar?",
@@ -198,6 +207,7 @@ export const homeContent: Record<Locale, HomeDict> = {
         ],
         note: "It doesn't replace your estimator. It gives them a checked first version, so they review the differences instead of re-measuring everything.",
         cta: "See how it works →",
+        demoNote: {"title": "Why isn't there a public demo?", "text": "I show it on a real company's real documents, so I can't put it on the website. Book a call and I'll walk you through it live, on one of your own past tenders if you like.", "cta": "Book a Live Demo →"},
       },
     },
     why: {
@@ -250,7 +260,7 @@ export const homeContent: Record<Locale, HomeDict> = {
         line1: "EGY TÉTEL",
         line2: "SEM MARAD KI",
         line3: "AZ AJÁNLATBÓL.",
-        sub: "Átnézi a tervrajzokat, a költségvetést és a kiírást, kigyűjti a mennyiségeket, és megmutatja, mi egyezik, mi tér el és mi maradt ki. Minden szám mellett ott a forrás: melyik tervlapról jön.",
+        sub: "Beérkezik egy ajánlatkérés. A program végigolvassa a tételjegyzéket, a tervlapokat és a szerződést, megjelöli a hibákat, megírja a kérdéseidet, és üzemenként szétosztja a tételeket. A döntés a tiéd.",
         ctaSecondary: "Nézd meg, hogyan működik",
       },
     },
@@ -259,6 +269,12 @@ export const homeContent: Record<Locale, HomeDict> = {
       { value: 300, suffix: "%", label: "Átlagosan ennyivel több komoly érdeklődő", desc: "Nem csak több megkeresés, hanem jobbak is: nagyobb keret, tisztább igény, gyorsabb döntés." },
       { value: 24, suffix: "/7", label: "Ennyit dolgozik helyetted az AI", desc: "Amíg alszol, az AI válaszol a kérdésekre, árbecslést ad, és megszűri az érdeklődőket." },
       { value: 9, suffix: "", label: "Éles projekt, most is fut", desc: "Valódi vállalkozások, köztük négy éles AI árajánló asszisztens. Mindegyik megnyitható és kipróbálható." },
+    ],
+    statsContractors: [
+      { value: 110, suffix: " mp", label: "Alatt olvasott végig egy 60 tételes kiírást", desc: "Tételjegyzék, tervlapok és szerződés, összesen 497 bekezdés. Kézzel ez napokig tart." },
+      { value: 11, suffix: "", label: "Hibát talált egyetlen valódi kiírásban", desc: "Rossz mértékegység, ellentmondás, hiányzó melléklet. Plusz 9 hiányzó adat, mindegyik forrással." },
+      { value: 60, suffix: "", label: "Tételt osztott szét üzemenként", desc: "Faüzem, fémüzem, kárpitos vagy beszállító: minden tétel oda kerül, ahol gyártják." },
+      { value: 100, suffix: "%", label: "Visszakereshető", desc: "Minden hiba és minden szám mellett ott a forrás: melyik lap, melyik sor." },
     ],
     problems: {
       eyebrow: "Ismerős?",
@@ -338,6 +354,7 @@ export const homeContent: Record<Locale, HomeDict> = {
         ],
         note: "Nem helyettesíti a szakembert. Egy ellenőrzött első változatot ad, így a kollégád az eltéréseket nézi át, és nem kell mindent újramérnie.",
         cta: "Hogyan működik? →",
+        demoNote: {"title": "Miért nincs nyilvános demó?", "text": "Egy valódi cég valódi anyagain mutatom be, ezért nem tehetem ki a weboldalra. Foglalj egy hívást, és élőben végigmegyünk rajta, akár egy saját korábbi ajánlatkérésedre lefuttatva.", "cta": "Élő bemutató foglalása →"},
       },
     },
     why: {
