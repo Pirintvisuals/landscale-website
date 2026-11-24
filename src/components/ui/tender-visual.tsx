@@ -2,13 +2,14 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { FileSearch, FileText, FileSpreadsheet, Check, X, Mail, Inbox, Factory, GitCompare, AlertTriangle } from "lucide-react";
+import { FileSearch, FileText, FileSpreadsheet, Check, X, Mail, Inbox, Factory, GitCompare, AlertTriangle, Calculator } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 
 /*
  * Scripted walkthrough of the tender-prep tool, modelled on the real product flow:
  * request arrives → package read → errors flagged → estimator approves / rejects →
- * question letter drafted → 60 items split by workshop → revised item list compared.
+ * question letter drafted → 60 items split by workshop → revised item list compared →
+ * first price draft from the company's own rates → Excel workbook.
  * Sample data only: no client, tender or company is named.
  */
 
@@ -21,8 +22,9 @@ const PHASES: [number, number][] = [
   [2, 2800], // estimator approves 3, rejects 1
   [3, 4600], // question letter typed
   [4, 3800], // items sorted into workshops
-  [5, 3200], // revised item list compared
-  [5, 2600], // workbook ready
+  [5, 3600], // revised item list compared
+  [6, 3600], // first price draft from own rates
+  [6, 2800], // workbook ready
 ];
 const firstPhaseOf = (screen: number) => PHASES.findIndex(([s]) => s === screen);
 
@@ -41,6 +43,7 @@ const CONTENT: Record<Locale, {
   qTo: string; qLangs: string[]; qText: string; qSend: string;
   shopsHead: string; shopsNote: string; shops: [string, number, string][]; itemsWord: string;
   revHead: string; revStats: [string, string][]; revItem: string; revField: string; revOld: string; revNew: string; revPrice: string; revFlagged: string;
+  priceHead: string; priceRows: [string, string, "ok" | "pending"][]; priceCond: string; priceTotalLabel: string; priceTotal: string; priceApprove: string;
   excel: string; excelDone: string;
 }> = {
   hu: {
@@ -48,7 +51,7 @@ const CONTENT: Record<Locale, {
     sub: "Ajánlatadási csoport",
     active: "Fut",
     badgeNew: "ÚJ",
-    steps: ["Ajánlatkérés", "Beolvasás", "Hibák", "Kérdések", "Üzemek", "Változások"],
+    steps: ["Ajánlatkérés", "Beolvasás", "Hibák", "Kérdések", "Üzemek", "Változások", "Árazás"],
     captions: [
       "Beérkezik egy ajánlatkérés: tételjegyzék, tervlapok, konszignáció és szerződés.",
       "Az árajánlatadó feltölti a mappát. A program mindent végigolvas és összevet.",
@@ -56,6 +59,7 @@ const CONTENT: Record<Locale, {
       "A jóváhagyott hibákból kész kérdéslevél lesz az ajánlatkérőnek.",
       "Mind a 60 tételt besorolja: melyik üzem gyártja, és mit kell beszállítótól venni.",
       "Javított tételjegyzék érkezik? Megmutatja, pontosan mi változott.",
+      "Első árvázlatot ad a cég saját áraiból. A végső árat a kolléga hagyja jóvá.",
     ],
     mailFrom: "Ajánlatkérő",
     mailSubject: "Ajánlatkérés: bútorok gyártása, szállítása és beépítése",
@@ -94,15 +98,21 @@ const CONTENT: Record<Locale, {
     revNew: "100–110 cm",
     revPrice: "Árat érinti",
     revFlagged: "A program előre jelezte",
+    priceHead: "Első árvázlat a saját áraidból",
+    priceRows: [["Faüzem · 12 tétel", "6 840 000 Ft", "ok"], ["Fémüzem · 2 tétel", "1 120 000 Ft", "ok"], ["Fa + fém · 12 tétel", "5 960 000 Ft", "ok"], ["Kárpitos · 15 tétel", "4 380 000 Ft", "ok"], ["Beszállítói · 19 tétel", "ajánlat bekérve", "pending"]],
+    priceCond: "3 tétel feltételesen árazva, amíg megjön a válasz a kérdésekre",
+    priceTotalLabel: "Saját gyártás, nettó",
+    priceTotal: "18 300 000 Ft",
+    priceApprove: "A végső árat a kolléga hagyja jóvá",
     excel: "Munkafüzet letöltése (Excel)",
-    excelDone: "Excel kész, árvázlattal a saját áraidból",
+    excelDone: "Excel kész, a megszokott formában",
   },
   en: {
     title: "Tender Prep",
     sub: "Estimating team",
     active: "Running",
     badgeNew: "NEW",
-    steps: ["Request", "Read", "Errors", "Questions", "Workshops", "Changes"],
+    steps: ["Request", "Read", "Errors", "Questions", "Workshops", "Changes", "Pricing"],
     captions: [
       "A request for quotation arrives: item list, drawings, schedules and the contract.",
       "Your estimator uploads the folder. The tool reads everything and cross-checks it.",
@@ -110,6 +120,7 @@ const CONTENT: Record<Locale, {
       "The approved errors become a ready-to-send question letter to the client.",
       "All 60 items are sorted: which workshop makes what, and what to buy in.",
       "A revised item list arrives? It shows exactly what changed.",
+      "A first price draft from your own rates. Your estimator approves the final price.",
     ],
     mailFrom: "Client",
     mailSubject: "Request for quotation: furniture manufacture, delivery and fitting",
@@ -148,8 +159,14 @@ const CONTENT: Record<Locale, {
     revNew: "100–110 cm",
     revPrice: "Affects price",
     revFlagged: "Flagged by the tool in advance",
+    priceHead: "First price draft from your rates",
+    priceRows: [["Joinery · 12 items", "£152,400", "ok"], ["Metal shop · 2 items", "£24,900", "ok"], ["Wood + metal · 12 items", "£132,800", "ok"], ["Upholstery · 15 items", "£97,600", "ok"], ["Bought in · 19 items", "quotes requested", "pending"]],
+    priceCond: "3 items priced conditionally until the client answers your questions",
+    priceTotalLabel: "In-house manufacture, net",
+    priceTotal: "£407,700",
+    priceApprove: "Your estimator approves the final price",
     excel: "Download workbook (Excel)",
-    excelDone: "Excel ready, with a price draft from your rates",
+    excelDone: "Excel ready, in your usual format",
   },
 };
 
@@ -197,7 +214,7 @@ export function TenderVisual({ lang = "en" }: { lang?: Locale }) {
       </div>
 
       {/* Stepper (clickable) */}
-      <div className="grid grid-cols-6 gap-1 flex-shrink-0">
+      <div className="grid grid-cols-7 gap-1 flex-shrink-0">
         {c.steps.map((label, i) => (
           <button key={label} type="button" onClick={() => setP(firstPhaseOf(i))} className="flex flex-col gap-1 text-left cursor-pointer group">
             <div className="h-0.5 rounded-full transition-colors duration-500" style={{ background: i <= screen ? "#D4AF37" : "rgba(245,241,232,0.08)" }} />
@@ -392,13 +409,40 @@ export function TenderVisual({ lang = "en" }: { lang?: Locale }) {
                     </div>
                   </motion.div>
                 </div>
+              </>
+            )}
+
+            {/* 7. First price draft */}
+            {screen === 6 && (
+              <>
+                <div className="rounded-xl p-3 flex flex-col gap-1.5" style={PLAIN_CARD}>
+                  <span className="flex items-center gap-1.5 font-grotesk font-bold text-[10.5px] text-[#F5F1E8]/90"><Calculator size={12} className="text-[#D4AF37]" />{c.priceHead}</span>
+                  {c.priceRows.map(([label, val, st], i) => (
+                    <motion.div key={label} initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.22 }}
+                      className="flex items-center justify-between py-1 border-b border-white/[0.04]">
+                      <span className="flex items-center gap-2 font-inter text-[9.5px] text-[#F5F1E8]/75">
+                        <span className="w-2 h-2 rounded-sm" style={{ background: SHOP_COLORS[i] }} />{label}
+                      </span>
+                      <span className="font-inter text-[9.5px] font-semibold" style={{ color: st === "pending" ? AMBER : "#F5F1E8" }}>{val}</span>
+                    </motion.div>
+                  ))}
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}
+                    className="font-inter text-[8.5px] leading-snug" style={{ color: AMBER }}>{c.priceCond}</motion.p>
+                  <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6 }}
+                    className="flex items-baseline justify-between rounded-lg px-2.5 py-2 mt-0.5" style={GOLD_CARD}>
+                    <span className="font-grotesk font-bold text-[10px] text-[#D4AF37]">{c.priceTotalLabel}</span>
+                    <span className="font-grotesk font-bold text-[14px] text-[#F5F1E8]">{c.priceTotal}</span>
+                  </motion.div>
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.9 }}
+                    className="flex items-center gap-1 font-inter text-[8.5px] text-emerald-400/90"><Check size={9} strokeWidth={3} />{c.priceApprove}</motion.p>
+                </div>
                 <motion.div
-                  animate={p === 8 ? { boxShadow: ["0 0 0px rgba(212,175,55,0)", "0 0 18px rgba(212,175,55,0.55)", "0 0 0px rgba(212,175,55,0)"] } : {}}
-                  transition={{ duration: 1.3, repeat: p === 8 ? Infinity : 0 }}
+                  animate={p === 9 ? { boxShadow: ["0 0 0px rgba(212,175,55,0)", "0 0 18px rgba(212,175,55,0.55)", "0 0 0px rgba(212,175,55,0)"] } : {}}
+                  transition={{ duration: 1.3, repeat: p === 9 ? Infinity : 0 }}
                   className="mt-auto flex items-center justify-center gap-1.5 rounded-lg py-2 font-grotesk font-bold text-[10px] text-[#0A0A0A]"
                   style={{ background: "#D4AF37" }}>
-                  {p === 8 ? <Check size={11} strokeWidth={3} /> : <FileSpreadsheet size={11} strokeWidth={2.5} />}
-                  {p === 8 ? c.excelDone : c.excel}
+                  {p === 9 ? <Check size={11} strokeWidth={3} /> : <FileSpreadsheet size={11} strokeWidth={2.5} />}
+                  {p === 9 ? c.excelDone : c.excel}
                 </motion.div>
               </>
             )}

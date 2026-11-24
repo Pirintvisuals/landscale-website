@@ -71,7 +71,7 @@ export type HomeDict = {
 export const TESTIMONIALS: Record<Locale, { quote: string; name: string; company: string; stars: number; logo: string }[]> = {
   en: [
     { quote: "We are very satisfied with Milán's work. We received a modern, clean, and refined website that showcases NM Bau's services and the quality of our work beautifully. The collaboration was smooth, he responded quickly to our requests, and the end result reflects exactly the professional image we wanted to present. We highly recommend him!", name: "Nagy Máté", company: "NM Bau", stars: 5, logo: "/images/nmbau-logo.png" },
-    { quote: "I was very satisfied with Milán. In my opinion, he is light-years ahead of other web developers in skill. I wholeheartedly recommend him to everyone. He built a custom price calculator for my site that made it much easier to select the quality jobs coming in. It saved us a huge amount of time, energy, and money.", name: "Polyák Zoltán", company: "Kazán Szerviz Kecskemét", stars: 5, logo: "" },
+    { quote: "I was very satisfied with Milán. In my opinion, he is light-years ahead of other web developers in skill. I wholeheartedly recommend him to everyone. He built a custom price calculator for my site that made it much easier to select the quality jobs coming in. It saved us a huge amount of time, energy, and money.", name: "Polyák Zoltán", company: "Kazán Szerviz Kecskemét", stars: 5, logo: "/images/kazan-logo.png" },
     { quote: "Milán built our website and we're completely happy with his work. He was helpful, precise and reliable right from the first conversation, took all our ideas on board and gave us plenty of useful professional advice. What we got is a modern, fast, good-looking website, exactly what we wanted. I especially want to point out the quote-request widget he built for us, it's made our everyday work so much easier. I just send interested people to it, and they come back already filled in and with a rough idea of the price, so we don't have to start every conversation from scratch. I can honestly recommend Milán to anyone looking for a professional, reliable web developer.", name: "Polyák Zoltán", company: "Kecskemét Klíma", stars: 5, logo: "" },
     { quote: "Milan built our new website with great care and attention to every detail. His input gave the site an aesthetic and professional look that our new clients have spoken highly of. I recommend him to everyone who values a quality online presence.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5, logo: "/images/lavotha-logo.jpg" },
     { quote: "The website is stunning and immediately positions us as a premium service. We've had multiple clients tell us it's the most professional landscaping site they've seen. It's already paying for itself in the quality of leads we're getting.", name: "Basil", company: "Mimosa Gardens", stars: 5, logo: "/images/mimosa-logo.jpg" },
@@ -79,7 +79,7 @@ export const TESTIMONIALS: Record<Locale, { quote: string; name: string; company
   ],
   hu: [
     { quote: "Nagyon elégedettek vagyunk Milán munkájával. Modern, letisztult és igényes weboldalt kaptunk, ami gyönyörűen bemutatja az NM Bau szolgáltatásait és a munkánk minőségét. Az együttműködés gördülékeny volt, gyorsan reagált a kéréseinkre, a végeredmény pedig pontosan azt a profi képet tükrözi, amit közvetíteni szerettünk volna. Csak ajánlani tudjuk!", name: "Nagy Máté", company: "NM Bau", stars: 5, logo: "/images/nmbau-logo.png" },
-    { quote: "Nagyon elégedett voltam Milánnal. Szerintem szakmailag fényévekkel a többi weboldalkészítő előtt jár. Teljes szívből ajánlom mindenkinek. Egyedi árkalkulátort épített az oldalamra, amivel sokkal könnyebb kiválasztani a hozzám érkező jó munkákat. Rengeteg időt, energiát és pénzt spóroltunk vele.", name: "Polyák Zoltán", company: "Kazán Szerviz Kecskemét", stars: 5, logo: "" },
+    { quote: "Nagyon elégedett voltam Milánnal. Szerintem szakmailag fényévekkel a többi weboldalkészítő előtt jár. Teljes szívből ajánlom mindenkinek. Egyedi árkalkulátort épített az oldalamra, amivel sokkal könnyebb kiválasztani a hozzám érkező jó munkákat. Rengeteg időt, energiát és pénzt spóroltunk vele.", name: "Polyák Zoltán", company: "Kazán Szerviz Kecskemét", stars: 5, logo: "/images/kazan-logo.png" },
     { quote: "Milán készítette el a weboldalunkat, és maximálisan elégedettek vagyunk a munkájával. Már az első egyeztetéstől kezdve segítőkész, precíz és megbízható volt, minden elképzelésünket figyelembe vette, és szakmailag is rengeteg hasznos tanáccsal segített. A végeredmény egy modern, gyors és igényes weboldal lett, pontosan olyan, amilyet szerettünk volna. Külön kiemelem az árajánlatkérő widgetet is, azóta sokkal egyszerűbb lett a mindennapi munkánk. Egyszerűen odairányítom az érdeklődőket, ők pedig már kitöltve, nagyjából az árat is ismerve keresnek vissza, így nem kell a semmiből tárgyalást kezdeni mindenkivel. Milánt mindenkinek jó szívvel ajánlom, aki profi és megbízható weboldalkészítőt keres.", name: "Polyák Zoltán", company: "Kecskemét Klíma", stars: 5, logo: "" },
     { quote: "Milán nagy gonddal, a legapróbb részletekre is figyelve építette meg az új weboldalunkat. A meglátásai esztétikus és profi megjelenést adtak az oldalnak, amit az új ügyfeleink is dicsérnek. Mindenkinek ajánlom, akinek fontos az igényes online jelenlét.", name: "Balázs Lavotha", company: "Lavotha Kert Kft", stars: 5, logo: "/images/lavotha-logo.jpg" },
     { quote: "A weboldal lenyűgöző, és azonnal prémium szolgáltatásként pozicionál minket. Több ügyfelünk is azt mondta, ez a legprofibb kertészeti oldal, amit valaha láttak. Már most megtérül: sokkal jobb minőségű érdeklődők keresnek meg minket.", name: "Basil", company: "Mimosa Gardens", stars: 5, logo: "/images/mimosa-logo.jpg" },
@@ -90,11 +90,11 @@ export const TESTIMONIALS: Record<Locale, { quote: string; name: string; company
 export const homeContent: Record<Locale, HomeDict> = {
   en: {
     hero: {
-      eyebrow: "AI Quoting for Trades",
-      line1: "TRADES:",
-      line2: "NO MORE",
-      line3: "DEAD LEADS.",
-      sub: "We build premium websites and AI quoting assistants. Your customers get an instant estimate on your website, and you only talk to serious buyers.",
+      eyebrow: "AI Quoting Assistant for Trades",
+      line1: "QUOTES",
+      line2: "WHILE YOU",
+      line3: "SLEEP.",
+      sub: "Your customers get an instant estimate on your website, day or night. You only talk to the ones who already know the price and mean it.",
       ctaPrimary: "Book a Free Call",
       ctaSecondary: "See Our Work",
       trust: "Trusted by trades, contractors & garages",
@@ -110,10 +110,10 @@ export const homeContent: Record<Locale, HomeDict> = {
       },
       contractors: {
         eyebrow: "New · For contractors & manufacturers",
-        line1: "NOTHING",
-        line2: "LEFT OUT",
-        line3: "OF THE BID.",
-        sub: "A request for quotation comes in. It reads the item list, the drawings and the contract, flags the errors, drafts your questions and splits every item by workshop. You make the decisions.",
+        line1: "TENDERS",
+        line2: "PRICE-READY",
+        line3: "IN MINUTES.",
+        sub: "It reads the whole tender package, catches the errors and gaps, drafts your questions, splits every item by workshop and builds a first price draft. You just approve it.",
         ctaSecondary: "See How It Works",
       },
     },
@@ -237,11 +237,11 @@ export const homeContent: Record<Locale, HomeDict> = {
   },
   hu: {
     hero: {
-      eyebrow: "AI árajánlás szakembereknek",
-      line1: "VÉGE A",
-      line2: "KOMOLYTALAN",
-      line3: "ÉRDEKLŐDŐKNEK.",
-      sub: "Weboldalakat és AI árajánló asszisztenseket építünk. Az ügyfeleid azonnal árbecslést kapnak a weboldaladon, te pedig már csak a komoly megrendelőkkel beszélsz.",
+      eyebrow: "AI árajánló asszisztens szakembereknek",
+      line1: "ÁRAJÁNLAT",
+      line2: "AKKOR IS,",
+      line3: "HA ALSZOL.",
+      sub: "Az ügyfeleid éjjel-nappal azonnali árbecslést kapnak a weboldaladon, te pedig csak azokkal beszélsz, akik már ismerik az árat, és komolyan gondolják.",
       ctaPrimary: "Foglalj időpontot",
       ctaSecondary: "Nézd meg a referenciákat",
       trust: "Szakemberek, kivitelezők és szervizek bíznak bennünk",
@@ -257,10 +257,10 @@ export const homeContent: Record<Locale, HomeDict> = {
       },
       contractors: {
         eyebrow: "Új · Kivitelezőknek és gyártóknak",
-        line1: "EGY TÉTEL",
-        line2: "SEM MARAD KI",
-        line3: "AZ AJÁNLATBÓL.",
-        sub: "Beérkezik egy ajánlatkérés. A program végigolvassa a tételjegyzéket, a tervlapokat és a szerződést, megjelöli a hibákat, megírja a kérdéseidet, és üzemenként szétosztja a tételeket. A döntés a tiéd.",
+        line1: "NAPOK HELYETT",
+        line2: "PERCEK ALATT",
+        line3: "ÁRAZÁSRA KÉSZ.",
+        sub: "Átnézi a teljes ajánlatkérést, kiszúrja a hibákat és a hiányokat, megírja a kérdéseket, üzemenként szétosztja a tételeket, és első árvázlatot ad. Te csak jóváhagyod.",
         ctaSecondary: "Nézd meg, hogyan működik",
       },
     },

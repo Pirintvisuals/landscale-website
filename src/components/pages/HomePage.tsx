@@ -54,7 +54,7 @@ function HeroOrbs() {
 
 function TestimonialCard({ t }: { t: (typeof TESTIMONIALS)[Locale][number] }) {
   return (
-    <figure className="w-[300px] sm:w-[380px] flex-shrink-0 bg-[#111111] border border-white/[0.06] hover:border-gold/35 rounded-2xl p-6 flex flex-col gap-4 transition-colors duration-300">
+    <figure className="w-[300px] sm:w-[440px] flex-shrink-0 bg-[#111111] border border-white/[0.06] hover:border-gold/35 rounded-2xl p-6 flex flex-col gap-4 transition-colors duration-300">
       <div className="flex gap-0.5 text-gold text-sm" role="img" aria-label={`${t.stars} / 5`}>
         {Array.from({ length: t.stars }).map((_, i) => <span key={i} aria-hidden="true">★</span>)}
       </div>
@@ -76,26 +76,35 @@ function TestimonialCard({ t }: { t: (typeof TESTIMONIALS)[Locale][number] }) {
   );
 }
 
-/** Two endlessly drifting rows of client reviews (each row is duplicated for a seamless loop). */
+/**
+ * One endlessly drifting row of client reviews (duplicated for a seamless loop).
+ * Reviews from the same person (Polyák Zoltán has two businesses) are placed as far
+ * apart as possible, and the row is narrow enough with faded edges that two cards
+ * from the same person are never readable at the same time.
+ */
+function spreadSamePerson<T extends { name: string }>(items: T[]): T[] {
+  const counts = new Map<string, number>();
+  items.forEach((t) => counts.set(t.name, (counts.get(t.name) ?? 0) + 1));
+  const repeated = items.filter((t) => (counts.get(t.name) ?? 0) > 1);
+  const singles = items.filter((t) => (counts.get(t.name) ?? 0) === 1);
+  if (repeated.length === 0) return items;
+  const n = items.length;
+  const out: (T | undefined)[] = new Array(n).fill(undefined);
+  repeated.forEach((t, k) => { out[(1 + Math.round((k * n) / repeated.length)) % n] = t; });
+  let si = 0;
+  for (let k = 0; k < n; k++) if (!out[k]) out[k] = singles[si++];
+  return out as T[];
+}
+
 function TestimonialWall({ lang }: { lang: Locale }) {
-  const all = TESTIMONIALS[lang];
-  // second row runs in reverse order, offset by two, so the same review rarely sits above itself
-  const rowA = all;
-  const rev = [...all].reverse();
-  const rowB = [...rev.slice(2), ...rev.slice(0, 2)];
-  const row = (items: typeof all, dir: "left" | "right") => (
-    <div className="marquee-row relative overflow-hidden">
-      <div className={`flex gap-5 w-max ${dir === "left" ? "marquee-left" : "marquee-right"}`}>
+  const items = spreadSamePerson(TESTIMONIALS[lang]);
+  return (
+    <div className="marquee-row relative max-w-[1240px] mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_18%,black_82%,transparent)]">
+      <div className="flex gap-6 w-max marquee-left">
         {[...items, ...items].map((t, i) => (
           <div key={i} aria-hidden={i >= items.length ? true : undefined}><TestimonialCard t={t} /></div>
         ))}
       </div>
-    </div>
-  );
-  return (
-    <div className="relative flex flex-col gap-5 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-      {row(rowA, "left")}
-      {row(rowB, "right")}
     </div>
   );
 }

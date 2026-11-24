@@ -141,7 +141,7 @@ input:focus, textarea:focus, select:focus {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
 }
-.marquee-left { animation: marqueeLeft 70s linear infinite; }
+.marquee-left { animation: marqueeLeft 60s linear infinite; }
 .marquee-right { animation: marqueeRight 80s linear infinite; }
 .marquee-row:hover .marquee-left,
 .marquee-row:hover .marquee-right { animation-play-state: paused; }
