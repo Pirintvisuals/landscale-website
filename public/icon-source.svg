@@ -1,29 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Landscale favicon: a rising skyline (construction + growth). Source for all icon sizes. -->
   <defs>
-    <radialGradient id="bg" cx="30%" cy="22%" r="85%">
-      <stop offset="0%" stop-color="#211b0e"/>
-      <stop offset="55%" stop-color="#0e0d0b"/>
+    <radialGradient id="bg" cx="30%" cy="20%" r="90%">
+      <stop offset="0%" stop-color="#221b0c"/>
+      <stop offset="55%" stop-color="#0f0e0b"/>
       <stop offset="100%" stop-color="#070707"/>
     </radialGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F6E08E"/>
-      <stop offset="50%" stop-color="#D4AF37"/>
+    <linearGradient id="gold" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#F8E39A"/>
+      <stop offset="45%" stop-color="#D4AF37"/>
       <stop offset="100%" stop-color="#A8841C"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C9A33A"/>
+      <stop offset="100%" stop-color="#8E7022"/>
+    </linearGradient>
+    <linearGradient id="low" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8F7630"/>
+      <stop offset="100%" stop-color="#5E4D1C"/>
+    </linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#bg)"/>
   <rect x="5" y="5" width="502" height="502" rx="108" fill="none" stroke="#D4AF37" stroke-opacity="0.28" stroke-width="10"/>
-  <!-- scan frame: two diagonal corner brackets -->
-  <g fill="none" stroke="url(#gold)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M112 206 V148 Q112 112 148 112 H206"/>
-    <path d="M400 306 V364 Q400 400 364 400 H306"/>
-  </g>
-  <!-- AI spark -->
-  <circle cx="256" cy="256" r="120" fill="url(#glow)"/>
-  <path d="M256 140 Q266 246 372 256 Q266 266 256 372 Q246 266 140 256 Q246 246 256 140 Z" fill="url(#gold)"/>
-  <path d="M362 132 Q366 160 394 164 Q366 168 362 196 Q358 168 330 164 Q358 160 362 132 Z" fill="#F6E08E"/>
+
+  <!-- small house -->
+  <path d="M92 410 V318 L146 274 L200 318 V410 Z" fill="url(#low)"/>
+  <rect x="132" y="350" width="28" height="60" rx="4" fill="#0f0e0b"/>
+
+  <!-- middle building -->
+  <path d="M222 410 V232 L276 188 L330 232 V410 Z" fill="url(#mid)"/>
+  <rect x="262" y="262" width="28" height="30" rx="4" fill="#0f0e0b"/>
+  <rect x="262" y="350" width="28" height="60" rx="4" fill="#0f0e0b"/>
+
+  <!-- tall tower, the brightest -->
+  <path d="M352 410 V156 L392 100 L432 156 V410 Z" fill="url(#gold)"/>
+  <rect x="378" y="180" width="28" height="30" rx="4" fill="#0f0e0b"/>
+  <rect x="378" y="240" width="28" height="30" rx="4" fill="#0f0e0b"/>
+  <rect x="378" y="300" width="28" height="30" rx="4" fill="#0f0e0b"/>
+  <rect x="378" y="350" width="28" height="60" rx="4" fill="#0f0e0b"/>
+
+  <!-- ground line -->
+  <rect x="72" y="408" width="368" height="14" rx="7" fill="#D4AF37" fill-opacity="0.55"/>
 </svg>
