@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { CALENDLY_URL } from "@/content/ui";
-import { TenderVisual } from "@/components/ui/tender-visual";
+import { ContractorDemos } from "@/components/ui/contractor-demos";
 
 const SPRING = [0.16, 1, 0.3, 1] as const;
 
@@ -196,8 +196,8 @@ export default function TenderReviewPage({ lang }: { lang: Locale }) {
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5, ease: SPRING }}
-            className="w-full h-[520px] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
-            <TenderVisual lang={lang} />
+            className="w-full h-[570px] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
+            <ContractorDemos lang={lang} />
           </motion.div>
         </div>
       </section>

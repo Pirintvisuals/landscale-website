@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { HeroVisual } from "@/components/ui/hero-visual";
 import { GarageVisual } from "@/components/ui/garage-visual";
-import { TenderVisual } from "@/components/ui/tender-visual";
+import { ContractorDemos } from "@/components/ui/contractor-demos";
 import { Lock } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localize } from "@/lib/i18n";
@@ -228,8 +228,8 @@ export default function HomePage({ lang }: { lang: Locale }) {
             {/* ── RIGHT: AI visual ── */}
             <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5, ease: SPRING }}
               className="hidden lg:flex items-center justify-center">
-              <div className="w-full h-[min(520px,62vh)] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
-                {demo === "garage" ? <GarageVisual key="garage" lang={lang} /> : demo === "contractors" ? <TenderVisual key="contractors" lang={lang} /> : <HeroVisual key="trades" lang={lang} />}
+              <div className="w-full h-[min(570px,70vh)] bg-white/[0.025] border border-white/[0.07] rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(212,175,55,0.07)] flex flex-col">
+                {demo === "garage" ? <GarageVisual key="garage" lang={lang} /> : demo === "contractors" ? <ContractorDemos key="contractors" lang={lang} /> : <HeroVisual key="trades" lang={lang} />}
               </div>
             </motion.div>
 
